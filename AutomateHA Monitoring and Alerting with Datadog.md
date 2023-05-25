@@ -1,4 +1,4 @@
-Title: Clearly state the title of your white paper, which should reflect the main topic or objective.
+Title: Clearly state the title of your white paper, which should reflect the main topic or objective. 
 
 Abstract: Provide a brief summary of the white paper's content, highlighting the key points and benefits of the technologies discussed.
 
