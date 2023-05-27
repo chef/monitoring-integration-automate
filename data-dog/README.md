@@ -1,5 +1,18 @@
 # Datadog Dashboards
 
+## What are Datadog dashboards used for:
+
++ The dashboard allows us to analyze data from across our entire system in a single pane of glass. It enables our team to immediately benefit from dynamic views with no query language or coding required.
+
++ Widgets are major building blocks of the dashboard
++ There are various categories internal to the widget which can be chosen based on the view, type, and audience of the information.
++ Category of widget:
+  - Generic widgets to graph data
+  - Summary widgets to display Synthetic Monitoring information
+  - Decoration widgets to visually structures
++ For more information on widgets, kindly refer: https://docs.datadoghq.com/dashboards/widgets/ 
+
+
 ## Considerations for creating Datadog Dashboards
 
 **Define your goals:**
@@ -55,8 +68,12 @@ Once you are done appending your changes, click on save.
    - Select your visualization --> Timeseries
    - Graph your data
      - Metrics --> key in your metrics name; from --> key in tag values you want to filter your view with; select from "avg by"/"max by"/"min by"/"sum by" --> select the relevant filter for your selection
-   - Set display preferences: Show --> Global Time
-   - Key in a title for your graph
+     - Selection of environment, tags
+     - Logic: Arithmetic to be applied
+   - Set display preferences: 
+     - Show --> Global Time
+     - Duration of time for data to be shown
+   - Key in a title for your widget
    - Once done, click on Save
 
 ![Image alt text](~dchakrab/Documents/Progress Official/Datadog/Creating_widget.png)
