@@ -49,8 +49,7 @@ Its recommended you have the following dashboards for Automate:
 
 For example, a System Metrics dashboard will look like this:
 
-![Image alt text](~dchakrab/Documents/Progress\ Official/Datadog/System\ Metrics\ Dashboard.png)
-
+![System Metrics Dashboard](images/System_Metrics_Dashboard.png)
 
 # Steps to create a new dashboard
 
@@ -76,7 +75,7 @@ Once you are done appending your changes, click on save.
    - Key in a title for your widget
    - Once done, click on Save
 
-![Image alt text](~dchakrab/Documents/Progress Official/Datadog/Creating_widget.png)
+![Creating a Widget](images/Creating_widget.png)
 
 
 
@@ -92,7 +91,7 @@ Once you are done appending your changes, click on save.
 **Opensearch DB Service Status:**
 - aws.es.cluster_statusgreen; with conditions for Success: cutoff_min --> 1 and Failure: clamp_min --> 0.5
 
-![Image alt text](~dchakrab/Documents/Progress Official/Datadog/Infra_health_dashboard.png)
+![Infra Health Dashboard](images/Infra_health_dashboard.png)
 
  ## Opensearch metrics:
 
@@ -112,7 +111,7 @@ Once you are done appending your changes, click on save.
 - aws.es.searchable_documents
 - system.cpu.user
   
- ![Image alt text](~dchakrab/Documents/Progress\ Official/Datadog/AWS_Managed_ES.png)
+ ![Opensearch Metrics Dashboard](images/AWS_Managed_ES.png)
 
 
 ## Postgresql Metrics:
@@ -145,7 +144,7 @@ Assumptions:
   - aws.rds.read_latency
   - aws.rds.write_latency
 
-![Image alt text](~dchakrab/Documents/Progress\ Official/Datadog/AWS_RDS.png)
+![PosgreSQL Dashboard](images/AWS_RDS.png)
 
 
 
@@ -171,6 +170,4 @@ Assumptions:
 - system.cpu.iowait
 - system.cpu.stolen
   
-
-
-![Image alt text](~dchakrab/Documents/Progress\ Official/Datadog/AWS_Opensearch.png)
+![Opensearch Dashboard](images/AWS_Opensearch.png)
