@@ -45,30 +45,48 @@ Enabling the component-level configuration as per the setup.
  
 **Acceptance Criteria:**
   
-Data dog agent to be configured for 
-Automate node
-Chef Infra Server
-Chef managed OpenSearch
-Chef managed Postgres
-Bastion node
-Data dog agent to be running on Automate, chef infra server nodes, OpenSearch, and Postgres nodes.
+Data dog agent to be configured for:
+
+  Automate node
+
+  Chef Infra Server
+
+  Chef managed OpenSearch
+
+  Chef managed Postgres
+
+  Bastion node
+
+Data dog agent to be running on Automate, 
+chef infra server nodes, OpenSearch, and Postgres nodes.
+
 Validation on Data Dog console for metrics getting received as per the tags added.
+
 Based on this agent configuration and installation setup and testing:
+
 Guided steps with all relevant configurations must be documented for Automate HA customer
+
 Inspired information must be added as part of the technical blog for customer understanding.  
 
 
 Config types:
-Configuration steps can be found here as part of the standard data dog agent config repo:
-datadog-agent/cmd/agent at main · DataDog/datadog-agent 
-Configuration YAML files need to be available 1st before running the agent.
+
+	Configuration steps can be found here as part of the standard data dog agent config repo:
+
+	datadog-agent/cmd/agent at main · DataDog/datadog-agent 
+
+	Configuration YAML files need to be available 1st before running the agent.
   
 Type of configuration required for Automate HA setup, in order to ensure that all the components of AUtomate HA are sending the relevant metrics to data dog
+
 Config file (Final DD agent location)
+
 Details
+
 /etc/datadog-agent/conf.d/elastic.d/conf.yaml
 OpenSearch Metrics - agent config
 This config keep information regarding types on OpenSearch metrics which needs to be sent to data dog.
+
 /etc/datadog-agent/conf.d/postgres.d/conf.yaml
 Postgres Metrics - agent config
 This config keep information regarding types on Postgres metrics which needs to be sent to data dog.
@@ -76,16 +94,19 @@ This config keep information regarding types on Postgres metrics which needs to 
 /etc/datadog-agent/conf.d/http_check.d/conf.yaml
 Automate and Chef Infra Server Metrics - agent config
 Automate and Chef Infra Server related application level services health check metrics are captured here as part of HTTP checks.
+
 /etc/datadog-agent/conf.d/disk.d/conf.yaml
 Disk Metrics - All nodes
 The Disk check is enabled by default, and the Agent collects metrics on all local partitions.
-Reference location for actual values: 
+
 /etc/datadog-agent/conf.d/journald.d/syslog.yaml
 Journalctl logs
 In case we want to send the logs as well to data dog, this cionfiguration needs to be added to esnure all journal ctl logs are getting sent to data dog.
+
 /etc/datadog-agent/conf.d/systemd.d/conf.yaml
 System logs
 Enable this config for system level logs
+
 /etc/datadog-agent/conf.d/systemd.d/conf.yaml
 Systemd logs
 Enable this config for systemd logs
