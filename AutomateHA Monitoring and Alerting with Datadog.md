@@ -1,8 +1,11 @@
-Title: Clearly state the title of your white paper, which should reflect the main topic or objective. 
+# Title: 
+Clearly state the title of your white paper, which should reflect the main topic or objective. 
 
-Abstract: Provide a brief summary of the white paper's content, highlighting the key points and benefits of the technologies discussed.
+## Abstract: 
+Provide a brief summary of the white paper's content, highlighting the key points and benefits of the technologies discussed.
 
-Introduction: Introduce the purpose and scope of the white paper. Explain the importance of the topics covered and how they relate to the target audience's needs or interests.
+## Introduction: 
+Introduce the purpose and scope of the white paper. Explain the importance of the topics covered and how they relate to the target audience's needs or interests.
 
 1. Datadog
 
@@ -136,7 +139,8 @@ Discuss the advantages of using Kibana for log analysis and alerting.
 Provide examples of monitoring rules and how to set them up.
 
 
-Conclusion: Summarize the main points discussed in the white paper. Emphasize the benefits of implementing the technologies and integrations described
+## Conclusion: 
+Summarize the main points discussed in the white paper. Emphasize the benefits of implementing the technologies and integrations described
 
 
 
