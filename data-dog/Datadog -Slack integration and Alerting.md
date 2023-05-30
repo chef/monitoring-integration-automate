@@ -14,7 +14,7 @@ What you’ll need:
 
 Select your workspace and chose/create the slack channel for datadog alerts to be triggered in.
 
-1. In Datadog UI:
+2. In Datadog UI:
 
 * Navigate to Integration -> select slack
 
@@ -29,7 +29,7 @@ Select your workspace and chose/create the slack channel for datadog alerts to b
    ![Selecting slack workspace](images/Slack_workspace.png)
 
 
-1. In Slack:
+3. In Slack:
 
 * Under apps -> datadog > click on 'add this app to a channel'
 
