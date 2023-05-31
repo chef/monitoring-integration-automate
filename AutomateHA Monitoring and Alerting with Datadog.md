@@ -7,7 +7,7 @@ Provide a brief summary of the white paper's content, highlighting the key point
 ## Introduction: 
 Introduce the purpose and scope of the white paper. Explain the importance of the topics covered and how they relate to the target audience's needs or interests.
 
-1. Datadog
+### 1. Datadog
 
 a. Datadog Agent Configuration and Installation:
 
@@ -49,7 +49,7 @@ Discuss the importance of defining monitoring rules and thresholds.
 Provide examples of common monitoring scenarios and how to set them up.
 
 
-2. Prometheus
+### 2. Prometheus
 
 a. Prometheus Agent Configuration and Installation:
 
@@ -80,7 +80,7 @@ Explain how to configure Metrics Monitors in Prometheus for proactive monitoring
 Discuss the importance of defining monitoring rules and thresholds.
 Provide examples of common monitoring scenarios and how to set them up.
 
-3. Cloudwatch
+### 3. Cloudwatch
 
 a. Integration of CloudWatch with AWS Athena for Logs Query:
 
@@ -112,7 +112,7 @@ Explain how to configure Metrics Monitors in Cloudwatch for proactive monitoring
 Discuss the importance of defining monitoring rules and thresholds.
 Provide examples of common monitoring scenarios and how to set them up.
 
-4. ELK 
+### 4. ELK 
 
 a. Elasticsearch Configuration and Installation:
 
