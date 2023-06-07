@@ -38,6 +38,10 @@ Select your workspace and chose/create the slack channel for datadog alerts to b
 
 4. Test the Integration:
 
-* In datadog app, go to monitor -> edit -> test notofication
+* In datadog app, go to monitor -> edit -> add the name of the slack channel that is created for notification purpose below the notification message as shown below.
+  
+  ![Selecting slack channel](images/Slack_channel_name_selection.png)
+
+* Click on Test notification at the bottom of the screen.
 
 * A sample notification should be triggered in the channel confirming the Datadog-slack integration is successful.
