@@ -21,6 +21,10 @@ You need to have clarity what you want to show and monitor in your dashboard and
 **Choose the right metrics:**
 Not all metrics are created equal, some are of more importance than others. Choose the metrics that are important to you, we have listed down all the important metrics that is critical to your Automate Infrastructure. 
 
+The link provides you an estimation of metrics we have used to monitor Automate HA in AWS Managed Deployment style. You can use this guidance to build metrics and dashboards for other deployment styles
+
+[Reference Metrics](Reference_Metrics_List.md)
+
 **Use the right visualizations:**
 There are a variety of visualizations available in Datadog. Choose the visualizations that are best suited for the metrics you are tracking. For example, if you are tracking CPU usage, you might use a line chart. If you are tracking errors, you might use a heatmap.
 
@@ -80,6 +84,8 @@ Once you are done appending your changes, click on save.
 
 
  # Metrics used in each dashboard
+
+ 
  
  ## Infrastructure health:
  **Chef Automate Status and Infra Server Status:**
@@ -90,6 +96,9 @@ Once you are done appending your changes, click on save.
 
 **Opensearch DB Service Status:**
 - aws.es.cluster_statusgreen; with conditions for Success: cutoff_min --> 1 and Failure: clamp_min --> 0.5
+
+**Note:** 
+Here, we are discussing metrics for deploying Managed Automate HA in AWS, please use this as a general guideline for other platforms and On-prem solutions as well
 
 ![Infra Health Dashboard](images/Infra_health_dashboard.png)
 
@@ -171,3 +180,5 @@ Assumptions:
 - system.cpu.stolen
   
 ![Opensearch Dashboard](images/AWS_Opensearch.png)
+
+
