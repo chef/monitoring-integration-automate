@@ -12,16 +12,16 @@ In the Datadog UI:
 
     ![Metrics_Host_Monitor](images/Metrics_Host_Monitor.png)
 
- * Set alert conditions  - Alerts for the monitor can be crated based on different indices or behaviours of the host like idle time, state of the host or resource utilization threshold.
-
-    ![Metrics_Threshold](images/Metrics_Threshold.png)
-
  * Select the option to automatically resolve the alerts after a specified period of time or it needs to be resolved by manual intervention of an user.
 
  * There is the option to notify the team responsible for the infrastructure monitoring via email or slack or teams or pgerduty. The detailed steps on integrating Datadog with these alerting applications are explianed in dedictaed sections.
 
  * Datadog provides the flexibility of renotification of the same alert which can be configured to renotify in the alerting app multiple times after a fixed interval of time.
 
+    ![Metrics_Host_Monitor](images/Notify.png)
+
  * Different alerts need to be set a priority level depending on the impact they create on the performance or functioning of the applications. Priority for the custom alerts should be set in order to address those accordingly meeting the SLAs.
 
  * Role based access control needs to be applied to the custom monitors and alerts crtaed which dictates Who can edit/delete my alert and eho will it be notified to.
+
+    ![Metrics_Host_Monitor](images/Priority.png)
