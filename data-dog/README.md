@@ -62,7 +62,8 @@ For example, a System Metrics dashboard will look like this:
 + Here, key in a name for Dashboard Name and select the "New Timeboard" and then click on "New Dashboard".
 + On the dashboard screen, first create template variables with which you want to tag your components. A basic example can be:
 
-![Image alt text](~dchakrab/Documents/Progress\ Official/Datadog/Template_variables.png)
+![Creating templates](images/Template_variables.png)
+
 
 Once you are done appending your changes, click on save. 
 
