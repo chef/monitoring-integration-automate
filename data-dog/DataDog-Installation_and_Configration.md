@@ -1,3 +1,4 @@
+# DataDog Installation and Configration
 **Description**
 
 As an Automate HA customer, need to have a monitoring agent running on the infrastructure nodes to scrap the possible configured metrics and other information which can be sent to the monitoring tool in order to track the health of the overall infrastructure.
@@ -63,9 +64,6 @@ chef infra server nodes, OpenSearch, and Postgres nodes.
 |/etc/datadog-agent/conf.d/elastic.d/conf.yaml | **OpenSearch Metrics - agent config** - This config keep information regarding types on OpenSearch metrics which needs to be sent to data dog. Reference location for actual values: https://github.com/chef/chef-saas/blob/main/automate-backend-datadog/elasticsearch/elastic.yaml |
 |/etc/datadog-agent/conf.d/postgres.d/conf.yaml|**Postgres Metrics - agent config** This config keep information regarding types on Postgres metrics which needs to be sent to data dog. Reference location for actual values: https://github.com/chef/chef-saas/blob/main/automate-backend-datadog/postgresql/postgres.yaml|
 |/etc/datadog-agent/conf.d/disk.d/conf.yaml|**Disk Metrics - All nodes** The Disk check is enabled by default, and the Agent collects metrics on all local partitions. Reference location for actual values: https://github.com/chef/chef-saas/blob/main/automate-backend-datadog/chef_server/diskd.yaml|
-|/etc/datadog-agent/conf.d/journald.d/syslog.yaml|**Journalctl logs** In case we want to send the logs as well to data dog, this cionfiguration needs to be added to esnure all journal ctl logs are getting sent to data dog. Reference location for actual values:  https://github.com/chef/chef-saas/blob/main/automate-backend-datadog/chef_server/journald.yaml|
-|/etc/datadog-agent/conf.d/systemd.d/conf.yaml|**System logs** Enable this config for system level logs. Reference location for actual values: https://github.com/chef/chef-saas/blob/main/automate-backend-datadog/chef_server/syslog.yaml|
-|/etc/datadog-agent/conf.d/systemd.d/conf.yaml|**Systemd logs** Enable this config for systemd logs. Reference location for actual values: https://github.com/chef/chef-saas/blob/main/automate-backend-datadog/chef_server/systemd.yaml|
 
 **Agent configuration:**
 
