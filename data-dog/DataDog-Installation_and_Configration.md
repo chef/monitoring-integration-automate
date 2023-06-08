@@ -1,4 +1,5 @@
 # DataDog Installation and Configration
+
 **Description**
 
 As an Automate HA customer, need to have a monitoring agent running on the infrastructure nodes to get the possible configured metrics and other information which can be sent to the monitoring tool in order to track the health of the overall infrastructure.
@@ -73,10 +74,13 @@ chef infra server nodes, OpenSearch, and Postgres nodes.
 
 | Config file (Final DD agent location) | Details   |
 | :--- | :-- |
+|/etc/datadog-agent/datadog.yaml|**DataDog Main YAML File** Need to change and verify the datadog configration and tags Reference location for actual values: [DataDog.yaml](YML_Files/datadog.yaml) |
 |/etc/datadog-agent/conf.d/http_check.d/conf.yaml |**Automate and Chef Infra Server Metrics - agent config** Automate and Chef Infra Server related application level services health check metrics are captured here as part of HTTP checks. Reference location for actual values: [Automate](YML_Files/automate_httpd.yaml), [Chef_Server](YML_Files/chef_server_httpd.yaml) |
 |/etc/datadog-agent/conf.d/elastic.d/conf.yaml | **OpenSearch Metrics - agent config** - This config keep information regarding types on OpenSearch metrics which needs to be sent to data dog. Reference location for actual values: [Elasticsearch](YML_Files/elastic.yaml) ||
 |/etc/datadog-agent/conf.d/postgres.d/conf.yaml|**Postgres Metrics - agent config** This config keep information regarding types on Postgres metrics which needs to be sent to data dog. Reference location for actual values: [Postgres](YML_Files/postgres.yaml) ||
-|/etc/datadog-agent/conf.d/disk.d/conf.yaml|**Disk Metrics - All nodes** The Disk check is enabled by default, and the Agent collects metrics on all local partitions. Reference location for actual values: [Disk Metrics](YML_Files/diskd.yaml) ||
+|/etc/datadog-agent/conf.d/disk.d/conf.yaml|**Disk Metrics - All nodes** The Disk check is enabled by default, and the Agent collects metrics on all local partitions. Reference location for actual values: [Disk Metrics](YML_Files/diskd.yaml) |
+|/etc/datadog-agent/conf.d/nginx.d/conf.yaml|**Nginx** - The Datadog Agent can collect many metrics from NGINX instances, including (but not limited to)::Total requests,Connections such as accepted, handled, and active|
+
 
 **Agent configuration:**
 
