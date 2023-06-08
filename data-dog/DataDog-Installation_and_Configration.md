@@ -83,6 +83,7 @@ chef infra server nodes, OpenSearch, and Postgres nodes.
 |/etc/datadog-agent/conf.d/disk.d/conf.yaml|**Disk Metrics - All nodes** The Disk check is enabled by default, and the Agent collects metrics on all local partitions. Reference location for actual values: [Disk Metrics](YML_Files/diskd.yaml) |
 |/etc/datadog-agent/conf.d/nginx.d/conf.yaml|**Nginx** - The Datadog Agent can collect many metrics from NGINX instances, including (but not limited to)::Total requests,Connections such as accepted, handled, and active|
 
+* For centralised logging metrics send to datadog, pls follow these references configrations :  [DataDog-Centralise_Logs_Management](DataDog-Centralise_Logs_Management.md)
 
 **Agent configuration:**
 
