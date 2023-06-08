@@ -89,3 +89,77 @@ The Agent v6 configuration file uses YAML to better support complex configuratio
 |Windows Server 2008, Vista and newer|%ProgramData%\Datadog\datadog.yaml|
 
 Reference location for actual values: ReferenceFiles/datadog.yml
+
+**Steps to create Datadog user**
+
+Datadog agent will read read and collects the metrics from all the instances and managed services for monitoring and for that it needs a user is postgres database. Given below are the steps to create the Datadog user in the database:
++ SSH into bastion machine and go to the deploy workspace
+
+		sudo su -
+		cd /hab/a2_deploy_workspace
+
++ Ssh into the automate instance using:
+
+		automate-cluster-ctl ssh automate
+
++ Go to the psql directory and open the psql console:
+
+		sudo su -
+		cd /hab/pkgs/core/postgresql13-client/13.5/20220120152435/bin
+		./psql --host=<hostname of RDS> --username=root --dbname=postgres
+   Password for the root user is admin1234
+
++ Run the below commands on psql console to create user for datadog
+
+		create user datadog with password 'datadog';
+		grant SELECT ON pg_stat_database to datadog;
+		grant pg_monitor to datadog;
+
++ Exit out of the Automate Instance and back to the bastion host.
+
+**Update hostname in postgres.yaml**
+
+Given below are the steps to Update hostname in postgres.yaml:
+
++ SSH into bastion machine and go to the deploy workspace
+
+		sudo su -
+		cd /hab/a2_deploy_workspace
+
++ Edit the postgres.yaml file and modify the below listed details:
+
+		vi automate-backend-datadog/postgresql/postgres.yaml
+
+  + Modify "host": Provide hostname of your RDS postgres instance
+  + Modify "tags": Provide the correct customer name in "customer" tag. The format should remain the same.
+
+**Datadog Agent Setup**
+
+Once the prerequisites are satisfied and the datadog user is created, we can go ahead and setup the Datadog agent on our instance. Follow the below listed steps for the same:
+
++ SSH into bastion machine and go to the deploy workspace
+
+		sudo su -
+		cd /hab/a2_deploy_workspace
+
++ Edit the datadog.yaml file and modify the below listed details:
+
+		vi automate-backend-datadog/datadog.yaml
+
++ Modify "api_key". API key details can be taken from the datadog portal. Listed below are the steps:
+
+		Go to Datadog Portal (https://app.datadoghq.com/)
+		Go to:
+		Organaization settings -> API Keys -> Select the key for "automate-as-saas"
+
+  + Modify "tags":
+    + Provide the correct customer name in "customer" tag. The format should remain the same.
+    + Set “Production” tag as true
+
++ After doing the required changes are done we have to execute the shell script:
+
+		bash scripts/setupDatadogAgent.sh
+
+This script will ssh into each instance, install the datadog agent, do the required configuration and restart the agent.
+Once the datadog agent is up and running, we need to wait for at least 15-20 mins to view the metrics and logs at:
+https://app.datadoghq.com/infrastructure
