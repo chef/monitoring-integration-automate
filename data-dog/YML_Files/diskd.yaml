@@ -1,0 +1,6 @@
+init_config:
+instances:
+  - use_mount: true
+    file_system_exclude:
+      - tmpfs$
+      - nfs4$

@@ -1,0 +1,251 @@
+init_config:
+
+instances:
+
+  - name: session-service
+    url: http://localhost:9631/services/session-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: session-service
+    timeout: 10
+
+  # - name: automate-postgresql
+  #   url: http://localhost:9631/services/automate-postgresql/default/health
+  #   method: get
+  #   http_response_status_code: 200
+  #   service: automate-postgresql
+  #   timeout: 10
+
+  - name: data-feed-service
+    url: http://localhost:9631/services/data-feed-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: data-feed-service
+    timeout: 10
+
+  - name: applications-service
+    url: http://localhost:9631/services/applications-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: applications-service
+    timeout: 10
+
+  - name: cereal-service
+    url: http://localhost:9631/services/cereal-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: cereal-service
+    timeout: 10
+
+  - name: pg-sidecar-service
+    url: http://localhost:9631/services/pg-sidecar-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: pg-sidecar-service
+    timeout: 10
+
+  - name: ingest-service
+    url: http://localhost:9631/services/ingest-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: ingest-service
+    timeout: 10
+
+  - name: automate-cs-oc-erchef
+    url: http://localhost:9631/services/automate-cs-oc-erchef/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-cs-oc-erchef
+    timeout: 10
+
+  - name: es-sidecar-service
+    url: http://localhost:9631/services/es-sidecar-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: es-sidecar-service
+    timeout: 10
+
+  - name: notifications-service
+    url: http://localhost:9631/services/notifications-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: notifications-service
+    timeout: 10
+
+  - name: authn-service
+    url: http://localhost:9631/services/authn-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: authn-service
+    timeout: 10
+
+  - name: automate-dex
+    url: http://localhost:9631/services/automate-dex/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-dex
+    timeout: 10
+
+  # - name: automate-elasticsearch
+  #   url: http://localhost:9631/services/automate-elasticsearch/default/health
+  #   method: get
+  #   http_response_status_code: 200
+  #   service: automate-elasticsearch
+  #   timeout: 10
+
+
+  - name: automate-ui
+    url: http://localhost:9631/services/automate-ui/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-ui
+    timeout: 10
+
+  - name: backup-gateway
+    url: http://localhost:9631/services/backup-gateway/default/health
+    method: get
+    http_response_status_code: 200
+    service: backup-gateway
+    timeout: 10
+
+  - name: automate-cs-bookshelf
+    url: http://localhost:9631/services/automate-cs-bookshelf/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-cs-bookshelf
+    timeout: 10
+
+  - name: compliance-service
+    url: http://localhost:9631/services/compliance-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: compliance-service
+    timeout: 10
+
+  - name: compliance-service
+    url: http://localhost:9631/services/compliance-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: compliance-service
+    timeout: 10
+
+  - name: automate-gateway
+    url: http://localhost:9631/services/automate-gateway/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-gateway
+    timeout: 10
+
+  - name: teams-service
+    url: http://localhost:9631/services/teams-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: teams-service
+    timeout: 10
+
+
+  - name: automate-cs-nginx
+    url: http://localhost:9631/services/automate-cs-nginx/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-cs-nginx
+    timeout: 10
+
+  - name: automate-pg-gateway
+    url: http://localhost:9631/services/automate-pg-gateway/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-pg-gateway
+    timeout: 10
+
+  - name: secrets-service
+    url: http://localhost:9631/services/secrets-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: secrets-service
+    timeout: 10
+
+  - name: deployment-service
+    url: http://localhost:9631/services/deployment-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: deployment-service
+    timeout: 10
+
+  - name: local-user-service
+    url: http://localhost:9631/services/local-user-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: local-user-service
+    timeout: 10
+
+  - name: license-control-service
+    url: http://localhost:9631/services/license-control-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: license-control-service
+    timeout: 10
+
+  - name: nodemanager-service
+    url: http://localhost:9631/services/nodemanager-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: nodemanager-service
+    timeout: 10
+
+
+  - name: automate-es-gateway
+    url: http://localhost:9631/services/automate-es-gateway/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-es-gateway
+    timeout: 10
+
+  - name: automate-cs-oc-bifrost
+    url: http://localhost:9631/services/automate-cs-oc-bifrost/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-cs-oc-bifrost
+    timeout: 10
+
+  - name: authz-service
+    url: http://localhost:9631/services/authz-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: authz-service
+    timeout: 10
+
+  - name: automate-load-balancer
+    url: http://localhost:9631/services/automate-load-balancer/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-load-balancer
+    timeout: 10
+
+  - name: event-gateway
+    url: http://localhost:9631/services/event-gateway/default/health
+    method: get
+    http_response_status_code: 200
+    service: event-gateway
+    timeout: 10
+
+  - name: event-service
+    url: http://localhost:9631/services/event-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: event-service
+    timeout: 10
+
+  - name: config-mgmt-service
+    url: http://localhost:9631/services/config-mgmt-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: config-mgmt-service
+    timeout: 10
+
+  - name: infra-proxy-service
+    url: http://localhost:9631/services/infra-proxy-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: infra-proxy-service
+    timeout: 10

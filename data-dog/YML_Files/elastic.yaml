@@ -1,0 +1,31 @@
+init_config:
+
+instances:
+
+  - url: https://localhost:9200
+
+    #node_name_as_host: false
+    cluster_stats: false
+    index_stats: true
+    pshard_stats: true
+
+    ## The user must have `manage_slm` cluster privilege to get these metrics.
+    # slm_stats: false
+    # cat_allocation_stats: true 
+    # admin_forwarder: false
+    pshard_graceful_timeout: true
+    pending_task_stats: true
+    gc_collectors_as_rate: true
+    disable_legacy_cluster_tag: true
+
+    tls_verify: false
+    tls_use_host_header: true
+    tls_ignore_warning: true
+    # /hab/svc/automate-backend-elasticsearch/config/certificates
+
+    tls_cert: /hab/svc/automate-backend-elasticsearch/config/certificates/odfe-admin.pem
+    tls_private_key: /hab/svc/automate-backend-elasticsearch/config/certificates/odfe-admin.key
+    tls_ca_cert: /hab/svc/automate-backend-elasticsearch/config/certificates/MyRootCA.pem
+
+    headers:
+      Host: chefnode

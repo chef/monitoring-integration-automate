@@ -1,7 +1,7 @@
 # DataDog Installation and Configration
 **Description**
 
-As an Automate HA customer, need to have a monitoring agent running on the infrastructure nodes to scrap the possible configured metrics and other information which can be sent to the monitoring tool in order to track the health of the overall infrastructure.
+As an Automate HA customer, need to have a monitoring agent running on the infrastructure nodes to get the possible configured metrics and other information which can be sent to the monitoring tool in order to track the health of the overall infrastructure.
 
 **Agent definition:**
 
@@ -24,14 +24,27 @@ This is the standard script provided by the data dog which is responsible for ag
 
 This script requires:
 + Data Dog URL (provide/use data dog URL link here)
+
+  | SITE    | SITE URL                  | SITE PARAMETER    | LOCATION |
+  | :------ | :------------------------ | :---------------- | :------- |
+  | US1     | https://app.datadoghq.com | datadoghq.com     | US       |
+  | US3     | https://us3.datadoghq.com | us3.datadoghq.com | US       |
+  | US5     | https://us5.datadoghq.com | us5.datadoghq.com | US       |
+  | EU1     | https://app.datadoghq.eu  | datadoghq.eu      | EU       |
+  | US1-FED | https://app.ddog-gov.com  | ddog-gov.com      | US       |
+  | AP1     | https://ap1.datadoghq.com | ap1.datadoghq.com | Japan    |
+
 + API key (This needs to be generated at the data dog portal, and will require access to the portal)
+
+  Get the API at Organization Settings -> API Keys
+
 + Path to the configuration file for the components where an agent needs to be run
 + All the component level configurations as detailed under the agent configuration section
 + List of IPs where we want to run the agent per configuration (this is to automate the installation on all nodes at once)
 + Required tags to be added (This is work as filter while fetching metrics on data dog console)
 
 **Running this script will ensure**
-+ Agent getting installed in each of the mentioned nodes
++ Agent getting installed in each of the nodes (Bastion Machine and All Instances - Chef Server, Automate, Postgress, ElasticSearch nodes)
 + Enabling the component-level configuration as per the setup.
 
 
