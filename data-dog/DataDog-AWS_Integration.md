@@ -1,6 +1,7 @@
 # DataDog AWS Integration
 
 **Overview**
+
 As an Automate HA customer, need to integrate Data dog with AWS in order to receive metrics from the AWS services. In the case of Automate HA deployment with managed services and AWS S3 being used for backup, these services need to be integrated with Data Dog in order to ensure monitoring and alerting for them.
 
 Connect to Amazon Web Services (AWS) to:
@@ -25,12 +26,11 @@ Connect to Amazon Web Services (AWS) to:
 1. Go to the AWS integration configuration page in Datadog and click Add AWS Account.
 ![AWS-Integration](Images/AWS-Integration.png)
 1. Configure the integration’s settings under the Automatically using CloudFormation option.
- + Select the AWS regions to integrate with.
- + Add your Datadog API key.
-
     ![datadog-aws-new-account-form](Images/datadog-aws-new-account-form-1.avif)
+   + Select the AWS regions to integrate with.
+   + Add your Datadog API key.
 
-3. Click *Launch CloudFormation Template*. This opens the AWS Console and loads the CloudFormation stack. All the parameters are filled in based on your selections in the prior Datadog form, so you do not need to edit those unless desired.
+2. Click *Launch CloudFormation Template*. This opens the AWS Console and loads the CloudFormation stack. All the parameters are filled in based on your selections in the prior Datadog form, so you do not need to edit those unless desired.
 
     ![datadog-customize-cloudformation-setup](Images/datadog-customize-cloudformation-setup-1.avif)
 
