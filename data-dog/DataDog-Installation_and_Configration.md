@@ -12,6 +12,8 @@ Agents for monitoring use cases refer to software that runs on your host machine
 
 DD_API_KEY= <DataDog Agent API> DD_SITE=<DataDog Site Name> DD_AGENT_MAJOR_VERSION= <DataDog Version> bash -c "$(curl -L curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
 
+Run below commands with required details to add DataDog client on particular host:
+
 	curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh |DD_AGENT_MAJOR_VERSION= <DataDog Version> DD_API_KEY=<DataDog Agent API> DD_SITE="<DataDog Site Name>" bash -s arg1
 
 	sudo systemctl start datadog-agent
