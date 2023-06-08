@@ -73,10 +73,10 @@ chef infra server nodes, OpenSearch, and Postgres nodes.
 
 | Config file (Final DD agent location) | Details   |
 | :--- | :-- |
-|/etc/datadog-agent/conf.d/http_check.d/conf.yaml |**Automate and Chef Infra Server Metrics - agent config** Automate and Chef Infra Server related application level services health check metrics are captured here as part of HTTP checks. Reference location for actual values: https://github.com/chef/chef-saas/blob/main/automate-backend-datadog/automate/httpd.yaml https://github.com/chef/chef-saas/blob/main/automate-backend-datadog/chef_server/httpd.yaml |
-|/etc/datadog-agent/conf.d/elastic.d/conf.yaml | **OpenSearch Metrics - agent config** - This config keep information regarding types on OpenSearch metrics which needs to be sent to data dog. Reference location for actual values: https://github.com/chef/chef-saas/blob/main/automate-backend-datadog/elasticsearch/elastic.yaml |
-|/etc/datadog-agent/conf.d/postgres.d/conf.yaml|**Postgres Metrics - agent config** This config keep information regarding types on Postgres metrics which needs to be sent to data dog. Reference location for actual values: https://github.com/chef/chef-saas/blob/main/automate-backend-datadog/postgresql/postgres.yaml|
-|/etc/datadog-agent/conf.d/disk.d/conf.yaml|**Disk Metrics - All nodes** The Disk check is enabled by default, and the Agent collects metrics on all local partitions. Reference location for actual values: https://github.com/chef/chef-saas/blob/main/automate-backend-datadog/chef_server/diskd.yaml|
+|/etc/datadog-agent/conf.d/http_check.d/conf.yaml |**Automate and Chef Infra Server Metrics - agent config** Automate and Chef Infra Server related application level services health check metrics are captured here as part of HTTP checks. Reference location for actual values: [Automate](YML_Files/automate_httpd.yaml), [Chef_Server](YML_Files/chef_server_httpd.yaml) |
+|/etc/datadog-agent/conf.d/elastic.d/conf.yaml | **OpenSearch Metrics - agent config** - This config keep information regarding types on OpenSearch metrics which needs to be sent to data dog. Reference location for actual values: [Elasticsearch](YML_Files/elastic.yaml) ||
+|/etc/datadog-agent/conf.d/postgres.d/conf.yaml|**Postgres Metrics - agent config** This config keep information regarding types on Postgres metrics which needs to be sent to data dog. Reference location for actual values: [Postgres](YML_Files/postgres.yaml) ||
+|/etc/datadog-agent/conf.d/disk.d/conf.yaml|**Disk Metrics - All nodes** The Disk check is enabled by default, and the Agent collects metrics on all local partitions. Reference location for actual values: [Disk Metrics](YML_Files/diskd.yaml) ||
 
 **Agent configuration:**
 
