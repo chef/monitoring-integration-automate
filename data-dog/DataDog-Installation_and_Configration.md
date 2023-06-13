@@ -57,13 +57,12 @@ This script requires:
     + Set “Production” tag as true
 
 + Path to the configuration file for the components where an agent needs to be run
-+ All the component level configurations as detailed under the agent configuration section
-+ List of IPs where we want to run the agent per configuration (this is to automate the installation on all nodes at once)
++ All the component level configurations as detailed under the [agent configuration section](#agent-configuration)
 + Required tags to be added (This is work as filter while fetching metrics on data dog console)
 
-**Running this script will ensure**
+**Running this above steps will ensure**
 + Agent getting installed in each of the nodes (Bastion Machine and All Instances - Chef Server, Automate, Postgress, ElasticSearch nodes)
-+ Enabling the component-level configuration as per the setup.
++ In case of AutomateHA with managed services, we need to run datadog agent only on Bastion, Automate, Chef Server.
 
 **These steups will install the datadog agent in each instance, with required configuration and restart the agent.**
 
@@ -104,7 +103,8 @@ chef infra server nodes, OpenSearch, and Postgres nodes.
 
 * For centralised logging metrics send to datadog, pls follow these references configrations :  [DataDog-Centralise_Logs_Management](DataDog-Centralise_Logs_Management.md)
 
-**Agent configuration:**
+
+## Agent Configration
 
 The Agent v6 configuration file uses YAML to better support complex configurations. Agent support standard OS such as Linus, MacOS, AIX, and Windows.
 | PLATFORM | COMMAND   |
