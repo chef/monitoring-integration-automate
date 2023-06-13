@@ -3,11 +3,12 @@ init_config:
 instances:
 
   - host: localhost
+  # change the "host" with actual URL for AWS managed postgres setup of AutomateHA
 
-    port: 5432
-    username: datadog
-    password: datadog
-    dbname: postgres
+    port: <To be filled>
+    username: <To be filled>
+    password: <To be filled>
+    dbname: <To be filled>
     dbname: chef_authz_service
     dbname: chef_cereal_service
     dbname: dex
@@ -220,7 +221,7 @@ instances:
     #   - <KEY_2>:<VALUE_2>
     tags:
       - "env:a2ha"
-      - "customer:a2ha_customer1"  
+      - "customer:a2ha_customer1"
     ## @param service - string - optional
     ## Attach the tag `service:<SERVICE>` to every metric, event, and service check emitted by this integration.
     ##
@@ -240,7 +241,7 @@ instances:
     ## This is useful for cluster-level checks.
     #
     # empty_default_hostname: false
-    
+
 ## Log Section
 ##
 ## type - required - Type of log input source (tcp / udp / file / windows_event)

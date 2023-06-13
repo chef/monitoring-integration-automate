@@ -19,9 +19,15 @@ Run below commands with required details to add DataDog client on particular hos
 	sudo systemctl start datadog-agent
 
 **Data dog installation setup steps (Introductory reference):**
-Installation script for data dog:
 
-	https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
++ SSH into bastion machine and go to the deploy workspace
+
+		sudo su -
+		cd /hab/a2_deploy_workspace
+
++ Installation script for data dog:
+
+		https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
 
 This is the standard script provided by the data dog which is responsible for agent installation.
 
@@ -39,7 +45,16 @@ This script requires:
 
 + API key (This needs to be generated at the data dog portal, and will require access to the portal)
 
-  Get the API at Organization Settings -> API Keys
+  + API key details can be taken from the datadog portal. Listed below are the steps:
+
+	Go to Datadog Portal (https://app.datadoghq.com/)
+
+	Go to:
+	Organaization settings -> API Keys
+
++ Modify "tags":
+    + Provide the correct customer name in "customer" tag. The format should remain the same.
+    + Set “Production” tag as true
 
 + Path to the configuration file for the components where an agent needs to be run
 + All the component level configurations as detailed under the agent configuration section
@@ -50,6 +65,10 @@ This script requires:
 + Agent getting installed in each of the nodes (Bastion Machine and All Instances - Chef Server, Automate, Postgress, ElasticSearch nodes)
 + Enabling the component-level configuration as per the setup.
 
+**These steups will install the datadog agent in each instance, with required configuration and restart the agent.**
+
+Once the datadog agent is up and running, we need to wait for at least 15-20 mins to view the metrics and logs at:
+https://app.datadoghq.com/infrastructure
 
 **Acceptance Criteria:**
 
@@ -95,11 +114,12 @@ The Agent v6 configuration file uses YAML to better support complex configuratio
 |macOS|~/.datadog-agent/datadog.yaml|
 |Windows Server 2008, Vista and newer|%ProgramData%\Datadog\datadog.yaml|
 
-Reference location for actual values: ReferenceFiles/datadog.yml
+Reference location for actual values: [datadog.yaml](YML_Files/datadog.yaml)
 
 **Steps to create Datadog user**
 
 Datadog agent will read read and collects the metrics from all the instances and managed services for monitoring and for that it needs a user is postgres database. Given below are the steps to create the Datadog user in the database:
+
 + SSH into bastion machine and go to the deploy workspace
 
 		sudo su -
@@ -139,34 +159,3 @@ Given below are the steps to Update hostname in postgres.yaml:
 
   + Modify "host": Provide hostname of your RDS postgres instance
   + Modify "tags": Provide the correct customer name in "customer" tag. The format should remain the same.
-
-**Datadog Agent Setup**
-
-Once the prerequisites are satisfied and the datadog user is created, we can go ahead and setup the Datadog agent on our instance. Follow the below listed steps for the same:
-
-+ SSH into bastion machine and go to the deploy workspace
-
-		sudo su -
-		cd /hab/a2_deploy_workspace
-
-+ Edit the datadog.yaml file and modify the below listed details:
-
-		vi automate-backend-datadog/datadog.yaml
-
-+ Modify "api_key". API key details can be taken from the datadog portal. Listed below are the steps:
-
-		Go to Datadog Portal (https://app.datadoghq.com/)
-		Go to:
-		Organaization settings -> API Keys -> Select the key for "automate-as-saas"
-
-  + Modify "tags":
-    + Provide the correct customer name in "customer" tag. The format should remain the same.
-    + Set “Production” tag as true
-
-+ After doing the required changes are done we have to execute the shell script:
-
-		bash scripts/setupDatadogAgent.sh
-
-This script will ssh into each instance, install the datadog agent, do the required configuration and restart the agent.
-Once the datadog agent is up and running, we need to wait for at least 15-20 mins to view the metrics and logs at:
-https://app.datadoghq.com/infrastructure
