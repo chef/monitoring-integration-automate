@@ -1,0 +1,94 @@
+init_config:
+
+instances:
+
+  - name: automate-es-gateway
+    url: http://localhost:9631/services/automate-es-gateway/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-es-gateway
+    timeout: 10
+
+  # - name: automate-elasticsearch
+  #   url: http://localhost:9631/services/automate-elasticsearch/default/health
+  #   method: get
+  #   http_response_status_code: 200
+  #   service: automate-elasticsearch
+  #   timeout: 10
+
+  - name: automate-pg-gateway
+    url: http://localhost:9631/services/automate-pg-gateway/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-pg-gateway
+    timeout: 10
+
+  - name: backup-gateway
+    url: http://localhost:9631/services/backup-gateway/default/health
+    method: get
+    http_response_status_code: 200
+    service: backup-gateway
+    timeout: 10
+
+  - name: es-sidecar-service
+    url: http://localhost:9631/services/es-sidecar-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: es-sidecar-service
+    timeout: 10
+
+  - name: deployment-service
+    url: http://localhost:9631/services/deployment-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: deployment-service
+    timeout: 10
+
+  - name: license-control-service
+    url: http://localhost:9631/services/license-control-service/default/health
+    method: get
+    http_response_status_code: 200
+    service: license-control-service
+    timeout: 10
+
+  - name: automate-cs-oc-bifrost
+    url: http://localhost:9631/services/automate-cs-oc-bifrost/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-cs-oc-bifrost
+    timeout: 10
+
+  - name: automate-cs-oc-erchef
+    url: http://localhost:9631/services/automate-cs-oc-erchef/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-cs-oc-erchef
+    timeout: 10
+
+  - name: automate-load-balancer
+    url: http://localhost:9631/services/automate-load-balancer/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-load-balancer
+    timeout: 10
+
+  - name: automate-cs-nginx
+    url: http://localhost:9631/services/automate-cs-nginx/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-cs-nginx
+    timeout: 10
+
+  # - name: automate-postgresql
+  #   url: http://localhost:9631/services/automate-postgresql/default/health
+  #   method: get
+  #   http_response_status_code: 200
+  #   service: automate-postgresql
+  #   timeout: 10    
+
+  - name: automate-cs-bookshelf
+    url: http://localhost:9631/services/automate-cs-bookshelf/default/health
+    method: get
+    http_response_status_code: 200
+    service: automate-cs-bookshelf
+    timeout: 10
