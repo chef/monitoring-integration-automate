@@ -22,7 +22,6 @@ Connect to Amazon Web Services (AWS) to:
 
 * Role delegation - To set up the AWS integration manually with role delegation. [see the manual setup guide.](https://docs.datadoghq.com/integrations/guide/aws-manual-setup/?tab=roledelegation)
 
-
 **Setup**
 1. Go to the AWS integration configuration page in Datadog and click Add AWS Account.
 ![AWS-Integration](Images/AWS-Integration.png)
