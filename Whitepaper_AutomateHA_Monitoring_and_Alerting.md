@@ -1,52 +1,52 @@
-# Title: 
-Clearly state the title of your white paper, which should reflect the main topic or objective. 
+# Title:
+Clearly state the title of your white paper, which should reflect the main topic or objective.
 
-## Abstract: 
+## Abstract:
 Provide a brief summary of the white paper's content, highlighting the key points and benefits of the technologies discussed.
 
-## Introduction: 
+## Introduction:
 Introduce the purpose and scope of the white paper. Explain the importance of the topics covered and how they relate to the target audience's needs or interests.
 
 ### 1. Datadog
 
-a. Datadog Agent Configuration and Installation:
+a. Datadog Agent Configuration and Installation: [Link](data-dog/DataDog-Installation_and_Configration.md)
 
-Explain the role and significance of the Datadog agent.
+Explained the role and significance of the Datadog agent.
 Provide step-by-step instructions for configuring and installing the agent.
 Discuss any prerequisites or system requirements.
 
-b. Metrics Integration with AWS:
+b. Metrics Integration with AWS: [Link](data-dog/DataDog-AWS_Integration.md)
 
-Describe the process of integrating Datadog metrics with AWS services.
+Described the process of integrating Datadog metrics with AWS services.
 
-c. Dashboard Setup and Configuration:
+c. Dashboard Setup and Configuration: [Link](data-dog/DataDog-Dashboard-Setup-and-Configuration.md)
 
-Explain how to set up and configure custom dashboards in Datadog.
+Explained how to set up and configure custom dashboards in Datadog.
 Discuss best practices for organizing and visualizing metrics.
 
 d. Slack Integration:
 
-Explain how to integrate Datadog with Slack for real-time notifications.
-Discuss the benefits of using Slack for incident management and collaboration.
-Provide configuration instructions and any required setup steps.
+Explained how to integrate Datadog with Slack for real-time notifications.
+Discussed the benefits of using Slack for incident management and collaboration.
+Provided configuration instructions and any required setup steps.
 
-e. PagerDuty Integration:
+e. PagerDuty Integration: [Link](data-dog/PagerDuty_Integration_and_Notification.md)
 
-Describe the integration of Datadog with PagerDuty for incident response.
-Explain the advantages of using PagerDuty's on-call scheduling and alerting capabilities.
-Provide guidance on setting up the integration and configuring alert rules.
+Described the integration of Datadog with PagerDuty for incident response.
+Explained the advantages of using PagerDuty's on-call scheduling and alerting capabilities.
+Provided guidance on setting up the integration and configuring alert rules.
 
 f. MS Teams Integration:
 
-Explain how to integrate Datadog with Microsoft Teams for collaboration and incident management.
-Discuss the benefits of using MS Teams as a communication platform.
-Provide configuration instructions and any required setup steps.
+Explained how to integrate Datadog with Microsoft Teams for collaboration and incident management.
+Discussed the benefits of using MS Teams as a communication platform.
+Provided configuration instructions and any required setup steps.
 
-g. Metrics Monitor Configuration and Monitoring Rules Setup:
+g. Metrics Monitor Configuration and Monitoring Rules Setup: [Link](data-dog/Monitor_configuration_and_alerting.md)
 
-Explain how to configure Metrics Monitors in Datadog for proactive monitoring.
-Discuss the importance of defining monitoring rules and thresholds.
-Provide examples of common monitoring scenarios and how to set them up.
+Explained how to configure Metrics Monitors in Datadog for proactive monitoring.
+Discussed the importance of defining monitoring rules and thresholds.
+Provided examples of common monitoring scenarios and how to set them up.
 
 
 ### 2. Prometheus
@@ -112,7 +112,7 @@ Explain how to configure Metrics Monitors in Cloudwatch for proactive monitoring
 Discuss the importance of defining monitoring rules and thresholds.
 Provide examples of common monitoring scenarios and how to set them up.
 
-### 4. ELK 
+### 4. ELK
 
 a. Elasticsearch Configuration and Installation:
 
@@ -139,7 +139,7 @@ Discuss the advantages of using Kibana for log analysis and alerting.
 Provide examples of monitoring rules and how to set them up.
 
 
-## Conclusion: 
+## Conclusion:
 Summarize the main points discussed in the white paper. Emphasize the benefits of implementing the technologies and integrations described
 
 
