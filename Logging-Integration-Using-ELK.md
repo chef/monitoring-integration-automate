@@ -66,21 +66,20 @@ output {
 sudo curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.8.1-linux-x86_64.tar.gz
 
 sudo tar xzvf filebeat-8.8.1-linux-x86_64.tar.gz
-
 ```
 
 ## Filebeat Configuration
 
-1. Change to newly created Filebeat directory and edit **filebeat.yml** file.
+1. Modify the **filebeat.yml** file.
 
 ```
-sudo nano filebeat.yml
+sudo nano /etc/filebeat/filebeat.yml
 ```
 2. Under the Logstash Outputs, enter the Logstash host and port to which the logs should be sent.
 
  ![Filebeat-Logstash-Conf](images/filebeat-logstash.png)
 
-3. Save and close filebeat.yml
+3. Save and close **filebeat.yml**
 
 4. Enable the Filebeat System module
 
@@ -96,10 +95,31 @@ sudo nano /etc/filebeat/modules.d/system.yml
 
 ![Filebeat-System-Conf](images/filebeat-system.png)
 
-7. Save and close system.yml
+7. Save and close **system.yml**
 
+8. Setup Filebeat ingest pipelines by running the following command
 
+```
+sudo filebeat setup --pipelines --modules system
+```
+9. Start and enable Filebeat
 
+```
+sudo systemctl start filebeat
+```
+```
+sudo systemctl enable filebeat
+```
+
+## Visualize Logs in Kibana
+
+1. Create an Index Pattern in Kibana to view the Logs sent to LogStash.
+
+![kibana-index-pattern](images/index-pattern.png)
+
+2. In Kibana, navigate to Analytics/ Discovery and select the Index Pattern created in the prior step. The logs from the Chef Automate Servers will be displayed.
+
+![kibana-dashboard](images/kibana-dashboard.png)
 
 
 
