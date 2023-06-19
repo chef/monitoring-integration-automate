@@ -11,42 +11,17 @@ Introduce the purpose and scope of the white paper. Explain the importance of th
 
 a. Datadog Agent Configuration and Installation: [Link](data-dog/DataDog-Installation_and_Configration.md)
 
-Explained the role and significance of the Datadog agent.
-Provide step-by-step instructions for configuring and installing the agent.
-Discuss any prerequisites or system requirements.
-
 b. Metrics Integration with AWS: [Link](data-dog/DataDog-AWS_Integration.md)
-
-Described the process of integrating Datadog metrics with AWS services.
 
 c. Dashboard Setup and Configuration: [Link](data-dog/DataDog-Dashboard-Setup-and-Configuration.md)
 
-Explained how to set up and configure custom dashboards in Datadog.
-Discuss best practices for organizing and visualizing metrics.
-
-d. Slack Integration:
-
-Explained how to integrate Datadog with Slack for real-time notifications.
-Discussed the benefits of using Slack for incident management and collaboration.
-Provided configuration instructions and any required setup steps.
+d. Slack Integration: [Link](data-dog/Slack_Integration_and_notification.md)
 
 e. PagerDuty Integration: [Link](data-dog/PagerDuty_Integration_and_Notification.md)
 
-Described the integration of Datadog with PagerDuty for incident response.
-Explained the advantages of using PagerDuty's on-call scheduling and alerting capabilities.
-Provided guidance on setting up the integration and configuring alert rules.
-
 f. MS Teams Integration:
 
-Explained how to integrate Datadog with Microsoft Teams for collaboration and incident management.
-Discussed the benefits of using MS Teams as a communication platform.
-Provided configuration instructions and any required setup steps.
-
 g. Metrics Monitor Configuration and Monitoring Rules Setup: [Link](data-dog/Monitor_configuration_and_alerting.md)
-
-Explained how to configure Metrics Monitors in Datadog for proactive monitoring.
-Discussed the importance of defining monitoring rules and thresholds.
-Provided examples of common monitoring scenarios and how to set them up.
 
 
 ### 2. Prometheus
