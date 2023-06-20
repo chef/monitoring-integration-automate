@@ -1,26 +1,39 @@
-# DataDog Installation and Configration
+# DataDog Download, Installation, and Configuration
+We recommend to refer to DataDog [documentation](https://docs.datadoghq.com/agent/) on DataDog agent installation and configuration as well.
+
+### DataDog Download
 
 **Description**
 
-As an Automate HA customer, need to have a monitoring agent running on the infrastructure nodes to get the possible configured metrics and other information which can be sent to the monitoring tool in order to track the health of the overall infrastructure.
+In order to monitor the Chef Automate HA infrastructure, need to have a DataDog monitoring agent running on the infrastructure nodes to get the possible configured metrics and other information that can be sent to the monitoring tool at server side in order to track the health of the overall infrastructure.
 
 **Agent definition:**
 
 Agents for monitoring use cases refer to software that runs on your host machines. It collects events and metrics from hosts and sends them to the centralized monitoring tool’s infrastructure, where we can analyze the monitoring and performance data.
 
+**Steps to Download the Agent**
+
+Data dog agent can be downloaded as per steps and guidance given in their documentation [here](https://github.com/DataDog/datadog-agent/tree/main)
+
+Below is the script which is recommended as per the above link to download the agent:
+
+https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
+
+### DataDog Installation and configuration
+
 **Installing DataDog Agent**
 
 DD_API_KEY= <DataDog Agent API> DD_SITE=<DataDog Site Name> DD_AGENT_MAJOR_VERSION= <DataDog Version> bash -c "$(curl -L curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
 
-Run below commands with required details to add DataDog client on particular host:
+Run the below commands with the required details to add a DataDog client on a particular host:
 
 	curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh |DD_AGENT_MAJOR_VERSION= <DataDog Version> DD_API_KEY=<DataDog Agent API> DD_SITE="<DataDog Site Name>" bash -s arg1
 
 	sudo systemctl start datadog-agent
 
-**Data dog installation setup steps (Introductory reference):**
+**Data dog installation setup steps for Automate HA (Introductory reference):**
 
-+ SSH into bastion machine and go to the deploy workspace
++ SSH into the bastion machine and go to the deploy workspace
 
 		sudo su -
 		cd /hab/a2_deploy_workspace
@@ -45,7 +58,7 @@ This script requires:
 
 + API key (This needs to be generated at the data dog portal, and will require access to the portal)
 
-  + API key details can be taken from the datadog portal. Listed below are the steps:
+  + API key details can be taken from the Datadog portal. Listed below are the steps:
 
 	Go to Datadog Portal (https://app.datadoghq.com/)
 
@@ -53,8 +66,8 @@ This script requires:
 	Organaization settings -> API Keys
 
 + Modify "tags":
-    + Provide the correct customer name in "customer" tag. The format should remain the same.
-    + Set “Production” tag as true
+    + Provide the correct customer name in the "customer" tag. The format should remain the same.
+    + Set the “Production” tag as true
 
 + Path to the configuration file for the components where an agent needs to be run
 + All the component level configurations as detailed under the [agent configuration section](#agent-configuration)
@@ -64,7 +77,7 @@ This script requires:
 + Agent getting installed in each of the nodes (Bastion Machine and All Instances - Chef Server, Automate, Postgress, ElasticSearch nodes)
 + In case of AutomateHA with managed services, we need to run datadog agent only on Bastion, Automate, Chef Server.
 
-**These steups will install the datadog agent in each instance, with required configuration and restart the agent.**
+**These steps will install the datadog agent in each instance, with the required configuration, and restart the agent.**
 
 Once the datadog agent is up and running, we need to wait for at least 15-20 mins to view the metrics and logs at:
 https://app.datadoghq.com/infrastructure
@@ -104,7 +117,7 @@ chef infra server nodes, OpenSearch, and Postgres nodes.
 * For centralised logging metrics send to datadog, pls follow these references configrations :  [DataDog-Centralise_Logs_Management](DataDog-Centralise_Logs_Management.md)
 
 
-## Agent Configration
+### DataDog Agent Configration
 
 The Agent v6 configuration file uses YAML to better support complex configurations. Agent support standard OS such as Linus, MacOS, AIX, and Windows.
 | PLATFORM | COMMAND   |
@@ -114,11 +127,11 @@ The Agent v6 configuration file uses YAML to better support complex configuratio
 |macOS|~/.datadog-agent/datadog.yaml|
 |Windows Server 2008, Vista and newer|%ProgramData%\Datadog\datadog.yaml|
 
-Reference location for actual values: [datadog.yaml](YML_Files/datadog.yaml)
+Reference location for actual configurational values: [datadog.yaml](YML_Files/datadog.yaml)
 
-**Steps to create Datadog user**
+**Steps to create a Datadog user**
 
-Datadog agent will read read and collects the metrics from all the instances and managed services for monitoring and for that it needs a user is postgres database. Given below are the steps to create the Datadog user in the database:
+Datadog agent will read and collects the metrics from all the instances and managed services for monitoring and for that it needs a user is postgres database. Given below are the steps to create the Datadog user in the database:
 
 + SSH into bastion machine and go to the deploy workspace
 
@@ -144,11 +157,12 @@ Datadog agent will read read and collects the metrics from all the instances and
 
 + Exit out of the Automate Instance and back to the bastion host.
 
-**Update hostname in postgres.yaml**
+**Additional steps required for Automate HA deployment with Managed services** 
 
+Update hostname in postgres.yaml
 Given below are the steps to Update hostname in postgres.yaml:
 
-+ SSH into bastion machine and go to the deploy workspace
++ SSH into the bastion machine and go to the deploy workspace
 
 		sudo su -
 		cd /hab/a2_deploy_workspace
