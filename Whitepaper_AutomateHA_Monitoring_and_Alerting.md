@@ -1,30 +1,85 @@
-# Title:
-Clearly state the title of your white paper, which should reflect the main topic or objective.
+# Monitoring, Alerting, and Centralised Logging integration support with Chef Automate HA
+The Chef Automate HA equates to reliability, efficiency, and productivity, built on Redundancy and Failover. It aids in addressing significant issues like service failure and zone failure. Please refer to the public [documentation](https://docs.chef.io/automate/ha/) of Automate HA for more information.
+
+This document provides guided steps on how to build and integrate Monitoring, Alerting, and Centralised logging tools with Chef Automate HA. Based on our analysis we have selected a few tools which is our recommendation. 
 
 ## Abstract:
-Provide a brief summary of the white paper's content, highlighting the key points and benefits of the technologies discussed.
+
+### Tools for Monitoring and Alerting:
+1. Data Dog
+
+2. Prometheus 
+
+3. AWS CloudWatch
+
+
+### Tools for Alerting:
+1. Pager Duty
+
+2. Slack
+
+3. Microsoft Teams
+
+
+### Tools for Centralised Logging:
+1. ELK (Elasticsearch, Logstash, and Kibana)
+
+2. Data Dog 
+
+3. AWS CloudWatch
+
 
 ## Introduction:
-Introduce the purpose and scope of the white paper. Explain the importance of the topics covered and how they relate to the target audience's needs or interests.
 
-### 1. Datadog
+As part of the guided steps of integration for the above-mentioned tools, we will capture the below use cases from an integration perspective:
 
-a. Datadog Agent Configuration and Installation: [Link](data-dog/DataDog-Installation_and_Configration.md)
+**Agent download and configuration**
 
-b. Metrics Integration with AWS: [Link](data-dog/DataDog-AWS_Integration.md)
+This use case covers the steps to download and configure the tools agent which will be running on the nodes(of the Automate HA infrastructure) and will be responsible for scraping the metrics and logs from that nodes. This section also covers the type of configurations that needs to be stepped in order to scrap various kind of component-level metrics.
 
-c. Dashboard Setup and Configuration: [Link](data-dog/DataDog-Dashboard-Setup-and-Configuration.md)
+**Agent Installation**
 
-d. Slack Integration: [Link](data-dog/Slack_Integration_and_notification.md)
+This use case covers the steps to install the agent and any other extra setup which is required in order to ensure the metrices and logs are covered from each nodes and a component of Automate HA.
 
-e. PagerDuty Integration: [Link](data-dog/PagerDuty_Integration_and_Notification.md)
+**Server setup and configuration**
 
-f. MS Teams Integration:
+This use case covers the steps of server setup installation and configuration recommendations. 
 
-g. Metrics Monitor Configuration and Monitoring Rules Setup: [Link](data-dog/Monitor_configuration_and_alerting.md)
+**Dashboard Setup and Configuration**
+
+This use case covers the list of recommended dashboards and how to set them up based of various tools steps. This also covers the various configuration aspects which is required for bringing up the dashboard.
+
+**Metrics Configuration and Monitoring Rules Setup**
+
+This use case covers the list of recommended metrics for Automate HA system and various levels of recommended rules to be applied to creating the monitoring based on these metrics. These are just the recommendations only and based on organizational requirements they can add more rules, update on these rules, and alerting mechanisms as required.
+
+**Slack Integration with the tool**
+
+This use case covers permissions and configuration required for allowing Slack to connect with the tool. This also covers the step-wise setup of alerting groups/channels under monitoring rules in order to receive alerts based on the threshold logic.
 
 
-### 2. Prometheus
+**Pager Duty Integration with the tool**
+
+This use case covers permissions and configuration required for allowing Slack to connect with the tool. This also covers the step-wise setup of alerting groups/channels under monitoring rules in order to receive alerts based on the threshold logic.
+
+
+### Datadog
+
+a. [Datadog Agent Configuration and Installation](data-dog/DataDog-Installation_and_Configration.md)
+
+b. [Metrics Integration with AWS](data-dog/DataDog-AWS_Integration.md)
+
+c. [Metrics Monitor Configuration and Monitoring Rules Setup](data-dog/Monitor_configuration_and_alerting.md)
+
+d. [Dashboard Setup and Configuration](data-dog/DataDog-Dashboard-Setup-and-Configuration.md)
+
+e. [Slack Integration](data-dog/Slack_Integration_and_notification.md)
+
+f. [PagerDuty Integration](data-dog/PagerDuty_Integration_and_Notification.md)
+
+
+
+### Prometheus
 
 a. Prometheus Agent Configuration and Installation:
 
