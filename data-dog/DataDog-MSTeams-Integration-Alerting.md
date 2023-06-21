@@ -123,3 +123,13 @@ To set up notifications, you can take a cue from "Use Message Template Variables
 Once done, you can also test if the notications actually reach their desired targets, by clicking on **Test Notifications**. After confirming that you received the alerts in your teams channel (as shown below), click on **save** to make it perpetual. 
 
 ![Setup Notifications](Images/Teams-Notification.png)
+
+
+## References:
+
+You can use the following official references:
+
+* [Integrate MS Teams in Datadog for Notifications](https://docs.datadoghq.com/integrations/microsoft_teams/#send-monitor-notifications-to-a-microsoft-teams-channel)
+
+* [Configure Monitors in Datadog](https://docs.datadoghq.com/monitors/configuration/?tab=thresholdalert#notify-your-team)
+
