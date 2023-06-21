@@ -18,7 +18,7 @@ Connect to Amazon Web Services (AWS) to:
 **Setup Methods**
 * CloudFormation (Best for quickly getting started) - To set up the AWS integration with CloudFormation, see [the AWS getting started guide](https://docs.datadoghq.com/getting_started/integrations/aws/)
 
-* Terraform - To set up the AWS integration with Terraform, see the the [AWS integration with Terraform.](https://docs.datadoghq.com/integrations/guide/aws-terraform-setup/)
+* Terraform - To set up the AWS integration with Terraform, see the [AWS integration with Terraform.](https://docs.datadoghq.com/integrations/guide/aws-terraform-setup/)
 
 * Role delegation - To set up the AWS integration manually with role delegation. [see the manual setup guide.](https://docs.datadoghq.com/integrations/guide/aws-manual-setup/?tab=roledelegation)
 
@@ -37,7 +37,7 @@ Connect to Amazon Web Services (AWS) to:
 
 **Note:** The *DatadogAppKey* parameter enables the CloudFormation stack to make API calls to Datadog to add and edit the Datadog configuration for this AWS account. The key is automatically generated and tied to your Datadog account.
 
-![aws-cloudformation-template](Images/aws-cloudformation-quick-create-stack.png)
+![aws-cloudformation-template](Images/aws-cloudformation-quick-create-stack-1.png)
 
 4. Check the required boxes from AWS and click *Create stack*. This launches the creation process for the Datadog stack along with three nested stacks. This could take several minutes. Ensure that the stack is successfully created before proceeding.
 
