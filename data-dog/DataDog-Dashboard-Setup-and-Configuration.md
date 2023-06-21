@@ -92,6 +92,12 @@ Once you are done appending your changes, click on save.
  **Chef Automate Status and Infra Server Status:**
 - network.http.can_connect; with conditions for Success: cutoff_min --> some_value and Failure: clamp_min --> some_value
 
+- e.g. Automate and Infra-server service level health can be seen like this:
+
+  ![Automate and server services health](Images/automate-server-services-health.png)
+  
+  ![Automate and server services Report](Images/service-health-report.png)
+
 **Postgres DB Service Status:**
 -  postgresql.db.count; with conditions for Success: cutoff_min --> 1 and Failure: cutoff_max --> 0.89
 

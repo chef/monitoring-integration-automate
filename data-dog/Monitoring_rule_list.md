@@ -1,7 +1,7 @@
 # Reference monitoring rule list
 
 **Note:**
-These are  reference monitoring rules, please take this as a guidance for other platforms and On-Prem solutions where you will be hosting Automate HA.
+These are  reference monitoring rules, please take this as a guide for other platforms and On-Prem solutions where you will be hosting Automate HA. These rules are guidance only and the actuals should depend upon organization level compliance and audit rules.
 
 | **Service** | **AlertName** | **Rule** | **Severity Level** | **Trigger After** | **Alert Type** | **Comments** |
 | ----------- | ------------- | -------- | ------------------ | ----------------- | -------------- | ------------ |
