@@ -27,17 +27,17 @@ Connect to Amazon Web Services (AWS) to:
 1. Go to the AWS integration configuration page in Datadog and click Add AWS Account.
 ![AWS-Integration](Images/AWS-Integration.png)
 1. Configure the integration’s settings under the Automatically using CloudFormation option.
-    ![datadog-aws-new-account-form](Images/datadog-aws-new-account-form-1.avif)
+    ![datadog-aws-new-account-form](Images/datadog-aws-new-account-form.png)
    + Select the AWS regions to integrate with.
    + Add your Datadog API key.
 
 2. Click *Launch CloudFormation Template*. This opens the AWS Console and loads the CloudFormation stack. All the parameters are filled in based on your selections in the prior Datadog form, so you do not need to edit those unless desired.
 
-    ![datadog-customize-cloudformation-setup](Images/datadog-customize-cloudformation-setup-1.avif)
+    ![datadog-customize-cloudformation-setup](Images/datadog-customize-cloudformation-setup.png)
 
 **Note:** The *DatadogAppKey* parameter enables the CloudFormation stack to make API calls to Datadog to add and edit the Datadog configuration for this AWS account. The key is automatically generated and tied to your Datadog account.
 
-![aws-cloudformation-template](Images/aws-cloudformation-quick-create-stack-1.avif)
+![aws-cloudformation-template](Images/aws-cloudformation-quick-create-stack.png)
 
 4. Check the required boxes from AWS and click *Create stack*. This launches the creation process for the Datadog stack along with three nested stacks. This could take several minutes. Ensure that the stack is successfully created before proceeding.
 
@@ -47,8 +47,8 @@ Connect to Amazon Web Services (AWS) to:
 
 7. Wait up to 10 minutes for data to start being collected, and then view the out-of-the-box AWS overview dashboard to see metrics sent by your AWS services and infrastructure:
 
-    ![AWS-RDS-Dashboard](Images/datadog-rds-dashboard-1.avif)
-    ![AWS-Dashboard](Images/aws-dashboard.c32d24d188c4128777545e3cd1647c44.avif)
+    ![AWS-RDS-Dashboard](Images/datadog-rds-dashboard.png)
+    ![AWS-Dashboard](Images/aws-dashboard_overview.png)
 
 **Tags**
 

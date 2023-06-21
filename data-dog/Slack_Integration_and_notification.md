@@ -1,16 +1,21 @@
 # Slack Integration and notification
-Connect Slack to Datadog to help your team collaborate by:
+
+**Description**
+
+As an Automate HA customer, need to integrate Data Dog with a slack tool to ensure getting notified over the set option in case of any higher severity issue.
+
+Connecting Slack to Datadog to help your team collaborate by:
 
 * Sharing graphs in private or public Slack channels.
 * Receiving alerts and notifications from Datadog within Slack.
 * Muting triggering monitors and declaring incidents from Slack.
 
-What you’ll need:
+**What you’ll need:**
 
   Admin or Standard role permissions for your Datadog account (unless your organization has created custom roles)
 
 
-1. In the Slack App: 
+1. In the Slack App:
 
 Select your workspace and chose/create the slack channel for datadog alerts to be triggered in.
 
@@ -18,15 +23,15 @@ Select your workspace and chose/create the slack channel for datadog alerts to b
 
 * Navigate to Integration -> select slack
 
-* Click on Configure -> connect slack account 
+* Click on Configure -> connect slack account
 
-   ![Connecting slack channel](images/Slack_integration.png)
+   ![Connecting slack channel](Images/Slack_integration.png)
 
 * Select your intended worksapce from drop down in the top right corner.
 
 * Click on add channel -> type the name of the channel if it is not showing and then click on 'save'.
 
-   ![Selecting slack workspace](images/Slack_workspace.png)
+   ![Selecting slack workspace](Images/Slack_workspace.png)
 
 
 3. In Slack:
@@ -39,8 +44,8 @@ Select your workspace and chose/create the slack channel for datadog alerts to b
 4. Test the Integration:
 
 * In datadog app, go to monitor -> edit -> add the name of the slack channel that is created for notification purpose below the notification message as shown below.
-  
-  ![Selecting slack channel](images/Slack_channel_name_selection.png)
+
+  ![Selecting slack channel](Images/Slack_channel_name_selection.png)
 
 * Click on Test notification at the bottom of the screen.
 
