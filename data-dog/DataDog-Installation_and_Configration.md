@@ -1,5 +1,5 @@
 # Datadog Download, Installation, and Configuration
-We recommend to refer to DataDog [documentation](https://docs.datadoghq.com/agent/) on DataDog agent installation and configuration as well.
+We recommend to refer to Datadog [documentation](https://docs.datadoghq.com/agent/) on Datadog agent installation and configuration as well.
 
 ### Datadog Download and Installation
 
