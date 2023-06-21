@@ -5,7 +5,7 @@ This document provides guided steps on how to build and integrate Monitoring, Al
 
 ## Abstract:
 
-### Tools for Monitoring and Alerting:
+### Tools for Monitoring:
 1. Data Dog
 
 2. Prometheus 
@@ -63,24 +63,27 @@ This use case covers permissions and configuration required for allowing Slack t
 This use case covers permissions and configuration required for allowing Slack to connect with the tool. This also covers the step-wise setup of alerting groups/channels under monitoring rules in order to receive alerts based on the threshold logic.
 
 
-## Datadog integration with Automate HA - Monitoring & Alerting
+## Datadog integration with Automate HA - Monitoring
 
-a. [Datadog Agent Configuration and Installation](data-dog/DataDog-Installation_and_Configration.md)
+a. [Datadog Agent Configuration and Installation for Chef managed nodes](data-dog/DataDog-Installation_and_Configration.md)
 
-b. [Metrics Integration with AWS](data-dog/DataDog-AWS_Integration.md)
+b. [Datadog Metrics configuration and Integration with AWS for AWS Managed services](data-dog/DataDog-AWS_Integration.md)
 
 c. [Metrics Monitor Configuration and Monitoring Rules Setup](data-dog/Monitor_configuration_and_alerting.md)
 
 d. [Dashboard Setup and Configuration](data-dog/DataDog-Dashboard-Setup-and-Configuration.md)
 
-e. [Slack Integration](data-dog/Slack_Integration_and_notification.md)
 
-f. [PagerDuty Integration](data-dog/PagerDuty_Integration_and_Notification.md)
+## Datadog integration with Automate HA - Alerting
+
+a. [Slack Integration](data-dog/Slack_Integration_and_notification.md)
+
+b. [PagerDuty Integration](data-dog/PagerDuty_Integration_and_Notification.md)
 
 
 ## Datadog integration with Automate HA - Centralised Logging
 
-[Datadog Centralised Logs Management](data-dog/DataDog-Centralise_Logs_Management.md)
+a. [Datadog Centralised Logs Management](data-dog/DataDog-Centralise_Logs_Management.md)
 
 
 ### Prometheus
