@@ -10,7 +10,7 @@
   - Generic widgets to graph data
   - Summary widgets to display Synthetic Monitoring information
   - Decoration widgets to visually structures
-+ For more information on widgets, kindly refer: https://docs.datadoghq.com/dashboards/widgets/ 
++ For more information on widgets, kindly refer: https://docs.datadoghq.com/dashboards/widgets/
 
 
 ## Considerations for creating Datadog Dashboards
@@ -19,9 +19,9 @@
 You need to have clarity what you want to show and monitor in your dashboard and your audience; for example, L1 and L2 operations team will require a different set of dashboards versus somebody at the management who wants overall summary on the infrastructure footprint
 
 **Choose the right metrics:**
-Not all metrics are created equal, some are of more importance than others. Choose the metrics that are important to you, we have listed down all the important metrics that is critical to your Automate Infrastructure. 
+Not all metrics are created equal, some are of more importance than others. Choose the metrics that are important to you, we have listed down all the important metrics that is critical to your Automate Infrastructure.
 
-The link provides you an estimation of metrics we have used to monitor Automate HA in AWS Managed Deployment style. You can use this guidance to build metrics and dashboards for other deployment styles
+The link provides you an estimation of metrics we have used to monitor Automate HA for various deployment styles. You can use this guidance to build metrics and dashboards for other deployment styles
 
 [Reference Metrics](Reference_Metrics_List.md)
 
@@ -46,9 +46,9 @@ Its recommended you have the following dashboards for Automate:
 
 + Infrastructure Health
 + Component Health
-+ Opensearch Metrics 
-+ Postgresql Metrics 
-+ System Metrics 
++ Opensearch Metrics
++ Postgresql Metrics
++ System Metrics
 
 
 For example, a System Metrics dashboard will look like this:
@@ -57,7 +57,7 @@ For example, a System Metrics dashboard will look like this:
 
 # Steps to create a new dashboard
 
-+ Login to https://app.datadoghq.com/ with your credentials 
++ Login to https://app.datadoghq.com/ with your credentials
 + On the left hand side, click on Dashboards --> New Dashboard. You will be directed to a new Dashboard screen.
 + Here, key in a name for Dashboard Name and select the "New Timeboard" and then click on "New Dashboard".
 + On the dashboard screen, first create template variables with which you want to tag your components. A basic example can be:
@@ -65,7 +65,7 @@ For example, a System Metrics dashboard will look like this:
 ![Creating templates](images/Template_variables.png)
 
 
-Once you are done appending your changes, click on save. 
+Once you are done appending your changes, click on save.
 
 +  Add widgets, select "Timeseries" widget (or your desired widget) and then key in the following parameters in the widget:
 
@@ -74,7 +74,7 @@ Once you are done appending your changes, click on save.
      - Metrics --> key in your metrics name; from --> key in tag values you want to filter your view with; select from "avg by"/"max by"/"min by"/"sum by" --> select the relevant filter for your selection
      - Selection of environment, tags
      - Logic: Arithmetic to be applied
-   - Set display preferences: 
+   - Set display preferences:
      - Show --> Global Time
      - Duration of time for data to be shown
    - Key in a title for your widget
@@ -86,19 +86,19 @@ Once you are done appending your changes, click on save.
 
  # Metrics used in each dashboard
 
- 
- 
+
+
  ## Infrastructure health:
  **Chef Automate Status and Infra Server Status:**
 - network.http.can_connect; with conditions for Success: cutoff_min --> some_value and Failure: clamp_min --> some_value
-  
+
 **Postgres DB Service Status:**
 -  postgresql.db.count; with conditions for Success: cutoff_min --> 1 and Failure: cutoff_max --> 0.89
 
 **Opensearch DB Service Status:**
 - aws.es.cluster_statusgreen; with conditions for Success: cutoff_min --> 1 and Failure: clamp_min --> 0.5
 
-**Note:** 
+**Note:**
 Here, we are discussing metrics for deploying Managed Automate HA in AWS, please use this as a general guideline for other platforms and On-prem solutions as well
 
 ![Infra Health Dashboard](images/Infra_health_dashboard.png)
@@ -120,18 +120,18 @@ Here, we are discussing metrics for deploying Managed Automate HA in AWS, please
 - aws.es.search_rate
 - aws.es.searchable_documents
 - system.cpu.user
-  
+
  ![Opensearch Metrics Dashboard](images/AWS_Managed_ES.png)
 
 
 ## Postgresql Metrics:
 
 
-Assumptions: 
+Assumptions:
 + We have used a mix of Timeseries, Query Value and Events in the Visualization seclection which is self explanatory
 + Some of the widgets have multiple metrics for creating the desired visualization
-+ **Pro-tip:** Clone the built-in AWS Postgresql dashboard and customize accordingly 
-  
++ **Pro-tip:** Clone the built-in AWS Postgresql dashboard and customize accordingly
+
   - postgresql.percent_usage_connections
   - aws.rds.maximum_used_transaction_ids
   - postgresql.index_scans
@@ -179,7 +179,7 @@ Assumptions:
 - system.io.await
 - system.cpu.iowait
 - system.cpu.stolen
-  
+
 ![Opensearch Dashboard](images/AWS_Opensearch.png)
 
 
