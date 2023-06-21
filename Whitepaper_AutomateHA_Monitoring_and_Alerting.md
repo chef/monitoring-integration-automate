@@ -63,7 +63,7 @@ This use case covers permissions and configuration required for allowing Slack t
 This use case covers permissions and configuration required for allowing Slack to connect with the tool. This also covers the step-wise setup of alerting groups/channels under monitoring rules in order to receive alerts based on the threshold logic.
 
 
-### Datadog
+## Datadog integration with Automate HA - Monitoring & Alerting
 
 a. [Datadog Agent Configuration and Installation](data-dog/DataDog-Installation_and_Configration.md)
 
@@ -77,6 +77,10 @@ e. [Slack Integration](data-dog/Slack_Integration_and_notification.md)
 
 f. [PagerDuty Integration](data-dog/PagerDuty_Integration_and_Notification.md)
 
+
+## Datadog integration with Automate HA - Centralised Logging
+
+[Datadog Centralised Logs Management](DataDog-Centralise_Logs_Management.md)
 
 
 ### Prometheus
