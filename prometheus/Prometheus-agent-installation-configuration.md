@@ -307,8 +307,9 @@ lines 1-19/19 (END)
 
 * Enter the following command to enable Node Exporter to start when the instance is booted.
 
+```
 sudo systemctl enable node_exporter
-
+```
 ## Step 7: Configure Prometheus with the Node Exporter data collector
 Complete the following procedure to configure Prometheus with the Node Exporter data collector. You do this by adding a new job_name parameter for node_exporter in the prometheus.yml file.
 
@@ -535,7 +536,9 @@ lines 1-19/19 (END)
 
 * Enter the following command to enable Node Exporter to start when the instance is booted.
 
+```
 sudo systemctl enable node_exporter
+```
 
 ## Step 5: ReConfigure Prometheus with the Node Exporter data collector
-Complete the following procedure to reconfigure Prometheus with each  Node Exporter data collector. Refer to the [Step 7: Configure Prometheus with the Node Exporter data collector](#step-7-configure-prometheus-with-the-node-exporter-data-collector).
+Complete this procedure to reconfigure Prometheus with each  Node Exporter data collector. Refer to the [Step 7: Configure Prometheus with the Node Exporter data collector](#step-7-configure-prometheus-with-the-node-exporter-data-collector).
