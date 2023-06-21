@@ -624,9 +624,9 @@ sudo vi /opt/postgres_exporter/postgres_exporter.env
 * Add the following content to the progres-exporter environment file
 update the following paraters in the following file for your envionment. 
 
-username: progress
-password: progress
-url: postgres:postgres@bsk-mon-engg-db-01.ct71rco8carx.us-east-1.rds.amazonaws.com
+username: progress  
+password: progress  
+url: postgres:postgres@bsk-mon-engg-db-01.ct71rco8carx.us-east-1.rds.amazonaws.com  
 
 ```
 DATA_SOURCE_NAME="postgresql://postgres:postgres@bsk-mon-engg-db-01.ct71rco8carx.us-east-1.rds.amazonaws.com:5432/?sslmode=disable"
