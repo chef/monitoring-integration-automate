@@ -233,7 +233,7 @@ http:<ip_addr>:9090
 
 * Replace <ip_addr> with the static IP address of your EC2 instance. You should see a dashboard similar to the following example.  
 
-* TODO : Add screenshot here.
+![dashboard](./images/dashboard.png)
 
 ## Step 6: Start Node Exporter
 Complete the following procedure to start the Node Exporter service.
@@ -383,8 +383,7 @@ lines 1-19/19 (END)
 * Open a web browser on your local computer and go to the following web address to view the Prometheus management interface.
 
 http:<ip_addr>:9090
-* Replace <ip_addr> with the static IP address of your EC2 instance. You should see a dashboard similar to the following example.
-* TODO: Add Screenshot 
+* Replace <ip_addr> with the static IP address of your EC2 instance. You should see a dashboard.
 
 The Prometheus dashboard
 * In the main menu, choose the Status dropdown and select Targets.
@@ -393,6 +392,8 @@ The Prometheus dashboard
 On the next screen, you should see two targets. The first target is for the node_exporter metrics collector job, and the second target is for the prometheus job.
 
 Targets on the Prometheus dashboard
+
+![targets](./images/targets.png)
 
 * The environment is now properly set up for collecting metrics and monitoring the server.
 
