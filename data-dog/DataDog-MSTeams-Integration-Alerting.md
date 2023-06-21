@@ -19,13 +19,19 @@ You can forward all the notifications and alerts for Chef Automate in Datadog to
 ![Create Teams Channel](Images/Create-Teams-Channel.png)
 
 * Create connector
+  
+
 ![Create Connector](Images/Creating-Connectors.png)
 
 * Search for Datadog, click add and then click Configure
+
+
 ![Configure Datadog](Images/Configure-Datadog-Teams.png)
 
 
 * Configure the webhook URL here; it's a self explanatory step, once done, click on save. You will need this URL later to integrate in the Datadog application.
+
+
 ![Configure the Webhook URL](Images/Datadog-webhook-url.png)
 
 
@@ -36,7 +42,9 @@ You can forward all the notifications and alerts for Chef Automate in Datadog to
 * Search for "Datadog" 
 
 * Click **Add** to install the Datadog App
-![Add Datadog App](images/Add-Datadog-on-Teams.png)
+
+
+![Add Datadog App](Images/Add-Datadog-on-Teams.png)
   
 * Now go to your Datadog application, navigate to [Microsoft Teams Title](https://app.datadoghq.com/account/settings?_gl=1*2j0s4k*_gcl_au*MjYxMTI0MTE2LjE2ODYyMDIwNDQ.*_ga*MjEyMDkyMzE0Mi4xNjg2MjAyMDQ0*_ga_KN80RDFSQK*MTY4Njk0NDc1MS4xMi4xLjE2ODY5NDQ3NzguMzMuMC4w*_fplc*RVglMkIxRzJRUmRCWjB2em8lMkZ0Z0Q1U05FN1l0UVNHUDYwU2tsQ3VIeTVFZ2Naa1kzY3lhYnBhSWU5bzNPYWREWWlWS245VlJqdndKN1ZNZlR5bk1rRERhbExMMzByNCUyRlMlMkY2a0dJdHAyNWxrQnYwNHZHa1U2VkhnSUJrWjNpdkElM0QlM0Q.#integrations/microsoft-teams) 
 
@@ -113,3 +121,5 @@ To set up notifications, you can take a cue from "Use Message Template Variables
 
 
 Once done, you can also test if the notications actually reach their desired targets, by clicking on **Test Notifications**. After confirming that you received the alerts in your teams channel (as shown below), click on **save** to make it perpetual. 
+
+![Setup Notifications](Images/Teams-Notification.png)
