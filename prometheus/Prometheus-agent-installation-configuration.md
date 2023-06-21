@@ -34,15 +34,15 @@ By default, Prometheus is enabled to collect metrics on the server where it is i
     1. [ReConfigure Prometheus with the Node Exporter data collector](#step-5-reconfigure-prometheus-with-the-node-exporter-data-collector)
 
 * Promethes Postgres exporter setup
-    1. [Complete the prerequisites](#step-1-complete-the-prerequisites-1)
+    1. [Complete the prerequisites](#step-1-complete-the-prerequisites-2)
     
-    1. [Add users to your EC2 instance](#step-2-add-user-to-your-ec2-instance)
+    1. [Add users to your EC2 instance](#step-2-add-user-to-your-ec2-instance-1)
 
-    1. [Download and Install Prometheus binary packages](#step-3-download-and-install-prometheus-agent-binary-packages)
+    1. [Download, Install and Configure Prometheus postgres exporter](#step-3-download-install-and-configure-prometheus-progres-exporter)
 
-    1. [Start Node Exporter](#step-4-start-node-exporter)
+    1. [Start Progres Exporter](#step-4-start-progres-exporter)
 
-    1. [ReConfigure Prometheus with the Node Exporter data collector](#step-5-reconfigure-prometheus-with-the-node-exporter-data-collector)
+    1. [ReConfigure Prometheus with the Progres Exporter data collector](#step-5-reconfigure-prometheus-with-the-progres-exporter-data-collector)
 
 
 
@@ -564,8 +564,6 @@ Complete this procedure to reconfigure Prometheus with each  Node Exporter data 
 
 * Open ports 9101 on the firewall of your new instance. Prometheus progres exporter will requires port 9101 to be open.
 
-* [Install AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
-
 
 ## Step 2: Add user to your EC2 instance
 Complete the following procedure to connect to your EC2 instance using SSH and add users. Skip this step of user already exists. This procedure creates the following Linux user accounts:
@@ -602,13 +600,13 @@ curl -LO exporter-download-address
 ```
 curl -LO https://github.com/prometheus-community/postgres_exporter/releases/download/v0.12.1/postgres_exporter-0.12.1.linux-amd64.tar.gz
 ```
-* Run the following command(s) one by one to extract the contents of the downloaded Node Exporter files.
+* Run the following command(s) one by one to extract the contents of the downloaded Exporter files.
 ```
 tar -xvf postgres_exporter-0.12.1.linux-amd64.tar.gz
 ```
 * Several subdirectories are created after the contents of the downloaded files are extracted.
 
-* Enter the following command to copy the node_exporter file from the ./node_exporter* subdirectory to the /usr/local/bin programs directory.
+* Enter the following command to copy the exporter file from the ./exporter* subdirectory to the /usr/local/bin programs directory.
 ```
 cp -p ./postgres_exporter-0.12.1.linux-amd64/postgres_exporter /usr/local/bin/
 ```
@@ -634,8 +632,8 @@ url: postgres:postgres@bsk-mon-engg-db-01.ct71rco8carx.us-east-1.rds.amazonaws.c
 DATA_SOURCE_NAME="postgresql://postgres:postgres@bsk-mon-engg-db-01.ct71rco8carx.us-east-1.rds.amazonaws.com:5432/?sslmode=disable"
 ```
 
-## Step 4: Start Node Exporter
-Complete the following procedure to start the Node Exporter service.
+## Step 4: Start Progres Exporter
+Complete the following procedure to start the Exporter service.
 
 * Connect to your EC2 instance using SSH.
 
@@ -643,7 +641,7 @@ Complete the following procedure to start the Node Exporter service.
 ```
 vi /etc/systemd/system/postgres_exporter.service
 ```
-* Add the following lines of text into the file. This will configure node_exporter with monitoring collectors for CPU load, file system usage, and memory resources. Update the ip address of local system in the following parameters as per your environment.
+* Add the following lines of text into the file to configure exporter as a service. Update the ip address of local system in the following parameters as per your environment.
 web.listen-address=10.100.12.65:9101 
 
 ```
@@ -704,7 +702,7 @@ lines 1-16/16 (END)
 sudo systemctl enable postgres_exporter
 ```
 
-## Step 5: ReConfigure Prometheus with the Node Exporter data collector
+## Step 5: ReConfigure Prometheus with the Progres Exporter data collector
 Complete this procedure to reconfigure Prometheus server with exporter data collector. 
 
 * Append the /etc/prometheus/prometheus.yml file with the following content 
