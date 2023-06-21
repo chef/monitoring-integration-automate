@@ -1,27 +1,43 @@
 # DataDog Download, Installation, and Configuration
 We recommend to refer to DataDog [documentation](https://docs.datadoghq.com/agent/) on DataDog agent installation and configuration as well.
 
-### DataDog Download
+### DataDog Download and Installation
 
 **Description**
 
-In order to monitor the Chef Automate HA infrastructure, need to have a DataDog monitoring agent running on the infrastructure nodes to get the possible configured metrics and other information that can be sent to the monitoring tool at server side in order to track the health of the overall infrastructure.
+In order to monitor the Chef Automate HA infrastructure, need to have a DataDog monitoring agent running on the infrastructure nodes to get the possible configured metrics and other information that can be sent to the monitoring tool on the server side in order to track the health of the overall infrastructure.
 
 **Agent definition:**
 
 Agents for monitoring use cases refer to software that runs on your host machines. It collects events and metrics from hosts and sends them to the centralized monitoring tool’s infrastructure, where we can analyze the monitoring and performance data.
 
-**Steps to Download the Agent**
 
-Data dog agent can be downloaded as per steps and guidance given in their documentation [here](https://github.com/DataDog/datadog-agent/tree/main)
+**Use-case wise Requirements**
 
-Below is the script which is recommended as per the above link to download the agent:
+A. Automate HA with On-Prem and AWS deployment
 
-https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
+Data dog agent to be configured on:
+   + Automate node(s)
+   + Chef Infra Server(s)
+   + Chef-managed OpenSearch nodes
+   + Chef-managed Postgres nodes
+   + Bastion node
+     
 
-### DataDog Installation and configuration
+B. Automate HA with AWS deployment with Managed services
 
-**Installing DataDog Agent**
+Data dog agent to be configured on:
+   + Automate node
+   + Chef Infra Server
+   + Bastion node
+
+AWS account integration with DataDog
+
+Postgres YML configuration on Bastion node
+     
+
+
+**Download and Installation - Generic**
 
 DD_API_KEY= <DataDog Agent API> DD_SITE=<DataDog Site Name> DD_AGENT_MAJOR_VERSION= <DataDog Version> bash -c "$(curl -L curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
 
@@ -31,7 +47,7 @@ Run the below commands with the required details to add a DataDog client on a pa
 
 	sudo systemctl start datadog-agent
 
-**Data dog installation setup steps for Automate HA (Introductory reference):**
+**Data dog installation setup steps - Automate HA**
 
 + SSH into the bastion machine and go to the deploy workspace
 
@@ -65,34 +81,23 @@ This script requires:
 	Go to:
 	Organaization settings -> API Keys
 
-+ Modify "tags":
++ Modify "tags" in the configuration file:
     + Provide the correct customer name in the "customer" tag. The format should remain the same.
     + Set the “Production” tag as true
 
 + Path to the configuration file for the components where an agent needs to be run
 + All the component level configurations as detailed under the [agent configuration section](#agent-configuration)
-+ Required tags to be added (This is work as filter while fetching metrics on data dog console)
++ Required tags to be added (This is work as a filter while fetching metrics on the data dog console)
 
-**Running this above steps will ensure**
+**Running the above steps will ensure**
 + Agent getting installed in each of the nodes (Bastion Machine and All Instances - Chef Server, Automate, Postgress, ElasticSearch nodes)
-+ In case of AutomateHA with managed services, we need to run datadog agent only on Bastion, Automate, Chef Server.
-
-**These steps will install the datadog agent in each instance, with the required configuration, and restart the agent.**
++ **In the case of Automate HA with managed services, we need to run datadog agent only on Bastion, Automate, Chef Server.
+**
++ **These steps will install the datadog agent in each instance, with the required configuration, and restart the agent.**
 
 Once the datadog agent is up and running, we need to wait for at least 15-20 mins to view the metrics and logs at:
 https://app.datadoghq.com/infrastructure
 
-**Acceptance Criteria:**
-
-1. Data dog agent to be configured for:
-   + Automate node
-   + Chef Infra Server
-   + Chef managed OpenSearch
-   + Chef managed Postgres
-   + Bastion node
-
-2. Data dog agent to be running on Automate,
-chef infra server nodes, OpenSearch, and Postgres nodes.
 
 1. Validation on Data Dog console for metrics getting received as per the **tags added**.
 
