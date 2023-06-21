@@ -124,7 +124,7 @@ https://app.datadoghq.com/infrastructure
 ### DataDog Agent Configuration
 
 The Agent v6 configuration file uses YAML to better support complex configurations. Agent support standard OS such as Linus, MacOS, AIX, and Windows.
-| PLATFORM | COMMAND   |
+| PLATFORM | LOCATION  |
 | :--- | :-- |
 |Linux|/etc/datadog-agent/datadog.yaml|
 |Ubuntu|/etc/datadog-agent/datadog.yaml/|
