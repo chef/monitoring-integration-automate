@@ -80,6 +80,8 @@ a. [Slack Integration](data-dog/Slack_Integration_and_notification.md)
 
 b. [PagerDuty Integration](data-dog/PagerDuty_Integration_and_Notification.md)
 
+c. [MS Teams Integration](data-dog/DataDog-MSTeams-Integration-Alerting.md)
+
 
 ## Datadog integration with Automate HA - Centralised Logging
 
