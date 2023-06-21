@@ -90,8 +90,6 @@ This script requires:
 
 **Running the above steps will ensure**
 + Agent getting installed in each of the nodes (Bastion Machine and All Instances - Chef Server, Automate, Postgres, ElasticSearch nodes)
-+ **In the case of Automate HA with managed services, we need to run datadog agent only on Bastion, Automate, Chef Server.
-**
 + **These steps will install the datadog agent in each instance, with the required configuration, and restart the agent.**
 
 Once the datadog agent is up and running, we need to wait for at least 15-20 mins to view the metrics and logs at:
