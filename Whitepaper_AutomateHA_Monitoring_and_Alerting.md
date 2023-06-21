@@ -80,7 +80,7 @@ f. [PagerDuty Integration](data-dog/PagerDuty_Integration_and_Notification.md)
 
 ## Datadog integration with Automate HA - Centralised Logging
 
-[Datadog Centralised Logs Management](DataDog-Centralise_Logs_Management.md)
+[Datadog Centralised Logs Management](data-dog/DataDog-Centralise_Logs_Management.md)
 
 
 ### Prometheus
