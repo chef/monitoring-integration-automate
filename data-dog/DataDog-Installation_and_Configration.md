@@ -1,7 +1,7 @@
 # DataDog Download, Installation, and Configuration
 We recommend to refer to DataDog [documentation](https://docs.datadoghq.com/agent/) on DataDog agent installation and configuration as well.
 
-### DataDog Download and Installation
+### Datadog Download and Installation
 
 **Description**
 
@@ -12,7 +12,7 @@ In order to monitor the Chef Automate HA infrastructure, need to have a DataDog 
 Agents for monitoring use cases refer to software that runs on your host machines. It collects events and metrics from hosts and sends them to the centralized monitoring tool’s infrastructure, where we can analyze the monitoring and performance data.
 
 
-**Use-case wise Requirements**
+**Use-case-wise Requirements**
 
 A. Automate HA with On-Prem and AWS deployment
 
@@ -26,20 +26,19 @@ Data dog agent to be configured on:
 
 B. Automate HA with AWS deployment with Managed services
 
-Data dog agent to be configured on:
-   + Automate node
-   + Chef Infra Server
-   + Bastion node
+1. Data dog agent to be configured on:
+    + Automate node
+    + Chef Infra Server
 
-AWS account integration with DataDog
+2. AWS account integration with DataDog
 
-Postgres YML configuration on Bastion node
+3. Postgres YML configuration on Automate node
      
 
 
 **Download and Installation - Generic**
 
-DD_API_KEY= <DataDog Agent API> DD_SITE=<DataDog Site Name> DD_AGENT_MAJOR_VERSION= <DataDog Version> bash -c "$(curl -L curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
+	DD_API_KEY= <DataDog Agent API> DD_SITE=<DataDog Site Name> DD_AGENT_MAJOR_VERSION= <DataDog Version> bash -c "$(curl -L curl -L https://s3.amazonaws.com/dd-	agent/scripts/install_script.sh)"
 
 Run the below commands with the required details to add a DataDog client on a particular host:
 
@@ -90,7 +89,7 @@ This script requires:
 + Required tags to be added (This is work as a filter while fetching metrics on the data dog console)
 
 **Running the above steps will ensure**
-+ Agent getting installed in each of the nodes (Bastion Machine and All Instances - Chef Server, Automate, Postgress, ElasticSearch nodes)
++ Agent getting installed in each of the nodes (Bastion Machine and All Instances - Chef Server, Automate, Postgres, ElasticSearch nodes)
 + **In the case of Automate HA with managed services, we need to run datadog agent only on Bastion, Automate, Chef Server.
 **
 + **These steps will install the datadog agent in each instance, with the required configuration, and restart the agent.**
@@ -112,33 +111,32 @@ https://app.datadoghq.com/infrastructure
 
 | Config file (Final DD agent location) | Details   |
 | :--- | :-- |
-|/etc/datadog-agent/datadog.yaml|**DataDog Main YAML File** Need to change and verify the datadog configration and tags Reference location for actual values: [DataDog.yaml](YML_Files/datadog.yaml) |
-|/etc/datadog-agent/conf.d/http_check.d/conf.yaml |**Automate and Chef Infra Server Metrics - agent config** Automate and Chef Infra Server related application level services health check metrics are captured here as part of HTTP checks. Reference location for actual values: [Automate](YML_Files/automate_httpd.yaml), [Chef_Server](YML_Files/chef_server_httpd.yaml) |
-|/etc/datadog-agent/conf.d/elastic.d/conf.yaml | **OpenSearch Metrics - agent config** - This config keep information regarding types on OpenSearch metrics which needs to be sent to data dog. Reference location for actual values: [Elasticsearch](YML_Files/elastic.yaml) ||
-|/etc/datadog-agent/conf.d/postgres.d/conf.yaml|**Postgres Metrics - agent config** This config keep information regarding types on Postgres metrics which needs to be sent to data dog. Reference location for actual values: [Postgres](YML_Files/postgres.yaml) ||
+|/etc/datadog-agent/datadog.yaml|**DataDog Main YAML File** Need to change and verify the datadog configuration and tags Reference location for actual values: [DataDog.yaml](YML_Files/datadog.yaml) |
+|/etc/datadog-agent/conf.d/http_check.d/conf.yaml |**Automate and Chef Infra Server Metrics - agent config** Automate and Chef Infra Server related application level services health check metrics are captured here as part of HTTP checks. Reference location for actual values: [Automate](YML_Files/automate_httpd.yaml), [Chef Server](YML_Files/chef_server_httpd.yaml) |
+|/etc/datadog-agent/conf.d/elastic.d/conf.yaml | **OpenSearch Metrics - agent config** - This config keep information regarding types on OpenSearch metrics that need to be sent to data dog. Reference location for actual values: [Elasticsearch](YML_Files/elastic.yaml) ||
+|/etc/datadog-agent/conf.d/postgres.d/conf.yaml|**Postgres Metrics - agent config** This config keeps information regarding types on Postgres metrics that need to be sent to data dog. Reference location for actual values: [Postgres](YML_Files/postgres.yaml) ||
 |/etc/datadog-agent/conf.d/disk.d/conf.yaml|**Disk Metrics - All nodes** The Disk check is enabled by default, and the Agent collects metrics on all local partitions. Reference location for actual values: [Disk Metrics](YML_Files/diskd.yaml) |
-|/etc/datadog-agent/conf.d/nginx.d/conf.yaml|**Nginx** - The Datadog Agent can collect many metrics from NGINX instances, including (but not limited to)::Total requests,Connections such as accepted, handled, and active|
+|/etc/datadog-agent/conf.d/nginx.d/conf.yaml|**Nginx** - The Datadog Agent can collect many metrics from NGINX instances, including (but not limited to):: Total requests, Connections such as accepted, handled, and active|
 
-* For centralised logging metrics send to datadog, pls follow these references configrations :  [DataDog-Centralise_Logs_Management](DataDog-Centralise_Logs_Management.md)
+* For centralized logging metrics send to datadog, pls follow these references configurations :  [DataDog-Centralise_Logs_Management](DataDog-Centralise_Logs_Management.md)
 
 
-### DataDog Agent Configration
+### DataDog Agent Configuration
 
 The Agent v6 configuration file uses YAML to better support complex configurations. Agent support standard OS such as Linus, MacOS, AIX, and Windows.
 | PLATFORM | COMMAND   |
 | :--- | :-- |
-|AIX|/etc/datadog-agent/datadog.yaml|
 |Linux|/etc/datadog-agent/datadog.yaml|
-|macOS|~/.datadog-agent/datadog.yaml|
-|Windows Server 2008, Vista and newer|%ProgramData%\Datadog\datadog.yaml|
+|Ubuntu|/etc/datadog-agent/datadog.yaml/|
+|CentOS|/etc/datadog-agent/datadog.yaml/|
 
 Reference location for actual configurational values: [datadog.yaml](YML_Files/datadog.yaml)
 
 **Steps to create a Datadog user**
 
-Datadog agent will read and collects the metrics from all the instances and managed services for monitoring and for that it needs a user is postgres database. Given below are the steps to create the Datadog user in the database:
+Datadog agent will read and collects the metrics from all the instances and managed services for monitoring and for that, it needs a user in the Postgres database. Given below are the steps to create the Datadog user in the database:
 
-+ SSH into bastion machine and go to the deploy workspace
++ SSH into the bastion machine and go to the deploy workspace
 
 		sudo su -
 		cd /hab/a2_deploy_workspace
@@ -152,7 +150,7 @@ Datadog agent will read and collects the metrics from all the instances and mana
 		sudo su -
 		cd /hab/pkgs/core/postgresql13-client/13.5/20220120152435/bin
 		./psql --host=<hostname of RDS> --username=root --dbname=postgres
-   Password for the root user is admin1234
+   The password for the root user is admin1234
 
 + Run the below commands on psql console to create user for datadog
 
@@ -167,14 +165,17 @@ Datadog agent will read and collects the metrics from all the instances and mana
 Update hostname in postgres.yaml
 Given below are the steps to Update hostname in postgres.yaml:
 
-+ SSH into the bastion machine and go to the deploy workspace
+++ SSH into the bastion machine and go to the deploy workspace
 
 		sudo su -
 		cd /hab/a2_deploy_workspace
 
-+ Edit the postgres.yaml file and modify the below listed details:
++ SSH into the automate instance using:
+
+		automate-cluster-ctl ssh automate
++ Add/Edit the postgres.yaml file and modify the below-listed details:
 
 		vi automate-backend-datadog/postgresql/postgres.yaml
 
-  + Modify "host": Provide hostname of your RDS postgres instance
-  + Modify "tags": Provide the correct customer name in "customer" tag. The format should remain the same.
+  + Modify "host": Provide the hostname of your RDS Postgres instance
+  + Modify "tags": Provide the correct customer name in the "customer" tag. The format should remain the same.
