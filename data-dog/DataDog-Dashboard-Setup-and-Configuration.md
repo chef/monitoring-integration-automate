@@ -53,7 +53,7 @@ Its recommended you have the following dashboards for Automate:
 
 For example, a System Metrics dashboard will look like this:
 
-![System Metrics Dashboard](images/System_Metrics_Dashboard.png)
+![System Metrics Dashboard](Images/System_Metrics_Dashboard.png)
 
 # Steps to create a new dashboard
 
@@ -62,7 +62,7 @@ For example, a System Metrics dashboard will look like this:
 + Here, key in a name for Dashboard Name and select the "New Timeboard" and then click on "New Dashboard".
 + On the dashboard screen, first create template variables with which you want to tag your components. A basic example can be:
 
-![Creating templates](images/Template_variables.png)
+![Creating templates](Images/Template_variables.png)
 
 
 Once you are done appending your changes, click on save.
@@ -80,7 +80,7 @@ Once you are done appending your changes, click on save.
    - Key in a title for your widget
    - Once done, click on Save
 
-![Creating a Widget](images/Creating_widget.png)
+![Creating a Widget](Images/Creating_widget.png)
 
 
 
@@ -101,7 +101,7 @@ Once you are done appending your changes, click on save.
 **Note:**
 Here, we are discussing metrics for deploying Managed Automate HA in AWS, please use this as a general guideline for other platforms and On-prem solutions as well
 
-![Infra Health Dashboard](images/Infra_health_dashboard.png)
+![Infra Health Dashboard](Images/Infra_health_dashboard.png)
 
  ## Opensearch metrics:
 
@@ -121,7 +121,7 @@ Here, we are discussing metrics for deploying Managed Automate HA in AWS, please
 - aws.es.searchable_documents
 - system.cpu.user
 
- ![Opensearch Metrics Dashboard](images/AWS_Managed_ES.png)
+ ![Opensearch Metrics Dashboard](Images/AWS_Managed_ES.png)
 
 
 ## Postgresql Metrics:
@@ -154,7 +154,7 @@ Assumptions:
   - aws.rds.read_latency
   - aws.rds.write_latency
 
-![PosgreSQL Dashboard](images/AWS_RDS.png)
+![PosgreSQL Dashboard](Images/AWS_RDS.png)
 
 
 
@@ -180,6 +180,6 @@ Assumptions:
 - system.cpu.iowait
 - system.cpu.stolen
 
-![Opensearch Dashboard](images/AWS_Opensearch.png)
+![Opensearch Dashboard](Images/AWS_Opensearch.png)
 
 
