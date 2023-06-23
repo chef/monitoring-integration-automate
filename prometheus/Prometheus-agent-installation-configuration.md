@@ -621,15 +621,15 @@ mkdir /opt/postgres_exporter
 sudo vi /opt/postgres_exporter/postgres_exporter.env
 ```
 
-* Add the following content to the progres-exporter environment file
-update the following paraters in the following file for your envionment. 
+* Add the following content to the progres-exporter environment file.
+Update the following parameters for your envionment. 
 
-username: progress  
-password: progress  
-url: postgres:postgres@bsk-mon-engg-db-01.ct71rco8carx.us-east-1.rds.amazonaws.com  
+username: admin  
+password: admin  
+url: admin:admin@localhost  
 
 ```
-DATA_SOURCE_NAME="postgresql://postgres:postgres@bsk-mon-engg-db-01.ct71rco8carx.us-east-1.rds.amazonaws.com:5432/?sslmode=disable"
+DATA_SOURCE_NAME="postgresql://admin:admin@localhost:5432/?sslmode=disable"
 ```
 
 ## Step 4: Start Progres Exporter
@@ -641,8 +641,8 @@ Complete the following procedure to start the Exporter service.
 ```
 vi /etc/systemd/system/postgres_exporter.service
 ```
-* Add the following lines of text into the file to configure exporter as a service. Update the ip address of local system in the following parameters as per your environment.
-web.listen-address=10.100.12.65:9101 
+* Add the following lines of text into the file to configure exporter as a service. Update the ip address of postgres node in the following parameters as per your environment.  
+web.listen-address=10.100.12.65:9101  
 
 ```
 [Unit]
@@ -713,3 +713,7 @@ Complete this procedure to reconfigure Prometheus server with exporter data coll
 ```
 
 This change will require promethous services to be restarted. Refer to the [Step 7: Configure Prometheus with the Node Exporter data collector](#step-7-configure-prometheus-with-the-node-exporter-data-collector) for detailed steps.
+
+
+
+https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases
