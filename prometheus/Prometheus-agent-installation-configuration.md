@@ -707,7 +707,7 @@ Complete this procedure to reconfigure Prometheus server with exporter data coll
 
 * Append the /etc/prometheus/prometheus.yml file with the following content 
 ```
-  - job_name: "progress-exporter"
+  - job_name: "progress-exporter-node-01"
     static_configs:
       - targets: ["10.100.12.65:9101"]
 ```
@@ -717,3 +717,5 @@ This change will require promethous services to be restarted. Refer to the [Step
 
 
 https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases
+
+./bin/opensearch-plugin install https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases/download/2.8.0.0/prometheus-exporter-2.8.0.0.zip
