@@ -718,4 +718,4 @@ This change will require promethous services to be restarted. Refer to the [Step
 
 https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases
 
-./bin/opensearch-plugin install https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases/download/2.8.0.0/prometheus-exporter-2.8.0.0.zip
+opensearch-plugin install https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases/download/1.3.7.0/prometheus-exporter-1.3.7.0.zip
