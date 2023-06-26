@@ -714,8 +714,74 @@ Complete this procedure to reconfigure Prometheus server with exporter data coll
 
 This change will require promethous services to be restarted. Refer to the [Step 7: Configure Prometheus with the Node Exporter data collector](#step-7-configure-prometheus-with-the-node-exporter-data-collector) for detailed steps.
 
+## Configure Prometheus with OpenSeach Plugin
 
+## Step 1 : Install OpenSearch Plugin
+Refer to the [Prometheus exporter OpenSeach Plugin](https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases). 
 
-https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases
+** Disclaimer ** 
+  The plugin is not supported by prometheus community, However it is supported by Opensearch community. Please refer to the plugin documnet for any future changes.  
+  
+  The following steps provides guidance to install and configure opensearch plugin for chef managed opensearch environment only.
 
+* Verify the opensearch version installed on chef manages opensearch nodes.  
+```
+opensearch -V
+```
+
+* Chef automate HA uses opensearch version 1.3.7 at the time of this documentation creation.
+
+* Copy the link for the correct version from [Prometheus exporter OpenSeach Plugin repo](https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/tags).
+
+* Eecute the following steps on each opensearch node.
+
+* Replace the link in the following command and install the plugin
+
+```
 opensearch-plugin install https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases/download/1.3.7.0/prometheus-exporter-1.3.7.0.zip
+```
+
+* Reboot the openserch node
+
+```
+reboot
+```
+
+
+## Step 2: Reconfigure Prometheus Server
+
+* After installing the opensearch plugin, configure the prometheus server to scrape opensearch nodes
+
+```
+vi /etc/prometheus/prometheus.yml
+```
+
+* Add the following opensearch configuration in /etc/prometheus/prometheus.yml file
+
+```
+- job_name: opensearch
+    scrape_interval: 10s
+    metrics_path: "_prometheus/metrics"
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
+    basic_auth:
+      username: 'admin'
+      password: 'admin'
+    static_configs:
+      - targets:
+        - 10.100.8.152:9200
+        - 10.100.8.233:9200
+        - 10.100.8.187:9200
+```
+
+* Restart the prometheus service.
+
+```
+systemctl restart prometheus.service
+```
+
+## Step 3: Verfiy opensearch metrics
+* Browse to the prometheus url, click on Graph, Start typeing opensearch in expression and opensarch metrics should start appaaring as shown below
+
+![opensearch](./images/opensearch.png)
