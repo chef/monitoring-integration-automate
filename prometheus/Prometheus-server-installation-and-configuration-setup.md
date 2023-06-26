@@ -17,7 +17,7 @@ In order to monitor the Chef Automate HA infrastructure, Prometheus server must 
     
     1. [Complete the prerequisite](#step-1-complete-the-prerequisites)
     
-    1. [Add users and local system directories to your EC2 instance](#step-2-add-users-and-local-system-directories-to-your-ec2-instance)
+    1. [Add users and local system directories to EC2 instance](#step-2-add-users-and-local-system-directories-to-your-ec2-instance)
 
     1. [Download and Install Prometheus binary packages](#step-3-download-and-install-prometheus-binary-packages)
 
@@ -143,7 +143,7 @@ sudo cp -p ./node_exporter-1.3.1.linux-amd64/node_exporter /usr/local/bin
 ```
 sudo chown exporter:exporter /usr/local/bin/node_exporter
 ```
-##  4: Configure Prometheus
+##  Step 4: Configure Prometheus
 Complete the following procedure to configure Prometheus. In this procedure, you open and edit the prometheus.yml file, which contains various settings for the Prometheus tool. Prometheus establishes a monitoring environment based on the settings that you configure in the file.
 
 * Connect to your EC2 instance using SSH.
@@ -161,7 +161,7 @@ sudo cp /etc/prometheus/prometheus.yml /etc/prometheus/prometheus.yml.backup
   * targets — Located under the static_configs header, the targets setting uses an ip_addr:port key-value pair to identify the location where a given exporter is running. You will change the default setting in steps 4–7 of this procedure.
 
 
-Note:
+Note:  
 For this initial setup, you don't need to configure the alerting and rule_files parameters.
 
 * Scroll and find the targets parameter located under the static_configs header.
@@ -329,6 +329,9 @@ Complete the following procedure to configure Prometheus with the Node Exporter 
     - targets: ["<ip_addr>:9100"]
 ```
 * The modified parameter in the prometheus.yml file should look like the following example.
+
+Static configs for Node Exporter  
+
 ``` 
 scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
@@ -344,8 +347,6 @@ scrape_configs:
     static_configs:
       - targets: ["10.100.10.131:9100"]
 ```
-
-Static configs for Node Exporter
 
 Note the following:
 Node Exporter listens to port 9100 for the prometheus server to scrape the data. Confirm that you followed the steps for creating instance firewall rules as outlined in the Step 1: Complete the prerequisites section of this tutorial.
@@ -404,4 +405,4 @@ Targets on the Prometheus dashboard
 
 * The environment is now properly set up for collecting metrics and monitoring the server.
 
-NOTE: Additional configurations for prometheus server will be required as more exports are installed. Refer to [Prometheus agent installation Guide](./Prometheus-agent-installation-configuration.md)
+NOTE: Additional configurations for prometheus server will be required as more exporters are installed. Refer to [Prometheus agent installation Guide](./Prometheus-agent-installation-configuration.md)
