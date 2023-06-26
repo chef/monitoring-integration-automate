@@ -1,5 +1,5 @@
 # Prometheus Dashboards
-Graphan is used as dashboard tool for Prometheus.
+Graphana is used as dashboard tool for Prometheus.
 
 ## What are Graphana Prometheus dashboards used for:
 
@@ -14,11 +14,11 @@ Graphan is used as dashboard tool for Prometheus.
 + For more information on widgets, kindly refer: TODO add link 
 
 ## Installing and Configuring Graphana locally:
-The following article provides step by step guidence to install Graphana server locally.
+The following article provides step by step guidance to install Graphana server locally.
 
 https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/
 
-After the successfull installation, configure the data source for prometheus. The following article provides the step by step instructions to data source configuration.
+After the successfully installation, configure the data source for prometheus. The following article provides the step by step instructions to data source configuration.
 https://prometheus.io/docs/visualization/grafana/#creating-a-prometheus-data-source
 
 
