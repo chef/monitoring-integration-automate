@@ -33,7 +33,7 @@ By default, Prometheus is enabled to collect metrics on the server where it is i
 
     1. [ReConfigure Prometheus with the Node Exporter data collector](#step-5-reconfigure-prometheus-with-the-node-exporter-data-collector)
 
-* Promethes Postgres exporter setup
+* Prometheus Postgres exporter setup
     1. [Complete the prerequisites](#step-1-complete-the-prerequisites-2)
     
     1. [Add users to your EC2 instance](#step-2-add-user-to-your-ec2-instance-1)
@@ -44,6 +44,15 @@ By default, Prometheus is enabled to collect metrics on the server where it is i
 
     1. [ReConfigure Prometheus with the Progres Exporter data collector](#step-5-reconfigure-prometheus-with-the-progres-exporter-data-collector)
 
+
+* Prometheus OpenSearch Plugin Setup
+    1. [Install OpenSearch plugin](#step-1--install-opensearch-plugin)
+    
+    1. [Reconfigure Prometheus Server](#step-2-reconfigure-prometheus-server)
+
+    1. [Verify OpenSearch Metrics](#step-3-verfiy-opensearch-metrics)
+
+    1. [Start Progres Exporter](#step-4-start-progres-exporter)
 
 
 ## Step 1: Complete the prerequisites
