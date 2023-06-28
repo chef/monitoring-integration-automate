@@ -21,7 +21,7 @@ The following steps provides the guidance to prepare Slack receiver for the aler
 
 ### Configure AlertManager for Slack
 
-Before performing the following steps, please ensure alertmanager is installed and configured to run as a service. Refer to the ![alertmanger installation guide](./Prometheus_Monitor_configuration_and_alerting.md)
+Before performing the following steps, please ensure alertmanager is installed and configured to run as a service. Refer to the ![alertmanager installation guide](./Prometheus_Monitor_configuration_and_alerting.md)
 
 * Perform the following steps to configure alert manager to integration with Slack. 
 
