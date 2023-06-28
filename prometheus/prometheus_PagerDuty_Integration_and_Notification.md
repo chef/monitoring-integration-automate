@@ -21,7 +21,7 @@ The following steps provides the guidance to prepare pagerduty receiver for the 
 
 ### Configure AlertManager for Pagerduty
 
-Before perforoming the following steps, please ensure alertmanger is installed and configured to run as a service. Refer to the ![alertmanger installation guide](./Prometheus_Monitor_configuration_and_alerting.md)
+Before perforoming the following steps, please ensure alertmanger is installed and configured to run as a service. Refer to the ![alertmanager installation guide](./Prometheus_Monitor_configuration_and_alerting.md)
 
 The following configuration is designed to receive alerts with severity level `page`. By default, all alerts will go to Slack, however, the alerts with severity level `page` will be sent to Padgerduty.
 
