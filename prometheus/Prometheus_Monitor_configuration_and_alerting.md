@@ -1,24 +1,49 @@
+
 # Monitor configuration and alerting
 
 
 ## Installing AlertManager
-The following steps will provide guidance to configure Promethues AlertManager.
+The following steps will provide guidance to configure Prometheus AlertManager.
 
-
+* Change the current working path to the home directly
 ```
 cd ~
 ```
-https://prometheus.io/download/#alertmanager
+* Refer to the [AlertManager Download Page](https://prometheus.io/download/#alertmanager) for more updated version of alert manager.
+
+* Execute the following command to download and install the alert manager
 
 ```
 curl -LO  https://github.com/prometheus/alertmanager/releases/download/v0.25.0/alertmanager-0.25.0.linux-amd64.tar.gz
-
 tar -xvf alertmanager-0.25.0.linux-amd64.tar.gz
 mv alertmanager-0.25.0.linux-amd64/alertmanager /usr/local/bin
+```
 
+## Configuring AlertManager
+
+### Prerequisites
+The following steps provides the guidance to prepare various receivers for the alert manager to send alerts and alertmanager configurations. 
+
+1. Slack Notification
+    Refer to this [guide](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/) for step-by-step guidance to configure Slack notification fo the prometheus alert manager.
+
+1. PagerDuty Notification
+    Refer to this [guide](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/) for step-by-step guidance to configure PagerDuty notification fo the prometheus alert manager.
+
+1. MS teams notification
+    Refer to this [guide](https://github.com/prometheus-msteams/prometheus-msteams) for step-by-step guidance to configure MSTeams notification fo the prometheus alert manager.
+
+
+### Configure Alert Manager
+
+Perform the following steps to configure alert manager
+
+```
 mkdir /etc/alertmanager/
 vi /etc/alertmanager/alertmanager.yml
 ```
+
+Based on Alert integration to Slack, MS teams, pager duty add the following sections under receiver section.
 
 ```
 route:
@@ -62,18 +87,21 @@ systemctl daemon-reload
 systemctl start alertmanager
 systemctl status alertmanager
 ```
-TODO write enablecommand
+TODO write enable command
 
 ## Configuring Alert
 ```
 vi /etc/prometheus/prometheus.yml
 ```
 # Alertmanager configuration
+
+```
 alerting:
   alertmanagers:
     - static_configs:
         - targets:
             - localhost:9093
+```
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 ```
@@ -111,28 +139,9 @@ systemctl start prometheus
 systemctl status prometheus
 ```
 
-In the promethus UI:
 
- * Got to Monitor -> new monitor and create a Custom monitor
+https://github.com/prometheus/node_exporter
 
- * There are options to create monitors based on Hosts. process, metrices, etc. For this use case, we are going to create a monitor for Hosts.
+https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/
 
-    ![Data_Dog_Metrices](images/Data_Dog_Metrices.png)
-
- * Pick hosts you want to monitor filtering those by tags which need to be added to the hosts at the time of creation.
-
-    ![Metrics_Host_Monitor](images/Metrics_Host_Monitor.png)
-
- * Select the option to automatically resolve the alerts after a specified period of time or it needs to be resolved by manual intervention of an user.
-
- * There is the option to notify the team responsible for the infrastructure monitoring via email or slack or teams or pgerduty. The detailed steps on integrating promethus with these alerting applications are explianed in dedictaed sections.
-
- * promethus provides the flexibility of renotification of the same alert which can be configured to renotify in the alerting app multiple times after a fixed interval of time.
-
-    ![Metrics_Host_Monitor](images/Notify.png)
-
- * Different alerts need to be set a priority level depending on the impact they create on the performance or functioning of the applications. Priority for the custom alerts should be set in order to address those accordingly meeting the SLAs.
-
- * Role based access control needs to be applied to the custom monitors and alerts crtaed which dictates Who can edit/delete my alert and eho will it be notified to.
-
-    ![Metrics_Host_Monitor](images/Priority.png)
+https://github.com/prometheus-msteams/prometheus-msteams
