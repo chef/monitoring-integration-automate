@@ -1,6 +1,28 @@
 
 # Monitor configuration and alerting
 
+## Enabling and Configure Metrics
+### Node Exporter Metrics
+Enable the required metrics for monitoring by added required collectors to the exporters.
+
+* In this section node exporter is configured with required collectors. Refer to the [node exporter documentation](https://github.com/prometheus/node_exporter) for more collectors.
+
+* The following service configuration file for node exporter will enable the required metrics for chef automate monitoring
+
+```
+TODO Add the final node service configuration.
+```
+
+### Configure Automate Monitoring
+
+#### Configure Automate Metrics
+
+#### Configure Chef Infra Metrics
+
+#### Configure Postgres Metrics
+
+#### Configure OpenSearch Metrics
+
 
 ## Installing AlertManager
 The following steps will provide guidance to configure Prometheus AlertManager.
@@ -22,45 +44,35 @@ mv alertmanager-0.25.0.linux-amd64/alertmanager /usr/local/bin
 ## Configuring AlertManager
 
 ### Prerequisites
-The following steps provides the guidance to prepare various receivers for the alert manager to send alerts and alertmanager configurations. 
-
-1. Slack Notification
-    Refer to this [guide](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/) for step-by-step guidance to configure Slack notification fo the prometheus alert manager.
-
-1. PagerDuty Notification
-    Refer to this [guide](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/) for step-by-step guidance to configure PagerDuty notification fo the prometheus alert manager.
-
-1. MS teams notification
-    Refer to this [guide](https://github.com/prometheus-msteams/prometheus-msteams) for step-by-step guidance to configure MSTeams notification fo the prometheus alert manager.
+* The following steps provides the guidance to prepare various receivers for the alert manager to send alerts and alertmanager configurations. 
 
 
 ### Configure Alert Manager
 
-Perform the following steps to configure alert manager
+* Perform the following steps to configure alert manager
 
 ```
 mkdir /etc/alertmanager/
 vi /etc/alertmanager/alertmanager.yml
 ```
 
-Based on Alert integration to Slack, MS teams, pager duty add the following sections under receiver section.
+* Based on Alert integration to Slack, MS teams, pager duty add the following sections under receiver section.
 
 ```
 route:
-  group_by: [Alertname]
-  # Send all notifications to me.
-  receiver: email-me
-
-receivers:
-- name: email-me
-  email_configs:
-  - to: receiver@gmail.com
-    from: sender@gmail.com
-    smarthost: smtp.gmail.com:587
-    auth_username: "sender@gmail.com"
-    auth_identity: "sender@gmail.com"
-    auth_password: "**********************"
+  # A default receiver
+  receiver: slack
 ```
+
+* Refer to the [prometheus alert manager configuration documentation](https://prometheus.io/docs/alerting/latest/configuration/) for detailed options. 
+
+Refer to the following integration sections provides guidance to integrate with alertmanager 
+
+1. [Slack Integration](./prometheus_slack_Integration_and_Notification.md)
+1. [PagerDuty Integration ](./prometheus_PagerDuty_Integration_and_Notification.md)
+1. [MS Teams Integration](./prometheus_msteams_Integration_and_Notification.md)
+
+* Create alert manager service
 
 ```
 vi /etc/systemd/system/alertmanager.service
@@ -82,18 +94,23 @@ ExecStart=/usr/local/bin/alertmanager \
 [Install]
 WantedBy=multi-user.target
 ```
+
+* Run the following commands to start and enable the service.
 ```
 systemctl daemon-reload
 systemctl start alertmanager
 systemctl status alertmanager
+systemctl enable alertmanager
 ```
-TODO write enable command
 
-## Configuring Alert
+
+## Configuring AlertManager with Prometheus
+
+* Add the following configuration in Prometheus
+
 ```
 vi /etc/prometheus/prometheus.yml
 ```
-# Alertmanager configuration
 
 ```
 alerting:
@@ -101,13 +118,11 @@ alerting:
     - static_configs:
         - targets:
             - localhost:9093
-```
-
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-```
 rule_files:
   - "system_rules.yml"
 ```
+
+* Creates all the system specific rules in the following file
 
 ```
 vi /etc/prometheus/system_rules.yml
@@ -140,8 +155,6 @@ systemctl status prometheus
 ```
 
 
-https://github.com/prometheus/node_exporter
 
-https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/
 
 https://github.com/prometheus-msteams/prometheus-msteams
