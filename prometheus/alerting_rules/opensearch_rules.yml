@@ -1,0 +1,59 @@
+groups:
+ - name: ES Cluster Health Check
+   rules:
+   - alert: ESClusterHealthCheck
+     expr: opensearch_cluster_nodes_number < 2
+     for: 5m
+     labels:
+       severity: page
+     annotations:
+       title: ' Insatnce {{ $labels.instance }} Down'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.'
+ - name: ES Heap Usage Factor
+   rules:
+   - alert: ES Heap Usage Factor
+     expr: opensearch_jvm_mem_heap_used_percent > 95
+     for: 5m
+     labels:
+       severity: page
+     annotations:
+       title: ' Insatnce {{ $labels.instance }} Down'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.'
+ - name: ES Performance Alert
+   rules:
+   - alert: ESPerformanceAlert
+     expr: opensearch_index_search_fetch_time_seconds > 30
+     for: 10m
+     annotations:
+       title: ' Insatnce {{ $labels.instance }} Down'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 10 minutes.'
+ - name: ES Performance Alert (Page)
+   rules:
+   - alert: ESPerformanceAlertPage
+     expr: opensearch_index_search_fetch_time_seconds > 60
+     for: 10m
+     labels:
+       severity: page
+     annotations:
+       title: ' Insatnce {{ $labels.instance }} Down'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 10 minutes.'
+ - name: OpeaSearch Indexing latency Alert
+   rules:
+   - alert: OSIndexinglatencyAlert
+     expr: opensearch_index_indexing_index_time_seconds > 500
+     for: 15m
+     labels:
+       severity: page
+     annotations:
+       title: ' Insatnce {{ $labels.instance }} Down'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 15 minutes.'
+ - name: OpensearchSearch latency Alert
+   rules:
+   - alert: OSIndexinglatencyAlert
+     expr: opensearch_index_search_query_time_seconds > 60
+     for: 15m
+     labels:
+       severity: page
+     annotations:
+       title: ' Insatnce {{ $labels.instance }} Down'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 15 minutes.'
