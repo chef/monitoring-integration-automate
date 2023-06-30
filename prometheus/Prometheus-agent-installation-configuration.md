@@ -723,13 +723,13 @@ Complete this procedure to reconfigure Prometheus server with exporter data coll
 
 This change will require promethous services to be restarted. Refer to the [Step 7: Configure Prometheus with the Node Exporter data collector](#step-7-configure-prometheus-with-the-node-exporter-data-collector) for detailed steps.
 
-## Configure Prometheus with OpenSeach Plugin
+## Configure Prometheus with OpenSearch Plugin
 
 ## Step 1 : Install OpenSearch Plugin
-Refer to the [Prometheus exporter OpenSeach Plugin](https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases). 
+Refer to the [Prometheus exporter OpenSearch Plugin](https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases). 
 
 ** Disclaimer ** 
-  The plugin is not supported by prometheus community, However it is supported by Opensearch community. Please refer to the plugin documnet for any future changes.  
+  The plugin is not supported by prometheus community, However it is supported by Opensearch community. Please refer to the plugin document for any future changes.  
   
   The following steps provides guidance to install and configure opensearch plugin for chef managed opensearch environment only.
 
@@ -742,7 +742,7 @@ opensearch -V
 
 * Copy the link for the correct version from [Prometheus exporter OpenSeach Plugin repo](https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/tags).
 
-* Eecute the following steps on each opensearch node.
+* Execute the following steps on each opensearch node.
 
 * Replace the link in the following command and install the plugin
 
@@ -750,7 +750,7 @@ opensearch -V
 opensearch-plugin install https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases/download/1.3.7.0/prometheus-exporter-1.3.7.0.zip
 ```
 
-* Reboot the openserch node
+* Reboot the opensearch node
 
 ```
 reboot
@@ -790,7 +790,158 @@ vi /etc/prometheus/prometheus.yml
 systemctl restart prometheus.service
 ```
 
-## Step 3: Verfiy opensearch metrics
-* Browse to the prometheus url, click on Graph, Start typeing opensearch in expression and opensarch metrics should start appaaring as shown below
+## Step 3: Verify opensearch metrics
+* Browse to the prometheus url, click on Graph, Start typing opensearch in expression and opensearch metrics should start appearing as shown below
 
 ![opensearch](./images/opensearch.png)
+
+## Configure Blackbox exporter for website monitoring
+
+## Step 1: Complete the prerequisites
+  Before you can install Prometheus on an Amazon EC2 instance, you must do the following:
+
+* Create an instance in EC2. We recommend using the Ubuntu 20.04 LTS blueprint for your instance. 
+
+* Open ports 9101 on the firewall of your new instance. Prometheus blackbox exporter will requires port 9115 to be open.
+
+
+## Step 2: Add user to your EC2 instance
+Complete the following procedure to connect to your EC2 instance using SSH and add users. Skip this step of user already exists. This procedure creates the following Linux user accounts:
+
+* exporter – This account is used to configure the exporter extension.
+
+These user accounts are created for user services or permissions beyond the scope of this setup.
+
+* Connect using SSH to the EC2 instance and enter the following commands to create a Linux user account for exporter.
+
+```
+sudo useradd --no-create-home --shell /bin/false exporter
+```
+
+## Step 3: Download, Install and configure Prometheus blackbox exporter
+Complete the following procedure to download the Prometheus blackbox-exporter binary packages to your EC2 instance.
+
+* Open a web browser on your local computer and browse to the [Prometheus community blackbox-exporter release page](https://github.com/prometheus/blackbox_exporter/releases) .
+
+* From the lit, select the Operating system linux and Architecture amd64.
+
+* Copy download link for Prometheus
+* * Connect to your EC2 instance using SSH.
+
+Enter the following command to change directories to your home directory.
+```
+cd ~
+```
+* Enter the following command to download the exporter binary packages to your instance.
+
+curl -LO exporter-download-address
+
+* Replace exporter-download-address with the address that you copied in the previous step of this procedure. The command should look like the following example when you add the address.
+```
+curl -LO https://github.com/prometheus/blackbox_exporter/releases/download/v0.24.0/blackbox_exporter-0.24.0.linux-amd64.tar.gz
+```
+* Run the following command(s) one by one to extract the contents of the downloaded Exporter files.
+```
+tar -xvf blackbox_exporter-0.24.0.linux-amd64.tar.gz
+```
+* Several subdirectories are created after the contents of the downloaded files are extracted.
+
+* Enter the following command to copy the exporter file from the ./exporter* subdirectory to the /usr/local/bin programs directory.
+```
+cp blackbox_exporter-0.24.0.linux-amd64/blackbox_exporter /usr/local/bin/
+```
+* Enter the following command to change the ownership of the file to the exporter user that you created earlier in this tutorial.
+```
+sudo chown exporter:exporter /usr/local/bin/blackbox_exporter
+```
+
+* Enter the following command to create environment file for the exporter.
+```
+mkdir /opt/blackbox_exporter
+sudo vi /opt/blackbox_exporter/blackbox.yml
+```
+
+* Add the following content to the yaml file.
+Update the following parameters for your environment. 
+
+```
+modules:
+  http_2xx:
+    prober: http
+    http:
+      valid_http_versions: ["HTTP/1.1", "HTTP/2"]
+      method: "GET"
+      headers:
+        Host: vhost.example.com
+      tls_config:
+        insecure_skip_verify: true
+      valid_status_codes: [200]
+```
+
+## Step 4: Start Blackbox Exporter
+Complete the following procedure to start the Exporter service.
+
+* Connect to your EC2 instance using SSH.
+
+* Enter the following command to create a systemd service file for exporter using Vim.
+```
+vi /etc/systemd/system/blackbox_exporter.service
+```
+* Add the following lines of text into the file to configure exporter as a service. 
+
+```
+[Unit]
+Description=BlackBox Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=exporter
+Group=exporter
+Type=simple
+ExecStart=/usr/local/bin/blackbox_exporter --config.file=/opt/blackbox_exporter/blackbox.yml
+
+[Install]
+WantedBy=multi-user.target
+```
+
+* Save your changes and quit Vim.
+
+* Enter the following command to reload the systemd process.
+```
+sudo systemctl daemon-reload
+```
+* Enter the following command to start the exporter service.
+```
+sudo systemctl start blackbox_exporter
+```
+* Enter the following command to check the status of the exporter service.
+```
+sudo systemctl status blackbox_exporter
+```
+* Enter the following command to enable Blackbox Exporter to start when the instance is booted.
+
+```
+sudo systemctl enable blackbox_exporter
+```
+
+## Step 5: ReConfigure Prometheus with the Progres Exporter data collector
+
+
+Complete this procedure to reconfigure Prometheus server with exporter data collector. 
+
+* Append the /etc/prometheus/prometheus.yml file with the following content 
+### For Chef URLS
+Refer to [prometheus.yml](./prometheus.yml) job_name: 'chef-automate-url' and job_name: 'chef-server-url' configurations
+
+### For automate services configuration
+Refer to [prometheus.yml](./prometheus.yml) job_name: 'automate-services' configurations
+
+
+### For chef server services configuration
+Refer to [prometheus.yml](./prometheus.yml) job_name: 'chef-server-services' configurations
+
+
+This change will require prometheus services to be restarted. Refer to the [Step 7: Configure Prometheus with the Node Exporter data collector](#step-7-configure-prometheus-with-the-node-exporter-data-collector) for detailed steps.
+
+### For Chef Health Metrics
