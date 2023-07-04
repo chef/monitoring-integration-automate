@@ -10,7 +10,7 @@ ELK Stack is an open-source software which allows search and visualization of lo
 
 A fourth component, Filebeat will be used to push logs from Chef Automate HA nodes to Logstash.
 
-This document does not cover the installation and system requirements for ELK Stack due to the many factors that should be considered for this type of deployment. The Elastic site (https://elastic.co) should be referenced for details on sizing and configuration of ELK Stack. 
+This document does not cover the installation and system requirements for ELK Stack due to the many factors that should be considered for this type of deployment. The Elastic site (https://elastic.co) should be referenced for details on sizing and configuration of ELK Stack.
 
 ## Prerequisites
 
