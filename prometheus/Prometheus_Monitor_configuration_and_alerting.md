@@ -2,24 +2,38 @@
 # Monitor configuration and alerting
 
 ## Enabling and Configure Metrics
-### Node Exporter Metrics
-Enable the required metrics for monitoring by added required collectors to the exporters.
 
-* In this section node exporter is configured with required collectors. Refer to the [node exporter documentation](https://github.com/prometheus/node_exporter) for more collectors.
+Metrics are enabled to alert the team members and present the performance on the dashboards
 
-* The following service configuration file for node exporter will enable the required metrics for chef automate monitoring
+### System Level Metrics
+In Prometheus, the following exporters are enabled to collect required system level metrics for the Chef Automate HA
+* Node Exporter
 
-```
-TODO Add the final node service configuration.
-```
+The Node exporter provides system level metrics e.g. CPU, disk, memory etc. Refer to the [node exporter documentation](https://github.com/prometheus/node_exporter) to learn full capabilities.
 
-### Configure Automate Monitoring
+Refer to the [node exporter service configuration file](./exporter_service_files/node_exporter.service) for the chef managed Automate HA deployment. 
 
-#### Configure Automate Metrics
+### Configure Application Level Monitoring
 
-#### Configure Chef Infra Metrics
+This section explains the process to monitor Automate HA application services.
+
+* Install the blackbox exporter on the following servers.
+  - All Chef Automate Frontend Servers
+  - All Chef Infra Frontend Servers
+  - Any other Server to Monitoring Load Balancers
+
+* Refer to [blackbox exporter service](./exporter_service_files/blackbox_exporter.service) and [black box configuration](./exporter_configs/blackbox_exporter.yml) files.
+
+* Configure prometheus.yml file on prometheus server to scape metrics for various chef services. Refer to [prometheus.yml](./TODO ADD Link here) for the following job configurations
+  - chef-server-url - Monitors elastic load balancer for chef infra frontend servers
+  - chef-automate-url -  Monitors elastic load balancer for chef automate frontend servers
+  - chef-server-services.* - Monitors all services running on each chef infra frontend servers
+  - automate-services.* - Monitors all services running on each chef automate frontend servers
+
+### Configure Backend Service Monitoring
 
 #### Configure Postgres Metrics
+  The postgres exporter is installed on each node running postgres. Refer to [postgres exporter documentation](TODO Add Link here) to learn more about capabilities. Refer to the [postgres exporter services](./exporter_service_files/postgres_exporter.service) and [postgres exporter config]() files
 
 #### Configure OpenSearch Metrics
 
