@@ -15,4 +15,3 @@ instances:
     http_response_status_code: 200
     service: auth-service
     timeout: 10
-    
