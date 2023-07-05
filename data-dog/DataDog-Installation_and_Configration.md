@@ -22,7 +22,7 @@ Data dog agent to be configured on:
    + Chef-managed OpenSearch nodes
    + Chef-managed Postgres nodes
    + Bastion node
-     
+
 
 B. Automate HA with AWS deployment with Managed services
 
@@ -33,7 +33,7 @@ B. Automate HA with AWS deployment with Managed services
 2. AWS account integration with DataDog
 
 3. Postgres YML configuration on Automate node
-     
+
 
 
 **Download and Installation - Generic**
@@ -116,7 +116,8 @@ https://app.datadoghq.com/infrastructure
 |/etc/datadog-agent/conf.d/elastic.d/conf.yaml | **OpenSearch Metrics - agent config** - This config keep information regarding types on OpenSearch metrics that need to be sent to data dog. Reference location for actual values: [Elasticsearch](YML_Files/elastic.yaml) ||
 |/etc/datadog-agent/conf.d/postgres.d/conf.yaml|**Postgres Metrics - agent config** This config keeps information regarding types on Postgres metrics that need to be sent to data dog. Reference location for actual values: [Postgres](YML_Files/postgres.yaml) ||
 |/etc/datadog-agent/conf.d/disk.d/conf.yaml|**Disk Metrics - All nodes** The Disk check is enabled by default, and the Agent collects metrics on all local partitions. Reference location for actual values: [Disk Metrics](YML_Files/diskd.yaml) |
-|/etc/datadog-agent/conf.d/nginx.d/conf.yaml|**Nginx** - The Datadog Agent can collect many metrics from NGINX instances, including (but not limited to):: Total requests, Connections such as accepted, handled, and active|
+|/etc/datadog-agent/conf.d/http_check.d/conf.yaml|**Bastion Host Metrics - agent config** Bastion host related application level services health check metrics are captured here as part of HTTP checks. Reference location for actual values: [Bastion](YML_Files/bastion_httpd.yaml)|
+|/etc/datadog-agent/conf.d/nginx.d/conf.yaml|**Nginx** - The Datadog Agent can collect many metrics from NGINX instances, including (but not limited to):: Total requests, Connections such as accepted, handled, and active. Reference location for actual values: [Nginx](YML_Files/nginx.yml)|
 
 * For centralized logging metrics send to datadog, pls follow these references configurations :  [DataDog-Centralise_Logs_Management](DataDog-Centralise_Logs_Management.md)
 
@@ -160,7 +161,7 @@ Datadog agent will read and collects the metrics from all the instances and mana
 
 + Exit out of the Automate Instance and back to the bastion host.
 
-**Additional steps required for Automate HA deployment with Managed services** 
+**Additional steps required for Automate HA deployment with Managed services**
 
 Update hostname in postgres.yaml
 Given below are the steps to Update hostname in postgres.yaml:
