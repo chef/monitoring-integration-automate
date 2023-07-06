@@ -26,11 +26,11 @@ The following alerting metrics are collected from chef managed deployment. The s
 | OpenSearch  | opensearch_fs_io_total_operations            |
 | OpenSearch  | opensearch_fs_io_total_read_bytes            |
 | OpenSearch  | opensearch_fs_io_total_read_operations
-opensearch_fs_io_total_write_bytes            |
+| OpenSearch  | opensearch_fs_io_total_write_bytes            |
 | OpenSearch  | opensearch_fs_io_total_write_operations            |
 | OpenSearch  | opensearch_fs_path_available_bytes            |
 | OpenSearch  | opensearch_fs_path_free_bytes
-opensearch_fs_path_total_bytes            |
+| OpenSearch  | opensearch_fs_path_total_bytes            |
 | OpenSearch  | opensearch_fs_total_available_bytes            |
 | OpenSearch  | opensearch_fs_total_free_bytes            |
 | OpenSearch  | opensearch_fs_total_total_bytes            |
@@ -236,7 +236,6 @@ opensearch_fs_path_total_bytes            |
 | OpenSearch  | opensearch_transport_tx_bytes_count            |
 | OpenSearch  | opensearch_transport_tx_packets_count            |
 
-
 | Postgres                |
 | HTTP connection         | probe_http_status_code                                               |
 | System Disk             | node_filesystem_avail_bytes                                          |
@@ -245,4 +244,4 @@ opensearch_fs_path_total_bytes            |
 | System Memory           | node_memory_MemAvailable_bytes                                       |
 | System Memory           | node_memory_MemTotal_bytes                                           |
 | System CPU              | node_cpu_seconds_total                                               |
-| Host Monitoring         |                                                                      |
+| Host Monitoring         |                                                            
