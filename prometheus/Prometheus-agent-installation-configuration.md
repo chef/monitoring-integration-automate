@@ -449,7 +449,7 @@ sudo useradd --no-create-home --shell /bin/false exporter
 ## Step 3: Download, Install and configure Prometheus progres exporter
 Complete the following procedure to download the Prometheus postgres-exporter binary packages to your EC2 instance.
 
-* Open a web browser on your local computer and browse to the [Prometheus community progres-exporter release page](https://github.com/prometheus-community/postgres_exporter/releases) .
+* Open a web browser on your local computer and browse to the [Prometheus community postgres-exporter release page](https://github.com/prometheus-community/postgres_exporter/releases) .
 
 * From the lit, select the Operating system linux and Architectur amd64.
 
@@ -483,21 +483,39 @@ cp -p ./postgres_exporter-0.12.1.linux-amd64/postgres_exporter /usr/local/bin/
 sudo chown exporter:exporter /usr/local/bin/postgres_exporter
 ```
 
+* Identify the postgres leader by running the following command on the bastion host.
+
+```
+chef-automate status
+```
+
+* Connect to the leader node via ssh and connect  to the postgres sql to create user with required permissions with the following commands. Note: DO NOT repeat these commands on follower nodes of postgess cluster.
+
+```
+/hab/pkgs/core/postgresql-client/9.6.24/20220311205413/bin/psql --host=localhost --dbname=postgres --username=admin
+```
+then execute the following command at the psql prompt.
+```
+create user prometheus with password 'prometheus';
+grant SELECT ON pg_stat_database to prometheus;
+grant pg_monitor to prometheus;
+```
+
 * Enter the following command to create environment file for the exporter.
 ```
 mkdir /opt/postgres_exporter
 sudo vi /opt/postgres_exporter/postgres_exporter.env
 ```
 
-* Add the following content to the progres-exporter environment file.
-Update the following parameters for your envionment. 
+* Add the following content to the postgres-exporter environment file.
+Update the following parameters for your environment. 
 
 username: admin  
 password: admin  
 url: admin:admin@localhost  
 
 ```
-DATA_SOURCE_NAME="postgresql://admin:admin@localhost:5432/?sslmode=disable"
+DATA_SOURCE_NAME="postgresql://prometheus:prometheus@localhost:5432/postgres"
 ```
 
 ## Step 4: Start Progres Exporter
