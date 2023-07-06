@@ -25,11 +25,11 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
         
     1. Verify Pre-requisites(TODO add link here)
 
-    1. [Download, Install and Configure Prometheus postgres exporter](#step-3-download-install-and-configure-prometheus-progres-exporter)
+    1. [Download, Install and Configure Prometheus postgres exporter](#step-3-download-install-and-configure-prometheus-postgres-exporter)
 
-    1. [Start Progres Exporter](#step-4-start-progres-exporter)
+    1. [Start postgres Exporter](#step-4-start-postgres-exporter)
 
-    1. [ReConfigure Prometheus with the Progres Exporter data collector](#step-5-reconfigure-prometheus-with-the-progres-exporter-data-collector)
+    1. [ReConfigure Prometheus with the postgres Exporter data collector](#step-5-reconfigure-prometheus-with-the-postgres-exporter-data-collector)
 
 
 * Prometheus OpenSearch Plugin Setup
@@ -39,7 +39,7 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
 
     1. [Verify OpenSearch Metrics](#step-3-verfiy-opensearch-metrics)
 
-    1. [Start Opensearch Exporter](#step-4-start-progres-exporter)  TODO Correct this section
+    1. [Start Opensearch Exporter](#step-4-start-postgres-exporter)  TODO Correct this section
 
 # Prometheus Exporter Prerequisites
 
@@ -51,9 +51,9 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
 * Open ports 9090 and 9100 on the firewall of your new instance. Each Prometheus exporter run on a separate ports. Refer to the exporter's documentation for default port configurations.  The following exporters and their respective ports are used in this setup. Please ensure that all required ports are open from prometheus server to exporters.
 | Exports          | Firewall Ports |
 | Node             | 9100           |
-| Postgres         | 
-| Nginx            |
-| Blackbox         |
+| Postgres         | 9101           |
+| Nginx            | 9113           |
+| Blackbox         | 9115           |
 
 ## Step 2: Add users and local system directories to your EC2 instance
 Complete the following procedure to connect to your EC2 instance using SSH and add users and system directories. This procedure creates the following Linux user accounts:
@@ -68,7 +68,15 @@ enter the following commands one by one to create two Linux user accounts, prome
 sudo useradd --no-create-home --shell /bin/false exporter
 ```
 
-# Node Exporter Installation
+# Prometheus Node Exporter Setup
+
+## Scope
+    These steps will be repeated on all of the following servers.
+      * Automate node
+      * Chef Infra Server
+      * Chef managed OpenSearch
+      * Chef managed Postgres
+      * Bastion node
 
 ## Step 1: Verify Prerequisites
 Ensure that exporter pre-requisite configuration is completed. Refer to [Pre-requisites section](#prometheus-exporter-prerequisites)
@@ -76,7 +84,7 @@ Ensure that exporter pre-requisite configuration is completed. Refer to [Pre-req
 ## Step 2: Download and Install node exporter binary packages
 Complete the following procedure to download the Prometheus node exporter binary packages to your EC2 instance.
 
-* Open a web browser on your local computer and browse to the [Prometheus downloads page](https://prometheus.io/download/) TODO Verify this link for exporters.
+* Open a web browser on your local computer and browse to the [Prometheus downloads page](https://prometheus.io/docs/instrumenting/exporters/).
 
 * Copy download link for node exporter
 
@@ -118,9 +126,9 @@ Complete the following procedure to start the Node Exporter service.
 
 * Connect to your EC2 instance using SSH.
 
-* Enter the following command to create a systemd service file for node_exporter using Vim.
+* Enter the following command to create a systemd service file for node_exporter using vi.
 ```
-sudo vim /etc/systemd/system/node_exporter.service
+sudo vi /etc/systemd/system/node_exporter.service
 ```
 * Add the following lines of text into the file. This will configure node_exporter with monitoring collectors for CPU load, file system usage, and memory resources.
 TODO : Update the final config.
@@ -134,18 +142,13 @@ After=network-online.target
 User=exporter
 Group=exporter
 Type=simple
-ExecStart=/usr/local/bin/node_exporter --collector.disable-defaults \
---collector.meminfo \
---collector.loadavg \
---collector.filesystem
+ExecStart=/usr/local/bin/node_exporter
 
 [Install]
 WantedBy=multi-user.target
 ```
-Note:
-These instructions disable default machine metrics for Node Exporter. For a complete list of metrics available for Ubuntu, see the Prometheus node_exporter man page in the Ubuntu documentation.
 
-* Save your changes and quit Vim.
+* Save your changes and quit vi.
 
 * Enter the following command to reload the systemd process.
 ```
@@ -174,10 +177,6 @@ root@ip-10-100-10-131:/etc/prometheus# sudo systemctl status node_exporter
 Jun 19 12:11:33 ip-10-100-10-131 node_exporter[2015]: ts=2023-06-19T12:11:33.353Z caller=node_exporter.go:182 level=info msg="Starting node_exporter" version="(v>
 Jun 19 12:11:33 ip-10-100-10-131 node_exporter[2015]: ts=2023-06-19T12:11:33.353Z caller=node_exporter.go:183 level=info msg="Build context" build_context="(go=g>
 Jun 19 12:11:33 ip-10-100-10-131 node_exporter[2015]: ts=2023-06-19T12:11:33.354Z caller=filesystem_common.go:111 level=info collector=filesystem msg="Parsed fla>
-Jun 19 12:11:33 ip-10-100-10-131 node_exporter[2015]: ts=2023-06-19T12:11:33.354Z caller=filesystem_common.go:113 level=info collector=filesystem msg="Parsed fla>
-Jun 19 12:11:33 ip-10-100-10-131 node_exporter[2015]: ts=2023-06-19T12:11:33.354Z caller=node_exporter.go:108 level=info msg="Enabled collectors"
-Jun 19 12:11:33 ip-10-100-10-131 node_exporter[2015]: ts=2023-06-19T12:11:33.354Z caller=node_exporter.go:115 level=info collector=filesystem
-Jun 19 12:11:33 ip-10-100-10-131 node_exporter[2015]: ts=2023-06-19T12:11:33.354Z caller=node_exporter.go:115 level=info collector=loadavg
 Jun 19 12:11:33 ip-10-100-10-131 node_exporter[2015]: ts=2023-06-19T12:11:33.354Z caller=node_exporter.go:115 level=info collector=meminfo
 Jun 19 12:11:33 ip-10-100-10-131 node_exporter[2015]: ts=2023-06-19T12:11:33.354Z caller=node_exporter.go:199 level=info msg="Listening on" address=:9100
 Jun 19 12:11:33 ip-10-100-10-131 node_exporter[2015]: ts=2023-06-19T12:11:33.354Z caller=tls_config.go:195 level=info msg="TLS is disabled." http2=false
@@ -189,7 +188,7 @@ lines 1-19/19 (END)
 ```
 sudo systemctl enable node_exporter
 ```
-## Step 7: Configure Prometheus with the Node Exporter data collector
+## Step 7: Configure Prometheus for data collector
 Complete the following procedure to configure Prometheus with the Node Exporter data collector. You do this by adding a new job_name parameter for node_exporter in the prometheus.yml file.
 
 * Connect to your EC2 instance using SSH.
@@ -200,31 +199,21 @@ Complete the following procedure to configure Prometheus with the Node Exporter 
   static_configs:
     - targets: ["<ip_addr>:9100"]
 ```
+
 * The modified parameter in the prometheus.yml file should look like the following example.
 ``` 
 scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: "prometheus"
-
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
-
-    static_configs:
-      - targets: ["10.100.10.131:9090"]
-
   - job_name: "node-exporter"
     static_configs:
       - targets: ["10.100.10.131:9100"]
 ```
 
-Static configs for Node Exporter
-
-Note the following:
-Node Exporter listens to port 9100 for the prometheus server to scrape the data. Confirm that you followed the steps for creating instance firewall rules as outlined in the Step 1: Complete the prerequisites section of this tutorial.
+Static configs for Node Exporter  
 
 * As with the configuration of the prometheusjob_name, replace <ip_addr> with the static IP address that's attached to your EC2 instance.
 
-* Save your changes and quit Vim.
+* Save your changes and quit vi.
 
 * Enter the following command to restart the Prometheus service so that the changes to the configuration file can take effect.
 ```
@@ -247,10 +236,6 @@ root@ip-10-100-10-131:/etc/prometheus# sudo systemctl status prometheus
              └─2090 /usr/local/bin/prometheus --config.file /etc/prometheus/prometheus.yml --storage.tsdb.path /var/lib/prometheus/ --web.console.templates=/etc/>
 
 Jun 19 12:23:18 ip-10-100-10-131 prometheus[2090]: ts=2023-06-19T12:23:18.424Z caller=head.go:613 level=info component=tsdb msg="WAL segment loaded" segment=0 ma>
-Jun 19 12:23:18 ip-10-100-10-131 prometheus[2090]: ts=2023-06-19T12:23:18.432Z caller=head.go:613 level=info component=tsdb msg="WAL segment loaded" segment=1 ma>
-Jun 19 12:23:18 ip-10-100-10-131 prometheus[2090]: ts=2023-06-19T12:23:18.433Z caller=head.go:613 level=info component=tsdb msg="WAL segment loaded" segment=2 ma>
-Jun 19 12:23:18 ip-10-100-10-131 prometheus[2090]: ts=2023-06-19T12:23:18.433Z caller=head.go:619 level=info component=tsdb msg="WAL replay completed" checkpoint>
-Jun 19 12:23:18 ip-10-100-10-131 prometheus[2090]: ts=2023-06-19T12:23:18.436Z caller=main.go:993 level=info fs_type=EXT4_SUPER_MAGIC
 Jun 19 12:23:18 ip-10-100-10-131 prometheus[2090]: ts=2023-06-19T12:23:18.436Z caller=main.go:996 level=info msg="TSDB started"
 Jun 19 12:23:18 ip-10-100-10-131 prometheus[2090]: ts=2023-06-19T12:23:18.436Z caller=main.go:1177 level=info msg="Loading configuration file" filename=/etc/prom>
 Jun 19 12:23:18 ip-10-100-10-131 prometheus[2090]: ts=2023-06-19T12:23:18.439Z caller=main.go:1214 level=info msg="Completed loading of configuration file" filen>
@@ -261,7 +246,8 @@ lines 1-19/19 (END)
 
 * Open a web browser on your local computer and go to the following web address to view the Prometheus management interface.
 
-http:<ip_addr>:9090
+http:<ip_addr>:9090  
+
 * Replace <ip_addr> with the static IP address of your EC2 instance. You should see a dashboard.
 
 The Prometheus dashboard
@@ -276,7 +262,9 @@ Targets on the Prometheus dashboard
 
 * The environment is now properly set up for collecting metrics and monitoring the server.
 
+
 ## Configure Prometheus Agent (node-exporter)
+
 ### Scope
     These steps will be repeated on all of the following servers.
       * Automate node
@@ -349,9 +337,9 @@ Complete the following procedure to start the Node Exporter service.
 
 * Connect to your EC2 instance using SSH.
 
-* Enter the following command to create a systemd service file for node_exporter using Vim.
+* Enter the following command to create a systemd service file for node_exporter using vi.
 ```
-sudo vim /etc/systemd/system/node_exporter.service
+sudo vi /etc/systemd/system/node_exporter.service
 ```
 * Add the following lines of text into the file. This will configure node_exporter with monitoring collectors for CPU load, file system usage, and memory resources.
 ```
@@ -375,7 +363,7 @@ WantedBy=multi-user.target
 Note:
 These instructions disable default machine metrics for Node Exporter. For a complete list of metrics available for Ubuntu, see the Prometheus node_exporter man page in the Ubuntu documentation.
 
-* Save your changes and quit Vim.
+* Save your changes and quit vi.
 
 * Enter the following command to reload the systemd process.
 ```
@@ -423,38 +411,27 @@ sudo systemctl enable node_exporter
 ## Step 5: ReConfigure Prometheus with the Node Exporter data collector
 Complete this procedure to reconfigure Prometheus with each  Node Exporter data collector. Refer to the [Step 7: Configure Prometheus with the Node Exporter data collector](#step-7-configure-prometheus-with-the-node-exporter-data-collector).
 
-## Configure Prometheus Postgres Exporter
+# Prometheus Postgres Exporter Setup
 
-## Step 1: Complete the prerequisites
-  Before you can install Prometheus on an Amazon EC2 instance, you must do the following:
+## Scope
+    These steps will be repeated on all of the following servers.
+      * Chef managed Postgres nodes
 
-* Create an instance in EC2. We recommend using the Ubuntu 20.04 LTS blueprint for your instance. 
+    An additional server may be configured with postgres exporter to collect metrics from AWS hosted postgres.
 
-* Open ports 9101 on the firewall of your new instance. Prometheus progres exporter will requires port 9101 to be open.
+## Step 1: Verify Prerequisites
+Ensure that exporter pre-requisite configuration is completed. Refer to [Pre-requisites section](#prometheus-exporter-prerequisites)
 
-
-## Step 2: Add user to your EC2 instance
-Complete the following procedure to connect to your EC2 instance using SSH and add users. Skip this step of user already exists. This procedure creates the following Linux user accounts:
-
-* exporter – This account is used to configure the exporter extension.
-
-These user accounts are created for user services or permissions beyond the scope of this setup.
-
-* Connect using SSH to the EC2 instance and enter the following commands to create two Linux user accounts, prometheus and exporter.
-
-```
-sudo useradd --no-create-home --shell /bin/false exporter
-```
-
-## Step 3: Download, Install and configure Prometheus progres exporter
+## Step 2: Download, Install and configure Prometheus postgres exporter
 Complete the following procedure to download the Prometheus postgres-exporter binary packages to your EC2 instance.
 
 * Open a web browser on your local computer and browse to the [Prometheus community postgres-exporter release page](https://github.com/prometheus-community/postgres_exporter/releases) .
 
-* From the lit, select the Operating system linux and Architectur amd64.
+* From the lit, select the Operating system linux and Architecture amd64.
 
 * Copy download link for Prometheus
-* * Connect to your EC2 instance using SSH.
+
+* Connect to your EC2 instance using SSH.
 
 Enter the following command to change directories to your home directory.
 ```
@@ -489,12 +466,12 @@ sudo chown exporter:exporter /usr/local/bin/postgres_exporter
 chef-automate status
 ```
 
-* Connect to the leader node via ssh and connect  to the postgres sql to create user with required permissions with the following commands. Note: DO NOT repeat these commands on follower nodes of postgess cluster.
+* Connect to the leader node via ssh and connect  to the postgres sql to create user with required permissions with the following commands. Note: DO NOT repeat these commands on follower nodes of postgres cluster.
 
 ```
 /hab/pkgs/core/postgresql-client/9.6.24/20220311205413/bin/psql --host=localhost --dbname=postgres --username=admin
 ```
-then execute the following command at the psql prompt.
+use the default admin password to connect and then execute the following command at the psql prompt.
 ```
 create user prometheus with password 'prometheus';
 grant SELECT ON pg_stat_database to prometheus;
@@ -508,22 +485,17 @@ sudo vi /opt/postgres_exporter/postgres_exporter.env
 ```
 
 * Add the following content to the postgres-exporter environment file.
-Update the following parameters for your environment. 
-
-username: admin  
-password: admin  
-url: admin:admin@localhost  
 
 ```
 DATA_SOURCE_NAME="postgresql://prometheus:prometheus@localhost:5432/postgres"
 ```
 
-## Step 4: Start Progres Exporter
+## Step 3: Start Postgres Exporter
 Complete the following procedure to start the Exporter service.
 
 * Connect to your EC2 instance using SSH.
 
-* Enter the following command to create a systemd service file for exporter using Vim.
+* Enter the following command to create a systemd service file for exporter using vi.
 ```
 vi /etc/systemd/system/postgres_exporter.service
 ```
@@ -546,7 +518,7 @@ Restart=always
 WantedBy=multi-user.target
 ```
 
-* Save your changes and quit Vim.
+* Save your changes and quit vi.
 
 * Enter the following command to reload the systemd process.
 ```
@@ -574,8 +546,6 @@ root@ip-10-100-12-65:~# sudo systemctl status postgres_exporter
 
 Jun 21 07:56:12 ip-10-100-12-65 systemd[1]: Started Prometheus exporter for Postgresql.
 Jun 21 07:56:12 ip-10-100-12-65 postgres_exporter[36586]: ts=2023-06-21T07:56:12.637Z caller=main.go:86 level=error msg="Error loading c>
-Jun 21 07:56:12 ip-10-100-12-65 postgres_exporter[36586]: ts=2023-06-21T07:56:12.637Z caller=proc.go:250 msg="Excluded databases" databa>
-Jun 21 07:56:12 ip-10-100-12-65 postgres_exporter[36586]: ts=2023-06-21T07:56:12.637Z caller=tls_config.go:232 level=info msg="Listening>
 Jun 21 07:56:12 ip-10-100-12-65 postgres_exporter[36586]: ts=2023-06-21T07:56:12.637Z caller=tls_config.go:235 level=info msg="TLS is di>
 Jun 21 07:58:52 ip-10-100-12-65 postgres_exporter[36586]: ts=2023-06-21T07:58:52.564Z caller=server.go:74 level=info msg="Established ne>
 Jun 21 07:58:52 ip-10-100-12-65 postgres_exporter[36586]: ts=2023-06-21T07:58:52.574Z caller=postgres_exporter.go:647 level=info msg="Se>
@@ -588,17 +558,17 @@ lines 1-16/16 (END)
 sudo systemctl enable postgres_exporter
 ```
 
-## Step 5: ReConfigure Prometheus with the Progres Exporter data collector
-Complete this procedure to reconfigure Prometheus server with exporter data collector. 
+## Step 4: ReConfigure Prometheus with the postgres Exporter data collector
+Complete this procedure to reconfigure Prometheus server with exporter data collector for each postgres node. 
 
 * Append the /etc/prometheus/prometheus.yml file with the following content 
 ```
-  - job_name: "progress-exporter-node-01"
+  - job_name: "postgres-exporter-node-01"
     static_configs:
       - targets: ["10.100.12.65:9101"]
 ```
 
-This change will require promethous services to be restarted. Refer to the [Step 7: Configure Prometheus with the Node Exporter data collector](#step-7-configure-prometheus-with-the-node-exporter-data-collector) for detailed steps.
+This change will require prometheus services to be restarted. Refer to the [Step 7: Configure Prometheus with the Node Exporter data collector](#step-7-configure-prometheus-with-the-node-exporter-data-collector) for detailed steps.
 
 ## Configure Prometheus with OpenSearch Plugin
 
@@ -617,7 +587,7 @@ opensearch -V
 
 * Chef automate HA uses opensearch version 1.3.7 at the time of this documentation creation.
 
-* Copy the link for the correct version from [Prometheus exporter OpenSeach Plugin repo](https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/tags).
+* Copy the link for the correct version from [Prometheus exporter OpenSearch Plugin repo](https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/tags).
 
 * Execute the following steps on each opensearch node.
 
@@ -642,7 +612,7 @@ reboot
 vi /etc/prometheus/prometheus.yml
 ```
 
-* Add the following opensearch configuration in /etc/prometheus/prometheus.yml file
+* Add the following opensearch configuration in /etc/prometheus/prometheus.yml file as per environment.
 
 ```
 - job_name: opensearch
@@ -674,26 +644,8 @@ systemctl restart prometheus.service
 
 ## Configure Blackbox exporter for website monitoring
 
-## Step 1: Complete the prerequisites
-  Before you can install Prometheus on an Amazon EC2 instance, you must do the following:
-
-* Create an instance in EC2. We recommend using the Ubuntu 20.04 LTS blueprint for your instance. 
-
-* Open ports 9101 on the firewall of your new instance. Prometheus blackbox exporter will requires port 9115 to be open.
-
-
-## Step 2: Add user to your EC2 instance
-Complete the following procedure to connect to your EC2 instance using SSH and add users. Skip this step of user already exists. This procedure creates the following Linux user accounts:
-
-* exporter – This account is used to configure the exporter extension.
-
-These user accounts are created for user services or permissions beyond the scope of this setup.
-
-* Connect using SSH to the EC2 instance and enter the following commands to create a Linux user account for exporter.
-
-```
-sudo useradd --no-create-home --shell /bin/false exporter
-```
+## Step 1: Verify Prerequisites
+Ensure that exporter pre-requisite configuration is completed. Refer to [Pre-requisites section](#prometheus-exporter-prerequisites)
 
 ## Step 3: Download, Install and configure Prometheus blackbox exporter
 Complete the following procedure to download the Prometheus blackbox-exporter binary packages to your EC2 instance.
@@ -760,7 +712,7 @@ Complete the following procedure to start the Exporter service.
 
 * Connect to your EC2 instance using SSH.
 
-* Enter the following command to create a systemd service file for exporter using Vim.
+* Enter the following command to create a systemd service file for exporter using vi.
 ```
 vi /etc/systemd/system/blackbox_exporter.service
 ```
@@ -782,7 +734,7 @@ ExecStart=/usr/local/bin/blackbox_exporter --config.file=/opt/blackbox_exporter/
 WantedBy=multi-user.target
 ```
 
-* Save your changes and quit Vim.
+* Save your changes and quit vi.
 
 * Enter the following command to reload the systemd process.
 ```
@@ -802,7 +754,7 @@ sudo systemctl status blackbox_exporter
 sudo systemctl enable blackbox_exporter
 ```
 
-## Step 5: ReConfigure Prometheus with the Progres Exporter data collector
+## Step 5: ReConfigure Prometheus with the postgres Exporter data collector
 
 
 Complete this procedure to reconfigure Prometheus server with exporter data collector. 
@@ -825,26 +777,8 @@ This change will require prometheus services to be restarted. Refer to the [Step
 
 ## Configure Nginx exporter
 
-## Step 1: Complete the prerequisites
-  Before you can install Prometheus on an Amazon EC2 instance, you must do the following:
-
-* Create an instance in EC2. We recommend using the Ubuntu 20.04 LTS blueprint for your instance. 
-
-* Open ports 9101 on the firewall of your new instance. Prometheus exporter exporter will requires port 9113 (next available port) to be open.
-
-
-## Step 2: Add user to your EC2 instance
-Complete the following procedure to connect to your EC2 instance using SSH and add users. Skip this step of user already exists. This procedure creates the following Linux user accounts:
-
-* exporter – This account is used to configure the exporter extension.
-
-These user accounts are created for user services or permissions beyond the scope of this setup.
-
-* Connect using SSH to the EC2 instance and enter the following commands to create a Linux user account for exporter.
-
-```
-sudo useradd --no-create-home --shell /bin/false exporter
-```
+## Step 1: Verify Prerequisites
+Ensure that exporter pre-requisite configuration is completed. Refer to [Pre-requisites section](#prometheus-exporter-prerequisites)
 
 ## Step 3: Download, Install and configure Prometheus nginx exporter
 Complete the following procedure to download the Prometheus blackbox-exporter binary packages to your EC2 instance.
@@ -899,7 +833,7 @@ sudo vi /opt/nginx-prometheus-exporter/nginx-prometheus-exporter.env
 SSL_VERIFY=false
 ```
 
-* Enter the following command to create a systemd service file for exporter using Vim.
+* Enter the following command to create a systemd service file for exporter using vi.
 ```
 vi /etc/systemd/system/nginx-prometheus-exporter.service
 ```
@@ -922,7 +856,7 @@ ExecStart=/usr/local/bin/nginx-prometheus-exporter -nginx.scrape-uri=https://loc
 WantedBy=multi-user.target
 ```
 
-* Save your changes and quit Vim.
+* Save your changes and quit vi.
 
 * Enter the following command to reload the systemd process.
 ```
