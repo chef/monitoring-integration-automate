@@ -94,8 +94,7 @@ The following alerting metrics are collected from chef managed deployment. The s
 | OpenSearch  | opensearch_index_search_query_count            |
 | OpenSearch  | opensearch_index_search_query_current_number            |
 | OpenSearch  | opensearch_index_search_query_time_seconds            |
-| OpenSearch  | opensearch_index_search_scroll_count
-            |
+| OpenSearch  | opensearch_index_search_scroll_count |
 | OpenSearch  | opensearch_index_search_scroll_current_number            |
 | OpenSearch  | opensearch_index_search_scroll_time_seconds           |
 | OpenSearch  | opensearch_index_segments_memory_bytes          |
