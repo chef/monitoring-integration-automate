@@ -182,4 +182,4 @@ Then following process explains the process to import existing dashboards in Gra
 
 * Refer to the respective dashboards for its specific requirements.
 
-* Follow the steps to import the dashboard as described in the [article](TODO Add article link here). 
+* Follow the steps to import the dashboard as described in the [article](https://grafana.com/docs/grafana/latest/dashboards/manage-dashboards/#export-and-import-dashboards). 
