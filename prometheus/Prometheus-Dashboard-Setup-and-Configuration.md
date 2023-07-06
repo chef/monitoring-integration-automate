@@ -32,7 +32,7 @@ Not all metrics are created equal, some are of more importance than others. Choo
 
 The link provides you an estimation of metrics we have used to monitor Automate HA in AWS Managed Deployment style. You can use this guidance to build metrics and dashboards for other deployment styles
 
-[Reference Metrics](Reference_Metrics_List.md)
+[Reference Metrics](./prometheus_Reference_Metrics_List.md)
 
 **Use the right visualizations:**
 There are a variety of visualizations available in Prometheus. Choose the visualizations that are best suited for the metrics you are tracking. For example, if you are tracking CPU usage, you might use a line chart. If you are tracking errors, you might use a heatmap.
@@ -64,135 +64,122 @@ For example, a System Metrics dashboard will look like this:
 
 ![System Metrics Dashboard](images/System_Metrics_Dashboard.png)
 
-# Steps to create a new dashboard
-TODO Update these steps
-+ Login to graphana portal (http://graphana:3000) with your credentials.
-+ The following article provides detaid steps to create dashboard in grapahan with propmetheus
+# Dashboards in Graphana
+ once dashboard objective are defined, you can do one of the following
+ * Import and existing dashboard that meet your objectives.
+ * Create your own custom dashboard.
+
+## Creating a Dashboard
+
+The following article provides detailed steps to create dashboard in grapahan with propmetheus
 https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/create-dashboard/
 
+This section will list down the steps to create a dashboard for Chef Automate Frontend Services status This dashboard will provide the :
+ * status of load balancers for chef automate and chef infra servers in row 1
+ * status of all nodes for chef automate and chef infra in row 2
+ * status of all services within each of the chef automate nodes in row 3
+ * status of all services within each of the chef infra nodes in row 3
+ 
+ Prerequisites:
+ * All chef automate and chef in front notes must be configured with the blackbox exporter. Refer to the [agent installation documentation](TODO add doc link)
+ * Configure Prometheus server with required jobs to collect required metrics to feed this dashboard. Referred to [Prometheus.yml file](TODO add file link) for the detailed configuration.
 
++ Login to graphana portal (http://graphana:3000) with your credentials.
 + On the left hand side, click on Dashboards --> New Dashboard. You will be directed to a new Dashboard screen.
-+ Here, key in a name for Dashboard Name and select the "New Timeboard" and then click on "New Dashboard".
-+ On the dashboard screen, first create template variables with which you want to tag your components. A basic example can be:
+[New Dashboard](./images/dashboard1.png)
++ Add 4 Rows and modify the title
+  - Row 1 : Chef Automate Load Balancer Status
+  - Row 2 : Chef Frontend Server Status
+  - Row 3 : Chef Automate Services Status by nodes
+  - Row 4 : Chef Infra Services Status by nodes
 
-![Creating templates](images/Template_variables.png)
++ Add Visualization 
+  - Title : Chef Automate Load Balancer
+  - Query : probe_http_status_code{job="chef-automate-url"}
+  - Visualization Type : Stat
+  - Stat styles -> Graph mode : None
+  - Color Scheme : From thresholds (by value)
+  - value Mappings:
+  [chef automate value mapping](./images/lb_vm.png)
+  - Move the newly created visualization under row 1 : Chef Automate Load Balancer Status
 
++ Add Visualization 
+  - Title : Chef Server Load Balancer
+  - Query : probe_http_status_code{job="chef-server-url"}
+  - Visualization Type : Stat
+  - Stat styles -> Graph mode : None
+  - Color Scheme : From thresholds (by value)
+  - value Mappings:
+  [chef automate value mapping](./images/lb_vm.png)
+  - Move the newly created visualization under row 1 : Chef Automate Load Balancer Status
 
-Once you are done appending your changes, click on save. 
++ Add Visualization 
+  - Title : Chef Automate Nodes
+  - Query : avg(probe_http_status_code{job=~"automate-services-.*"}) by (job)
+  - Transform :   
+    Match : {job="(\w.*)"}  
+    Replace :  $1
+  - Visualization Type : Stat
+  - Stat styles -> Graph mode : None
+  - Stat styles -> Text alignment : Center
+  - Color Scheme : From thresholds (by value)
+  - value Mappings:
+  [chef automate value mapping](./images/chef_services_vm.png)
+  - Move the newly created visualization under row 2 : Chef Frontend Server Status
 
-+  Add widgets, select "Timeseries" widget (or your desired widget) and then key in the following parameters in the widget:
++ Add Visualization 
+  - Title : Chef Infra Nodes
+  - Query : avg(probe_http_status_code{job=~"chef-server-services-.*"}) by (job)
+  - Transform :   
+    Match : {job="(\w.*)"}  
+    Replace :  $1
+  - Visualization Type : Stat
+  - Stat styles -> Graph mode : None
+  - Stat styles -> Text alignment : Center
+  - Color Scheme : From thresholds (by value)
+  - value Mappings:
+  [chef automate value mapping](./images/chef_services_vm.png)
+  - Move the newly created visualization under row 2 : Chef Frontend Server Status
 
-   - Select your visualization --> Timeseries
-   - Graph your data
-     - Metrics --> key in your metrics name; from --> key in tag values you want to filter your view with; select from "avg by"/"max by"/"min by"/"sum by" --> select the relevant filter for your selection
-     - Selection of environment, tags
-     - Logic: Arithmetic to be applied
-   - Set display preferences: 
-     - Show --> Global Time
-     - Duration of time for data to be shown
-   - Key in a title for your widget
-   - Once done, click on Save
++ Add Visualization 
+    -  Repeat the following steps for each Automate node and update title, query and transform match for each automate node.
+  - Title : Chef Automate - Node 1
+  - Query : probe_http_status_code{job=~"automate-services-node-01"}
+  - Transform :   
+    Match : probe_http_status_code{instance="http:\/\/localhost:9631\/services\/(\w.*)\/default\/health", job="automate-services-node-01"}  
+    Replace :  $1
+  - Visualization Type : Stat
+  - Stat styles -> Graph mode : None
+  - Stat styles -> Text alignment : Center
+  - Color Scheme : From thresholds (by value)
+  - value Mappings:
+  [chef automate value mapping](./images/chef_services_vm.png)
+  - Move the newly created visualization(s) under row 3 : Chef Automate Services Status by nodes
 
-![Creating a Widget](images/Creating_widget.png)
++ Add Visualization 
+  - Repeat the following steps for each Chef Infra node and update title, query and transform match for each Chef Infra node.
+  - Title : Chef Infra - Node 1
+  - Query : probe_http_status_code{job=~"chef-server-services-node-01"}
+  - Transform :   
+    Match : probe_http_status_code{instance="http:\/\/localhost:9631\/services\/(\w+-\w.*)\/default\/health", job="chef-server-services-node-01"}    
+    Replace :  $1  
+  - Visualization Type : Stat  
+  - Stat styles -> Graph mode : None
+  - Stat styles -> Text alignment : Center
+  - Color Scheme : From thresholds (by value)
+  - value Mappings:
+  [chef automate value mapping](./images/chef_services_vm.png)
+  - Move the newly created visualization(s) under row 4 : Chef Infra Services Status by nodes
 
++ Save the dashboard.  
 
+## Importing a Dashboard
+Then following process explains the process to import existing dashboards in Graphana.
 
- # Metrics used in each dashboard
+* Refer to the [Graphana dashboard repository](https://grafana.com/grafana/dashboards/) for available dashboards.
 
- 
- 
- ## Infrastructure health:
- **Chef Automate Status and Infra Server Status:**
-- network.http.can_connect; with conditions for Success: cutoff_min --> some_value and Failure: clamp_min --> some_value
-  
-**Postgres DB Service Status:**
--  postgresql.db.count; with conditions for Success: cutoff_min --> 1 and Failure: cutoff_max --> 0.89
+* Review the available dashboard to meet your specific requirements.
 
-**Opensearch DB Service Status:**
-- aws.es.cluster_statusgreen; with conditions for Success: cutoff_min --> 1 and Failure: clamp_min --> 0.5
+* Refer to the respective dashboards for its specific requirements.
 
-**Note:** 
-Here, we are discussing metrics for deploying Managed Automate HA in AWS, please use this as a general guideline for other platforms and On-prem solutions as well
-
-![Infra Health Dashboard](images/Infra_health_dashboard.png)
-
- ## Opensearch metrics:
-
-- aws.es.cluster_statusgreen
-- aws.es.5xx
-- aws.es.indexing_latency
-- aws.es.search_latency
-- aws.es.indexing_rate
-- aws.es.shardsactive
-- aws.es.shardsactive
-- aws.es.nodes
-- aws.es.jvmmemory_pressure
-- aws.es.cpuutilization
-- aws.es.sys_memory_utilization
-- aws.es.threadpool_index_queue
-- aws.es.search_rate
-- aws.es.searchable_documents
-- system.cpu.user
-  
- ![Opensearch Metrics Dashboard](images/AWS_Managed_ES.png)
-
-
-## Postgresql Metrics:
-
-
-Assumptions: 
-+ We have used a mix of Timeseries, Query Value and Events in the Visualization seclection which is self explanatory
-+ Some of the widgets have multiple metrics for creating the desired visualization
-+ **Pro-tip:** Clone the built-in AWS Postgresql dashboard and customize accordingly 
-  
-  - postgresql.percent_usage_connections
-  - aws.rds.maximum_used_transaction_ids
-  - postgresql.index_scans
-  - postgresql.seq_scans
-  - postgresql.rows_updated
-  - postgresql.rows_deleted
-  - postgresql.rows_inserted
-  - aws.rds.replica_lag
-  - postgresql.locks
-  - Source:amazon_rds
-  - aws.rds.cpuutilization
-  - aws.rds.network_receive_throughput
-  - aws.rds.network_transmit_throughput
-  - aws.rds.free_storage_space
-  - aws.rds.freeable_memory
-  - aws.rds.swap_usage
-  - aws.rds.read_iops
-  - aws.rds.write_iops
-  - aws.rds.disk_queue_depth
-  - aws.rds.read_latency
-  - aws.rds.write_latency
-
-![PosgreSQL Dashboard](images/AWS_RDS.png)
-
-
-
-## System Metrics
-
-- system.load.1
-- system.load.5
-- system.load.15
-- system.cpu.system
-- system.cpu.iowait
-- system.cpu.user
-- system.cpu.stolen
-- system.cpu.guest
-- system.net.bytes_rcvd
-- system.mem.usable
-- system.mem.total
-- system.net.bytes_sent
-- system.io.w_s
-- system.io.rkb_s
-- system.io.wkb_s
-- system.disk.used
-- system.io.await
-- system.cpu.iowait
-- system.cpu.stolen
-  
-![Opensearch Dashboard](images/AWS_Opensearch.png)
-
-
+* Follow the steps to import the dashboard as described in the [article](TODO Add article link here). 
