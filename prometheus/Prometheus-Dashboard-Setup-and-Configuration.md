@@ -114,7 +114,7 @@ This section will list down the steps to create a dashboard for Chef Automate HA
   - Stat styles -> Text alignment : Center
   - Color Scheme : From thresholds (by value)
   - value Mappings:
-  [chef automate value mapping](./images/chef_services_vm.png)
+  ![chef automate value mapping](./images/chef_services_vm.png)
   - Move the newly created visualization under row 2 : Chef Frontend Server Status
 
 + Add Visualization 
@@ -129,7 +129,7 @@ This section will list down the steps to create a dashboard for Chef Automate HA
   - Stat styles -> Text alignment : Center
   - Color Scheme : From thresholds (by value)
   - value Mappings:
-  [chef automate value mapping](./images/chef_services_vm.png)
+  ![chef automate value mapping](./images/chef_services_vm.png)
   - Move the newly created visualization(s) under row 3 : Chef Automate Services Status by nodes
 
 + Add Visualization 
@@ -144,7 +144,7 @@ This section will list down the steps to create a dashboard for Chef Automate HA
   - Stat styles -> Text alignment : Center
   - Color Scheme : From thresholds (by value)
   - value Mappings:
-  [chef automate value mapping](./images/chef_services_vm.png)
+  ![chef automate value mapping](./images/chef_services_vm.png)
   - Move the newly created visualization(s) under row 4 : Chef Infra Services Status by nodes
 
 + Save the dashboard.  
@@ -155,13 +155,14 @@ The prometheus community has contributed the various dashboards and the followin
 
 * [System Dashboard](https://grafana.com/grafana/dashboards/1860-node-exporter-full/)
 * [Postgres Dashboard](https://grafana.com/grafana/dashboards/9628-postgresql-database/)
-* [Open Search Dashboard](https://grafana.com/grafana/dashboards/15178-opensearch-prometheus/)
+* [Open Search Dashboard](https://grafana.com/grafana/dashboards/15178-opensearch-prometheus/)  
+
 The following process explains the process to import existing dashboards in Graphana.
 
 * Refer to the [Graphana dashboard repository](https://grafana.com/grafana/dashboards/) for available dashboards.
 
-* Review the available dashboard to meet your specific requirements.
+* Review the available dashboard that meet your specific requirements.
 
-* Refer to the respective dashboards for its specific exporter configuration requirements.
+* Refer to the identified dashboard for its specific exporter configuration requirements.
 
 * Follow the steps to import the dashboard as described in the [article](https://grafana.com/docs/grafana/latest/dashboards/manage-dashboards/#export-and-import-dashboards). 
