@@ -147,7 +147,7 @@ Complete the following procedure to start the Node Exporter service.
 sudo vi /etc/systemd/system/node_exporter.service
 ```
 * Add the following lines of text into the file. This will configure node_exporter with monitoring collectors for CPU load, file system usage, and memory resources.
-TODO : Update the final config.
+
 ```
 [Unit]
 Description=NodeExporter
