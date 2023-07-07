@@ -7,19 +7,19 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
 
 *  [Prometheus exporter's pre-requisites](#prometheus-exporter-prerequisites)
 
-    1. [Complete the prerequisites](#step-1-complete-the-prerequisites)
+    1. [Configure Firewall prerequisites](#step-1-configure-firewall-prerequisites)
     
     1. [Add users to your EC2 instance](#step-2-add-user-to-your-ec2-instance)
 
-* Prometheus Exporter - node-exporter Setup  
+* [Prometheus Exporter - node-exporter Setup](#prometheus-node-exporter-setup)  
     
-    1. Verify Pre-requisites(TODO add link here)
+    1. [Verify Pre-requisites](#step-1-verify-prerequisites)
 
-    1. [Download and Install Prometheus binary packages](#step-3-download-and-install-prometheus-agent-binary-packages)
+    1. [Download and Install Node exporter packages](#step-2-download-and-install-node_exporter-binary-packages)
 
-    1. [Start Node Exporter](#step-4-start-node-exporter)
+    1. [Start Node Exporter](#step-3-start-node-exporter)
 
-    1. [ReConfigure Prometheus with the Node Exporter data collector](#step-5-reconfigure-prometheus-with-the-node-exporter-data-collector)
+    1. [Configure Prometheus with the Node Exporter data collector](#step-4-configure-prometheus-for-node_exporter-data-collector)
 
 * Prometheus Postgres exporter setup
         
@@ -80,7 +80,7 @@ sudo useradd --no-create-home --shell /bin/false exporter
 ## Step 1: Verify Prerequisites
 Ensure that exporter pre-requisite configuration is completed. Refer to [Pre-requisites section](#prometheus-exporter-prerequisites)
 
-## Step 2: Download and Install node exporter binary packages
+## Step 2: Download and Install node_exporter binary packages
 Complete the following procedure to download the Prometheus node exporter binary packages to your EC2 instance.
 
 * Open a web browser on your local computer and browse to the [Prometheus downloads page](https://prometheus.io/docs/instrumenting/exporters/).
@@ -187,7 +187,7 @@ lines 1-19/19 (END)
 ```
 sudo systemctl enable node_exporter
 ```
-## Step 7: Configure Prometheus for data collector
+## Step 4: Configure Prometheus for node_exporter data collector
 Complete the following procedure to configure Prometheus with the Node Exporter data collector. You do this by adding a new job_name parameter for node_exporter in the prometheus.yml file.
 
 * Connect to your EC2 instance using SSH.
