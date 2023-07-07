@@ -40,7 +40,7 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
 
 * [Prometheus Exporter - blackbox_exporter Setup](#configure-blackbox-exporter-for-website-monitoring)  
     
-    1. [Verify Pre-requisites](#step-1-verify-prerequisites-3)
+    1. [Verify Pre-requisites](#step-1-verify-prerequisites-2)
 
     1. [Download and Install blackbox exporter packages](#step-2-download-install-and-configure-prometheus-blackbox-exporter)
 
@@ -50,13 +50,14 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
   
 * [Prometheus Exporter - nginx-exporter Setup](#prometheus-node-exporter-setup)  
     
-    1. [Verify Pre-requisites](#step-1-verify-prerequisites)
+    1. [Verify Pre-requisites](#step-1-verify-prerequisites-3)
 
-    1. [Download and Install Node exporter packages](#step-2-download-and-install-node_exporter-binary-packages)
+    1. [Download and Install Nginx exporter packages](#step-2-download-install-and-configure-prometheus-nginx-exporter)
 
-    1. [Start Node Exporter](#step-3-start-node-exporter)
+    1. [Start Nginx Exporter](#step-3-start-nginx-exporter)
 
-    1. [Configure Prometheus with the Node Exporter data collector](#step-4-configure-prometheus-for-node_exporter-data-collector)
+    1. [Configure Prometheus with the Nginx Exporter data collection](#step-4-configure-prometheus-with-nginx-exporter-data-collection)
+    
 # Prometheus Exporter Prerequisites
   Before you can install Prometheus exporters on any Chef Automate nodes, you must do the following:
 
@@ -514,7 +515,7 @@ systemctl restart prometheus.service
 
 ![opensearch](./images/opensearch.png)
 
-# Configure Blackbox exporter for website monitoring
+# Configure Blackbox exporter for web based monitoring
 
 ## Step 1: Verify Prerequisites
 Ensure that exporter pre-requisite configuration is completed. Refer to [Pre-requisites section](#prometheus-exporter-prerequisites)
@@ -524,7 +525,7 @@ Complete the following procedure to download the Prometheus blackbox-exporter bi
 
 * Open a web browser on your local computer and browse to the [Prometheus community blackbox-exporter release page](https://github.com/prometheus/blackbox_exporter/releases) .
 
-* From the lit, select the Operating system linux and Architecture amd64.
+* From the list, select the Operating system linux and Architecture amd64.
 
 * Copy download link for Prometheus
 * Connect to your EC2 instance using SSH.
@@ -749,7 +750,7 @@ sudo systemctl status nginx-prometheus-exporter
 sudo systemctl enable nginx-prometheus-exporter
 ```
 
-## Step 4: ReConfigure Prometheus with the Exporter data collector
+## Step 4: Configure Prometheus with nginx Exporter data collection
 
 Complete this procedure to reconfigure Prometheus server with exporter data collector. 
 
