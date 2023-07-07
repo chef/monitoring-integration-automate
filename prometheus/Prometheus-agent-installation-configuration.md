@@ -65,7 +65,7 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
 
 * Each Prometheus exporter run on a separate ports. Refer to the exporter's documentation for default port configurations.  The following exporters and the respective ports are used in this setup. Please ensure that all required ports are open from prometheus server to exporters.
 
-| Exports          | Firewall Ports |
+| Exporters          | Firewall Ports |
 |------------------|----------------|
 | Node             | 9100           |
 | Postgres         | 9101           |
