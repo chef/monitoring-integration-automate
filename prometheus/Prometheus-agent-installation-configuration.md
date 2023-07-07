@@ -1,13 +1,13 @@
 # Introduction to Prometheus Exporter
 Prometheus is an open source time series monitoring tool for managing a variety of system resources and applications. It provides a multidimensional data model, the ability to query the collected data, and detailed reporting and data visualization through Grafana.
 
-By default, Prometheus exporter is enabled to collect metrics on the server where it is installed. With the help of various exporters, metrics can be collected from other resources like web servers, containers, databases, custom applications, and other third-party systems. In this tutorial, we will show you how to install and configure Prometheus exporters on a EC2 instance. For a full list of available exporters, see Exporters and integrations in the [Prometheus documentation](TODO add a url here).
+By default, Prometheus exporter is enabled to collect metrics on the server where it is installed. With the help of various exporters, metrics can be collected from other resources like web servers, containers, databases, custom applications, and other third-party systems. In this tutorial, we will show you how to install and configure required Prometheus exporters to setup monitoring for Chef Automate HA implementation. For a full list of available exporters, see Exporters and integrations in the [Prometheus documentation](https://prometheus.io/docs/instrumenting/exporters/).
 
 # Contents
 
-*  Prometheus exporter's pre-requisites.
+*  [Prometheus exporter's pre-requisites](#prometheus-exporter-prerequisites)
 
-    1. [Complete the prerequisites](#step-1-complete-the-prerequisites-1)
+    1. [Complete the prerequisites](#step-1-complete-the-prerequisites)
     
     1. [Add users to your EC2 instance](#step-2-add-user-to-your-ec2-instance)
 
@@ -42,28 +42,27 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
     1. [Start Opensearch Exporter](#step-4-start-postgres-exporter)  TODO Correct this section
 
 # Prometheus Exporter Prerequisites
+  Before you can install Prometheus exporters on any Chef Automate nodes, you must do the following:
 
-## Step 1: Complete the prerequisites
-  Before you can install Prometheus on an Amazon EC2 instance, you must do the following:
+## Step 1: Configure Firewall prerequisites
 
-* Create an instance in EC2. We recommend using the Ubuntu 20.04 LTS blueprint for your instance. 
+* Each Prometheus exporter run on a separate ports. Refer to the exporter's documentation for default port configurations.  The following exporters and the respective ports are used in this setup. Please ensure that all required ports are open from prometheus server to exporters.
 
-* Open ports 9090 and 9100 on the firewall of your new instance. Each Prometheus exporter run on a separate ports. Refer to the exporter's documentation for default port configurations.  The following exporters and their respective ports are used in this setup. Please ensure that all required ports are open from prometheus server to exporters.
 | Exports          | Firewall Ports |
+|------------------|----------------|
 | Node             | 9100           |
 | Postgres         | 9101           |
 | Nginx            | 9113           |
 | Blackbox         | 9115           |
 
 ## Step 2: Add users and local system directories to your EC2 instance
-Complete the following procedure to connect to your EC2 instance using SSH and add users and system directories. This procedure creates the following Linux user accounts:
+Complete the following procedure to connect to your EC2 instance using SSH and add users and system directories as needed. This procedure creates the following Linux user accounts:
 
 * exporter – This account is used to configure the node_exporter extension.
 
 These user accounts are created for the sole purpose of management and therefore do not require additional user services or permissions beyond the scope of this setup. In this procedure, you also create directories for storing and managing the files, service settings, and data that Prometheus uses to monitor resources.
 
-* Connect using SSH to the EC2 instance and 
-enter the following commands one by one to create two Linux user accounts, prometheus and exporter.
+* Connect using SSH to the EC2 instance and enter the following commands one by one to create two Linux user accounts, prometheus and exporter.
 ```
 sudo useradd --no-create-home --shell /bin/false exporter
 ```
