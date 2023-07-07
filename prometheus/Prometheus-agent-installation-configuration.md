@@ -32,14 +32,13 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
     1. [Configure Prometheus with the postgres Exporter data collector](#step-4-reconfigure-prometheus-with-the-postgres-exporter-data-collector)
 
 
-* Prometheus OpenSearch Plugin Setup
+* [Prometheus OpenSearch Plugin Setup](#configure-prometheus-with-opensearch-plugin)
     1. [Install OpenSearch plugin](#step-1--install-opensearch-plugin)
     
     1. [Reconfigure Prometheus Server](#step-2-reconfigure-prometheus-server)
 
     1. [Verify OpenSearch Metrics](#step-3-verfiy-opensearch-metrics)
 
-    1. [Start Opensearch Exporter](#step-4-start-postgres-exporter)  TODO Correct this section
 
 # Prometheus Exporter Prerequisites
   Before you can install Prometheus exporters on any Chef Automate nodes, you must do the following:
@@ -277,9 +276,9 @@ Complete the following procedure to download the Prometheus postgres-exporter bi
 
 * Open a web browser on your local computer and browse to the [Prometheus community postgres-exporter release page](https://github.com/prometheus-community/postgres_exporter/releases) .
 
-* From the lit, select the Operating system linux and Architecture amd64.
+* From the list, select the Operating system linux and Architecture amd64.
 
-* Copy download link for Prometheus
+* Copy download link for postgres exporter
 
 * Connect to your EC2 instance using SSH.
 
@@ -287,6 +286,7 @@ Enter the following command to change directories to your home directory.
 ```
 cd ~
 ```
+
 * Enter the following command to download the exporter binary packages to your instance.
 
 curl -LO exporter-download-address
@@ -318,7 +318,8 @@ sudo chown exporter:exporter /usr/local/bin/postgres_exporter
 chef-automate status
 ```
 
-* Connect to the leader node via ssh and connect  to the postgres sql to create user with required permissions with the following commands. Note: DO NOT repeat these commands on follower nodes of postgres cluster.
+* Connect to the leader node via ssh and connect  to the postgres sql to create user with required permissions with the following commands.  
+Note: DO NOT repeat these commands on follower nodes of postgres cluster.
 ```
 /hab/pkgs/core/postgresql-client/9.6.24/20220311205413/bin/psql --host=localhost --dbname=postgres --username=admin
 ```
@@ -407,7 +408,7 @@ Jun 21 07:58:52 ip-10-100-12-65 postgres_exporter[36586]: ts=2023-06-21T07:58:52
 lines 1-16/16 (END)
 ```
 
-* Enter the following command to enable Node Exporter to start when the instance is booted.
+* Enter the following command to enable the exporter to start when the instance is booted.
 
 ```
 sudo systemctl enable postgres_exporter
@@ -459,7 +460,7 @@ reboot
 ```
 
 
-## Step 2: Reconfigure Prometheus Server
+## Step 2: Configure Prometheus Server for opensearch data collection
 
 * After installing the opensearch plugin, configure the prometheus server to scrape opensearch nodes
 
