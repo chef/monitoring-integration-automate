@@ -647,7 +647,7 @@ systemctl restart prometheus.service
 ## Step 1: Verify Prerequisites
 Ensure that exporter pre-requisite configuration is completed. Refer to [Pre-requisites section](#prometheus-exporter-prerequisites)
 
-## Step 3: Download, Install and configure Prometheus blackbox exporter
+## Step 2: Download, Install and configure Prometheus blackbox exporter
 Complete the following procedure to download the Prometheus blackbox-exporter binary packages to your EC2 instance.
 
 * Open a web browser on your local computer and browse to the [Prometheus community blackbox-exporter release page](https://github.com/prometheus/blackbox_exporter/releases) .
@@ -655,7 +655,7 @@ Complete the following procedure to download the Prometheus blackbox-exporter bi
 * From the lit, select the Operating system linux and Architecture amd64.
 
 * Copy download link for Prometheus
-* * Connect to your EC2 instance using SSH.
+* Connect to your EC2 instance using SSH.
 
 Enter the following command to change directories to your home directory.
 ```
@@ -673,7 +673,7 @@ curl -LO https://github.com/prometheus/blackbox_exporter/releases/download/v0.24
 ```
 tar -xvf blackbox_exporter-0.24.0.linux-amd64.tar.gz
 ```
-* Several subdirectories are created after the contents of the downloaded files are extracted.
+* Several subdirectories/files are created after the contents of the downloaded files are extracted.
 
 * Enter the following command to copy the exporter file from the ./exporter* subdirectory to the /usr/local/bin programs directory.
 ```
@@ -707,7 +707,7 @@ modules:
       valid_status_codes: [200]
 ```
 
-## Step 4: Start Blackbox Exporter
+## Step 3: Start Blackbox Exporter
 Complete the following procedure to start the Exporter service.
 
 * Connect to your EC2 instance using SSH.
@@ -754,12 +754,12 @@ sudo systemctl status blackbox_exporter
 sudo systemctl enable blackbox_exporter
 ```
 
-## Step 5: ReConfigure Prometheus with the postgres Exporter data collector
-
+## Step 4: ReConfigure Prometheus with Exporter data collector
 
 Complete this procedure to reconfigure Prometheus server with exporter data collector. 
 
-* Append the /etc/prometheus/prometheus.yml file with the following content 
+* Append the /etc/prometheus/prometheus.yml file with the following content. 
+
 ### For Chef URLS
 Refer to [prometheus.yml](./prometheus.yml) job_name: 'chef-automate-url' and job_name: 'chef-server-url' configurations
 
@@ -780,7 +780,7 @@ This change will require prometheus services to be restarted. Refer to the [Step
 ## Step 1: Verify Prerequisites
 Ensure that exporter pre-requisite configuration is completed. Refer to [Pre-requisites section](#prometheus-exporter-prerequisites)
 
-## Step 3: Download, Install and configure Prometheus nginx exporter
+## Step 2: Download, Install and configure Prometheus nginx exporter
 Complete the following procedure to download the Prometheus blackbox-exporter binary packages to your EC2 instance.
 
 * Open a web browser on your local computer and browse to the [nginx-exporter release page](https://https://github.com/nginxinc/nginx-prometheus-exporter/releases) .
@@ -788,12 +788,14 @@ Complete the following procedure to download the Prometheus blackbox-exporter bi
 * From the lit, select the Operating system linux and Architecture amd64.
 
 * Copy download link for Prometheus
-* * Connect to your EC2 instance using SSH.
+
+* Connect to your EC2 instance using SSH.
 
 Enter the following command to change directories to your home directory.
 ```
 cd ~
 ```
+
 * Enter the following command to download the exporter binary packages to your instance.
 
 curl -LO exporter-download-address
@@ -817,7 +819,7 @@ cp nginx-prometheus-exporter /usr/local/bin/
 sudo chown exporter:exporter /usr/local/bin/nginx-prometheus-exporter 
 ```
 
-## Step 4: Start nginx Exporter
+## Step 3: Start nginx Exporter
 Complete the following procedure to start the Exporter service.
 
 * Connect to your EC2 instance using SSH.
@@ -876,7 +878,7 @@ sudo systemctl status nginx-prometheus-exporter
 sudo systemctl enable nginx-prometheus-exporter
 ```
 
-## Step 5: ReConfigure Prometheus with the Exporter data collector
+## Step 4: ReConfigure Prometheus with the Exporter data collector
 
 Complete this procedure to reconfigure Prometheus server with exporter data collector. 
 
@@ -888,5 +890,3 @@ Complete this procedure to reconfigure Prometheus server with exporter data coll
 ```
 
 This change will require prometheus services to be restarted. Refer to the [Step 7: Configure Prometheus with the Node Exporter data collector](#step-7-configure-prometheus-with-the-node-exporter-data-collector) for detailed steps.
-
-
