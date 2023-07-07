@@ -48,7 +48,7 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
 
     1. [Configure Prometheus with the Blackbox Exporter data collector](#step-4-configure-prometheus-with-blackbox-data-collection)
   
-* [Prometheus Exporter - nginx-exporter Setup](#prometheus-node-exporter-setup)  
+* [Prometheus Exporter - nginx-exporter Setup](#configure-nginx-exporter)  
     
     1. [Verify Pre-requisites](#step-1-verify-prerequisites-3)
 
@@ -57,7 +57,7 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
     1. [Start Nginx Exporter](#step-3-start-nginx-exporter)
 
     1. [Configure Prometheus with the Nginx Exporter data collection](#step-4-configure-prometheus-with-nginx-exporter-data-collection)
-    
+
 # Prometheus Exporter Prerequisites
   Before you can install Prometheus exporters on any Chef Automate nodes, you must do the following:
 
@@ -442,7 +442,14 @@ Complete this procedure to reconfigure Prometheus server with exporter data coll
       - targets: ["10.100.12.65:9101"]
 ```
 
-This change will require prometheus services to be restarted. Refer to the [Step 7: Configure Prometheus with the Node Exporter data collector](#step-7-configure-prometheus-with-the-node-exporter-data-collector) for detailed steps.
+* Enter the following command to restart the Prometheus service so that the changes to the configuration file can take effect.
+```
+sudo systemctl restart prometheus
+```
+* Enter the following command to check the status of the Prometheus service.
+```
+sudo systemctl status prometheus
+```
 
 ## Configure Prometheus with OpenSearch Plugin
 
@@ -643,8 +650,14 @@ Refer to [prometheus.yml](./prometheus.yml) job_name: 'automate-services' config
 ### For chef server services configuration
 Refer to [prometheus.yml](./prometheus.yml) job_name: 'chef-server-services' configurations
 
-
-This change will require prometheus services to restart. Refer to the [Step 7: Configure Prometheus with the Node Exporter data collector](#step-7-configure-prometheus-with-the-node-exporter-data-collector) for detailed steps.
+* Enter the following command to restart the Prometheus service so that the changes to the configuration file can take effect.
+```
+sudo systemctl restart prometheus
+```
+* Enter the following command to check the status of the Prometheus service.
+```
+sudo systemctl status prometheus
+```
 
 
 ## Configure Nginx exporter
@@ -655,7 +668,7 @@ Ensure that exporter pre-requisite configuration is completed. Refer to [Pre-req
 ## Step 2: Download, Install and configure Prometheus nginx exporter
 Complete the following procedure to download the Prometheus blackbox-exporter binary packages to your EC2 instance.
 
-* Open a web browser on your local computer and browse to the [nginx-exporter release page](https://https://github.com/nginxinc/nginx-prometheus-exporter/releases) .
+* Open a web browser on your local computer and browse to the [nginx-exporter release page](https://github.com/nginxinc/nginx-prometheus-exporter/releases) .
 
 * From the lit, select the Operating system linux and Architecture amd64.
 
@@ -761,4 +774,11 @@ Complete this procedure to reconfigure Prometheus server with exporter data coll
       - targets: ["10.100.4.233:9113"]
 ```
 
-This change will require prometheus services to be restarted. Refer to the [Step 7: Configure Prometheus with the Node Exporter data collector](#step-7-configure-prometheus-with-the-node-exporter-data-collector) for detailed steps.
+* Enter the following command to restart the Prometheus service so that the changes to the configuration file can take effect.
+```
+sudo systemctl restart prometheus
+```
+* Enter the following command to check the status of the Prometheus service.
+```
+sudo systemctl status prometheus
+```
