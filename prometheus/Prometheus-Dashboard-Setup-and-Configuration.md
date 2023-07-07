@@ -4,7 +4,7 @@ Graphana is used as dashboard tool for Prometheus.
 The dashboard allows us to analyze data from across our entire system in a single pane of glass. It enables our team to immediately benefit from dynamic views with no query language or coding required.
  
 ## Installing and Configuring Graphana: 
-This article provides step by step guidance to [install Graphana server locally](https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/)/
+This article provides step by step guidance to [install Graphana server locally](https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/).
 
 After the successful installation, configure the data source for prometheus. The follow article provides the step by step instructions to [data source configuration](https://prometheus.io/docs/visualization/grafana/#creating-a-prometheus-data-source) configuration.
 
@@ -76,7 +76,7 @@ This section will list down the steps to create a dashboard for Chef Automate HA
   - Stat styles -> Graph mode : None
   - Color Scheme : From thresholds (by value)
   - value Mappings:
-  [chef automate value mapping](./images/lb_vm.png)
+  ![chef automate value mapping](./images/lb_vm.png)
   - Move the newly created visualization under row 1 : Chef Automate Load Balancer Status
 
 + Add Visualization 
@@ -86,7 +86,7 @@ This section will list down the steps to create a dashboard for Chef Automate HA
   - Stat styles -> Graph mode : None
   - Color Scheme : From thresholds (by value)
   - value Mappings:
-  [chef automate value mapping](./images/lb_vm.png)
+  ![chef automate value mapping](./images/lb_vm.png)
   - Move the newly created visualization under row 1 : Chef Automate Load Balancer Status
 
 + Add Visualization 
