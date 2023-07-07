@@ -31,7 +31,6 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
 
     1. [Configure Prometheus with the postgres Exporter data collector](#step-4-reconfigure-prometheus-with-the-postgres-exporter-data-collector)
 
-
 * [Prometheus OpenSearch Plugin Setup](#configure-prometheus-with-opensearch-plugin)
     1. [Install OpenSearch plugin](#step-1--install-opensearch-plugin)
     
@@ -39,7 +38,25 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
 
     1. [Verify OpenSearch Metrics](#step-3-verfiy-opensearch-metrics)
 
+* [Prometheus Exporter - blackbox_exporter Setup](#configure-blackbox-exporter-for-website-monitoring)  
+    
+    1. [Verify Pre-requisites](#step-1-verify-prerequisites-3)
 
+    1. [Download and Install blackbox exporter packages](#step-2-download-install-and-configure-prometheus-blackbox-exporter)
+
+    1. [Start Blackbox Exporter](#step-3-start-blackbox-exporter)
+
+    1. [Configure Prometheus with the Blackbox Exporter data collector](#step-4-configure-prometheus-with-blackbox-data-collection)
+  
+* [Prometheus Exporter - nginx-exporter Setup](#prometheus-node-exporter-setup)  
+    
+    1. [Verify Pre-requisites](#step-1-verify-prerequisites)
+
+    1. [Download and Install Node exporter packages](#step-2-download-and-install-node_exporter-binary-packages)
+
+    1. [Start Node Exporter](#step-3-start-node-exporter)
+
+    1. [Configure Prometheus with the Node Exporter data collector](#step-4-configure-prometheus-for-node_exporter-data-collector)
 # Prometheus Exporter Prerequisites
   Before you can install Prometheus exporters on any Chef Automate nodes, you must do the following:
 
@@ -432,7 +449,7 @@ This change will require prometheus services to be restarted. Refer to the [Step
 Refer to the [Prometheus exporter OpenSearch Plugin](https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases). 
 
 ** Disclaimer ** 
-  The plugin is not supported by prometheus community, However it is supported by Opensearch community. Please refer to the plugin document for any future changes.  
+  The plugin is not supported by prometheus community. However, it is supported by Opensearch community. Please refer to the plugin document for any future changes.  
   
   The following steps provides guidance to install and configure opensearch plugin for chef managed opensearch environment only.
 
@@ -458,7 +475,6 @@ opensearch-plugin install https://github.com/aiven/prometheus-exporter-plugin-fo
 ```
 reboot
 ```
-
 
 ## Step 2: Configure Prometheus Server for opensearch data collection
 
@@ -498,7 +514,7 @@ systemctl restart prometheus.service
 
 ![opensearch](./images/opensearch.png)
 
-## Configure Blackbox exporter for website monitoring
+# Configure Blackbox exporter for website monitoring
 
 ## Step 1: Verify Prerequisites
 Ensure that exporter pre-requisite configuration is completed. Refer to [Pre-requisites section](#prometheus-exporter-prerequisites)
@@ -610,7 +626,7 @@ sudo systemctl status blackbox_exporter
 sudo systemctl enable blackbox_exporter
 ```
 
-## Step 4: ReConfigure Prometheus with Exporter data collector
+## Step 4: Configure Prometheus with blackbox data collection
 
 Complete this procedure to reconfigure Prometheus server with exporter data collector. 
 
@@ -627,8 +643,7 @@ Refer to [prometheus.yml](./prometheus.yml) job_name: 'automate-services' config
 Refer to [prometheus.yml](./prometheus.yml) job_name: 'chef-server-services' configurations
 
 
-This change will require prometheus services to be restarted. Refer to the [Step 7: Configure Prometheus with the Node Exporter data collector](#step-7-configure-prometheus-with-the-node-exporter-data-collector) for detailed steps.
-
+This change will require prometheus services to restart. Refer to the [Step 7: Configure Prometheus with the Node Exporter data collector](#step-7-configure-prometheus-with-the-node-exporter-data-collector) for detailed steps.
 
 
 ## Configure Nginx exporter
