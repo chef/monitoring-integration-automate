@@ -17,9 +17,11 @@ What you’ll need:
 The following steps provides the guidance to prepare pagerduty receiver for the alert manager to send alerts. 
 
 * PagerDuty Configuration  
-    Refer to the [configuration guide](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/) for step-by-step guidance to configure PagerDuty service to receive notifications from the prometheus alertmanager.
-
-* After creating the service, copy the service key. e.g. `98c3d3add5xe4f0xc3726243ee3fdc62`. This service key will be used in alertmanager configuration.
+    - Access your pagerduty portal with permissions to create a new service. 
+    - Create a new Configuration Services.
+    - After creating the service, copy the service key. e.g. `98c3d3add5xe4f0xc3726243ee3fdc62`. This service key will be used in alertmanager configuration.
+  
+  Refer to the [configuration guide](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/) for step-by-step guidance to configure PagerDuty service to receive notifications from the prometheus alertmanager.
 
 ### Configure AlertManager for Pagerduty
 
