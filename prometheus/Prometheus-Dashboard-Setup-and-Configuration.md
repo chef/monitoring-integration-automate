@@ -149,6 +149,10 @@ This section will list down the steps to create a dashboard for Chef Automate HA
 
 + Save the dashboard.  
 
++ A json copy of this dashboard can be found [here](./dashboards/Chef%20Automate%20HA%20-%20Component%20Health-1688729683107.json).
+
++ Please make necessary job configuration changes to make this dashboard work your environment.
+
 ## Importing a Dashboard
 
 The prometheus community has contributed the various dashboards and the following dashboards may be configured to monitor Chef Automate HA implementation. 
