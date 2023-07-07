@@ -48,13 +48,8 @@ Its recommended you have the following dashboards for Automate:
 + Postgresql Metrics 
 + System Metrics 
 
-
-For example, a System Metrics dashboard will look like this:
-
-![System Metrics Dashboard](images/System_Metrics_Dashboard.png)
-
 # Dashboards in Graphana
- once dashboard objective are defined, you can do one of the followings
+ Once dashboard objective are defined, you can do one of the followings
   * Create your own custom dashboard.
   * Import an existing dashboard that meet your objectives.
 
@@ -164,12 +159,18 @@ This section will list down the steps to create a dashboard for Chef Automate Fr
 + Save the dashboard.  
 
 ## Importing a Dashboard
-Then following process explains the process to import existing dashboards in Graphana.
+
+The prometheus community has contributed the various dashboards and the following dashboards may be configured to monitor Chef Automate HA implementation. 
+
+* [System Dashboard](https://grafana.com/grafana/dashboards/1860-node-exporter-full/)
+* [Postgres Dashboard](https://grafana.com/grafana/dashboards/9628-postgresql-database/)
+* [Open Search Dashboard](https://grafana.com/grafana/dashboards/15178-opensearch-prometheus/)
+The following process explains the process to import existing dashboards in Graphana.
 
 * Refer to the [Graphana dashboard repository](https://grafana.com/grafana/dashboards/) for available dashboards.
 
 * Review the available dashboard to meet your specific requirements.
 
-* Refer to the respective dashboards for its specific requirements.
+* Refer to the respective dashboards for its exporter configuration requirements.
 
 * Follow the steps to import the dashboard as described in the [article](https://grafana.com/docs/grafana/latest/dashboards/manage-dashboards/#export-and-import-dashboards). 
