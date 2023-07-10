@@ -5,7 +5,8 @@ Connect MS Teams to Prometheus to:
 * See incidents and escalations.
 * Get daily reminders as to who is on-call.
    
-
+## Configure AlertManager for MS Teams
+Before performing the following steps, please ensure alertmanager is installed and configured to run as a service. Refer to the ![alertmanager installation guide](./Prometheus_Monitor_configuration_and_alerting.md)
 
 ## prometheus and MS Teams Integration
 
@@ -49,11 +50,34 @@ docker run -d -p 2000:2000 \
 
 ## Configure Alertmanager
 
-* After creating the service, copy the service key. e.g. `98c3d3add5xe4f0xc3726243ee3fdc62` . This service key will be used in alertmanager configuration.
+* Add the following configuration in alartmanager.yml file
+```
+vi /etc/alertmanager/alertmanager.yml
+```
 
-### Configure AlertManager for MS Teams
+```
+route:
+  routes:
+    - match:
+        severity: L2
+      receiver: prometheus-msteams
+      group_by: ['...']
 
-Before perforoming the following steps, please ensure alertmanger is installed and configured to run as a service. Refer to the ![alertmanger installation guide](./Prometheus_Monitor_configuration_and_alerting.md)
+receivers:
+  - name: 'prometheus-msteams'
+    webhook_configs: # https://prometheus.io/docs/alerting/configuration/#webhook_config
+    - send_resolved: true
+      url: 'http://localhost:2000/alertmanager'
+```
+
+Restart Alertmanager and prometheus server
+
+```
+systemctl restart alertmanager.service
+systemctl restart prometheus.service
+```
+
+
 
 The following configuration is designed to receive alerts with severity level `page`. By default, all alerts will go to Slack, however, the alerts with severity level `page` will be sent to Padgerduty.
 
