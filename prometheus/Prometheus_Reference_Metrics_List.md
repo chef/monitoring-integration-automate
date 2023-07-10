@@ -1,8 +1,14 @@
 # Reference metrics that are collected by Prometheus
 
-**Note:**
-The following alerting metrics are collected from chef managed deployment. The similar metrics may be collected from aws hosted deployments.
+The following section lists/documents the metrics collected by various exporters used for Chef Managed Automate HA implementation. The similar metrics may be collected from aws hosted deployments.
 
+* System Metrics
+
+* Chef Automate Health Metrics
+
+* OpenSearch Metrics
+
+* Postgres Metrics
 
 | **Component**               | **Metrics**                                                              |
 |-------------------------|--------------------------------------------------------------------------------|
