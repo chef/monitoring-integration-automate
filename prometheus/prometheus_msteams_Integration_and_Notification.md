@@ -4,20 +4,50 @@ Connect MS Teams to Prometheus to:
 * Notify on-call responders based on alerts triggered from prometheus.
 * See incidents and escalations.
 * Get daily reminders as to who is on-call.
+   
 
-What you’ll need:
-
- * Admin or Standard role permissions for your prometheus account (unless your organization has created custom role)
- * Permissions to create new service in MS Teams 
 
 ## prometheus and MS Teams Integration
-### Prerequisites
-The following steps provides the guidance to prepare MS Teams receiver for the alert manager to send alerts. 
 
-* MS Teams Notification  
-   
-   https://github.com/prometheus-msteams/prometheus-msteams/releases
-   
+The following steps provides the guidance to prepare MS Teams receiver for the alert manager to send alerts. Refer to [prometheus-msteams documentation](https://github.com/prometheus-msteams/prometheus-msteams/releases) for more details.
+
+### Configure MS Teams
+* Create Team
+
+* Create Team Channel
+  
+  Create a channel in Ms-teams where you want to send alerts. 
+
+* Create Incoming Webhook
+
+  - Click on connectors(found connectors in options of the channel), and then search for ‘incoming webhook’ connector.
+  ![Incoming Webhook Connector](./images/msteam-1.png)
+
+  - Create a webhook of this channel. Incoming webhook is used to send notification from external services to track the activities.
+  ![Select Channel](./images/msteam-2.png)
+  ![Assign Incoming Webhook Name](./images/msteam-3.png)
+  - Click Create
+  - Copy the Webhook url and click done.
+    This webhook url will be used in the next step.
+
+#### Install and Configure Docker image
+```
+apt install docker.io
+```
+
+* The prometheus-msteams proxy container is configured on prometheus server with port number 2000. Please ensure firewall is opened for this port.
+
+* Updated TEAMS_INCOMING_WEBHOOK_URL with the url link generated above.
+
+```
+docker run -d -p 2000:2000 \
+    --name="promteams" \
+    -e TEAMS_INCOMING_WEBHOOK_URL="https://progresssoftware.webhook.office.com/webhookb2/19e1c444-fa6a-4d9a-b339-c527940dbaac@db266a67-cbe0-4d26-ae1a-d0581fe03535/IncomingWebhook/43f87f7d1724404394e28b24c50deb51/890e3fec-12ba-4296-8e94-6018f6821896" \
+    -e TEAMS_REQUEST_URI=alertmanager \
+    quay.io/prometheusmsteams/prometheus-msteams
+```
+
+## Configure Alertmanager
 
 * After creating the service, copy the service key. e.g. `98c3d3add5xe4f0xc3726243ee3fdc62` . This service key will be used in alertmanager configuration.
 
