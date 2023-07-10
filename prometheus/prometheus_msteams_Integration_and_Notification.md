@@ -16,6 +16,8 @@ The following steps provides the guidance to prepare MS Teams receiver for the a
 
 * MS Teams Notification  
    
+   https://github.com/prometheus-msteams/prometheus-msteams/releases
+   
 
 * After creating the service, copy the service key. e.g. `98c3d3add5xe4f0xc3726243ee3fdc62` . This service key will be used in alertmanager configuration.
 
