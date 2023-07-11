@@ -88,36 +88,25 @@ c. [MS Teams Integration](data-dog/DataDog-MSTeams-Integration-Alerting.md)
 a. [Datadog Centralised Logs Management](data-dog/DataDog-Centralise_Logs_Management.md)
 
 
-### Prometheus
+## Prometheus integration with Automate HA - Monitoring
 
-a. Prometheus Agent Configuration and Installation:
+a. [Prometheus Agent Configuration and Installation](prometheus/Prometheus-agent-installation-configuration.md)
 
-Explain the role and significance of the Prometheus agent.
-Provide step-by-step instructions for configuring and installing the agent.
-Discuss any prerequisites or system requirements.
+b. [Prometheus Server Configuration and Installation](prometheus/Prometheus-server-installation-and-configuration-setup.md)
 
-b. Dashboard Setup and Configuration:
+c. [Prometheus Metrics configuration and Integration with AWS for AWS Managed services]()
 
-Explain how to set up and configure custom dashboards in Prometheus.
-Discuss best practices for organizing and visualizing metrics.
+d. [Dashboard Setup and Configuration](prometheus/Prometheus-Dashboard-Setup-and-Configuration.md)
 
-c. Slack Integration:
 
-Explain how to integrate Prometheus with Slack for real-time notifications.
-Discuss the benefits of using Slack for incident management and collaboration.
-Provide configuration instructions and any required setup steps.
+## Prometheus integration with Automate HA - Alerting
 
-d. PagerDuty Integration:
+a. [Slack Integration](prometheus/prometheus_slack_Integration_and_Notification.md)
 
-Describe the integration of Prometheus with PagerDuty for incident response.
-Explain the advantages of using PagerDuty's on-call scheduling and alerting capabilities.
-Provide guidance on setting up the integration and configuring alert rules.
+b. [PagerDuty Integration](prometheus/prometheus_PagerDuty_Integration_and_Notification.md)
 
-e. Metrics Monitor Configuration and Monitoring Rules Setup:
+c. [MS Teams Integration](prometheus/prometheus_msteams_Integration_and_Notification.md)
 
-Explain how to configure Metrics Monitors in Prometheus for proactive monitoring.
-Discuss the importance of defining monitoring rules and thresholds.
-Provide examples of common monitoring scenarios and how to set them up.
 
 ### 3. Cloudwatch
 
