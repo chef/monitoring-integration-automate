@@ -88,6 +88,7 @@ c. [MS Teams Integration](data-dog/DataDog-MSTeams-Integration-Alerting.md)
 a. [Datadog Centralised Logs Management](data-dog/DataDog-Centralise_Logs_Management.md)
 
 
+
 ## Prometheus integration with Automate HA - Monitoring
 
 a. [Prometheus Agent Configuration and Installation](prometheus/Prometheus-agent-installation-configuration.md)
@@ -99,6 +100,7 @@ c. [Prometheus Metrics configuration and Integration with AWS for AWS Managed se
 d. [Dashboard Setup and Configuration](prometheus/Prometheus-Dashboard-Setup-and-Configuration.md)
 
 
+
 ## Prometheus integration with Automate HA - Alerting
 
 a. [Slack Integration](prometheus/prometheus_slack_Integration_and_Notification.md)
@@ -108,7 +110,33 @@ b. [PagerDuty Integration](prometheus/prometheus_PagerDuty_Integration_and_Notif
 c. [MS Teams Integration](prometheus/prometheus_msteams_Integration_and_Notification.md)
 
 
-### 3. Cloudwatch
+### ELK
+
+a. Elasticsearch Configuration and Installation:
+
+Explain the importance of Elasticsearch for log storage and search.
+Provide step-by-step instructions for configuring and installing Elasticsearch.
+Discuss any prerequisites or system requirements.
+
+b. Logstash Configuration and Installation:
+
+Explain the role of Logstash in log processing and transformation.
+Provide step-by-step instructions for configuring and installing Logstash.
+Discuss any prerequisites or system requirements.
+
+c. Kibana Configuration and Installation:
+
+Explain the features and benefits of Kibana for log visualization and analysis.
+Provide step-by-step instructions for configuring and installing Kibana.
+Discuss any prerequisites or system requirements.
+
+d. Metrics Monitor Configuration in Kibana:
+
+Explain how to configure Metrics Monitors in Kibana for log-based monitoring.
+Discuss the advantages of using Kibana for log analysis and alerting.
+Provide examples of monitoring rules and how to set them up.
+
+### Cloudwatch
 
 a. Integration of CloudWatch with AWS Athena for Logs Query:
 
@@ -140,31 +168,7 @@ Explain how to configure Metrics Monitors in Cloudwatch for proactive monitoring
 Discuss the importance of defining monitoring rules and thresholds.
 Provide examples of common monitoring scenarios and how to set them up.
 
-### 4. ELK
 
-a. Elasticsearch Configuration and Installation:
-
-Explain the importance of Elasticsearch for log storage and search.
-Provide step-by-step instructions for configuring and installing Elasticsearch.
-Discuss any prerequisites or system requirements.
-
-b. Logstash Configuration and Installation:
-
-Explain the role of Logstash in log processing and transformation.
-Provide step-by-step instructions for configuring and installing Logstash.
-Discuss any prerequisites or system requirements.
-
-c. Kibana Configuration and Installation:
-
-Explain the features and benefits of Kibana for log visualization and analysis.
-Provide step-by-step instructions for configuring and installing Kibana.
-Discuss any prerequisites or system requirements.
-
-d. Metrics Monitor Configuration in Kibana:
-
-Explain how to configure Metrics Monitors in Kibana for log-based monitoring.
-Discuss the advantages of using Kibana for log analysis and alerting.
-Provide examples of monitoring rules and how to set them up.
 
 
 ## Conclusion:
