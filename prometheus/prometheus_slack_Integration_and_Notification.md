@@ -52,7 +52,7 @@ route:
 receivers:
   - name: slack
     slack_configs:
-      - api_url: 'https://hooks.slack.com/services/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'
+      - api_url: 'https://hooks.slack.com/services/T03XXXS/B_TAMPERED_API_URL_DqW'
         send_resolved: true
         channel: '#prometheus-monitoring'
         title: |-
