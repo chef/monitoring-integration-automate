@@ -12,13 +12,33 @@ What you’ll need:
 ### Prerequisites
 The following steps provides the guidance to prepare Slack receiver for the alert manager to send alerts. 
 
+*  Refer to this [guide](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/) for step-by-step guidance to configure Slack notification from the prometheus alertmanager.
+
 * Slack Notification Configuration
-  - Create a slack channel
-  - After creating the channel, copy the api url. e.g. `https://hooks.slack.com/services/T03XXXS/B_TAMPERED_API_URL_DqW`.
+  - Create a slack channel. The following screenshots will provide guidance to create 
 
-  Refer to this [guide](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/) for step-by-step guidance to configure Slack notification from the prometheus alertmanager.
+  - Select All Channels and click Create Channel
+  ![Create Channel](./images/Slack-1.png)
 
-* This api_url will be used in alertmanager configuration.
+  - Specify Channel Name
+   ![Channel Name](./images/Slack-2.png)
+  
+  - Select Visibility
+   ![visibility](./images/Slack-3.png)
+
+* Once Channel is created, create webhook
+ - Click on Slack administration -> Manage Apps 
+  ![Admin](./images/Slack-5.png)
+ - Search for "Incoming Webhooks"
+  ![Incoming Webhooks](./images/Slack-6.png)
+ - Add Incoming hooks to Slack
+  ![Add to Slack](./images/Slack-7.png)
+ - Select Channel and click on "Add Incoming Webhook Integration"
+  ![Select Channel](./images/Slack-8.png)
+ - Copy the Webhook api url.
+  ![Webhook url](./images/Slack-9.png)
+
+* The api_url will be used in alertmanager configuration.
 
 ### Configure AlertManager for Slack
 
@@ -86,3 +106,7 @@ systemctl daemon-reload
 systemctl start alertmanager
 systemctl status alertmanager
 ```
+
+###  Alerts Example
+The following screenshot shows an example of an Prometheus alert in Slack
+![Alert](./images/Skack-10.png)
