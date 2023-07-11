@@ -14,7 +14,7 @@ The following steps provides the guidance to prepare Slack receiver for the aler
 
 * Slack Notification Configuration
   - Create a slack channel
-  - After creating the channel, copy the api url. e.g. `https://hooks.slack.com/services/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`.
+  - After creating the channel, copy the api url. e.g. `https://hooks.slack.com/services/T03XXXS/B_TAMPERED_API_URL_DqW`.
 
   Refer to this [guide](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/) for step-by-step guidance to configure Slack notification from the prometheus alertmanager.
 
