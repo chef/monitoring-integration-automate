@@ -10,7 +10,63 @@ ELK Stack is an open-source software which allows search and visualization of lo
 
 A fourth component, Filebeat will be used to push logs from Chef Automate HA nodes to Logstash.
 
-This document does not cover the installation and system requirements for ELK Stack due to the many factors that should be considered for this type of deployment. The Elastic site (https://elastic.co) should be referenced for details on sizing and configuration of ELK Stack.
+This document does not cover the installation and system requirements for ELK Stack due to the many factors that should be considered for this type of deployment (We are providing standard installation ELK stacks below). The Elastic site (https://elastic.co) should be referenced for details on sizing and configuration of ELK Stack.
+
+## Installation
+Please follow below steps for installing elastic stack in normal way.
+
++ Dependency: ELK need java as dependency, install the same if not:
+
+      sudo apt-get install openjdk-8-jdk
+
++ Download and install the public signing key:
+
+      wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
+
++ Installing from the APT repository:
+
+      sudo apt-get install apt-transport-https
+
++ Save the repository definition to /etc/apt/sources.list.d/elastic-8.x.list:
+
+      echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list
+
++ Install the Elasticsearch Debian package with:
+
+      sudo apt-get update && sudo apt-get install elasticsearch
+
++ configure the elastic settings:
+
+      sudo nano /etc/elasticsearch/elasticsearch.yml
+
+    + uncomment the Port and add the port number (for example - 9200)
+    + uncomment and add correct "network.host" IP
+    + If required, add cluster or "discovery.type: single-node" and node settings.
+
++ Start the elastic services:
+
+      sudo systemctl daemon-reloadsudo systemctl daemon-reload
+      sudo systemctl start elasticsearch.service
+      sudo systemctl enable elasticsearch.service
+
++ Install Kibana
+
+      apt install kibana
+      sudo nano /etc/kibana/kibana.yml --> configure the kibana
+      sudo systemctl start kibana.service
+      sudo systemctl enable kibana.service
+
+    + uncomment the Port and add the port number for kibana (for example - 5601)
+    + uncomment and add correct "server.host" for kibana
+    + uncomment and add correct "network.host" for elasticsearch
+
++ Install Logstash
+
+      apt install logstash
+      sudo systemctl start logstash.service
+      sudo systemctl enable logstash.service
+
+Please follow below setups for logstash setup.
 
 ## Prerequisites
 
@@ -117,13 +173,20 @@ sudo systemctl enable filebeat
 
 ## Visualize Logs in Kibana
 
-1. Create an **Index Pattern** in Kibana to view the Logs sent to Logstash.
+1. Open kibana on browser:
+   + Click on **Explore on my own**.
+     ![kibana-index-pattern](images/Kibana-first-page.png)
+   + Click on **Dicover** tab on left side.
+   + Click on **Generate Index**.
+
+2. Create an **Index Pattern** in Kibana to view the Logs sent to Logstash.
 
 ![kibana-index-pattern](images/index-pattern.png)
 
-2. In Kibana, navigate to **Analytics/ Discovery** and select the Index Pattern created in the prior step. The logs from the Chef Automate Servers will be displayed.
+3. In Kibana, navigate to **Analytics/ Discovery** and select the Index Pattern created in the prior step. The logs from the Chef Automate Servers will be displayed.
 
 ![kibana-dashboard](images/kibana-dashboard.png)
 
++ We can add multiple filters and customise the data comming.
 
-
+We can further build the Automate Service based dashboards for quick looks.
