@@ -72,7 +72,7 @@ instances:
     service: notifications-service
     timeout: 10
 
-  - name: authn-service
+  - name: authn-service 
     url: http://localhost:9631/services/authn-service/default/health
     method: get
     http_response_status_code: 200
