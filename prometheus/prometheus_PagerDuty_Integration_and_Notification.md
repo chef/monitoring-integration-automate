@@ -16,12 +16,23 @@ What you’ll need:
 
 The following steps provides the guidance to prepare pagerduty receiver for the alert manager to send alerts. 
 
+* Refer to the [configuration guide](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/) for step-by-step guidance to configure PagerDuty service to receive notifications from the prometheus alertmanager.
+
 * PagerDuty Configuration  
     - Access your pagerduty portal with permissions to create a new service. 
-    - Create a new Configuration Services.
-    - After creating the service, copy the service key. e.g. `98c3d3add5xe4f0xc3726243ee3fdc62`. This service key will be used in alertmanager configuration.
+    - Create a new Configuration Services. The following screenshots will provide guidance to create pagerduty service.
+
+      - Click New Service.
+      - Specify the Service Name
+      ![New Service](./images/PD-1.png)
+      - Assign Escalation Policy. Click Next
+      ![Escalation Policy](./images/PD-2.png)
+      - Reduce Noise. Click Next
+      ![Reduce Noise](./images/PD-3.png)
+      - Select Integration Service as Prometheus and click Create Service.
+      ![Integration](./images/PD-4.png)
+    - After creating the service, copy the service key. e.g. `98c3d3add5xe4f_TAMPERED_fdc62`. This service key will be used in alertmanager configuration.
   
-  Refer to the [configuration guide](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/) for step-by-step guidance to configure PagerDuty service to receive notifications from the prometheus alertmanager.
 
 ### Configure AlertManager for Pagerduty
 
@@ -60,3 +71,9 @@ systemctl daemon-reload
 systemctl start alertmanager
 systemctl status alertmanager
 ```
+
+## PagerDuty Alerts
+The following screenshots will show the PagerDuty Console and Alert as example.
+
+![PagerDuty Console](./images/PD-5.png)
+![PagerDuty Alert](./images/PD-6.png)
