@@ -122,7 +122,7 @@ sudo chown exporter:exporter /usr/local/bin/node_exporter
 ##  Step 4: Configure Prometheus
 Complete the following procedure to configure Prometheus. In this procedure, you open and edit the prometheus.yml file, which contains various settings for the Prometheus tool. Prometheus establishes a monitoring environment based on the settings that you configure in the file.
 
-```
+
 * Following are a few important parameters that you might want to configure in the prometheus.yml file:
 
   * scrape_interval — Located under the global header, this parameter defines the time interval (in seconds) for how often Prometheus will collect or scrape metric data for a given target. As indicated by the global tag, this setting is universal for all resources that Prometheus monitors. This setting also applies for exporters, unless an individual exporter provides a different value that overrides the global value. You can keep this parameter set to its current value of 15 seconds.
