@@ -1,10 +1,10 @@
 # Prometheus Dashboards
-Graphana is used as dashboard tool for Prometheus.
+Grafana is used as dashboard tool for Prometheus.
 
 The dashboard allows us to analyze data from across our entire system in a single pane of glass. It enables our team to immediately benefit from dynamic views with no query language or coding required.
  
-## Installing and Configuring Graphana: 
-This article provides step by step guidance to [install Graphana server locally](https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/).
+## Installing and Configuring Grafana: 
+This article provides step by step guidance to [install Grafana server locally](https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/).
 
 After the successful installation, configure the data source for prometheus. The follow article provides the step by step instructions to [data source configuration](https://prometheus.io/docs/visualization/grafana/#creating-a-prometheus-data-source) configuration.
 
@@ -42,12 +42,12 @@ Chef recommends the following dashboards for Chef Automate HA implementations:
 + Postgresql Dashboard
 + System Dashboard
 
-# Dashboards in Graphana
+# Dashboards in Grafana
  Once dashboard objective are defined, dashboard can either be created or imported if already exist on the community.
 
 ## Creating a Dashboard
 
-The article provides detailed guidance to [create dashboard in Graphana with prometheus](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/create-dashboard/).
+The article provides detailed guidance to [create dashboard in Grafana with prometheus](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/create-dashboard/).
 
 This section will list down the steps to create a dashboard for Chef Automate HA component health dashboard. This dashboard will provide the :
  * status of load balancers for chef automate and chef infra servers in row 1
@@ -60,7 +60,7 @@ This section will list down the steps to create a dashboard for Chef Automate HA
 
  * Configure Prometheus server with required jobs to collect required metrics to feed this dashboard. Refer to [Prometheus.yml file](./prometheus.yml) for the detailed job configurations.
 
-+ Login to graphana portal http://<<graphana ip>>:3000) with your credentials.
++ Login to Grafana portal http://<<Grafana ip>>:3000) with your credentials.
 + On the left hand side, click on Dashboards --> New Dashboard. You will be directed to a new Dashboard screen.
 ![New Dashboard](./images/dashboard1.png)
 + Add 4 Rows and modify the title
@@ -161,9 +161,9 @@ The prometheus community has contributed the various dashboards and the followin
 * [Postgres Dashboard](https://grafana.com/grafana/dashboards/9628-postgresql-database/)
 * [Open Search Dashboard](https://grafana.com/grafana/dashboards/15178-opensearch-prometheus/)  
 
-The following process explains the process to import existing dashboards in Graphana.
+The following process explains the process to import existing dashboards in Grafana.
 
-* Refer to the [Graphana dashboard repository](https://grafana.com/grafana/dashboards/) for available dashboards.
+* Refer to the [Grafana dashboard repository](https://grafana.com/grafana/dashboards/) for available dashboards.
 
 * Review the available dashboard that meet your specific requirements.
 
