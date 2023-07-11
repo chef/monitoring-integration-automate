@@ -78,3 +78,7 @@ Restart Alertmanager and prometheus server
 systemctl restart alertmanager.service
 systemctl restart prometheus.service
 ```
+
+## MS Team Alert Example
+The below screenshot shows the example of prometheus alerts in MSTeams.
+![Alert Example](./images/msteam-5.png) 
