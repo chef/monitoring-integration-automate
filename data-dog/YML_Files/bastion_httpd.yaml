@@ -1,0 +1,17 @@
+init_config:
+
+instances:
+
+  - name: sso-service
+    url: http://localhost:8080/sso/health
+    method: get
+    http_response_status_code: 200
+    service: sso-service
+    timeout: 10
+
+  - name: auth-service
+    url: http://localhost:8090/auth/health
+    method: get
+    http_response_status_code: 200
+    service: auth-service
+    timeout: 10

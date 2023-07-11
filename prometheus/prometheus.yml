@@ -1,0 +1,310 @@
+# my global config
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - localhost:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  - "system_rules.yml"
+  - "url_rules.yml"
+  - "chef_services_rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: "prometheus"
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+      - targets: ["10.100.10.131:9090"]
+
+  - job_name: "prometheus-node-exporter"
+    static_configs:
+      - targets: ["10.100.10.131:9100"]
+
+  - job_name: "node-exporter-ubuntu"
+    static_configs:
+      - targets: ["10.100.12.65:9100"]
+      - targets: ["10.100.12.65:9101"]
+
+  - job_name: "progress-exporter"
+    static_configs:
+      - targets: ["10.100.12.65:9101"]
+
+  - job_name: "node-exporter-bastion"
+    static_configs:
+      - targets: ["10.100.3.111:9100"]
+
+  - job_name: "node-exporter-cs-01"
+    static_configs:
+      - targets: ["10.100.164.190:9100"]
+
+  - job_name: "node-exporter-a2-01"
+    static_configs:
+      - targets: ["10.100.172.107:9100"]
+
+  - job_name: "node-exporter-hosted-a2-01"
+    static_configs:
+      - targets: ["hosted-a2-01:9100"]
+
+  - job_name: "node_exporter-hosted-a2-02"
+    static_configs:
+      - targets: ["hosted-a2-02:9100"]
+
+  - job_name: "node-exporter-hosted-cs-01"
+    static_configs:
+      - targets: ["hosted-cs-01:9100"]
+
+  - job_name: "node-exporter-hosted-cs-02"
+    static_configs:
+      - targets: ["hosted-cs-02:9100"]
+
+  - job_name: "node-exporter-hosted-pg-01"
+    static_configs:
+      - targets: ["hosted-pg-01:9100"]
+
+  - job_name: "node-exporter-hosted-pg-02"
+    static_configs:
+      - targets: ["hosted-pg-02:9100"]
+
+  - job_name: "node-exporter-hosted-pg-03"
+    static_configs:
+      - targets: ["hosted-pg-03:9100"]
+
+  - job_name: "node-exporter-hosted-os-01"
+    static_configs:
+      - targets: ["hosted-os-01:9100"]
+
+  - job_name: "node-exporter-hosted-os-02"
+    static_configs:
+      - targets: ["hosted-os-02:9100"]
+
+  - job_name: "node-exporter-hosted-os-03"
+    static_configs:
+      - targets: ["hosted-os-02:9100"]
+
+  - job_name: "node-exporter-hosted-bastion-02"
+    static_configs:
+      - targets: ["hosted-bs-02:9100"]
+
+  - job_name: "postgres-exporter-hosted-pg-01"
+    static_configs:
+      - targets: ["hosted-pg-01:9101"]
+
+  - job_name: "postgres-exporter-hosted-pg-02"
+    static_configs:
+      - targets: ["hosted-pg-02:9101"]
+
+  - job_name: "postgres-exporter-hosted-pg-03"
+    static_configs:
+      - targets: ["hosted-pg-03:9101"]
+
+  - job_name: opensearch
+    scrape_interval: 10s
+    metrics_path: "_prometheus/metrics"
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
+    basic_auth:
+      username: 'admin'
+      password: 'admin'
+    static_configs:
+      - targets:
+        - hosted-os-01:9200
+        - hosted-os-02:9200
+        - hosted-os-03:9200
+
+  - job_name: 'chef-automate-url'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    static_configs:
+      - targets:
+         - https://bsk-automate.success.chef.co
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9115  # The blackbox exporter's real hostname:port.
+  - job_name: 'chef-server-url'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    static_configs:
+      - targets:
+         - https://bsk-chefservers.success.chef.co
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9115  # The blackbox exporter's real hostname:port.
+  - job_name: 'automate-services-node-01'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    static_configs:
+      - targets:
+         - http://localhost:9631/services/session-service/default/health
+         - http://localhost:9631/services/data-feed-service/default/health
+         - http://localhost:9631/services/applications-service/default/health
+         - http://localhost:9631/services/cereal-service/default/health
+         - http://localhost:9631/services/pg-sidecar-service/default/health
+         - http://localhost:9631/services/ingest-service/default/health
+         - http://localhost:9631/services/automate-cs-oc-erchef/default/health
+         - http://localhost:9631/services/es-sidecar-service/default/health
+         - http://localhost:9631/services/notifications-service/default/health
+         - http://localhost:9631/services/authn-service/default/health
+         - http://localhost:9631/services/automate-dex/default/health
+         - http://localhost:9631/services/automate-ui/default/health
+         - http://localhost:9631/services/backup-gateway/default/health
+         - http://localhost:9631/services/automate-cs-bookshelf/default/health
+         - http://localhost:9631/services/event-feed-service/default/health
+         - http://localhost:9631/services/compliance-service/default/health
+         - http://localhost:9631/services/automate-gateway/default/health
+         - http://localhost:9631/services/teams-service/default/health
+         - http://localhost:9631/services/automate-cs-nginx/default/health
+         - http://localhost:9631/services/automate-pg-gateway/default/health
+         - http://localhost:9631/services/report-manager-service/default/health
+         - http://localhost:9631/services/secrets-service/default/health
+         - http://localhost:9631/services/deployment-service/default/health
+         - http://localhost:9631/services/local-user-service/default/health
+         - http://localhost:9631/services/license-control-service/default/health
+         - http://localhost:9631/services/nodemanager-service/default/health
+         - http://localhost:9631/services/automate-es-gateway/default/health
+         - http://localhost:9631/services/automate-cs-oc-bifrost/default/health
+         - http://localhost:9631/services/authz-service/default/health
+         - http://localhost:9631/services/automate-load-balancer/default/health
+         - http://localhost:9631/services/event-gateway/default/health
+         - http://localhost:9631/services/event-service/default/health
+         - http://localhost:9631/services/config-mgmt-service/default/health
+         - http://localhost:9631/services/infra-proxy-service/default/health
+         - http://localhost:9631/services/user-settings-service/default/health
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 10.100.4.233:9115  # The blackbox exporter's real hostname:port.
+  - job_name: 'automate-services-node-02'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    static_configs:
+      - targets:
+         - http://localhost:9631/services/session-service/default/health
+         - http://localhost:9631/services/data-feed-service/default/health
+         - http://localhost:9631/services/applications-service/default/health
+         - http://localhost:9631/services/cereal-service/default/health
+         - http://localhost:9631/services/pg-sidecar-service/default/health
+         - http://localhost:9631/services/ingest-service/default/health
+         - http://localhost:9631/services/automate-cs-oc-erchef/default/health
+         - http://localhost:9631/services/es-sidecar-service/default/health
+         - http://localhost:9631/services/notifications-service/default/health
+         - http://localhost:9631/services/authn-service/default/health
+         - http://localhost:9631/services/automate-dex/default/health
+         - http://localhost:9631/services/automate-ui/default/health
+         - http://localhost:9631/services/backup-gateway/default/health
+         - http://localhost:9631/services/automate-cs-bookshelf/default/health
+         - http://localhost:9631/services/event-feed-service/default/health
+         - http://localhost:9631/services/compliance-service/default/health
+         - http://localhost:9631/services/automate-gateway/default/health
+         - http://localhost:9631/services/teams-service/default/health
+         - http://localhost:9631/services/automate-cs-nginx/default/health
+         - http://localhost:9631/services/automate-pg-gateway/default/health
+         - http://localhost:9631/services/report-manager-service/default/health
+         - http://localhost:9631/services/secrets-service/default/health
+         - http://localhost:9631/services/deployment-service/default/health
+         - http://localhost:9631/services/local-user-service/default/health
+         - http://localhost:9631/services/license-control-service/default/health
+         - http://localhost:9631/services/nodemanager-service/default/health
+         - http://localhost:9631/services/automate-es-gateway/default/health
+         - http://localhost:9631/services/automate-cs-oc-bifrost/default/health
+         - http://localhost:9631/services/authz-service/default/health
+         - http://localhost:9631/services/automate-load-balancer/default/health
+         - http://localhost:9631/services/event-gateway/default/health
+         - http://localhost:9631/services/event-service/default/health
+         - http://localhost:9631/services/config-mgmt-service/default/health
+         - http://localhost:9631/services/infra-proxy-service/default/health
+         - http://localhost:9631/services/user-settings-service/default/health
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 10.100.1.132:9115  # The blackbox exporter's real hostname:port.
+  - job_name: 'chef-server-services-node-01'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    static_configs:
+      - targets:
+         - http://localhost:9631/services/deployment-service/default/health
+         - http://localhost:9631/services/backup-gateway/default/health
+         - http://localhost:9631/services/automate-es-gateway/default/health
+         - http://localhost:9631/services/automate-pg-gateway/default/health
+         - http://localhost:9631/services/es-sidecar-service/default/health
+         - http://localhost:9631/services/pg-sidecar-service/default/health
+         - http://localhost:9631/services/license-control-service/default/health
+         - http://localhost:9631/services/automate-cs-bookshelf/default/health
+         - http://localhost:9631/services/automate-load-balancer/default/health
+         - http://localhost:9631/services/automate-cs-nginx/default/health
+         - http://localhost:9631/services/automate-cs-oc-erchef/default/health
+         - http://localhost:9631/services/automate-cs-oc-bifrost/default/health
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 10.100.0.177:9115  # The blackbox exporter's real hostname:port.
+  - job_name: 'chef-server-services-node-02'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Look for a HTTP 200 response.
+    static_configs:
+      - targets:
+         - http://localhost:9631/services/deployment-service/default/health
+         - http://localhost:9631/services/backup-gateway/default/health
+         - http://localhost:9631/services/automate-es-gateway/default/health
+         - http://localhost:9631/services/automate-pg-gateway/default/health
+         - http://localhost:9631/services/es-sidecar-service/default/health
+         - http://localhost:9631/services/pg-sidecar-service/default/health
+         - http://localhost:9631/services/license-control-service/default/health
+         - http://localhost:9631/services/automate-cs-bookshelf/default/health
+         - http://localhost:9631/services/automate-load-balancer/default/health
+         - http://localhost:9631/services/automate-cs-nginx/default/health
+         - http://localhost:9631/services/automate-cs-oc-erchef/default/health
+         - http://localhost:9631/services/automate-cs-oc-bifrost/default/health
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 10.100.10.156:9115  # The blackbox exporter's real hostname:port.
+
+  - job_name: "chef-automate-nginx-node-01"
+    static_configs:
+      - targets: ["10.100.4.233:9113"]
+
+  - job_name: "chef-automate-nginx-node-02"
+    static_configs:
+      - targets: ["10.100.1.132:9113"]
