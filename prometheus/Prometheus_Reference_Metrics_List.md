@@ -3,8 +3,8 @@
 The following section lists/documents the metrics collected by various exporters used for Chef Managed Automate HA implementation. The similar metrics may be collected from aws hosted deployments.
 
 * System Metrics
-    - Refer to the following exporters for the metric details.
-        [Node-Exporter](https://github.com/prometheus/node_exporter)
+    - Refer to the following exporters for the metric details.  
+        - [Node-Exporter](https://github.com/prometheus/node_exporter)
     
     - The following metrics are configured to generate alerts.  
 
@@ -24,8 +24,8 @@ The following section lists/documents the metrics collected by various exporters
     |   Disk Latency | |
 
 * Chef Automate Health Metrics
-    - Refer to the following exporters for the metric details.
-        [Black-Box Exporter](https://github.com/prometheus/blackbox_exporter)
+    - Refer to the following exporters for the metric details.  
+        - [Black-Box Exporter](https://github.com/prometheus/blackbox_exporter)
         [Nginx-Exporter](https://github.com/nginxinc/nginx-prometheus-exporter)
 
     - The following metrics are configured to generate alerts.
@@ -39,8 +39,8 @@ The following section lists/documents the metrics collected by various exporters
     | Chef-Server LB 5XX Alert | probe_http_status_code{job=~"chef-server-url|chef-automate-url"} >= 500 |
 
 * OpenSearch Metrics
-    - Refer to the following OpenSearch plugin for the metric details.
-        [OpenSearch Plug-in](https://github.com/aiven/prometheus-exporter-plugin-for-opensearch)
+    - Refer to the following OpenSearch plugin for the metric details.  
+        - [OpenSearch Plug-in](https://github.com/aiven/prometheus-exporter-plugin-for-opensearch)
 
     - The following metrics are configured to generate alerts.
 
@@ -56,12 +56,12 @@ The following section lists/documents the metrics collected by various exporters
 
 
 * Postgres Metrics
-    - Refer to the following OpenSearch plugin for the metric details.
-        [Postgres-Exporter](https://github.com/prometheus-community/postgres_exporter)
+    - Refer to the following OpenSearch plugin for the metric details.  
+        - [Postgres-Exporter](https://github.com/prometheus-community/postgres_exporter)
 
     - The following metrics are configured to generate alerts.
 
-    
+
     | **Component**           | **Metrics Expr**                               |
     |-------------------------|------------------------------------------------|
     | PG Can Connect | pg_up != 1 |
