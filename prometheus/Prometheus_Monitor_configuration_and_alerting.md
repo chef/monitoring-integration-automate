@@ -24,19 +24,14 @@ This section explains the process to monitor Automate HA application services.
 
 * Refer to [blackbox exporter service](./exporter_service_files/blackbox_exporter.service) and [black box configuration](./exporter_configs/blackbox_exporter.yml) files.
 
-* Configure prometheus.yml file on prometheus server to scape metrics for various chef services. Refer to [prometheus.yml](./TODO ADD Link here) for the following job configurations
+* Configure prometheus.yml file on prometheus server to scape metrics for various chef services. Refer to [prometheus.yml](./prometheus.yml) for the following job configurations
   - chef-server-url - Monitors elastic load balancer for chef infra frontend servers
   - chef-automate-url -  Monitors elastic load balancer for chef automate frontend servers
   - chef-server-services.* - Monitors all services running on each chef infra frontend servers
   - automate-services.* - Monitors all services running on each chef automate frontend servers
 
-### Configure Backend Service Monitoring
-
-#### Configure Postgres Metrics
-  The postgres exporter is installed on each node running postgres. Refer to [postgres exporter documentation](TODO Add Link here) to learn more about capabilities. Refer to the [postgres exporter services](./exporter_service_files/postgres_exporter.service) and [postgres exporter config]() files
-
-#### Configure OpenSearch Metrics
-
+### Configure Postgres Metrics
+  The postgres exporter is installed on each node running postgres. Refer to [postgres exporter documentation](https://github.com/prometheus-community/postgres_exporter) to learn more about capabilities. Refer to the [postgres exporter services](./exporter_service_files/postgres_exporter.service) and [postgres exporter config](./exporter_configs/postgres_exporter.env) files
 
 ## Installing AlertManager
 The following steps will provide guidance to configure Prometheus AlertManager.
@@ -117,7 +112,6 @@ systemctl status alertmanager
 systemctl enable alertmanager
 ```
 
-
 ## Configuring AlertManager with Prometheus
 
 * Add the following configuration in Prometheus
@@ -157,6 +151,7 @@ Execute the following command to validate configurations.
 promtool check config /etc/prometheus/prometheus.yml
 ```
 
+Output
 ```
 Checking /etc/prometheus/prometheus.yml
   SUCCESS: 1 rule files found

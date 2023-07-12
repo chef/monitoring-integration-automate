@@ -2,12 +2,14 @@
 
 The following section lists/documents the metrics collected by various exporters used for Chef Managed Automate HA implementation. The similar metrics may be collected from aws hosted deployments.
 
-* System Metrics
+**Disclaimer**
+The following metrics are recommended to monitor Chef Automate HA implementation.These metrics provides guidance to use and built monitoring rules and dashboard based on these metrics. However, the actual usage and adoption of metrics depends on each organizational infrastructure monitoring policies.
+
+## System Metrics
     - Refer to the following exporters for the metric details.  
         - [Node-Exporter](https://github.com/prometheus/node_exporter)
     
     - The following metrics are configured to generate alerts.  
-
 
     | **Component**           | **Metrics Expr**                                    |  
     |-------------------------|------------------------------------------------|  
@@ -21,9 +23,8 @@ The following section lists/documents the metrics collected by various exporters
     |   Disk Utilization | 100 - (node_filesystem_avail_bytes{mountpoint="/tmp"}/node_filesystem_size_bytes{mountpoint="/tmp"}*100) > 85 |
     |   Disk Utilization | 100 - (node_filesystem_avail_bytes{mountpoint="/tmp"}/node_filesystem_size_bytes{mountpoint="/tmp"}*100) > 90 |
     |   Host Monitoring | up == 0 |
-    |   Disk Latency | |
 
-* Chef Automate Health Metrics
+## Chef Automate Health Metrics
     - Refer to the following exporters for the metric details.  
         - [Black-Box Exporter](https://github.com/prometheus/blackbox_exporter)
         [Nginx-Exporter](https://github.com/nginxinc/nginx-prometheus-exporter)
@@ -38,7 +39,7 @@ The following section lists/documents the metrics collected by various exporters
     | Automate LB 5XX Alert | probe_http_status_code{job=~"chef-server-url|chef-automate-url"} >= 500 |
     | Chef-Server LB 5XX Alert | probe_http_status_code{job=~"chef-server-url|chef-automate-url"} >= 500 |
 
-* OpenSearch Metrics
+## OpenSearch Metrics
     - Refer to the following OpenSearch plugin for the metric details.  
         - [OpenSearch Plug-in](https://github.com/aiven/prometheus-exporter-plugin-for-opensearch)
 
@@ -55,7 +56,7 @@ The following section lists/documents the metrics collected by various exporters
     | Elasticsearch Search latency Alert | opensearch_index_search_query_time_seconds > 60 |
 
 
-* Postgres Metrics
+## Postgres Metrics
     - Refer to the following OpenSearch plugin for the metric details.  
         - [Postgres-Exporter](https://github.com/prometheus-community/postgres_exporter)
 
@@ -67,12 +68,4 @@ The following section lists/documents the metrics collected by various exporters
     | PG Can Connect | pg_up != 1 |
     | Connection Exhaustion | (sum(pg_stat_database_numbackends{server="10.100.12.36:5432"}) by(instance,job))/(avg(pg_settings_max_connections{server="10.100.12.36:5432"}) by(instance,job)) * 100 > 90 |
     | Connection Exhaustion | (sum(pg_stat_database_numbackends{server="10.100.12.36:5432"}) by(instance))/(avg(pg_settings_max_connections{server="10.100.12.36:5432"}) by(instance)) * 100 > 95 |
-    | Usage Anomaly | |
-    | Usage Anomaly | |
-    | Usage Anomaly | |
-    | Usage Anomaly | |
-    | Usage Anomaly | |
-    | Managed PostgreSQL Disk Usage Alert | |
-    | Managed PostgreSQL Freeable Memory | | 
-    | Managed PostgreSQL Write Latency | | 
-    | Managed PostgreSQL Read Latency | |
+
