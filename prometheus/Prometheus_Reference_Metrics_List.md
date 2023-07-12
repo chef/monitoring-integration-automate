@@ -6,10 +6,10 @@ The following section lists/documents the metrics collected by various exporters
     - Refer to the following exporters for the metric details.
         [Node-Exporter](https://github.com/prometheus/node_exporter)
     
-    - The following metrics are configured to generate alerts.
-    | **Component**           | **Metrics Expr**                                    |
-    |-------------------------|------------------------------------------------|
-    |   CPU Usage             | 100 - (avg(irate(node_cpu_seconds_total{mode="idle"}[5m])) by(instance,job) * 100) > 95 |
+    - The following metrics are configured to generate alerts.  
+    | **Component**           | **Metrics Expr**                                    |  
+    |-------------------------|------------------------------------------------|  
+    |   CPU Usage             | 100 - (avg(irate(node_cpu_seconds_total{mode="idle"}[5m])) by(instance,job) * 100) > 95 |  
     |   CPU Steal | (avg(irate(node_cpu_seconds_total{mode="steal"}[5m]) * 100) by(instance,job))> 20 |
     |   System Memory Usage | 100 - (node_memory_MemAvailable_bytes/node_memory_MemTotal_bytes*100) > 95 |
     |   Disk Utilization | 100 - (node_filesystem_avail_bytes{mountpoint="/"}/node_filesystem_size_bytes{mountpoint="/"}*100) > 85 |
