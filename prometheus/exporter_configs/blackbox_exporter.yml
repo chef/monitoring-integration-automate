@@ -1,0 +1,11 @@
+modules:
+  http_2xx:
+    prober: http
+    http:
+      valid_http_versions: ["HTTP/1.1", "HTTP/2"]
+      method: "GET"
+      headers:
+        Host: vhost.example.com
+      tls_config:
+        insecure_skip_verify: true
+      valid_status_codes: [200]

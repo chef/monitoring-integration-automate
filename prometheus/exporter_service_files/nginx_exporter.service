@@ -1,0 +1,14 @@
+[Unit]
+Description=Nginx Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=exporter
+Group=exporter
+Type=simple
+EnvironmentFile=/opt/nginx-prometheus-exporter/nginx-prometheus-exporter.env
+ExecStart=/usr/local/bin/nginx-prometheus-exporter -nginx.scrape-uri=https://localhost/nginx_status/
+
+[Install]
+WantedBy=multi-user.target

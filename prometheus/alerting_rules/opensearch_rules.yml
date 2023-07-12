@@ -1,0 +1,61 @@
+groups:
+ - name: ES Cluster Health Check
+   rules:
+   - alert: ESClusterHealthCheck
+     expr: opensearch_cluster_nodes_number < 2
+     for: 5m
+     labels:
+       severity: L1
+     annotations:
+       title: ' Insatnce {{ $labels.instance }} Down'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.'
+ - name: OS Heap Usage Factor
+   rules:
+   - alert: OS Heap Usage Factor
+     expr: opensearch_jvm_mem_heap_used_percent > 95
+     for: 5m
+     labels:
+       severity: L1
+     annotations:
+       title: ' Insatnce {{ $labels.instance }} performing at peak'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been performing at peak for more than 5 minutes.'
+ - name: OS Performance Alert
+   rules:
+   - alert: OSPerformanceAlert
+     expr: opensearch_index_search_fetch_time_seconds > 30
+     for: 10m
+     labels:
+       severity: L2
+     annotations:
+       title: ' Insatnce {{ $labels.instance }} slow'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been performing slow for more than 10 minutes.'
+ - name: OS Performance Alert (Page)
+   rules:
+   - alert: OSPerformanceAlertPage
+     expr: opensearch_index_search_fetch_time_seconds > 60
+     for: 10m
+     labels:
+       severity: L1
+     annotations:
+       title: ' Insatnce {{ $labels.instance }} performing slow'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been performing slow for more than 10 minutes.'
+ - name: OpeaSearch Indexing latency Alert
+   rules:
+   - alert: OSIndexinglatencyAlert
+     expr: opensearch_index_indexing_index_time_seconds > 500
+     for: 15m
+     labels:
+       severity: L1
+     annotations:
+       title: ' Insatnce {{ $labels.instance }} perfomning slow'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been performing slow for more than 15 minutes.'
+ - name: OpensearchSearch latency Alert Page
+   rules:
+   - alert: OSIndexinglatencyAlert-page
+     expr: opensearch_index_search_query_time_seconds > 60
+     for: 15m
+     labels:
+       severity: L1
+     annotations:
+       title: ' Index {{ $labels.instance }} performing slow'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been performing slow for more than 15 minutes.'

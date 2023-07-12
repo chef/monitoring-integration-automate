@@ -1,0 +1,89 @@
+groups:
+ - name: Exporter
+   rules:
+   - alert: InstanceDown
+     expr: up == 0
+     for: 5m
+     labels:
+       severity: L1
+     annotations:
+       title: ' Instance {{ $labels.instance }} Down'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.'
+ - name: System CPU Usage
+   rules:
+   - alert: CPU_Usage
+     expr: 100 - (avg(irate(node_cpu_seconds_total{mode="idle"}[5m])) by(instance,job) * 100) > 95
+     for: 10m
+     labels:
+          severity: L1
+     annotations:
+       title: ' Instance {{ $labels.instance }} High CPU Usage Total'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been running with high cpu usage - total ({{ $value | printf "%.2f" }}%) for more than 10 minutes.'
+   - alert: CPU_steal
+     expr: (avg(irate(node_cpu_seconds_total{mode="steal"}[5m]) * 100) by(instance,job))> 20
+     for: 10m
+     labels:
+          severity: L1
+     annotations:
+       title: ' Instance {{ $labels.instance }} High CPU Usage Steal'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been running with high cpu usage - steal ({{ $value | printf "%.2f" }}%)  for more than 10 minutes.'
+ - name: System Memory Usage
+   rules:
+   - alert: system_memory_Usage
+     expr: 100 - (node_memory_MemAvailable_bytes/node_memory_MemTotal_bytes*100) > 95
+     for: 10m
+     labels:
+          severity: L2
+     annotations:
+       title: ' Instance {{ $labels.instance }} High Memory Usage'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been running with high memory usage  ({{ $value | printf "%.2f" }}%)  for more than 10 minutes.'
+ - name: System Disk Usage
+   rules:
+   - alert: Disk_Utilization(/)
+     expr: 100 - (node_filesystem_avail_bytes{mountpoint="/"}/node_filesystem_size_bytes{mountpoint="/"}*100) > 85
+     for: 10m
+     labels:
+          severity: L2
+     annotations:
+       title: ' Insatnce {{ $labels.instance }} High Disk Usage'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been running with high disk usage  ({{  $value | printf "%.2f" }}%)  for more than 10 minutes.'
+   - alert: Disk_Utilization(/)-page
+     expr: 100 - (node_filesystem_avail_bytes{mountpoint="/"}/node_filesystem_size_bytes{mountpoint="/"}*100) > 90
+     for: 10m
+     labels:
+          severity: L1
+     annotations:
+       title: ' Instance {{ $labels.instance }} High Disk Usage'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been running with high disk usage  ({{  $value | printf "%.2f" }}%)  for more than 10 minutes.'
+   - alert: Disk_Utilization(/hab)
+     expr: 100 - (node_filesystem_avail_bytes{mountpoint="/hab"}/node_filesystem_size_bytes{mountpoint="/hab"}*100) > 85
+     for: 10m
+     labels:
+          severity: L2
+     annotations:
+       title: ' Instance {{ $labels.instance }} High Disk Usage'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been running with high disk usage  ({{ $value | printf "%.2f"  }}%)  for more than 10 minutes.'
+   - alert: Disk_Utilization(/hab)-page
+     expr: 100 - (node_filesystem_avail_bytes{mountpoint="/hab"}/node_filesystem_size_bytes{mountpoint="/hab"}*100) > 90
+     for: 10m
+     labels:
+          severity: L1
+     annotations:
+       title: ' Instance {{ $labels.instance }} High Disk Usage'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been running with high disk usage  ({{ $value | printf "%.2f"  }}%)  for more than 10 minutes.'
+   - alert: Disk_Utilization(/tmp)
+     expr: 100 - (node_filesystem_avail_bytes{mountpoint="/tmp"}/node_filesystem_size_bytes{mountpoint="/tmp"}*100) > 85
+     for: 10m
+     labels:
+          severity: L2
+     annotations:
+       title: ' Instance {{ $labels.instance }} High Disk Usage'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been running with high disk usage  ({{ $value | printf "%.2f" }}%)  for more than 10 minutes.'
+   - alert: Disk_Utilization(/tmp)-page
+     expr: 100 - (node_filesystem_avail_bytes{mountpoint="/tmp"}/node_filesystem_size_bytes{mountpoint="/tmp"}*100) > 90
+     for: 10m
+     labels:
+          severity: L1
+     annotations:
+       title: ' Instance {{ $labels.instance }} High Disk Usage'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been running with high disk usage  ({{ $value | printf "%.2f" }}%)  for more than 10 minutes.'

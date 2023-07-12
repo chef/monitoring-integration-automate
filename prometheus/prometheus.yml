@@ -16,6 +16,8 @@ rule_files:
   - "system_rules.yml"
   - "url_rules.yml"
   - "chef_services_rules.yml"
+  - "opensearch_rules.yml"
+  - "postgres_rules.yml"
   # - "second_rules.yml"
 
 # A scrape configuration containing exactly one endpoint to scrape:
@@ -37,7 +39,6 @@ scrape_configs:
   - job_name: "node-exporter-ubuntu"
     static_configs:
       - targets: ["10.100.12.65:9100"]
-      - targets: ["10.100.12.65:9101"]
 
   - job_name: "progress-exporter"
     static_configs:
@@ -46,14 +47,6 @@ scrape_configs:
   - job_name: "node-exporter-bastion"
     static_configs:
       - targets: ["10.100.3.111:9100"]
-
-  - job_name: "node-exporter-cs-01"
-    static_configs:
-      - targets: ["10.100.164.190:9100"]
-
-  - job_name: "node-exporter-a2-01"
-    static_configs:
-      - targets: ["10.100.172.107:9100"]
 
   - job_name: "node-exporter-hosted-a2-01"
     static_configs:
@@ -146,7 +139,7 @@ scrape_configs:
       module: [http_2xx]  # Look for a HTTP 200 response.
     static_configs:
       - targets:
-         - https://bsk-chefservers.success.chef.co
+         - https://bsk-chefservers.success.chef.co/_status
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target

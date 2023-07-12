@@ -1,0 +1,11 @@
+groups:
+ - name: chef urls
+   rules:
+   - alert: ChefUrls
+     expr: probe_http_status_code{job=~"chef-server-url|chef-automate-url"} >= 500
+     for: 10m
+     labels:
+          severity: L1
+     annotations:
+       title: '{{ $labels.instance }} unreachable'
+       description: '{{ $labels.instance }} site of job {{ $labels.job }} has been returning HTTP Code {{ $value }} for more than 10 minutes.'

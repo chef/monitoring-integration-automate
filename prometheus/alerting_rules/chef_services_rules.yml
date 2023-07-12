@@ -1,0 +1,11 @@
+groups:
+ - name: chef services Health
+   rules:
+   - alert: ChefServicesHealth
+     expr: probe_http_status_code{job=~"chef-server-services.*|automate-services.*"} != 200
+     for: 5m
+     labels:
+       severity: L1
+     annotations:
+       title: '{{ $labels.instance }} unreachable'
+       description: '{{ $labels.instance }} site of job {{ $labels.job }} has been returning HTTP Code {{ $value }} for more than 5 minutes.'
