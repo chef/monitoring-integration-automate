@@ -1,1 +1,13 @@
-TODO: Add Final service config file. 
+[Unit]
+Description=NodeExporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=exporter
+Group=exporter
+Type=simple
+ExecStart=/usr/local/bin/node_exporter
+
+[Install]
+WantedBy=multi-user.target

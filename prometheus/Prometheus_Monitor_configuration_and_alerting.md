@@ -151,9 +151,13 @@ groups:
      for: 1m
 ```
 
+Execute the following command to validate configurations.
+
 ```
 promtool check config /etc/prometheus/prometheus.yml
+```
 
+```
 Checking /etc/prometheus/prometheus.yml
   SUCCESS: 1 rule files found
  SUCCESS: /etc/prometheus/prometheus.yml is valid prometheus config file syntax
@@ -169,6 +173,3 @@ systemctl status prometheus
 ```
 
 
-
-
-https://github.com/prometheus-msteams/prometheus-msteams

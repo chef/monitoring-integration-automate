@@ -1,1 +1,13 @@
-TODO : Add the final file.
+[Unit]
+Description=BlackBox Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=exporter
+Group=exporter
+Type=simple
+ExecStart=/usr/local/bin/blackbox_exporter --config.file=/opt/blackbox_exporter/blackbox.yml
+
+[Install]
+WantedBy=multi-user.target

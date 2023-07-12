@@ -1,1 +1,13 @@
-TODO :Add final config file.
+[Unit]
+Description=Prometheus exporter for Postgresql
+Wants=network-online.target
+After=network-online.target
+[Service]
+User=exporter
+Group=exporter
+WorkingDirectory=/opt/postgres_exporter
+EnvironmentFile=/opt/postgres_exporter/postgres_exporter.env
+ExecStart=/usr/local/bin/postgres_exporter --web.listen-address=10.100.12.69:9101 --web.telemetry-path=/metrics
+Restart=always
+[Install]
+WantedBy=multi-user.target
