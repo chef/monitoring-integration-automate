@@ -12,7 +12,7 @@ A fourth component, Filebeat will be used to push logs from Chef Automate HA nod
 
 This document does not cover the installation and system requirements for ELK Stack due to the many factors that should be considered for this type of deployment (We are providing standard installation ELK stacks below). The Elastic site (https://elastic.co) should be referenced for details on sizing and configuration of ELK Stack.
 
-## Installation
+## ELK stack Installation
 Please follow below steps for installing elastic stack in normal way.
 
 + Dependency: ELK need java as dependency, install the same if not:
