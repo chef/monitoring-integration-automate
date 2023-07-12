@@ -1,5 +1,5 @@
 
-# Metrics Configuration and Alerting
+# Metrics and AlertManager Configuration
 
 ## Enabling and Configuring Metrics
 
