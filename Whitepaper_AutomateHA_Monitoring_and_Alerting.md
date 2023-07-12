@@ -91,11 +91,11 @@ a. [Datadog Centralised Logs Management](data-dog/DataDog-Centralise_Logs_Manage
 
 ## Prometheus integration with Automate HA - Monitoring
 
-a. [Prometheus Agent Configuration and Installation](prometheus/Prometheus-agent-installation-configuration.md)
+a. [Prometheus Server Configuration and Installation](prometheus/Prometheus-server-installation-and-configuration-setup.md) 
 
-b. [Prometheus Server Configuration and Installation](prometheus/Prometheus-server-installation-and-configuration-setup.md)
+b. [Prometheus Agent Configuration and Installation](prometheus/Prometheus-agent-installation-configuration.md)
 
-c. [Prometheus Metrics configuration and Integration with AWS for AWS Managed services]()
+c. [Prometheus Metrics and alert configuration](prometheus/Prometheus_Monitor_configuration_and_alerting.md)
 
 d. [Dashboard Setup and Configuration](prometheus/Prometheus-Dashboard-Setup-and-Configuration.md)
 
