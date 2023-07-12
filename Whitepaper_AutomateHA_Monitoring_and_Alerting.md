@@ -95,7 +95,7 @@ a. [Prometheus Server Configuration and Installation](prometheus/Prometheus-serv
 
 b. [Prometheus Agent Configuration and Installation](prometheus/Prometheus-agent-installation-configuration.md)
 
-c. [Prometheus Metrics and alert configuration](prometheus/Prometheus_Monitor_configuration_and_alerting.md)
+c. [Prometheus Metrics AlertManager configuration](prometheus/Prometheus_Monitor_configuration_and_alerting.md)
 
 d. [Dashboard Setup and Configuration](prometheus/Prometheus-Dashboard-Setup-and-Configuration.md)
 
