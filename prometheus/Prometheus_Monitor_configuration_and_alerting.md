@@ -1,11 +1,11 @@
 
 # Metrics Configuration and Alerting
 
-## Enabling and Configure Metrics
+## Enabling and Configuring Metrics
 
 Metrics are enabled to alert the team members and present the performance on the dashboards. Refer to the [reference metrics list](./Prometheus_Reference_Metrics_List.md) for details on collected metrics.
 
-### System Level Metrics
+### Configure System Level Monitoring
 In Prometheus, the following exporters are enabled to collect required system level metrics for the Chef Automate HA
 * Node Exporter
 

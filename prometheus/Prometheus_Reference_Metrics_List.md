@@ -1,4 +1,4 @@
-# Reference metrics that are collected by Prometheus
+# Reference Metrics List
 
 The following section lists/documents the metrics collected by various exporters used for Chef Managed Automate HA implementation. The similar metrics may be collected from aws hosted deployments.
 
@@ -6,10 +6,11 @@ The following section lists/documents the metrics collected by various exporters
 The following metrics are recommended to monitor Chef Automate HA implementation.These metrics provides guidance to use and built monitoring rules and dashboard based on these metrics. However, the actual usage and adoption of metrics depends on each organizational infrastructure monitoring policies.
 
 ## System Metrics
-    - Refer to the following exporters for the metric details.  
-        - [Node-Exporter](https://github.com/prometheus/node_exporter)
-    
-    - The following metrics are configured to generate alerts.  
+* Refer to the following exporters for the metric details.
+    - [Node-Exporter](https://github.com/prometheus/node_exporter)
+   
+ 
+* The following metrics are configured to generate alerts.  
 
     | **Component**           | **Metrics Expr**                                    |  
     |-------------------------|------------------------------------------------|  
@@ -22,14 +23,15 @@ The following metrics are recommended to monitor Chef Automate HA implementation
     |   Disk Utilization | 100 - (node_filesystem_avail_bytes{mountpoint="/hab"}/node_filesystem_size_bytes{mountpoint="/hab"}*100) > 90 |
     |   Disk Utilization | 100 - (node_filesystem_avail_bytes{mountpoint="/tmp"}/node_filesystem_size_bytes{mountpoint="/tmp"}*100) > 85 |
     |   Disk Utilization | 100 - (node_filesystem_avail_bytes{mountpoint="/tmp"}/node_filesystem_size_bytes{mountpoint="/tmp"}*100) > 90 |
-    |   Host Monitoring | up == 0 |
+    |  Host Monitoring | up == 0 |
+
 
 ## Chef Automate Health Metrics
-    - Refer to the following exporters for the metric details.  
+* Refer to the following exporters for the metric details.  
         - [Black-Box Exporter](https://github.com/prometheus/blackbox_exporter)
         [Nginx-Exporter](https://github.com/nginxinc/nginx-prometheus-exporter)
 
-    - The following metrics are configured to generate alerts.
+* The following metrics are configured to generate alerts.
 
 
     | **Component**           | **Metrics Expr**                               |
@@ -40,10 +42,10 @@ The following metrics are recommended to monitor Chef Automate HA implementation
     | Chef-Server LB 5XX Alert | probe_http_status_code{job=~"chef-server-url|chef-automate-url"} >= 500 |
 
 ## OpenSearch Metrics
-    - Refer to the following OpenSearch plugin for the metric details.  
-        - [OpenSearch Plug-in](https://github.com/aiven/prometheus-exporter-plugin-for-opensearch)
+* Refer to the following OpenSearch plugin for the metric details.  
+    - [OpenSearch Plug-in](https://github.com/aiven/prometheus-exporter-plugin-for-opensearch)
 
-    - The following metrics are configured to generate alerts.
+* The following metrics are configured to generate alerts.
 
 
     | **Component**           | **Metrics Expr**                               |
@@ -57,11 +59,10 @@ The following metrics are recommended to monitor Chef Automate HA implementation
 
 
 ## Postgres Metrics
-    - Refer to the following OpenSearch plugin for the metric details.  
+*  Refer to the following OpenSearch plugin for the metric details.  
         - [Postgres-Exporter](https://github.com/prometheus-community/postgres_exporter)
 
-    - The following metrics are configured to generate alerts.
-
+* The following metrics are configured to generate alerts.
 
     | **Component**           | **Metrics Expr**                               |
     |-------------------------|------------------------------------------------|
