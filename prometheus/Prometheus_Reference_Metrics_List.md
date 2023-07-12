@@ -28,8 +28,8 @@ The following metrics are recommended to monitor Chef Automate HA implementation
 
 ## Chef Automate Health Metrics
 * Refer to the following exporters for the metric details.  
-        - [Black-Box Exporter](https://github.com/prometheus/blackbox_exporter)
-        [Nginx-Exporter](https://github.com/nginxinc/nginx-prometheus-exporter)
+        - [Black-Box Exporter](https://github.com/prometheus/blackbox_exporter)  
+        - [Nginx-Exporter](https://github.com/nginxinc/nginx-prometheus-exporter)
 
 * The following metrics are configured to generate alerts.
 
