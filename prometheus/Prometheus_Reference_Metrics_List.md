@@ -7,6 +7,8 @@ The following section lists/documents the metrics collected by various exporters
         [Node-Exporter](https://github.com/prometheus/node_exporter)
     
     - The following metrics are configured to generate alerts.  
+
+
     | **Component**           | **Metrics Expr**                                    |  
     |-------------------------|------------------------------------------------|  
     |   CPU Usage             | 100 - (avg(irate(node_cpu_seconds_total{mode="idle"}[5m])) by(instance,job) * 100) > 95 |  
@@ -27,6 +29,8 @@ The following section lists/documents the metrics collected by various exporters
         [Nginx-Exporter](https://github.com/nginxinc/nginx-prometheus-exporter)
 
     - The following metrics are configured to generate alerts.
+
+
     | **Component**           | **Metrics Expr**                               |
     |-------------------------|------------------------------------------------|
     | Hab Service Status    | probe_http_status_code{job=~"chef-server-services.*|automate-services.*"} != 200 |
@@ -39,6 +43,8 @@ The following section lists/documents the metrics collected by various exporters
         [OpenSearch Plug-in](https://github.com/aiven/prometheus-exporter-plugin-for-opensearch)
 
     - The following metrics are configured to generate alerts.
+
+
     | **Component**           | **Metrics Expr**                               |
     |-------------------------|------------------------------------------------|
     | ES Cluster Health Check | opensearch_cluster_nodes_number < 2 |
@@ -54,6 +60,8 @@ The following section lists/documents the metrics collected by various exporters
         [Postgres-Exporter](https://github.com/prometheus-community/postgres_exporter)
 
     - The following metrics are configured to generate alerts.
+
+    
     | **Component**           | **Metrics Expr**                               |
     |-------------------------|------------------------------------------------|
     | PG Can Connect | pg_up != 1 |
