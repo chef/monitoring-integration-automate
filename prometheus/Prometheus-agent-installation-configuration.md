@@ -71,6 +71,8 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
 | Postgres         | 9101           |
 | Nginx            | 9113           |
 | Blackbox         | 9115           |
+| Opensaerch       | 9200           |
+| https            | 443            |
 
 ## Step 2: Add users and local system directories to your EC2 instance
 Complete the following procedure to connect to your EC2 instance using SSH and add users and system directories as needed. This procedure creates the following Linux user accounts:
@@ -451,7 +453,11 @@ sudo systemctl restart prometheus
 sudo systemctl status prometheus
 ```
 
-## Configure Prometheus with OpenSearch Plugin
+# Configure Prometheus with OpenSearch Plugin
+
+## Scope
+    These steps will be repeated on all of the following servers.
+      * Chef managed OpenSearch
 
 ## Step 1 : Install OpenSearch Plugin
 Refer to the [Prometheus exporter OpenSearch Plugin](https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases). 
@@ -523,6 +529,11 @@ systemctl restart prometheus.service
 ![opensearch](./images/opensearch.png)
 
 # Configure Blackbox exporter for web based monitoring
+
+## Scope
+    These steps will be repeated on all of the following servers.
+      * Automate node
+      * Chef Infra Server
 
 ## Step 1: Verify Prerequisites
 Ensure that exporter pre-requisite configuration is completed. Refer to [Pre-requisites section](#prometheus-exporter-prerequisites)
@@ -661,6 +672,10 @@ sudo systemctl status prometheus
 
 
 ## Configure Nginx exporter
+
+## Scope
+    These steps will be repeated on all of the following servers.
+      * Automate node
 
 ## Step 1: Verify Prerequisites
 Ensure that exporter pre-requisite configuration is completed. Refer to [Pre-requisites section](#prometheus-exporter-prerequisites)
