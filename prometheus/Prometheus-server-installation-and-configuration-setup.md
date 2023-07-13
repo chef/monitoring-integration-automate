@@ -50,13 +50,14 @@ In order to monitor the Chef Automate HA infrastructure, Prometheus server must 
 * Open ports 9090 and 9100 on the firewall of your new instance. Prometheus requires ports 9090 and 9100 to be open.
 
 * Prometheus server will communicate to Chef Automate HA server over the following ports. The firewall must allow prometheus server to scape chef server on the following ports. Refer to [agent installation document](./Prometheus-agent-installation-configuration.md) for more details.
+
 | Exporters          | Firewall Ports |
 |------------------|----------------|
 | Node             | 9100           |
 | Postgres         | 9101           |
 | Nginx            | 9113           |
 | Blackbox         | 9115           |
-| Opensaerch       | 9200           |
+| Opensearch       | 9200           |
 | https            | 443            |
 
 

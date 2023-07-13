@@ -69,4 +69,6 @@ The following metrics are recommended to monitor Chef Automate HA implementation
     | PG Can Connect | pg_up != 1 |
     | Connection Exhaustion | (sum(pg_stat_database_numbackends{server="10.100.12.36:5432"}) by(instance,job))/(avg(pg_settings_max_connections{server="10.100.12.36:5432"}) by(instance,job)) * 100 > 90 |
     | Connection Exhaustion | (sum(pg_stat_database_numbackends{server="10.100.12.36:5432"}) by(instance))/(avg(pg_settings_max_connections{server="10.100.12.36:5432"}) by(instance)) * 100 > 95 |
+    | Managed PostgreSQL Write Latency | irate(node_disk_write_time_seconds_total{instance=~".*pg.*"}[5m]) / irate(node_disk_writes_completed_total{instance=~".*pg.*"}[5m]) > 300 |
+    | Managed PostgreSQL Read Latency | irate(node_disk_read_time_seconds_total{instance=~".*pg.*"}[5m]) / irate(node_disk_reads_completed_total{instance=~".*pg.*"}[5m]) > 300 |
 
