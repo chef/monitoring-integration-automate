@@ -189,9 +189,9 @@ sudo -u prometheus /usr/local/bin/prometheus --config.file /etc/prometheus/prome
 
 * After the running service is validated, press Ctrl+C to stop it.
 
-* Enter the following command to open the systemd configuration file in Vim. This file is used to start Prometheus.
+* Enter the following command to open the systemd configuration file in vi. This file is used to start Prometheus.
 
-sudo vim /etc/systemd/system/prometheus.service  
+sudo vi /etc/systemd/system/prometheus.service  
 
 Insert the following lines into the file.
 
@@ -217,7 +217,7 @@ WantedBy=multi-user.target
 
 * The preceding instructions are used by the Linux systemd service manager to start Prometheus on the server. When invoked, Prometheus runs as the prometheus user and references the prometheus.yml file for loading the configuration settings and storing the time series data in the /var/lib/prometheus directory. You can run man systemd from the command line to see more information about the service.
 
-* Save your changes and quit Vim.
+* Save your changes and quit vi.
 
 * Enter the following command to load the information into the systemd service manager.
 ```
@@ -248,9 +248,9 @@ Complete the following procedure to start the Node Exporter service.
 
 * Connect to your EC2 instance using SSH.
 
-* Enter the following command to create a systemd service file for node_exporter using Vim.
+* Enter the following command to create a systemd service file for node_exporter using vi.
 ```
-sudo vim /etc/systemd/system/node_exporter.service
+sudo vi /etc/systemd/system/node_exporter.service
 ```
 * Add the following lines of text into the file. This will configure node_exporter with monitoring collectors for CPU load, file system usage, and memory resources.
 ```
@@ -274,7 +274,7 @@ WantedBy=multi-user.target
 Note:
 These instructions disable default machine metrics for Node Exporter. For a complete list of metrics available for Ubuntu, see the Prometheus node_exporter man page in the Ubuntu documentation.
 
-* Save your changes and quit Vim.
+* Save your changes and quit vi.
 
 * Enter the following command to reload the systemd process.
 ```
@@ -355,7 +355,7 @@ Node Exporter listens to port 9100 for the prometheus server to scrape the data.
 
 * As with the configuration of the prometheus job_name, replace <ip_addr> with the static IP address that's attached to your EC2 instance.
 
-* Save your changes and quit Vim.
+* Save your changes and quit vi.
 
 * Enter the following command to restart the Prometheus service so that the changes to the configuration file can take effect.
 ```
