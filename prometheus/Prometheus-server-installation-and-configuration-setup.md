@@ -57,7 +57,7 @@ In order to monitor the Chef Automate HA infrastructure, Prometheus server must 
 | Postgres         | 9101           |
 | Nginx            | 9113           |
 | Blackbox         | 9115           |
-| Opensaerch       | 9200           |
+| Opensearch       | 9200           |
 | https            | 443            |
 
 
