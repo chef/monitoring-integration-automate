@@ -15,6 +15,8 @@ This document does not cover the installation and system requirements for ELK St
 ## ELK stack Installation
 Please follow below steps for installing elastic stack in normal way.
 
+### Install Prerequistes
+
 + Dependency: ELK need java as dependency, install the same if not:
 
       sudo apt-get install openjdk-8-jdk
@@ -30,6 +32,8 @@ Please follow below steps for installing elastic stack in normal way.
 + Save the repository definition to /etc/apt/sources.list.d/elastic-8.x.list:
 
       echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list
+
+### Install Elasticsearch
 
 + Install the Elasticsearch Debian package with:
 
@@ -49,7 +53,9 @@ Please follow below steps for installing elastic stack in normal way.
       sudo systemctl start elasticsearch.service
       sudo systemctl enable elasticsearch.service
 
-+ Install Kibana
+### Install Kibana
+
++ To install Kibana run the following:
 
       apt install kibana
       sudo nano /etc/kibana/kibana.yml --> configure the kibana
@@ -60,20 +66,25 @@ Please follow below steps for installing elastic stack in normal way.
     + uncomment and add correct "server.host" for kibana
     + uncomment and add correct "network.host" for elasticsearch
 
-+ Install Logstash
+### Install Logstash
+
++ To install Logstash run the following:
 
       apt install logstash
       sudo systemctl start logstash.service
       sudo systemctl enable logstash.service
 
+
+## LogStash Configuration
+
 Please follow below setups for logstash setup.
 
-## Prerequisites
+### Prerequisites
 
 * Deployment and configuration of Logstash, Elasticsearch and Kibana.
 * Chef Automate HA configured with access to Logstash over configure TCP Port (In this configuration TCP 5044)
 
-## LogStash Configuration
+### Conifuration of Logstash
 
 1. Create a configuration file to allow Filebeat to communicate with Logstash.
 
@@ -131,7 +142,11 @@ sudo tar xzvf filebeat-8.8.1-linux-x86_64.tar.gz
 ```
 sudo nano /etc/filebeat/filebeat.yml
 ```
-2. Under the **Filebeat Inputs** ensure enabled is set to true.
+2. Under the **Filebeat Inputs** ensure the following is set:
+
+- type is set to journald
+- id is set to everything
+- enable is set to true.
 
 ![Filebeat-input-Conf](images/filebeat-inputs.png)
 
@@ -171,6 +186,7 @@ sudo systemctl start filebeat
 sudo systemctl enable filebeat
 ```
 
+
 ## Visualize Logs in Kibana
 
 1. Open kibana on browser:
@@ -190,3 +206,40 @@ sudo systemctl enable filebeat
 + We can add multiple filters and customise the data comming.
 
 We can further build the Automate Service based dashboards for quick looks.
+
+## Filter Logs from within Filebeat
+
+1. Modify the **filebeat.yml** file.
+
+```
+sudo nano /etc/filebeat/filebeat.yml
+```
+2. Under the **Filebeat Inputs** add the following processor configuration:
+
+```
+ processors:
+    - drop_event:
+        when.not.regexp.message: '^<filtered service>'
+```
+
+As an example: 
+
+To send only authn-service logs to Logstash:
+
+![kibana-filter-example](images/filebeat-authn.png)
+
+To send only autmote-dex logs to Logstash:
+
+![kibana-filter-example2](images/filebeat-dex.png)
+
+3. In Kibana, navigate to Discover and the filtered results will be visable:
+
+![kibana-filter-example3](images/kibana-filter-authn.png)
+
+4. Click into the logs to confirm the filter is working as expected.
+
+authn-service
+![kibana-filter-example3](images/kibana-filter-authn-detail.png)
+
+automate-dex
+![kibana-filter-example3](images/kibana-filter-dex-detail.png)
