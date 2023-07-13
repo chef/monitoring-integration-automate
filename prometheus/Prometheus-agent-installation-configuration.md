@@ -34,9 +34,9 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
 * [Prometheus OpenSearch Plugin Setup](#configure-prometheus-with-opensearch-plugin)
     1. [Install OpenSearch plugin](#step-1--install-opensearch-plugin)
     
-    1. [Reconfigure Prometheus Server](#step-2-reconfigure-prometheus-server)
+    1. [Reconfigure Prometheus Server](#step-2-configure-prometheus-server-for-opensearch-data-collection)
 
-    1. [Verify OpenSearch Metrics](#step-3-verfiy-opensearch-metrics)
+    1. [Verify OpenSearch Metrics](#step-3-verify-opensearch-metrics)
 
 * [Prometheus Exporter - blackbox_exporter Setup](#configure-blackbox-exporter-for-website-monitoring)  
     
