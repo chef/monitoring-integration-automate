@@ -84,7 +84,7 @@ Please follow below setups for logstash setup.
 * Deployment and configuration of Logstash, Elasticsearch and Kibana.
 * Chef Automate HA configured with access to Logstash over configure TCP Port (In this configuration TCP 5044)
 
-### Conifuration of Logstash
+### Configuration of Logstash
 
 1. Create a configuration file to allow Filebeat to communicate with Logstash.
 
