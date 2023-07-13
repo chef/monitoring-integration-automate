@@ -47,7 +47,18 @@ In order to monitor the Chef Automate HA infrastructure, Prometheus server must 
 
 * Create an instance in EC2 or VM. We recommend using the Ubuntu 20.04 LTS blueprint for your instance. 
 
-* Open ports 9090 and 9100 on the firewall of your new instance. Prometheus requires ports 9090 and 9100 to be open. 
+* Open ports 9090 and 9100 on the firewall of your new instance. Prometheus requires ports 9090 and 9100 to be open.
+
+* Prometheus server will communicate to Chef Automate HA server over the following ports. The firewall must allow prometheus server to scape chef server on the following ports. Refer to [agent installation document](./Prometheus-agent-installation-configuration.md) for more details.
+| Exporters          | Firewall Ports |
+|------------------|----------------|
+| Node             | 9100           |
+| Postgres         | 9101           |
+| Nginx            | 9113           |
+| Blackbox         | 9115           |
+| Opensaerch       | 9200           |
+| https            | 443            |
+
 
 ## Step 2: Add users and local system directories to your EC2 instance
 Complete the following procedure to connect to your EC2 instance using SSH and add users and system directories. This procedure creates the following Linux user accounts:
