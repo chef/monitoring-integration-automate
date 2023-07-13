@@ -1,0 +1,47 @@
+groups:
+ - name: PG Can Connect
+   rules:
+   - alert: PGCanConnect
+     expr: pg_up != 1
+     for: 1m
+     labels:
+       severity: L1
+     annotations:
+       title: ' Insatnce {{ $labels.instance }} Down'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute.'
+ - name: Connection Exhaustion
+   rules:
+   - alert: PGConnectionExhaustion_perc_usage
+     expr: (sum(pg_stat_database_numbackends{server="10.100.12.36:5432"}) by(instance,job))/(avg(pg_settings_max_connections{server="10.100.12.36:5432"}) by(instance,job)) * 100 > 90
+     for: 10m
+     labels:
+       severity: L2
+     annotations:
+       title: 'Postgres Server  {{ $labels.instance }} running with high connections'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been running with high number of connections ({{ $value | printf "%.2f" }}%) for more than 10 minutes.'
+   - alert: PGConnectionExhaustion_perc_usage-page
+     expr: (sum(pg_stat_database_numbackends{server="10.100.12.36:5432"}) by(instance))/(avg(pg_settings_max_connections{server="10.100.12.36:5432"}) by(instance)) * 100 > 95
+     for: 10m
+     labels:
+       severity: L1
+     annotations:
+       title: 'Postgres Server  {{ $labels.instance }} running with high connections'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been running with high number of connections ({{ $value | printf "%.2f" }}%) for more than 10 minutes.'
+ - name: PG Disk Latency
+   rules:
+   - alert: PGDiskReadLatency
+     expr: irate(node_disk_read_time_seconds_total{instance=~".*pg.*"}[5m]) / irate(node_disk_reads_completed_total{instance=~".*pg.*"}[5m]) > 300
+     for: 10m
+     labels:
+       severity: L2
+     annotations:
+       title: 'Postgres Server  {{ $labels.instance }} running with high read latecny'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been running with high read latecy ({{ $value | printf "%.2f" }}ms) for more than 10 minutes.'
+   - alert: PGDiskwriteLatency
+     expr: irate(node_disk_write_time_seconds_total{instance=~".*pg.*"}[5m]) / irate(node_disk_writes_completed_total{instance=~".*pg.*"}[5m]) > 300
+     for: 10m
+     labels:
+       severity: L2
+     annotations:
+       title: 'Postgres Server  {{ $labels.instance }} running with high read latecny'
+       description: '{{ $labels.instance }} of job {{ $labels.job }} has been running with high read latecy ({{ $value | printf "%.2f" }}ms) for more than 10 minutes.'

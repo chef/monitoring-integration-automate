@@ -16,7 +16,7 @@ You need to have clarity what you want to show and monitor in your dashboard and
 **Choose the right metrics:**
 Not all metrics are created equal, some are of more importance than others. Choose the metrics that are important to you, we have listed down all the important metrics that is critical to your Automate Infrastructure. 
 
-This [Reference Metrics](./prometheus_Reference_Metrics_List.md) provides you a guidance to monitor Automate HA in Chef Managed Deployment style. You can use this guidance to build metrics and dashboards for other deployment styles
+This [Reference Metrics](./Prometheus_Reference_Metrics_List.md) provides you a guidance to monitor Automate HA in Chef Managed Deployment style. You can use this guidance to build metrics and dashboards for other deployment styles
 
 **Use the right visualizations:**
 There are a variety of visualizations available in Prometheus. Choose the visualizations that are best suited for the metrics you are tracking. For example, if you are tracking CPU usage, you might use a line chart. If you are tracking errors, you might use a heatmap.
@@ -60,7 +60,7 @@ This section will list down the steps to create a dashboard for Chef Automate HA
 
  * Configure Prometheus server with required jobs to collect required metrics to feed this dashboard. Refer to [Prometheus.yml file](./prometheus.yml) for the detailed job configurations.
 
-+ Login to Grafana portal http://<<Grafana ip>>:3000) with your credentials.
++ Login to Grafana portal http://<< ip >>:3000) with your credentials.
 + On the left hand side, click on Dashboards --> New Dashboard. You will be directed to a new Dashboard screen.
 ![New Dashboard](./images/dashboard1.png)
 + Add 4 Rows and modify the title
