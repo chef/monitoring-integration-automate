@@ -6,7 +6,7 @@ Connect MS Teams to Prometheus to:
 * Get daily reminders as to who is on-call.
    
 ## Configure AlertManager for MS Teams
-Before performing the following steps, please ensure alertmanager is installed and configured to run as a service. Refer to the ![alertmanager installation guide](./Prometheus_Monitor_configuration_and_alerting.md)
+Before performing the following steps, please ensure alertmanager is installed and configured to run as a service. Refer to the [alertmanager installation guide](./Prometheus_Monitor_configuration_and_alerting.md)
 
 ## prometheus and MS Teams Integration
 
