@@ -159,7 +159,7 @@ sudo nano /etc/filebeat/filebeat.yml
 5. Enable the Filebeat System module
 
 ```
-sudo filebeat module enable system
+sudo filebeat modules enable system
 ```
 6. Modify the Filebeat module file
 
@@ -228,7 +228,7 @@ To send only authn-service logs to Logstash:
 
 ![kibana-filter-example](images/filebeat-authn.png)
 
-To send only autmote-dex logs to Logstash:
+To send only automate-dex logs to Logstash:
 
 ![kibana-filter-example2](images/filebeat-dex.png)
 
