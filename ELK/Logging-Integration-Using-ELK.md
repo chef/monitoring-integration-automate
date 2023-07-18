@@ -45,7 +45,7 @@ Please follow below steps for installing elastic stack in normal way.
 
 + Start the elastic services:
 
-      sudo systemctl daemon-reloadsudo systemctl daemon-reload
+      sudo systemctl daemon-reload
       sudo systemctl start elasticsearch.service
       sudo systemctl enable elasticsearch.service
 
@@ -66,7 +66,7 @@ Please follow below steps for installing elastic stack in normal way.
       sudo systemctl start logstash.service
       sudo systemctl enable logstash.service
 
-Please follow below setups for logstash setup.
+Please follow below setup for logstash setup.
 
 ## Prerequisites
 
@@ -175,16 +175,20 @@ sudo systemctl enable filebeat
 
 1. Open kibana on browser:
    + Click on **Explore on my own**.
-     ![kibana-index-pattern](images/Kibana-first-page.png)
+     ![kibana-index-pattern](images/Kibana-Start.png)
+     You will land on Kibana Home page.
+     ![kibana-index-pattern](images/Kibana-Home.png)
    + Click on **Dicover** tab on left side.
-   + Click on **Generate Index**.
+   + ![kibana-index-pattern](images/Kibana-discover-firstime.png)
+   + Click on **Create DataView**.
 
 2. Create an **Index Pattern** in Kibana to view the Logs sent to Logstash.
 
+![kibana-index-pattern](images/DataView%20setup.png)
 ![kibana-index-pattern](images/index-pattern.png)
 
 3. In Kibana, navigate to **Analytics/ Discovery** and select the Index Pattern created in the prior step. The logs from the Chef Automate Servers will be displayed.
-
+![kibana-dashboard](images/Kibana-discover-page.png)
 ![kibana-dashboard](images/kibana-dashboard.png)
 
 + We can add multiple filters and customise the data comming.
