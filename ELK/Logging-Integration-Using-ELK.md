@@ -127,9 +127,9 @@ output {
 1. Log into each Chef Automate HA node
 2. Run the following to download and extract Filebeat
 ```
-sudo curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.8.1-linux-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.8.2-linux-x86_64.tar.gz
 
-sudo tar xzvf filebeat-8.8.1-linux-x86_64.tar.gz
+tar xzvf filebeat-8.8.2-linux-x86_64.tar.gz
 ```
 
 ## Filebeat Configuration
