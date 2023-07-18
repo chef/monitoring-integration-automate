@@ -74,7 +74,7 @@ Please follow below steps for installing elastic stack in normal way.
       sudo systemctl start logstash.service
       sudo systemctl enable logstash.service
 
-Please follow below setups for logstash setup.
+Please follow below setups for logstash and filebeat setup.
 
 ### Prerequisites
 
@@ -189,7 +189,9 @@ sudo systemctl enable filebeat
 1. Open kibana on browser:
    + Click on **Explore on my own**.
      ![kibana-index-pattern](images/Kibana-Start.png)
+
      You will land on Kibana Home page.
+
      ![kibana-index-pattern](images/Kibana-Home.png)
    + Click on **Dicover** tab on left side.
    + ![kibana-index-pattern](images/Kibana-discover-firstime.png)
