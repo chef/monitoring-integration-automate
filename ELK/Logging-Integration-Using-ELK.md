@@ -1,4 +1,4 @@
-# ELK Stack Integration for Chef Automate HA
+# ELK Stack (ElasticSearch, Logstash, and Kibana) Integration for Chef Automate HA
 
 ## Deploy ELK Stack
 
@@ -8,11 +8,13 @@ ELK Stack is an open-source software which allows search and visualization of lo
 * **Logstash** - A data processing component that send incoming logs to Elasticsearch.
 * **Kibana** - A web interface for visualization and searching of logs within Elasticsearch.
 
-A fourth component, Filebeat will be used to push logs from Chef Automate HA nodes to Logstash.
+* **Filebeat** will be used to push logs from Chef Automate HA nodes to Logstash.
 
-This document does not cover the installation and system requirements for ELK Stack due to the many factors that should be considered for this type of deployment (We are providing standard installation ELK stacks below). The Elastic site (https://elastic.co) should be referenced for details on sizing and configuration of ELK Stack.
+Installation of the ELK stack can be done in various ways depending on the organizational needs and requirements. Please refer to this document for details on system requirements and various kind of installations. As part of this documentation, we have focused on one of the ways of installation.
 
-## ELK stack Installation
+The Elastic site (https://elastic.co) should be referenced for details on sizing and configuration of ELK Stack.
+
+## ELK stack Installation:
 Please follow below steps for installing elastic stack in normal way.
 
 ### Install Prerequistes
@@ -33,7 +35,7 @@ Please follow below steps for installing elastic stack in normal way.
 
       echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list
 
-### Install Elasticsearch
+### Elasticsearch Installation and Configuration
 
 + Install the Elasticsearch Debian package with:
 
@@ -53,7 +55,9 @@ Please follow below steps for installing elastic stack in normal way.
       sudo systemctl start elasticsearch.service
       sudo systemctl enable elasticsearch.service
 
-### Install Kibana
+For other ways to install elasticsearch; pls follow reference at [Elasticsearch-installation](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html)
+
+### Kibana Instillation and Configuration:
 
 + To install Kibana run the following:
 
@@ -66,20 +70,15 @@ Please follow below steps for installing elastic stack in normal way.
     + uncomment and add correct "server.host" for kibana
     + uncomment and add correct "network.host" for elasticsearch
 
-### Install Logstash
+For other ways to install kibana; pls follow reference at [Kibana-installation](https://www.elastic.co/guide/en/kibana/current/install.html)
+
+### Logstash Installation and Configuration:
 
 + To install Logstash run the following:
 
       apt install logstash
       sudo systemctl start logstash.service
       sudo systemctl enable logstash.service
-
-Please follow below setups for logstash and filebeat setup.
-
-### Prerequisites
-
-* Deployment and configuration of Logstash, Elasticsearch and Kibana.
-* Chef Automate HA configured with access to Logstash over configure TCP Port (In this configuration TCP 5044)
 
 ### Configuration of Logstash
 
@@ -122,8 +121,22 @@ output {
 }
 ```
 
-## Filebeat Installation
+3. Restart the logstash service:
 
+```
+sudo systemctl restart logstash.service
+```
+
+For other ways to install logstash; pls follow reference at [Logstash-installation](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html)
+
+## Filebeat Installation and Configuration:
+
+### Prerequisites
+
+* Deployment and configuration of Logstash, Elasticsearch and Kibana.
+* Chef Automate HA configured with access to Logstash over configure TCP Port (In this configuration TCP 5044)
+
+Steps:
 1. Log into each Chef Automate HA node
 2. Run the following to download and extract Filebeat
 ```
@@ -210,7 +223,9 @@ sudo systemctl enable filebeat
 
 We can further build the Automate Service based dashboards for quick looks.
 
-## Filter Logs from within Filebeat
+## Custom filtering of Logs at filebeat
+
+**Description:** In case we would like to send only some specfics servcie level logs of Automate and Chef Infra server to our centralized logging server instead of all the logs, this is this section that can be referred.
 
 1. Modify the **filebeat.yml** file.
 
