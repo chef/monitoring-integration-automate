@@ -49,6 +49,8 @@ Please follow below steps for installing elastic stack in normal way.
     + uncomment and add correct "network.host" IP
     + If required, add cluster or "discovery.type: single-node" and node settings.
 
+    ![Elastic-configure](images/Elastic-configure.png)
+
 + Start the elastic services:
 
       sudo systemctl daemon-reload
@@ -69,6 +71,8 @@ For other ways to install elasticsearch; pls follow reference at [Elasticsearch-
     + uncomment the Port and add the port number for kibana (for example - 5601)
     + uncomment and add correct "server.host" for kibana
     + uncomment and add correct "network.host" for elasticsearch
+
+    ![Elastic-configure](images/Kibana-configure.png)
 
 For other ways to install kibana; pls follow reference at [Kibana-installation](https://www.elastic.co/guide/en/kibana/current/install.html)
 
