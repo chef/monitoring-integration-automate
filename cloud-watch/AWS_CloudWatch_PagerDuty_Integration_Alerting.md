@@ -37,17 +37,17 @@
 
 3.	Enter a Topic name (you may want to name your topic after your PagerDuty service's name) and Display name, then click **Create topic**.
 
-![Create Topic](images/createTopic-0.png)
+![Create Topic](images/createtopic-0.png)
 
 4.	Select **Subscriptions** in the left-hand menu and click **Create Subscription**.
 
 5.	Make sure **HTTPS** is the selected Protocol. Paste your **Integration URL** from the PagerDuty Service created earlier into the **Endpoint** field, ensure that the Enable raw message delivery checkbox is unchecked and click **Create Subscription**.
 
-![Create Topic1](images/createTopic-1.png)
+![Create Topic1](images/createtopic-1.png)
 
 6.	Make sure the Subscription ID is not Pending Confirmation. Refresh to ensure the Subscription ID displays **Confirmed**.
 
-![Create Topic2](images/createTopic-2.png)
+![Create Topic2](images/createtopic-2.png)
 
 7.	Navigate to Services and search for **CloudWatch**. Navigate to **All Alarms**.
 
@@ -61,7 +61,7 @@
 
 12.	In the Send a notification to dropdown, select the PagerDuty SNS topic created earlier.
 
-![Update Alarm](images/UpdateAlarm-0.png)
+![Update Alarm](images/updatealarm-0.png)
 
 13.	Select **Add Notification**.
 
@@ -71,7 +71,7 @@
 
 16.	In the Send a notification to dropdown, select the PagerDuty SNS topic created earlier.
 
-![Update Alarm1](images/UpdateAlarm-1.png)
+![Update Alarm1](images/updatealarm-1.png)
 
 17.	Click **Next** and then **Update alarm**.
 
