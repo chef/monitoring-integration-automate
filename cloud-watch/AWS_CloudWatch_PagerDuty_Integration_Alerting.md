@@ -4,31 +4,31 @@
 
 2-	Provide a **Name** and optional **Description** for the Service.
 
-![Create Service](images/createservice.png)
+![Create Service](images/createservice-0.png)
 
 3-	Click **Next**.
 
 4-	Assign an existing or create a new **Escalation Policy**.
 
-![Create Service1](images/createservice1.png)
+![Create Service1](images/createservice-1.png)
 
 5-	Click **Next**.
 
 6-	Make any changes required for **Reduce Noise** settings.
 
-![Create Service2](images/createservice2.png)
+![Create Service2](images/createservice-2.png)
 
 7-	Click **Next**.
 
 8-	Search for **AWS CloudWatch** under **Integrations**.
 
-![Create Service3](images/createservice3.png)
+![Create Service3](images/createservice-3.png)
 
 9-	Check the box for AWS CloudWatch and click **Create Service**.
 
 10-	The Service will be displayed once created.  Copy the *Integration URL** which will be used later in the AWS SNS configuration.
 
-![Create Service4](images/createservice4.png)
+![Create Service4](images/createservice-4.png)
 
 ### AWS configuration:
 1.	In the Services search bar, search and select **Simple Notification Service (SNS)**. On the SNS dashboard, select Topics and click **Create Topic**. This will be used to route alerts to PagerDuty regarding the Chef Automate HA CloudWatch metrics.
@@ -37,17 +37,17 @@
 
 3.	Enter a Topic name (you may want to name your topic after your PagerDuty service's name) and Display name, then click **Create topic**.
 
-![Create Topic](images/createTopic.png)
+![Create Topic](images/createTopic-0.png)
 
 4.	Select **Subscriptions** in the left-hand menu and click **Create Subscription**.
 
 5.	Make sure **HTTPS** is the selected Protocol. Paste your **Integration URL** from the PagerDuty Service created earlier into the **Endpoint** field, ensure that the Enable raw message delivery checkbox is unchecked and click **Create Subscription**.
 
-![Create Topic1](images/createTopic1.png)
+![Create Topic1](images/createTopic-1.png)
 
 6.	Make sure the Subscription ID is not Pending Confirmation. Refresh to ensure the Subscription ID displays **Confirmed**.
 
-![Create Topic2](images/createTopic2.png)
+![Create Topic2](images/createTopic-2.png)
 
 7.	Navigate to Services and search for **CloudWatch**. Navigate to **All Alarms**.
 
@@ -61,7 +61,7 @@
 
 12.	In the Send a notification to dropdown, select the PagerDuty SNS topic created earlier.
 
-![Update Alarm](images/UpdateAlarm.png)
+![Update Alarm](images/UpdateAlarm-0.png)
 
 13.	Select **Add Notification**.
 
@@ -71,7 +71,7 @@
 
 16.	In the Send a notification to dropdown, select the PagerDuty SNS topic created earlier.
 
-![Update Alarm1](images/UpdateAlarm1.png)
+![Update Alarm1](images/UpdateAlarm-1.png)
 
 17.	Click **Next** and then **Update alarm**.
 
