@@ -1,4 +1,7 @@
 # CloudWatch integration with PagerDuty
+
+This whitepaper will leverage the PagerDuty integration with AWS to setup the connection with CloudWatch alarms. The configuration will start with creating an AWS SNS Topic for the CloudWatch Alarms.  The AWS SNS Topic can send CloudWatch alarms directly to PagerDuty via HTTPS.
+
 ### PagerDuty configuration:
 1-	Navigate to Services – Service Directory and click **New Service**.
 
