@@ -1,6 +1,6 @@
 # CloudWatch integration with Slack
 
-The integration between AWS CloudWatch and Slack will be established using AWS SNS and AWS ChatBot.  The configuration will start with creating an AWS SNS Topic for the CloudWatch Alarms.  Once complete the AWS Chatbot will be created which will send messages received in the SNS Topic to the chosen Slack Channel.
+There are several different approaches on sending CloudWatch Alarms to Slack. As an example, the use of Lambda Funcations could be leveraged to make the connection between AWS and Slack. This whitepaper will leverage AWS ChatBot to establish integration between AWS CloudWatch and Slack. The configuration will start with creating an AWS SNS Topic for the CloudWatch Alarms.  Once complete the AWS Chatbot will be created which will send messages received in the SNS Topic to the chosen Slack Channel.
 
 ### AWS SNS configuration:
 1.	In the Services search bar, search and select **Simple Notification Service (SNS)**. On the SNS dashboard, select **Topics** and click **Create Topic**. This will be used to route alerts to AWS Chatbot regarding the Chef Automate HA CloudWatch metrics.
