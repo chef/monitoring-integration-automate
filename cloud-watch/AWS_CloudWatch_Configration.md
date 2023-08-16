@@ -23,6 +23,8 @@ Amazon CloudWatch is a monitoring service for AWS cloud resources and the applic
 
         sudo python ./awslogs-agent-setup.py --region <aws-region>
 
+***Note:** To send the logs data from instances to CloudWatch. There are two methods, one is creating seperate IAM role specific to cloudwatch and than attach the instances to same IAM roles and policies. And another is adding the IAM user keys at the time of aswlogs agent installation at the /etc/awslogs/awslogs.conf file. For this documetation we are choosing the second method. You can refer to IAM roles creation method at [reference link](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html)*
+
 4. setup the /etc/awslogs/awslogs.conf file to configure the logs to track. For more information about editing this file, see [CloudWatch Logs agent reference](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html). To set this file, just follow the auto prompts comes at time of awslogs installation. see below screenshot for reference.
 ![awslogs_configration](images/awslogs_configure.png)
 
