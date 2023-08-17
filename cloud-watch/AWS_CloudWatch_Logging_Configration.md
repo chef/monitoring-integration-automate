@@ -4,7 +4,8 @@
 As an Automate HA customer, I need to have monitoring rules set for the available metrics on the AWS Cloudwatch console which can be used for tracking and getting notified for Automate HA infrastructure-related health.
 
 ### Sending centerlised AutomateHA instaces logs to AWS Cloudwatch
-Amazon CloudWatch is a monitoring service for AWS cloud resources and the applications you run on AWS. You can use Amazon CloudWatch to collect and track metrics, collect and monitor log files, set alarms, and automatically react to changes in your AWS resources. You can use Amazon CloudWatch to gain system-wide visibility into resource utilization, application performance, and operational health.
+Amazon CloudWatch is a monitoring service for AWS cloud resources and the applications you run on AWS. You can use Amazon CloudWatch to collect and track metrics, collect and monitor log files, set alarms, and automatically react to changes in your AWS resources. You can use Amazon CloudWatch to gain system-wide visibility into resource utilization, application performance,
+and operational health.
 
 **Configuration for sending centerlised logs to CloudWatch involves:**
 
@@ -35,11 +36,13 @@ Amazon CloudWatch is a monitoring service for AWS cloud resources and the applic
 
 6. You should see the newly created log group and log stream in the CloudWatch console after the agent has been running for a few moments.
 7. Login to AWS console and open CloudWatch and navigate to Logs tab.
-![CloudWatch_LogsGroup](images/CloudWatch_logsGroup.png)
+    ![CloudWatch_LogsGroup](images/CloudWatch_logsGroup.png)
 
 8. Open the Log group to see log stream segregated by set name (For example instance name here).
    ![CloudWatch_LogStream](images/CloudWatch_logstream.png)
 9. Open the respective instance log stream to see the centerlised AutomateHA service logs.
     ![ClodWatch_Logs](images/CloudWatch_Logs.png)
 
-We can further create visualization and filter the logs as per requirements and set the appropriate alerts on the threshold logs.
+We can further create visualization and filter on logs as per requirements and set the appropriate alerts on the threshold logs as simliar to [AuomateHA CloudWatch metrics monitoring](/cloud-watch/AWS_CloudWatch_Metrics_Monitoring_Configration.md).
+
+We can further create the Amazon CloudWatch Dashboards as per bussiness need on the above log visualized metrics.
