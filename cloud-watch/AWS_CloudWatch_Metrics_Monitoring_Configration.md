@@ -61,6 +61,7 @@ Refer [here](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Clou
 Based on the above-mentioned steps to create a metrics monitor for the Amazon CloudWatch, we can set up monitoring rules for Automate HA based on the metrics which are getting received at Amazon CloudWatch.
 
 * Here is the list of monitoring rules and logical conditions and details to be referenced for monitor creation: [Monitoring rule list](./Monitoring_rule_list.md)
+* Refer to [Logs and metrics supported by Amazon CloudWatch Application Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/appinsights-logs-and-metrics.html) for list of metrics can be configured.
 
 To set the monitoring rules we use Amazon SNS allows applications to send time-critical messages to multiple subscribers through a "push" mechanism against the AMS Managed Monitoring System or MMS, Amazon SNS (SNS) topic that the alarms are published to; in this case, MMS and your SQS queues. You can use CloudWatch to create custom metrics and, through an SNS topic, have AMS alarm you appropriately. Refer [Setting up Amazon SNS notifications](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_SetupSNS.html).
 
