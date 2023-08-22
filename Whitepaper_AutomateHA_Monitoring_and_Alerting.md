@@ -110,50 +110,32 @@ b. [PagerDuty Integration](prometheus/prometheus_PagerDuty_Integration_and_Notif
 c. [MS Teams Integration](prometheus/prometheus_msteams_Integration_and_Notification.md)
 
 
-### ELK
+### ELK integration with Automate HA - Centralised Logging
 
 a. [ELK - Configuration and Installation](ELK/ELK-installation-and-configuration.md)
 
 b. [ELK Agent - Filebeat Configuration, Installation, and Logging](ELK/filebeat-installation.md)
 
 
-### Cloudwatch
+### Cloudwatch integration with Automate HA - Monitoring 
 
-a. Integration of CloudWatch with AWS Athena for Logs Query:
+a. [Metrics Monitor Configuration and Monitoring Rules Setup](cloud-watch/AWS_CloudWatch_Metrics_Monitoring_Configration.md)
 
-Describe the process of integrating CloudWatch logs with AWS Athena.
-Highlight the benefits of using Athena for log analysis and querying.
-Provide configuration instructions and examples of log query scenarios.
+b. [Dashboard Setup and Configuration](https://github.com/chef/monitoring-integration-automate/blob/main/cloud-watch/AWS_CloudWatch_Dashboards.md)
 
 
-b. Dashboard Setup and Configuration:
+### Cloudwatch integration with Automate HA - Alerting
 
-Explain how to set up and configure custom dashboards in Cloudwatch.
-Discuss best practices for organizing and visualizing metrics.
+a. [Slack Integration](https://github.com/chef/monitoring-integration-automate/blob/main/cloud-watch/AWS_CloudWatch_Slack_Integration.md)
 
-c. Slack Integration:
-
-Explain how to integrate Cloudwatch with Slack for real-time notifications.
-Discuss the benefits of using Slack for incident management and collaboration.
-Provide configuration instructions and any required setup steps.
-
-d. PagerDuty Integration:
-
-Describe the integration of Cloudwatch with PagerDuty for incident response.
-Explain the advantages of using PagerDuty's on-call scheduling and alerting capabilities.
-Provide guidance on setting up the integration and configuring alert rules.
-
-e. Metrics Monitor Configuration and Monitoring Rules Setup:
-
-Explain how to configure Metrics Monitors in Cloudwatch for proactive monitoring.
-Discuss the importance of defining monitoring rules and thresholds.
-Provide examples of common monitoring scenarios and how to set them up.
+b. [PagerDuty Integration](https://github.com/chef/monitoring-integration-automate/blob/main/cloud-watch/AWS_CloudWatch_PagerDuty_Integration_Alerting.md)
 
 
+### Cloudwatch integration with Automate HA - Centralised Logging
+
+a. [AWS Cloudwatch Centralised Logs Management](https://github.com/chef/monitoring-integration-automate/blob/main/cloud-watch/AWS_CloudWatch_Logging_Configration.md)
 
 
-## Conclusion:
-Summarize the main points discussed in the white paper. Emphasize the benefits of implementing the technologies and integrations described
 
 
 
