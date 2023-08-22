@@ -112,29 +112,10 @@ c. [MS Teams Integration](prometheus/prometheus_msteams_Integration_and_Notifica
 
 ### ELK
 
-a. Elasticsearch Configuration and Installation:
+a. [ELK - Configuration and Installation](ELK/ELK-installation-and-configuration.md)
 
-Explain the importance of Elasticsearch for log storage and search.
-Provide step-by-step instructions for configuring and installing Elasticsearch.
-Discuss any prerequisites or system requirements.
+b. [ELK Agent - Filebeat Configuration, Installation, and Logging](ELK/filebeat-installation.md)
 
-b. Logstash Configuration and Installation:
-
-Explain the role of Logstash in log processing and transformation.
-Provide step-by-step instructions for configuring and installing Logstash.
-Discuss any prerequisites or system requirements.
-
-c. Kibana Configuration and Installation:
-
-Explain the features and benefits of Kibana for log visualization and analysis.
-Provide step-by-step instructions for configuring and installing Kibana.
-Discuss any prerequisites or system requirements.
-
-d. Metrics Monitor Configuration in Kibana:
-
-Explain how to configure Metrics Monitors in Kibana for log-based monitoring.
-Discuss the advantages of using Kibana for log analysis and alerting.
-Provide examples of monitoring rules and how to set them up.
 
 ### Cloudwatch
 
