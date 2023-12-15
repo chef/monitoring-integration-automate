@@ -71,26 +71,16 @@ Enhancement suggestions are tracked as [GitHub issues](/issues).
 
 - Make the changes to the specific sections based on Markdown file styling to the select in-edit page.
 ![Example-page-to-edit](Images/example-page-to-edit.png)
-- 
-- 
-- **Describe the current behavior** and **explain which behavior you expected to see instead** and why. At this point you can also tell which alternatives do not work for you.
-- You may want to **include screenshots and animated GIFs** that help you demonstrate the steps or point out the part which the suggestion is related to. You can use [this tool](https://www.cockos.com/licecap/) to record GIFs on macOS and Windows, and [this tool](https://github.com/colinkeenan/silentcast) or [this tool](https://github.com/GNOME/byzanz) on Linux. 
-- **Explain why this enhancement would be useful** to most CONTRIBUTING.md users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
-
-
-
-### Your First Code Contribution
-
-
-### Improving The Documentation
-
-
-## Styleguides
-### Commit Messages
-
-
-## Join The Project Team
-
+- Click on Commit changes and create a to be proposed changes as per the newly created feature branch
+![Propose-change-pop-up](Images/propose-change-pop-up.png)
+- Once clicked on propose change, you will see the Open Pull Request page, like below
+![Open-pull-request](Images/open-pull-request.png)
+- Add below information in the PR description:
+  * Description of the Pull Request
+  * What problem it will solve
+  * Type of use-case on which this documentation has been tested practically
+  * If possible, share screenshot, videos to support the documentation change
+- Once done, click on Create Pull Request.
 
 
 ## Attribution
