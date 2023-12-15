@@ -72,7 +72,7 @@ Enhancement suggestions are tracked as [GitHub issues](/issues).
 - Make the changes to the specific sections based on Markdown file styling to the select in-edit page.
 ![Example-page-to-edit](data-dog/Images/example-page-to-edit.png)
 - Click on Commit changes and create a to be proposed changes as per the newly created feature branch
-![Propose-change-pop-up](Images/propose-change-pop-up.png)
+![Propose-change-pop-up](Images/Propose-change-pop-up.png)
 - Once clicked on propose change, you will see the Open Pull Request page, like below
 ![Open-pull-request](data-dog/Images/open-pull-request.png)
 - Add below information in the PR description:
