@@ -67,14 +67,14 @@ Enhancement suggestions are tracked as [GitHub issues](/issues).
 - Use a **clear and descriptive title** for the Enhancement addition to identify the suggestion.
 - On the documentation github [website](https://github.com/chef/monitoring-integration-automate), navigate to the main page of the repository.
 - Go to the documentation page you wish to update/add/suggest changes on.
-  ![Example-page-to-edit](Images/example-page-to-edit.png)
+  ![Example-page-to-edit](data-dog/Images/example-page-to-edit.png)
 
 - Make the changes to the specific sections based on Markdown file styling to the select in-edit page.
-![Example-page-to-edit](Images/example-page-to-edit.png)
+![Example-page-to-edit](data-dog/Images/example-page-to-edit.png)
 - Click on Commit changes and create a to be proposed changes as per the newly created feature branch
 ![Propose-change-pop-up](Images/propose-change-pop-up.png)
 - Once clicked on propose change, you will see the Open Pull Request page, like below
-![Open-pull-request](Images/open-pull-request.png)
+![Open-pull-request](data-dog/Images/open-pull-request.png)
 - Add below information in the PR description:
   * Description of the Pull Request
   * What problem it will solve
