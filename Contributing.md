@@ -1,6 +1,6 @@
 # Contributing to CONTRIBUTING.md
 
-First off, thanks for taking the time to contribute! ❤️
+First off, thanks for taking the time to contribute!
 
 All types of contributions are encouraged and valued. See the [Table of Contents](#table-of-contents) for different ways to help and contribute to this repository. Please make sure to read the relevant section before making your contribution. It will make it a lot easier for us maintainers and smooth out the experience for all involved. 
 
@@ -54,8 +54,8 @@ This section guides you on how to suggest enhancement in this documentation. Fol
 
 #### Before Submitting an Enhancement
 
-- Make sure that you have tried the Automate HA product for your usage and are well aware of its use-cases, support, and functionality.
-- Read the existing Monitoring, Alerting and Logging [documentation](https://github.com/chef/monitoring-integration-automate/blob/Adding-Contributing.md/Whitepaper_AutomateHA_Monitoring_and_Alerting.md) of this repo carefully and find out if that documentation is already covered.
+- Make sure that you have tried the Automate HA product for your usage and are well aware of its use cases, support, and functionality.
+- Read the existing Monitoring, Alerting, and Logging [documentation](https://github.com/chef/monitoring-integration-automate/blob/Adding-Contributing.md/Whitepaper_AutomateHA_Monitoring_and_Alerting.md) of this repo carefully and find out if that documentation is already covered.
 - Perform a [search](/issues) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
 - Find out whether your idea fits with the scope and aims of the project. 
 
@@ -79,7 +79,7 @@ Enhancement suggestions are tracked as [GitHub issues](/issues).
   * Description of the Pull Request
   * What problem it will solve
   * Type of use-case on which this documentation has been tested practically
-  * If possible, share screenshot, videos to support the documentation change
+  * If possible, share screenshots, and videos to support the documentation change
 - Once done, click on Create Pull Request.
 
 
