@@ -1,5 +1,6 @@
 # MS Teams Integration and Notification
-Connect MS Teams to Prometheus to:
+
+The scope here is to connect MS Teams to Prometheus in order to:
 
 * Notify on-call responders based on alerts triggered from prometheus.
 * See incidents and escalations.
@@ -8,7 +9,7 @@ Connect MS Teams to Prometheus to:
 ## Configure AlertManager for MS Teams
 Before performing the following steps, please ensure alertmanager is installed and configured to run as a service. Refer to the [alertmanager installation guide](./Prometheus_Monitor_configuration_and_alerting.md)
 
-## prometheus and MS Teams Integration
+## Prometheus and MS Teams Integration
 
 The following steps provides the guidance to prepare MS Teams receiver for the alert manager to send alerts. Refer to [prometheus-msteams documentation](https://github.com/prometheus-msteams/prometheus-msteams/releases) for more details.
 
@@ -72,7 +73,7 @@ receivers:
       url: 'http://localhost:2000/alertmanager'
 ```
 
-Restart Alertmanager and prometheus server
+Restart Alertmanager and Prometheus server
 
 ```
 systemctl restart alertmanager.service
