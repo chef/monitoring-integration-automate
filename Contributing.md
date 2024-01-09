@@ -76,7 +76,3 @@ Enhancement suggestions are tracked as [GitHub issues](/issues).
   * Type of use-case on which this documentation has been tested practically
   * If possible, share screenshots, and videos to support the documentation change
 - Once done, click on Create Pull Request.
-
-
-## Attribution
-This guide is based on the **contributing.md**. [Make your own](https://contributing.md/)!
