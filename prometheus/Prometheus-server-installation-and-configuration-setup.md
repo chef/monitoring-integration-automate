@@ -13,7 +13,7 @@ In order to monitor the Chef Automate HA infrastructure, Prometheus server must 
 
 # Contents
 
-* Prometheus Server Setup  
+* Prometheus Server Setup
     
     1. [Complete the prerequisite](#step-1-complete-the-prerequisites)
     

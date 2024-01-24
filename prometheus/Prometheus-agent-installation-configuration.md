@@ -1,69 +1,72 @@
 # Introduction to Prometheus Exporter
+
 Prometheus is an open source time series monitoring tool for managing a variety of system resources and applications. It provides a multidimensional data model, the ability to query the collected data, and detailed reporting and data visualization through Grafana.
 
 By default, Prometheus exporter is enabled to collect metrics on the server where it is installed. With the help of various exporters, metrics can be collected from other resources like web servers, containers, databases, custom applications, and other third-party systems. In this tutorial, we will show you how to install and configure required Prometheus exporters to setup monitoring for Chef Automate HA implementation. For a full list of available exporters, see Exporters and integrations in the [Prometheus documentation](https://prometheus.io/docs/instrumenting/exporters/).
 
-# Contents
+## Content References
 
-*  [Prometheus exporter's pre-requisites](#prometheus-exporter-prerequisites)
+1. [Prometheus exporter's pre-requisites](#prometheus-exporter-prerequisites)
 
-    1. [Configure Firewall prerequisites](#step-1-configure-firewall-prerequisites)
-    
-    1. [Add users to your EC2 instance](#step-2-add-user-to-your-ec2-instance)
+    * [Configure Firewall prerequisites](#step-1-configure-firewall-prerequisites)
 
-* [Prometheus Exporter - node-exporter Setup](#prometheus-node-exporter-setup)  
-    
-    1. [Verify Pre-requisites](#step-1-verify-prerequisites)
+    * [Add users to your EC2 instance](#step-2-add-user-to-your-ec2-instance)
 
-    1. [Download and Install Node exporter packages](#step-2-download-and-install-node_exporter-binary-packages)
+1. [Prometheus Exporter - node-exporter Setup](#prometheus-node-exporter-setup)
 
-    1. [Start Node Exporter](#step-3-start-node-exporter)
+    * [Verify Pre-requisites](#step-1-verify-prerequisites)
 
-    1. [Configure Prometheus with the Node Exporter data collector](#step-4-configure-prometheus-for-node_exporter-data-collector)
+    * [Download and Install Node exporter packages](#step-2-download-and-install-node_exporter-binary-packages)
 
-* [Prometheus Postgres exporter setup](#prometheus-postgres-exporter-setup)
-        
-    1. [Verify Pre-requisites](#step-1-verify-prerequisites-1)
+    * [Start Node Exporter](#step-3-start-node-exporter)
 
-    1. [Download, Install and Configure Prometheus postgres exporter](#step-2-download-install-and-configure-prometheus-postgres-exporter)
+    * [Configure Prometheus with the Node Exporter data collector](#step-4-configure-prometheus-for-node_exporter-data-collector)
 
-    1. [Start postgres Exporter](#step-3-start-postgres-exporter)
+1. [Prometheus Postgres exporter setup](#prometheus-postgres-exporter-setup)
 
-    1. [Configure Prometheus with the postgres Exporter data collector](#step-4-reconfigure-prometheus-with-the-postgres-exporter-data-collector)
+    * [Verify Pre-requisites](#step-1-verify-prerequisites-1)
 
-* [Prometheus OpenSearch Plugin Setup](#configure-prometheus-with-opensearch-plugin)
-    1. [Install OpenSearch plugin](#step-1--install-opensearch-plugin)
-    
-    1. [Reconfigure Prometheus Server](#step-2-configure-prometheus-server-for-opensearch-data-collection)
+    * [Download, Install and Configure Prometheus postgres exporter](#step-2-download-install-and-configure-prometheus-postgres-exporter)
 
-    1. [Verify OpenSearch Metrics](#step-3-verify-opensearch-metrics)
+    * [Start postgres Exporter](#step-3-start-postgres-exporter)
 
-* [Prometheus Exporter - blackbox_exporter Setup](#configure-blackbox-exporter-for-website-monitoring)  
-    
-    1. [Verify Pre-requisites](#step-1-verify-prerequisites-2)
+    * [Configure Prometheus with the postgres Exporter data collector](#step-4-reconfigure-prometheus-with-the-postgres-exporter-data-collector)
 
-    1. [Download and Install blackbox exporter packages](#step-2-download-install-and-configure-prometheus-blackbox-exporter)
+1. [Prometheus OpenSearch Plugin Setup](#configure-prometheus-with-opensearch-plugin)
 
-    1. [Start Blackbox Exporter](#step-3-start-blackbox-exporter)
+    * [Install OpenSearch plugin](#step-1--install-opensearch-plugin)
 
-    1. [Configure Prometheus with the Blackbox Exporter data collector](#step-4-configure-prometheus-with-blackbox-data-collection)
-  
-* [Prometheus Exporter - nginx-exporter Setup](#configure-nginx-exporter)  
-    
-    1. [Verify Pre-requisites](#step-1-verify-prerequisites-3)
+    * [Reconfigure Prometheus Server](#step-2-configure-prometheus-server-for-opensearch-data-collection)
 
-    1. [Download and Install Nginx exporter packages](#step-2-download-install-and-configure-prometheus-nginx-exporter)
+    * [Verify OpenSearch Metrics](#step-3-verify-opensearch-metrics)
 
-    1. [Start Nginx Exporter](#step-3-start-nginx-exporter)
+1. [Prometheus Exporter - blackbox_exporter Setup](#configure-blackbox-exporter-for-website-monitoring)
 
-    1. [Configure Prometheus with the Nginx Exporter data collection](#step-4-configure-prometheus-with-nginx-exporter-data-collection)
+    * [Verify Pre-requisites](#step-1-verify-prerequisites-2)
 
-# Prometheus Exporter Prerequisites
-  Before you can install Prometheus exporters on any Chef Automate nodes, you must do the following:
+    * [Download and Install blackbox exporter packages](#step-2-download-install-and-configure-prometheus-blackbox-exporter)
 
-## Step 1: Configure Firewall prerequisites
+    * [Start Blackbox Exporter](#step-3-start-blackbox-exporter)
 
-* Each Prometheus exporter run on a separate ports. Refer to the exporter's documentation for default port configurations.  The following exporters and the respective ports are used in this setup. Please ensure that all required ports are open from prometheus server to exporters.
+    * [Configure Prometheus with the Blackbox Exporter data collector](#step-4-configure-prometheus-with-blackbox-data-collection)
+
+1. [Prometheus Exporter - nginx-exporter Setup](#configure-nginx-exporter)
+
+    * [Verify Pre-requisites](#step-1-verify-prerequisites-3)
+
+    * [Download and Install Nginx exporter packages](#step-2-download-install-and-configure-prometheus-nginx-exporter)
+
+    * [Start Nginx Exporter](#step-3-start-nginx-exporter)
+
+    * [Configure Prometheus with the Nginx Exporter data collection](#step-4-configure-prometheus-with-nginx-exporter-data-collection)
+
+## Prometheus Exporter Prerequisites
+
+Before you can install Prometheus exporters on any Chef Automate nodes, you must do the following:
+
+### Step 1: Configure Firewall Prerequisites
+
+* Each Prometheus exporter run on a separate ports. Refer to the exporter's documentation for default port configurations. The following exporters and the respective ports are used in this setup. Please ensure that all required ports are open from prometheus server to exporters.
 
 | Exporters          | Firewall Ports |
 |------------------|----------------|
@@ -74,83 +77,99 @@ By default, Prometheus exporter is enabled to collect metrics on the server wher
 | Opensaerch       | 9200           |
 | https            | 443            |
 
-## Step 2: Add users and local system directories to your EC2 instance
+### Step 2: Add users and local system directories to your EC2 instance
+
 Complete the following procedure to connect to your EC2 instance using SSH and add users and system directories as needed. This procedure creates the following Linux user accounts:
 
-* exporter – This account is used to configure the node_exporter extension.
+* Exporter: This account is used to configure the node_exporter extension.
 
 These user accounts are created for the sole purpose of management and therefore do not require additional user services or permissions beyond the scope of this setup. In this procedure, you also create directories for storing and managing the files, service settings, and data that Prometheus uses to monitor resources.
 
 * Connect using SSH to the EC2 instance and enter the following commands one by one to create two Linux user accounts, prometheus and exporter.
-```
+
+```sh
 sudo useradd --no-create-home --shell /bin/false exporter
 ```
 
-# Prometheus Node Exporter Setup
+## Prometheus Node Exporter Setup
 
-## Scope
-    These steps will be repeated on all of the following servers.
-      * Automate node
-      * Chef Infra Server
-      * Chef managed OpenSearch
-      * Chef managed Postgres
-      * Bastion node
+### Scope
 
-## Step 1: Verify Prerequisites
+These steps will be repeated on all of the following servers.
+
+* Automate node
+* Chef Infra Server
+* Chef managed OpenSearch
+* Chef managed Postgres
+* Bastion node
+
+### Step 1: Verify Prerequisites
+
 Ensure that exporter pre-requisite configuration is completed. Refer to [Pre-requisites section](#prometheus-exporter-prerequisites)
 
-## Step 2: Download and Install node_exporter binary packages
+### Step 2: Download and Install node_exporter binary packages
+
 Complete the following procedure to download the Prometheus node exporter binary packages to your EC2 instance.
 
 * Open a web browser on your local computer and browse to the [Prometheus downloads page](https://prometheus.io/docs/instrumenting/exporters/).
 
-* Copy download link for node exporter
+* Copy download link for node exporter.
 
 * Connect to your EC2 instance using SSH.
 
 Enter the following command to change directory to your home directory.
-```
+
+```sh
 cd ~
 ```
 
 * Enter the following command to download the node_exporter binary packages to your instance.
 
+```sh
 curl -LO node_exporter-download-address
+```
 
 * Replace node_exporter-download-address with the address that you copied in the previous step of this procedure. The command should look like the following example when you add the address.
-```
+
+```sh
 curl -LO https://github.com/prometheus/node_exporter/releases/download/v1.3.1/node_exporter-1.3.1.linux-amd64.tar.gz
 ```
+
 * Run the following command extract the contents of the downloaded Node Exporter files.
+
 ```
 tar -xvf node_exporter-1.3.1.linux-amd64.tar.gz
 ```
+
 * Several subdirectories/files are created after the contents of the downloaded files are extracted.
 
 * Enter the following command to copy the node_exporter file from the ./node_exporter* subdirectory to the /usr/local/bin programs directory.
 
-```
+```sh
 sudo cp -p ./node_exporter-1.3.1.linux-amd64/node_exporter /usr/local/bin
 ```
 
 * Enter the following command to change the ownership of the file to the exporter user that you created earlier in this tutorial.
 
-```
+```sh
 sudo chown exporter:exporter /usr/local/bin/node_exporter
 ```
 
-## Step 3: Start Node Exporter
+### Step 3: Start Node Exporter
+
 Complete the following procedure to start the Node Exporter service.
 
 * Connect to your EC2 instance using SSH.
 
 * Enter the following command to create a systemd service file for node_exporter using vi.
-```
+
+```sh
 sudo vi /etc/systemd/system/node_exporter.service
 ```
+
 * Add the following lines of text into the file. This will configure node_exporter with monitoring collectors for CPU load, file system usage, and memory resources.
 
-```
+```sh
 [Unit]
 Description=NodeExporter
 Wants=network-online.target
@@ -169,19 +188,26 @@ WantedBy=multi-user.target
 * Save your changes and quit vi.
 
 * Enter the following command to reload the systemd process.
-```
+
+```sh
 sudo systemctl daemon-reload
 ```
+
 * Enter the following command to start the node_exporter service.
-```
+
+```sh
 sudo systemctl start node_exporter
 ```
+
 * Enter the following command to check the status of the node_exporter service.
-```
+
+```sh
 sudo systemctl status node_exporter
 ```
+
 * If the service launched successfully, you receive an output similar to the following example.
-```
+
+```sh
 root@ip-10-100-10-131:/etc/prometheus# sudo systemctl status node_exporter
 ● node_exporter.service - NodeExporter
      Loaded: loaded (/etc/systemd/system/node_exporter.service; enabled; vendor preset: enabled)
@@ -203,23 +229,27 @@ lines 1-19/19 (END)
 
 * Enter the following command to enable Node Exporter to start when the instance is booted.
 
-```
+```sh
 sudo systemctl enable node_exporter
 ```
-## Step 4: Configure Prometheus for node_exporter data collector
+
+### Step 4: Configure Prometheus for node_exporter data collector
+
 Complete the following procedure to configure Prometheus with the Node Exporter data collector. You do this by adding a new job_name parameter for node_exporter in the prometheus.yml file.
 
 * Connect to your EC2 instance using SSH.
 
 * Add the following lines of text into the file, below the existing - targets: ["<ip_addr>:9090"] parameter.
-```
+
+```sh
 - job_name: "node_exporter"
   static_configs:
     - targets: ["<ip_addr>:9100"]
 ```
 
 * The modified parameter in the prometheus.yml file should look like the following example.
-``` 
+
+```sh
 scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
   - job_name: "node-exporter"
@@ -227,22 +257,27 @@ scrape_configs:
       - targets: ["10.100.10.131:9100"]
 ```
 
-Static configs for Node Exporter  
+Static configs for Node Exporter
 
 * As with the configuration of the prometheus job_name, replace <ip_addr> with the static IP address that's attached to your EC2 instance.
 
 * Save your changes and quit vi.
 
 * Enter the following command to restart the Prometheus service so that the changes to the configuration file can take effect.
-```
+
+```sh
 sudo systemctl restart prometheus
 ```
+
 * Enter the following command to check the status of the Prometheus service.
-```
+
+```sh
 sudo systemctl status prometheus
 ```
+
 * If the service restarted properly, you receive output similar to the following.
-```
+
+```sh
 root@ip-10-100-10-131:/etc/prometheus# sudo systemctl status prometheus
 ● prometheus.service - PromServer
      Loaded: loaded (/etc/systemd/system/prometheus.service; enabled; vendor preset: enabled)
@@ -264,11 +299,14 @@ lines 1-19/19 (END)
 
 * Open a web browser on your local computer and go to the following web address to view the Prometheus management interface.
 
-http:<ip_addr>:9090  
+```sh
+http:<ip_addr>:9090
+```
 
 * Replace <ip_addr> with the static IP address of your EC2 instance. You should see a dashboard.
 
-The Prometheus dashboard
+The Prometheus dashboard:
+
 * In the main menu, choose the Status dropdown and select Targets.
 
 * Targets menu option on the Prometheus dashboard
@@ -280,15 +318,18 @@ Targets on the Prometheus dashboard
 
 * The environment is now properly set up for collecting metrics and monitoring the server.
 
-# Prometheus Postgres Exporter Setup
+## Prometheus Postgres Exporter Setup
 
-## Scope
-  * These steps will be repeated on all of the following servers.
-    - Chef managed Postgres nodes
+### Scope
 
-  *  An additional server may be configured with postgres exporter to collect metrics from AWS hosted postgres.
+* These steps will be repeated on all of the following servers.
 
-## Step 1: Verify Prerequisites
+    * Chef managed Postgres nodes
+
+* An additional server may be configured with postgres exporter to collect metrics from AWS hosted postgres.
+
+### Step 1: Verify Prerequisites
+
 Ensure that exporter pre-requisite configuration is completed. Refer to [Pre-requisites section](#prometheus-exporter-prerequisites)
 
 ## Step 2: Download, Install and configure Prometheus postgres exporter
