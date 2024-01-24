@@ -88,17 +88,17 @@ This section will list down the steps to create a dashboard for Chef Automate HA
 
 1. Add Visualization
 
-    * **Title:** Chef Automate Load Balancer
+    * Title: Chef Automate Load Balancer
 
-    * **Query:** probe_http_status_code{job="chef-automate-url"}
+    * Query: probe_http_status_code{job="chef-automate-url"}
 
-    * **Visualization Type:** Stat
+    * Visualization Type: Stat
 
-    * **Stat styles -> Graph mode:** None
+    * Stat styles -> Graph mode: None
 
-    * **Color Scheme:** From thresholds (by value)
+    * Color Scheme: From thresholds (by value)
 
-    * **Value Mappings:**
+    * Value Mappings:
 
         ![chef automate value mapping](./images/lb_vm.png)
 
@@ -124,64 +124,109 @@ This section will list down the steps to create a dashboard for Chef Automate HA
 
 1. Add Visualization
 
-  * Title : Chef Automate Nodes
-  * Query : avg(probe_http_status_code{job=~"automate-services-.*"}) by (job)
-  * Transform :   
-    Match : {job="(\w.*)"}  
+    * Title: Chef Automate Nodes
+
+    * Query: avg(probe_http_status_code{job=~"automate-services-.*"}) by (job)
+
+    * Transform:
+
+    Match : {job="(\w.*)"}
     Replace :  $1
-  * Visualization Type : Stat
-  * Stat styles -> Graph mode : None
-  * Stat styles -> Text alignment : Center
-  * Color Scheme : From thresholds (by value)
-  * value Mappings:
-  [chef automate value mapping](./images/chef_services_vm.png)
-  * Move the newly created visualization under row 2 : Chef Frontend Server Status
 
-1. Add Visualization 
-  * Title : Chef Infra Nodes
-  * Query : avg(probe_http_status_code{job=~"chef-server-services-.*"}) by (job)
-  * Transform :   
-    Match : {job="(\w.*)"}  
+    * Visualization Type: Stat
+
+    * Stat styles -> Graph mode: None
+
+    * Stat styles -> Text alignment: Center
+
+    * Color Scheme: From thresholds (by value)
+
+    * Value Mappings:
+
+        [chef automate value mapping](./images/chef_services_vm.png)
+
+    * Move the newly created visualization under row 2 : Chef Frontend Server Status
+
+1. Add Visualization
+
+    * Title: Chef Infra Nodes
+
+    * Query: avg(probe_http_status_code{job=~"chef-server-services-.*"}) by (job)
+
+    * Transform:
+
+    Match : {job="(\w.*)"}
     Replace :  $1
-  * Visualization Type : Stat
-  * Stat styles -> Graph mode : None
-  * Stat styles -> Text alignment : Center
-  * Color Scheme : From thresholds (by value)
-  * value Mappings:
-  ![chef automate value mapping](./images/chef_services_vm.png)
-  * Move the newly created visualization under row 2 : Chef Frontend Server Status
 
-1. Add Visualization 
-    *  Repeat the following steps for each Automate node and update title, query and transform match for each automate node.
-  * Title : Chef Automate - Node 1
-  * Query : probe_http_status_code{job=~"automate-services-node-01"}
-  * Transform :   
-    Match : probe_http_status_code{instance="http:\/\/localhost:9631\/services\/(\w.*)\/default\/health", job="automate-services-node-01"}  
-    Replace :  $1
-  * Visualization Type : Stat
-  * Stat styles -> Graph mode : None
-  * Stat styles -> Text alignment : Center
-  * Color Scheme : From thresholds (by value)
-  * value Mappings:
-  ![chef automate value mapping](./images/chef_services_vm.png)
-  * Move the newly created visualization(s) under row 3 : Chef Automate Services Status by nodes
+    * Visualization Type: Stat
 
-1. Add Visualization 
-  * Repeat the following steps for each Chef Infra node and update title, query and transform match for each Chef Infra node.
-  * Title : Chef Infra - Node 1
-  * Query : probe_http_status_code{job=~"chef-server-services-node-01"}
-  * Transform :   
-    Match : probe_http_status_code{instance="http:\/\/localhost:9631\/services\/(\w+-\w.*)\/default\/health", job="chef-server-services-node-01"}    
-    Replace :  $1  
-  * Visualization Type : Stat  
-  * Stat styles -> Graph mode : None
-  * Stat styles -> Text alignment : Center
-  * Color Scheme : From thresholds (by value)
-  * value Mappings:
-  ![chef automate value mapping](./images/chef_services_vm.png)
-  * Move the newly created visualization(s) under row 4 : Chef Infra Services Status by nodes
+    * Stat styles -> Graph mode : None
 
-1. Save the dashboard.  
+    * Stat styles -> Text alignment : Center
+
+    * Color Scheme : From thresholds (by value)
+
+    * Value Mappings:
+
+        ![chef automate value mapping](./images/chef_services_vm.png)
+
+    * Move the newly created visualization under row 2 : Chef Frontend Server Status
+
+1. Add Visualization
+
+    * Repeat the following steps for each Automate node and update title, query and transform match for each automate node.
+
+    * Title: Chef Automate - Node 1
+
+    * Query: probe_http_status_code{job=~"automate-services-node-01"}
+
+    * Transform:
+
+    Match: probe_http_status_code{instance="http:\/\/localhost:9631\/services\/(\w.*)\/default\/health", job="automate-services-node-01"}  
+    Replace:  $1
+
+    * Visualization Type : Stat
+
+    * Stat styles -> Graph mode : None
+
+    * Stat styles -> Text alignment : Center
+
+    * Color Scheme : From thresholds (by value)
+
+    * Value Mappings:
+
+        ![chef automate value mapping](./images/chef_services_vm.png)
+
+    * Move the newly created visualization(s) under row 3 : Chef Automate Services Status by nodes
+
+1. Add Visualization
+
+    * Repeat the following steps for each Chef Infra node and update title, query and transform match for each Chef Infra node.
+
+    * Title: Chef Infra - Node 1
+
+    * Query: probe_http_status_code{job=~"chef-server-services-node-01"}
+
+    * Transform:
+
+    Match: probe_http_status_code{instance="http:\/\/localhost:9631\/services\/(\w+-\w.*)\/default\/health", job="chef-server-services-node-01"}
+    Replace:  $1
+
+    * Visualization Type: Stat
+
+    * Stat styles -> Graph mode: None
+
+    * Stat styles -> Text alignment: Center
+
+    * Color Scheme: From thresholds (by value)
+
+    * Value Mappings:
+
+        ![chef automate value mapping](./images/chef_services_vm.png)
+
+    * Move the newly created visualization(s) under row 4 : Chef Infra Services Status by nodes
+
+1. Save the dashboard.
 
 1. A json copy of this dashboard can be found [here](./dashboards/Chef%20Automate%20HA%20-%20Component%20Health-1688729683107.json).
 
@@ -189,11 +234,13 @@ This section will list down the steps to create a dashboard for Chef Automate HA
 
 ## Importing a Dashboard
 
-The prometheus community has contributed the various dashboards and the following dashboards may be configured to monitor Chef Automate HA implementation. 
+The prometheus community has contributed the various dashboards and the following dashboards may be configured to monitor Chef Automate HA implementation.
 
 * [System Dashboard](https://grafana.com/grafana/dashboards/1860-node-exporter-full/)
+
 * [Postgres Dashboard](https://grafana.com/grafana/dashboards/9628-postgresql-database/)
-* [Open Search Dashboard](https://grafana.com/grafana/dashboards/15178-opensearch-prometheus/)  
+
+* [Open Search Dashboard](https://grafana.com/grafana/dashboards/15178-opensearch-prometheus/)
 
 The following process explains the process to import existing dashboards in Grafana.
 
