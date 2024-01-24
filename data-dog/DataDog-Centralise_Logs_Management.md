@@ -5,11 +5,11 @@
 + Follow this [documentation](data-dog/DataDog-Installation_and_Configration.md) to download, install and configure the Datadog agent on the Automate HA infrastructure nodes.
 + Ensure that the agent is running successfully on all the nodes.
 
-## Log management configuration
+## Log management Configuration
 
 In case we want to send the logs as well to the data dog of all instances, this configuration needs to be added to ensure all logs are getting sent to the data dog server.
 
-+ Type of configuration required for Automate HA setup, in order to ensure that all the components of Automate HA are sending the relevant logs metrics to data dog
+* Type of configuration required for Automate HA setup, in order to ensure that all the components of Automate HA are sending the relevant logs metrics to data dog
 
 | Config file (Final DD agent location) | Details   |
 | :--- | :-- |
@@ -20,23 +20,25 @@ In case we want to send the logs as well to the data dog of all instances, this 
 + Once the above configuration is added, restart the data dog agent by running below commands on all the nodes:
   `sudo service datadog-agent restart`
 
-
 ## Verify Logs on Datadog Console
+
 To check this log:
+
 1. Log-in to your Datadog console
-2. Click on "Logs" menu.
-3. Select the appropriate use case or "Search" for all logs, from the sub-menu.
+1. Click on "Logs" menu.
+1. Select the appropriate use case or "Search" for all logs, from the sub-menu.
 
    ![DataDog-menu](Images/DataDog-Log-menu.png)
 
-4. Filter the logs with your instance tags or hostname, etc.
+1. Filter the logs with your instance tags or hostname, etc.
 
-See the below screenshot for reference.
+See the below screenshot for the reference:
 
-![DataDog-menu](Images/DataDog-Logs.png)
+    ![DataDog-menu](Images/DataDog-Logs.png)
 
-## Custom Centerlised Logging with DataDog
-To have custom centerlised logging with DataDog; we need to add the particular service at the [Journald.yaml](YML_Files/journald.yaml) and only that particular service log will come.
+## Custom Centralized Logging with DataDog
+
+To have custom centralized logging with DataDog; we need to add the particular service at the [Journald.yaml](YML_Files/journald.yaml) and only that particular service log will come.
 
 For example: To get logs for chef automate service -  "authn-service" include the same unit at /etc/datadog-agent/conf.d/journald.d/conf.yaml file, same like below:
 
@@ -62,4 +64,4 @@ Another example: To get logs for chef server service -  "automate-cs-nginx" incl
 
 ![Automate-cs-nginx-log](Images/automate-cs-nginx.png)
 
-Note: You can include multiple service pattrens in above yaml file.
+{{< note >}} You can include multiple service patterns in above yaml file. {{< /note >}}
