@@ -22,11 +22,30 @@ The following metrics are commanded to monitor on all Chef Automate HA Servers
 ## Chef Automate Server Metrics:
 The following metrics are recommended to monitor Chef Automate servers along with metrics defined for server level.
 
+| **Component**           | **Metrics Description**                        |                             
+|-------------------------|------------------------------------------------|  
+| Automate Services Status | Status of 31 services running on Automate Server. |
+| Automate LB 5XX Alert | Generate alerts for chef automate load balanced url for response code 500 or more |
+| Chef-Server LB 5XX Alert | Generate alerts for chef server load balanced url for response code 500 or more |
+
 ## Chef Infra Server Metrics:
 The following metrics are recommended to monitor Chef Infra servers along with metrics defined for server level.
+
+| **Component**           | **Metrics Description**                        |                             
+|-------------------------|------------------------------------------------|  
+| Infra Services Status | Status of 8 services running on Infra Server. |
+| Automate LB 5XX Alert | Generate alerts for chef automate load balanced url for response code 500 or more |
+| Chef-Server LB 5XX Alert | Generate alerts for chef server load balanced url for response code 500 or more |
 
 ## Postgres Database Server Metrics:
 The following metrics are recommended to monitor Postgres database servers along with metrics defined for server level.
 
+| **Component**           | **Metrics Description**                        |                             
+|-------------------------|------------------------------------------------|  
+
+
 ## OpenSearch Server Metrics:
 The following metrics are recommended to monitor OpenSearch servers along with metrics defined for server level.
+
+| **Component**           | **Metrics Description**                        |                             
+|-------------------------|------------------------------------------------|  
