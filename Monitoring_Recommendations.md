@@ -10,23 +10,23 @@ This document outlines the recommendations for Chef Automate HA solution monitor
 ## Server Level Metrics:
 The following metrics are commanded to monitor on all Chef Automate HA Servers
 
-    | **Component**           | **Metrics Description**                        |                             
-    |-------------------------|------------------------------------------------|  
-    |CPU Usage                |Percentage of CPU utilization                   |
-    |CPU Steel                |Percentage of time a virtual CPU within a cloud server involuntarily waits on a physical CPU for its processing time.                |
-    |Memory Usage             | Percentage of memory utilization               |
-    |Swap Usage               | Swap Usage|
-    |Disk Usage by mount point|Percentage of disk space used                   |
-    |System Uptime            | Ensures system availability                    |
+| **Component**           | **Metrics Description**                        |                             
+|-------------------------|------------------------------------------------|  
+|CPU Usage                | Percentage of CPU utilization                   |
+|CPU Steel                | Percentage of time a virtual CPU within a cloud server involuntarily waits on a physical CPU for its processing time. |
+|Memory Usage             | Percentage of memory utilization |
+|Swap Usage               | Monitor swap space to ensure that the system is not excessively relying on virtual memory |
+|Disk Usage by mount point|Percentage of disk space used |
+|System Uptime            | Ensures system availability |
 
 ## Chef Automate Server Metrics:
-The fallowing metrics are recommended to monitor Chef Automate servers along with metrics defined for server level.
+The following metrics are recommended to monitor Chef Automate servers along with metrics defined for server level.
 
 ## Chef Infra Server Metrics:
-The fallowing metrics are recommended to monitor Chef Infra servers along with metrics defined for server level.
+The following metrics are recommended to monitor Chef Infra servers along with metrics defined for server level.
 
 ## Postgres Database Server Metrics:
-The fallowing metrics are recommended to monitor Postgres database servers along with metrics defined for server level.
+The following metrics are recommended to monitor Postgres database servers along with metrics defined for server level.
 
 ## OpenSearch Server Metrics:
-The fallowing metrics are recommended to monitor OpenSearch servers along with metrics defined for server level.
+The following metrics are recommended to monitor OpenSearch servers along with metrics defined for server level.
