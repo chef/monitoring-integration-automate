@@ -52,7 +52,7 @@ The following metrics are recommended to monitor Postgres database servers along
 The following metrics are recommended to monitor OpenSearch servers along with metrics defined for server level.
 
 | **Component**           | **Metrics Description**                        |  **Severity Level**     | **Trigger After**  |  **Alert Type**  |                       
-|-------------------------|------------------------------------------------| |-------------------|-------------------|-------------------|
+|-------------------------|------------------------------------------------|-------------------|-------------------|-------------------|
 | ES Cluster Health Check | Alert when opensearch cluster nodes count drops below  2 | L1 | 5 Minutes | PagerDuty |
 | ES Heap Usage Factor | Alert when opensearch jvm mem heap used percent exceeds 95 | L1 | 5 Minutes | PagerDuty |
 | ES Performance Alert | Alert when opensearch index search fetch time seconds exceeds  30 | L2 | 10 Minutes | Slack |
