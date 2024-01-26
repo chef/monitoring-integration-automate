@@ -45,17 +45,17 @@ The following metrics are recommended to monitor Postgres database servers along
 | PG Can Connect | Ensures that database is up, running and connect |
 | Connection Exhaustion | Major Alert if the total number of database connections goes above 90% of max allowed connections |
 | Connection Exhaustion | Major Alert if the total number of database connections goes above 95% of max allowed connections |
-| Managed PostgreSQL Write Latency | Alert when write latency increases above 300 |
-| Managed PostgreSQL Read Latency | Alert when read latency increases above 300 300 |
+| Managed PostgreSQL Write Latency | Alert when write latency exceeds above 300 |
+| Managed PostgreSQL Read Latency | Alert when read latency exceeds above 300 |
 
 ## OpenSearch Server Metrics:
 The following metrics are recommended to monitor OpenSearch servers along with metrics defined for server level.
 
-| **Component**           | **Metrics Description**                        |                             
-|-------------------------|------------------------------------------------|  
-| ES Cluster Health Check | Alert when opensearch cluster nodes count drops below  2 |
-| ES Heap Usage Factor | Alert when opensearch jvm mem heap used percent exceeds 95 |
-| ES Performance Alert | Alert when opensearch index search fetch time seconds exceeds  30 | 
-| ES Performance Alert | Alert when opensearch index search fetch time seconds exceeds 60 |
-| ES Indexing latency Alert | Alert when opensearch index indexing index time seconds exceeds 500 |
-| Elasticsearch Search latency Alert | Alert when opensearch index search query time seconds exceeds 60 |
+| **Component**           | **Metrics Description**                        |  **Severity Level**     | **Trigger After**  |  **Alert Type**  |                       
+|-------------------------|------------------------------------------------| |-------------------|-------------------|-------------------|
+| ES Cluster Health Check | Alert when opensearch cluster nodes count drops below  2 | L1 | 5 Minutes | PagerDuty |
+| ES Heap Usage Factor | Alert when opensearch jvm mem heap used percent exceeds 95 | L1 | 5 Minutes | PagerDuty |
+| ES Performance Alert | Alert when opensearch index search fetch time seconds exceeds  30 | L2 | 10 Minutes | Slack |
+| ES Performance Alert | Alert when opensearch index search fetch time seconds exceeds 60 | L1 | 10 Minutes | PagerDuty |
+| ES Indexing latency Alert | Alert when opensearch index indexing index time seconds exceeds 500 | L1 | 15 Minutes | PagerDuty |
+| Elasticsearch Search latency Alert | Alert when opensearch index search query time seconds exceeds 60 | L1 | 15 Minutes | PagerDuty |
