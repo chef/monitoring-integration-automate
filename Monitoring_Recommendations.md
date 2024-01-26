@@ -10,43 +10,43 @@ This document outlines the recommendations for Chef Automate HA solution monitor
 ## Server Level Metrics:
 The following metrics are commanded to monitor on all Chef Automate HA Servers
 
-| **Component**           | **Metrics Description**                        |                             
-|-------------------------|------------------------------------------------|  
-|CPU Usage                | Percentage of CPU utilization                   |
-|CPU Steel                | Percentage of time a virtual CPU within a cloud server involuntarily waits on a physical CPU for its processing time. |
-|Memory Usage             | Percentage of memory utilization |
-|Swap Usage               | Monitor swap space to ensure that the system is not excessively relying on virtual memory |
-|Disk Usage by mount point|Percentage of disk space used |
-|System Uptime            | Ensures system availability |
+| **Component**           | **Metrics Description**                        |  **Severity Level**     | **Trigger After**  |  **Alert Type**  |                       
+|-------------------------|------------------------------------------------|-------------------|-------------------|-------------------|  
+|CPU Usage                | Percentage of CPU utilization                   |L1 | 10 Minutes | PagerDuty |
+|CPU Steel                | Percentage of time a virtual CPU within a cloud server involuntarily waits on a physical CPU for its processing time. |L1 | 10 Minutes | PagerDuty |
+|Memory Usage             | Percentage of memory utilization exceeds above 95% | L2 | 10 Minutes | Slack |
+|Swap Usage               | Monitor swap space to ensure that the system is not excessively relying on virtual memory ||||
+|Disk Usage by mount point|Percentage of disk space used exceeds 90%|L1 | 10 Minutes | PagerDuty |
+|System Uptime            | Ensures system availability |L1 | 5 Minutes | PagerDuty |
 
 ## Chef Automate Server Metrics:
 The following metrics are recommended to monitor Chef Automate servers along with metrics defined for server level.
 
-| **Component**           | **Metrics Description**                        |                             
-|-------------------------|------------------------------------------------|  
-| Automate Services Status | Status of 31 services running on Automate Server. |
-| Automate LB 5XX Alert | Generate alerts for chef automate load balanced url for response code 500 or more |
-| Chef-Server LB 5XX Alert | Generate alerts for chef server load balanced url for response code 500 or more |
+| **Component**           | **Metrics Description**                        |  **Severity Level**     | **Trigger After**  |  **Alert Type**  |                       
+|-------------------------|------------------------------------------------|-------------------|-------------------|-------------------| 
+| Automate Services Status | Status of 31 services running on Automate Server. |L1 | 5 Minutes | PagerDuty |
+| Automate LB 5XX Alert | Generate alerts for chef automate load balanced url for response code 500 or more |L1 | 10 Minutes | PagerDuty |
+| Chef-Server LB 5XX Alert | Generate alerts for chef server load balanced url for response code 500 or more |L1 | 10 Minutes | PagerDuty |
 
 ## Chef Infra Server Metrics:
 The following metrics are recommended to monitor Chef Infra servers along with metrics defined for server level.
 
-| **Component**           | **Metrics Description**                        |                             
-|-------------------------|------------------------------------------------|  
-| Infra Services Status | Status of 8 services running on Infra Server. |
-| Automate LB 5XX Alert | Generate alerts for chef automate load balanced url for response code 500 or more |
-| Chef-Server LB 5XX Alert | Generate alerts for chef server load balanced url for response code 500 or more |
+| **Component**           | **Metrics Description**                        |  **Severity Level**     | **Trigger After**  |  **Alert Type**  |                       
+|-------------------------|------------------------------------------------|-------------------|-------------------|-------------------|  
+| Infra Services Status | Status of 8 services running on Infra Server. |L1 | 5 Minutes | PagerDuty |
+| Automate LB 5XX Alert | Generate alerts for chef automate load balanced url for response code 500 or more |L1 | 10 Minutes | PagerDuty |
+| Chef-Server LB 5XX Alert | Generate alerts for chef server load balanced url for response code 500 or more |L1 | 10 Minutes | PagerDuty |
 
 ## Postgres Database Server Metrics:
 The following metrics are recommended to monitor Postgres database servers along with metrics defined for server level.
 
-| **Component**           | **Metrics Description**                        |                             
-|-------------------------|------------------------------------------------|  
-| PG Can Connect | Ensures that database is up, running and connect |
-| Connection Exhaustion | Major Alert if the total number of database connections goes above 90% of max allowed connections |
-| Connection Exhaustion | Major Alert if the total number of database connections goes above 95% of max allowed connections |
-| Managed PostgreSQL Write Latency | Alert when write latency exceeds above 300 |
-| Managed PostgreSQL Read Latency | Alert when read latency exceeds above 300 |
+| **Component**           | **Metrics Description**                        |  **Severity Level**     | **Trigger After**  |  **Alert Type**  |                       
+|-------------------------|------------------------------------------------|-------------------|-------------------|-------------------| 
+| PG Can Connect | Ensures that database is up, running and connect | L1 | 1 Minute | PagerDuty |
+| Connection Exhaustion | Major Alert if the total number of database connections goes above 90% of max allowed connections | L2 | 10 Minutes | Slack |
+| Connection Exhaustion | Major Alert if the total number of database connections goes above 95% of max allowed connections | L1 | 5 Minutes | PagerDuty |
+| Managed PostgreSQL Write Latency | Alert when write latency exceeds above 300 |L2 | 10 Minutes | Slack |
+| Managed PostgreSQL Read Latency | Alert when read latency exceeds above 300 |L2 | 10 Minutes | Slack |
 
 ## OpenSearch Server Metrics:
 The following metrics are recommended to monitor OpenSearch servers along with metrics defined for server level.
