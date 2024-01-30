@@ -3,12 +3,12 @@
 
 Chef Automate HA is a platform that enables continuous automation of infrastructure, compliance, and application delivery. Monitoring of Chef Automate HA solution is a critical component for any organization to ensure the health, resources and service availability to deliver continuous automation of infrastructure, compliance, and applications.
 
-Typically, in a High Availability (HA) setup, you would have multiple instances of various components distributed across different nodes to ensure redundancy and fault tolerance. Common components in a Chef Automate HA setup may include Chef Automate serve(s), Chef Infra Server(s), Postgres database Servers, OpenSearch Serves and Bastion Server.
+Typically, in a High Availability (HA) setup, you would have multiple instances of various components distributed across different nodes to ensure redundancy and fault tolerance. Common components in a Chef Automate HA setup may include Chef Automate Server(s), Chef Infra Server(s), Postgres database Servers, OpenSearch Servers and Bastion Server.
 
 This document outlines the recommendations for Chef Automate HA solution monitoring for components used in the solution.
 
 ## Server Level Metrics:
-The following metrics are commanded to monitor on all Chef Automate HA Servers
+The following metrics are recommended to monitor on all Chef Automate HA Servers
 
 | **Component**           | **Metrics Description**                        |  **Severity Level**     | **Trigger After**  |  **Alert Type**  |                       
 |-------------------------|------------------------------------------------|-------------------|-------------------|-------------------|  
@@ -24,7 +24,7 @@ The following metrics are recommended to monitor Chef Automate servers along wit
 
 | **Component**           | **Metrics Description**                        |  **Severity Level**     | **Trigger After**  |  **Alert Type**  |                       
 |-------------------------|------------------------------------------------|-------------------|-------------------|-------------------| 
-| Automate Services Status | Status of 31 services running on Automate Server. |L1 | 5 Minutes | PagerDuty |
+| Automate Services Status | Health status of 31 services running on Automate Server. e.g. http://localhost:9631/services/<<named-service>>/default/health|L1 | 5 Minutes | PagerDuty |
 | Automate LB 5XX Alert | Generate alerts for chef automate load balanced url for response code 500 or more |L1 | 10 Minutes | PagerDuty |
 | Chef-Server LB 5XX Alert | Generate alerts for chef server load balanced url for response code 500 or more |L1 | 10 Minutes | PagerDuty |
 
@@ -33,7 +33,7 @@ The following metrics are recommended to monitor Chef Infra servers along with m
 
 | **Component**           | **Metrics Description**                        |  **Severity Level**     | **Trigger After**  |  **Alert Type**  |                       
 |-------------------------|------------------------------------------------|-------------------|-------------------|-------------------|  
-| Infra Services Status | Status of 8 services running on Infra Server. |L1 | 5 Minutes | PagerDuty |
+| Infra Services Status | Health status of 8 services running on Infra Server. http://localhost:9631/services/<<named-service>>/default/health |L1 | 5 Minutes | PagerDuty |
 | Automate LB 5XX Alert | Generate alerts for chef automate load balanced url for response code 500 or more |L1 | 10 Minutes | PagerDuty |
 | Chef-Server LB 5XX Alert | Generate alerts for chef server load balanced url for response code 500 or more |L1 | 10 Minutes | PagerDuty |
 
