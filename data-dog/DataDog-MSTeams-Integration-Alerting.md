@@ -5,9 +5,9 @@ Webhooks are a great way to integrate MS Teams with external apps, Datadog in ou
 * Respond to messages when @mentioned (outgoing webhooks)
 * Send proactive messages to configured channels in MS teams (incoming webhooks and connectors)
 
-Here, we are going to concentrate on **incoming webhooks and connectors** 
+Here, we are going to concentrate on **incoming webhooks and connectors**
 
-You can forward all the notifications and alerts for Chef Automate in Datadog to Microsoft Teams 
+You can forward all the notifications and alerts for Chef Automate in Datadog to Microsoft Teams
 
 
 
@@ -19,9 +19,17 @@ You can forward all the notifications and alerts for Chef Automate in Datadog to
 ![Create Teams Channel](Images/Create-Teams-Channel.png)
 
 * Create connector
-  
+
 
 ![Create Connector](Images/Creating-Connectors.png)
+
+**Note:** In newer version of Microsoft Teams, the option of connectors menu is moved to below location. Kindly follow the same if you have similar version of Microsoft Teams:
+
+    - Go to "manage channel" > Find "Connectors" option.
+    - Click on "Edit" button from Connector section.
+See below screenshot for reference.
+![MS Teams Manage Channel](Images/DataDog-Teams-ManageChannel.png)
+![MS Teams Connector Edit Menu](Images/DataDog-Teams-ConnectorMenu.png)
 
 * Search for Datadog, click add and then click Configure
 
@@ -35,21 +43,21 @@ You can forward all the notifications and alerts for Chef Automate in Datadog to
 ![Configure the Webhook URL](Images/Datadog-webhook-url.png)
 
 
-## Step2: Setting up Datadog account in Microsoft Teams 
+## Step2: Setting up Datadog account in Microsoft Teams
 
 * On Microsoft Teams, click on **Apps** in the vertical toolbar
 
-* Search for "Datadog" 
+* Search for "Datadog"
 
 * Click **Add** to install the Datadog App
 
 
 ![Add Datadog App](Images/Add-Datadog-on-Teams.png)
-  
-* Now go to your Datadog application, navigate to [Microsoft Teams Title](https://app.datadoghq.com/account/settings?_gl=1*2j0s4k*_gcl_au*MjYxMTI0MTE2LjE2ODYyMDIwNDQ.*_ga*MjEyMDkyMzE0Mi4xNjg2MjAyMDQ0*_ga_KN80RDFSQK*MTY4Njk0NDc1MS4xMi4xLjE2ODY5NDQ3NzguMzMuMC4w*_fplc*RVglMkIxRzJRUmRCWjB2em8lMkZ0Z0Q1U05FN1l0UVNHUDYwU2tsQ3VIeTVFZ2Naa1kzY3lhYnBhSWU5bzNPYWREWWlWS245VlJqdndKN1ZNZlR5bk1rRERhbExMMzByNCUyRlMlMkY2a0dJdHAyNWxrQnYwNHZHa1U2VkhnSUJrWjNpdkElM0QlM0Q.#integrations/microsoft-teams) 
+
+* Now go to your Datadog application, navigate to [Microsoft Teams Title](https://app.datadoghq.com/account/settings?_gl=1*2j0s4k*_gcl_au*MjYxMTI0MTE2LjE2ODYyMDIwNDQ.*_ga*MjEyMDkyMzE0Mi4xNjg2MjAyMDQ0*_ga_KN80RDFSQK*MTY4Njk0NDc1MS4xMi4xLjE2ODY5NDQ3NzguMzMuMC4w*_fplc*RVglMkIxRzJRUmRCWjB2em8lMkZ0Z0Q1U05FN1l0UVNHUDYwU2tsQ3VIeTVFZ2Naa1kzY3lhYnBhSWU5bzNPYWREWWlWS245VlJqdndKN1ZNZlR5bk1rRERhbExMMzByNCUyRlMlMkY2a0dJdHAyNWxrQnYwNHZHa1U2VkhnSUJrWjNpdkElM0QlM0Q.#integrations/microsoft-teams)
 
 Or, in the Datadog app, from the left hand bar, click on Integrations --> Integrations; search for Microsoft Teams, install and then click on configure.
-  
+
 
 * Click on **Add Account** which will redirect you to Microsoft Authentication, follow the prompts and click **Ok**
 
@@ -75,13 +83,13 @@ Or, in the Datadog app, from the left hand bar, click on Integrations --> Integr
 ![Add Teams Channel](Images/Add-Teams-Channel.png)
 
 
-**Note:** We will need this teams channel name which setting up notifications and alerts to be sent to Microsoft Teams webhook in the next step. 
+**Note:** We will need this teams channel name which setting up notifications and alerts to be sent to Microsoft Teams webhook in the next step.
 
 
-## Step4: Setting up Notification Settings for Microsoft Teams 
+## Step4: Setting up Notification Settings for Microsoft Teams
 
 * Login to https://app.datadoghq.com/ with your credentials
-* From the left-hand side, click on Service Mgmt --> Incidents --> Settings --> Integrations; make tyhe following changes for Datadog to send notifications to Microsoft Teams 
+* From the left-hand side, click on Service Mgmt --> Incidents --> Settings --> Integrations; make tyhe following changes for Datadog to send notifications to Microsoft Teams
 
 Here, under "Microsoft Teams" section, make the following appends:
 * Key in the following information from what you had created in your Microsoft Teams Account:
@@ -95,7 +103,7 @@ Once done, click on **Save**
 ![Creating Notification Settings](Images/Creating-Notification-Settings.png)
 
 
-## Step5: Setting up Notifications/Alerts 
+## Step5: Setting up Notifications/Alerts
 
 It is time now to setup monitors for your Automate HA infrastructure that can be sent as notifications/alerts over Teams and Email
 
@@ -120,7 +128,7 @@ To set up notifications, you can take a cue from "Use Message Template Variables
 ![Setting up Notification](Images/Setting-up-Notifications.png)
 
 
-Once done, you can also test if the notications actually reach their desired targets, by clicking on **Test Notifications**. After confirming that you received the alerts in your teams channel (as shown below), click on **save** to make it perpetual. 
+Once done, you can also test if the notications actually reach their desired targets, by clicking on **Test Notifications**. After confirming that you received the alerts in your teams channel (as shown below), click on **save** to make it perpetual.
 
 ![Setup Notifications](Images/Teams-Notification.png)
 
