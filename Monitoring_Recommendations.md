@@ -24,7 +24,7 @@ The following metrics are recommended to monitor Chef Automate servers along wit
 
 | **Component**           | **Metrics Description**                        |  **Severity Level**     | **Trigger After**  |  **Alert Type**  |                       
 |-------------------------|------------------------------------------------|-------------------|-------------------|-------------------| 
-| Automate Services Status | Health status of 31 services running on Automate Server. e.g. http://localhost:9631/services/<'named-service'>/default/health|L1 | 5 Minutes | PagerDuty |
+| Automate Services Status | Health status of 31 services running on Automate Server. e.g. http://localhost:9631/services/"named-service"/default/health. Replace the named-service with actual automate service. |L1 | 5 Minutes | PagerDuty |
 | Automate LB 5XX Alert | Generate alerts for chef automate load balanced url for response code 500 or more |L1 | 10 Minutes | PagerDuty |
 | Chef-Server LB 5XX Alert | Generate alerts for chef server load balanced url for response code 500 or more |L1 | 10 Minutes | PagerDuty |
 
@@ -33,7 +33,7 @@ The following metrics are recommended to monitor Chef Infra servers along with m
 
 | **Component**           | **Metrics Description**                        |  **Severity Level**     | **Trigger After**  |  **Alert Type**  |                       
 |-------------------------|------------------------------------------------|-------------------|-------------------|-------------------|  
-| Infra Services Status | Health status of 8 services running on Infra Server. http://localhost:9631/services/<'named-service'>/default/health |L1 | 5 Minutes | PagerDuty |
+| Infra Services Status | Health status of 8 services running on Infra Server. e.g. http://localhost:9631/services/"named-service"/default/health. Replace the named-service with actual infra service. |L1 | 5 Minutes | PagerDuty |
 | Automate LB 5XX Alert | Generate alerts for chef automate load balanced url for response code 500 or more |L1 | 10 Minutes | PagerDuty |
 | Chef-Server LB 5XX Alert | Generate alerts for chef server load balanced url for response code 500 or more |L1 | 10 Minutes | PagerDuty |
 
