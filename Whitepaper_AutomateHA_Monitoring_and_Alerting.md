@@ -4,6 +4,7 @@ The Chef Automate HA equates to reliability, efficiency, and productivity, built
 This document provides guided steps on how to build and integrate Monitoring, Alerting, and Centralised logging tools with Chef Automate HA. Based on our analysis we have selected a few tools which is our recommendation. 
 
 ## Abstract:
+### Monitoring Recommendations
 
 ### Tools for Monitoring:
 1. Data Dog
@@ -30,6 +31,8 @@ This document provides guided steps on how to build and integrate Monitoring, Al
 
 
 ## Introduction:
+
+The Chef engineering team has comprehensively documented the [recommended monitoring metrics](./Monitoring_Recommendations.md) to offer visibility into the operational health of Chef Automate HA solution. 
 
 As part of the guided steps of integration for the above-mentioned tools, we will capture the below use cases from an integration perspective:
 
