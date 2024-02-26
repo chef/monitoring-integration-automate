@@ -85,10 +85,10 @@ This script requires:
     + Set the “Production” tag as true
 
 + Path to the configuration file for the components where an agent needs to be run
-+ All the component level configurations as detailed under the [agent configuration section](#agent-configuration)
++ All the component level configurations as detailed under the DataDog agent location configration explained below.
 + Required tags to be added (This is work as a filter while fetching metrics on the data dog console)
 
-**Running the above steps will ensure**
+**Running the above steps on each AutomateHA cluster node will ensure**
 + Agent getting installed in each of the nodes (Bastion Machine and All Instances - Chef Server, Automate, Postgres, ElasticSearch nodes)
 + **These steps will install the datadog agent in each instance, with the required configuration, and restart the agent.**
 
@@ -144,12 +144,14 @@ Datadog agent will read and collects the metrics from all the instances and mana
 
 		automate-cluster-ctl ssh automate
 
+**Note: Below operation must be executed only from the PostgreSQL leader node.**
+
 + Go to the psql directory and open the psql console:
 
 		sudo su -
 		cd /hab/pkgs/core/postgresql13-client/13.5/20220120152435/bin
 		./psql --host=<hostname of RDS> --username=root --dbname=postgres
-   The password for the root user is admin1234
+   The password for the root user is admin1234 or fetch the set password from config file
 
 + Run the below commands on psql console to create user for datadog
 
