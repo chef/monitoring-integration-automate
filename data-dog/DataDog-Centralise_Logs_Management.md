@@ -14,7 +14,7 @@ In case we want to send the logs as well to the data dog of all instances, this 
 | Config file (Final DD agent location) | Details   |
 | :--- | :-- |
 |/etc/datadog-agent/conf.d/journald.d/conf.yaml|**Journalctl logs** In case we want to send the logs as well to data dog, this cionfiguration needs to be added to esnure all journal ctl logs are getting sent to data dog. Reference location for actual values:  [journald.yaml](YML_Files/journald.yaml)|
-|/etc/datadog-ag/centonf.d/systemd.d/conf.yaml|**System logs** Enable this config for system level logs. Reference location for actual values: [syslog.yaml](YML_Files/syslog.yaml)|
+|/etc/datadog-agent/conf.d/journald.d/syslog.yaml|**System logs** Enable this config for system level logs. Reference location for actual values: [syslog.yaml](YML_Files/syslog.yaml)|
 |/etc/datadog-agent/conf.d/systemd.d/conf.yaml|**Systemd logs** Enable this config for systemd logs. Reference location for actual values: [systemd.yaml](YML_Files/systemd.yaml)|
 
 + Once the above configuration is added, restart the data dog agent by running below commands on all the nodes:
