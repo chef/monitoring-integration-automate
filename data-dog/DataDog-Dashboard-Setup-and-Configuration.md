@@ -95,7 +95,7 @@ Once you are done appending your changes, click on save.
 - e.g. Automate and Infra-server service level health can be seen like this:
 
   ![Automate and server services health](Images/automate-server-services-health.png)
-  
+
   ![Automate and server services Report](Images/service-health-report.png)
 
 **Postgres DB Service Status:**
