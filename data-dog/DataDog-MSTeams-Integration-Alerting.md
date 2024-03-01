@@ -73,15 +73,18 @@ Or, in the Datadog app, from the left hand bar, click on Integrations --> Integr
 ## Step3: Configure Webhook in Datadog Application
 
 * Login to https://app.datadoghq.com/ with your credentials
+
 * Under the page, click on Integrations --> Integrations
+
 ![Create Integration](Images/Create-Integrations.png)
 
 * Search for microsoft teams and the click on Configure
+
 ![Configure Teams](Images/Datadog-Integrations.png)
 
 * Add MS teams channel with the webhook url
-![Add Teams Channel](Images/Add-Teams-Channel.png)
 
+![Add Teams Channel](Images/Add-Teams-Channel.png)
 
 **Note:** We will need this teams channel name which setting up notifications and alerts to be sent to Microsoft Teams webhook in the next step.
 
