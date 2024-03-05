@@ -6,11 +6,11 @@ As an Automate HA customer, need to integrate Data Dog with a slack tool to ensu
 
 Connecting Slack to Datadog to help your team collaborate by:
 
-* Sharing graphs in private or public Slack channels.
+1. Sharing graphs in private or public Slack channels.
 
-* Receiving alerts and notifications from Datadog within Slack.
+1. Receiving alerts and notifications from Datadog within Slack.
 
-* Muting triggering monitors and declaring incidents from Slack.
+1. Muting triggering monitors and declaring incidents from Slack.
 
 ## What you’ll Need
 

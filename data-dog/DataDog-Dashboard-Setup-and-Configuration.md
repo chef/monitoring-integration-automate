@@ -46,7 +46,7 @@ Your dashboard should be easy to use. Make sure the layout is clear and the visu
 
 **Screenboards:** Screenboards are designed for adhoc analysis and troubleshooting. They allow you to create a custom layout of widgets and panels to visualize your data.
 
-**Timeboards:** Timeboards are designed for monitoring and alerting. They show a historical view of your data over time, and can be used to set alerts and notifications. In our case, we are using Timeboards
+**Timeboards:** Timeboards are designed for monitoring and alerting. They show a historical view of your data over time, and can be used to set alerts and notifications. In our case, we are using Timeboards.
 
 ## Recommended Dashboards
 
@@ -64,7 +64,7 @@ For example, a System Metrics dashboard will look like this:
 
 ## Steps to create a new dashboard
 
-* Login to https://app.datadoghq.com/ with your credentials
+* Login to https://app.datadoghq.com/ with your credentials.
 * On the left hand side, click on Dashboards --> New Dashboard. You will be directed to a new Dashboard screen.
 * Here, key in a name for Dashboard Name and select the "New Timeboard" and then click on "New Dashboard".
 * On the dashboard screen, first create template variables with which you want to tag your components. A basic example can be:
@@ -102,16 +102,11 @@ Once done appending your changes, select **Save**.
 
   ![Automate and server services Report](Images/service-health-report.png)
 
-**Postgres DB Service Status:**
+**Postgres DB Service Status:** postgresql.db.count; with conditions for Success: cutoff_min --> 1 and Failure: cutoff_max --> 0.89
 
-* postgresql.db.count; with conditions for Success: cutoff_min --> 1 and Failure: cutoff_max --> 0.89
+**OpenSearch DB Service Status:** aws.es.cluster_statusgreen; with conditions for Success: cutoff_min --> 1 and Failure: clamp_min --> 0.5
 
-**OpenSearch DB Service Status:**
-
-* aws.es.cluster_statusgreen; with conditions for Success: cutoff_min --> 1 and Failure: clamp_min --> 0.5
-
-**Note:**
-Here, we are discussing metrics for deploying Managed Automate HA in AWS, please use this as a general guideline for other platforms and On-prem solutions as well
+**Note:** Here, we are discussing metrics for deploying Managed Automate HA in AWS, please use this as a general guideline for other platforms and On-prem solutions as well
 
 ![Infra Health Dashboard](Images/Infra_health_dashboard.png)
 
@@ -133,7 +128,7 @@ Here, we are discussing metrics for deploying Managed Automate HA in AWS, please
 * aws.es.searchable_documents
 * system.cpu.user
 
- ![OpenSearch Metrics Dashboard](Images/AWS_Managed_ES.png)
+![OpenSearch Metrics Dashboard](Images/AWS_Managed_ES.png)
 
 ## PostgreSQL Metrics
 

@@ -2,17 +2,17 @@
 
 Connect PagerDuty to Datadog to:
 
-* Notify on-call responders based on alerts triggered from Datadog.
+1. Notify on-call responders based on alerts triggered from Datadog.
 
-* See incidents and escalations.
+1. See incidents and escalations.
 
-* Get daily reminders as to who is on-call.
+1. Get daily reminders as to who is on-call.
 
 What you’ll need:
 
-* Admin or Standard role permissions for your Datadog account (unless your organization has created custom role)
+1. Admin or Standard role permissions for your Datadog account (unless your organization has created custom role)
 
-* Admin role in PagerDuty Account
+1. Admin role in PagerDuty Account
 
 ## Data Dog and PagerDuty Integration
 
@@ -28,11 +28,11 @@ The connection between Data Dog and PagerDuty must be created first.
 
 1. On the PagerDuty authorization screen there are two options to integrate with Data Dog.
 
-* Enter your PagerDuty account using the **email address** and **password** and click **Authorize Integration**.
+      * Enter your PagerDuty account using the **email address** and **password** and click **Authorize Integration**.
 
-   or
+      or
 
-* Use Single Sign On by providing your PagerDuty **Subdomain** and click **Sign In Using Your Identity Provider**.
+      * Use Single Sign On by providing your PagerDuty **Subdomain** and click **Sign In Using Your Identity Provider**.
 
       ![Integration](Images/authorize.png)
 
@@ -58,7 +58,7 @@ The connection between Data Dog and PagerDuty must be created first.
 
       * In PagerDuty, navigation to **People** and **Escalation Policies**.
 
-      * Click **+ New Escalation Policy**.
+      * Select **+ New Escalation Policy**.
 
       * Provide a unique **Name** for the Escalation Policy and optional **Description**.
 
@@ -68,7 +68,7 @@ The connection between Data Dog and PagerDuty must be created first.
 
       * Enter the required **Users* and/or **Schedules** to be notified.
 
-      * Click **Save**.
+      * Select **Save**.
 
             ![Escalation](Images/createpolicy.png)
 
@@ -76,17 +76,17 @@ The connection between Data Dog and PagerDuty must be created first.
 
       * In PagerDuty, navigate to **Services**.
 
-      * Click **+ new Service**
+      * Select **+ new Service**
 
       * Provide a unique **Name** and optional **Description**
 
-      * Click **Next**.
+      * Select **Next**.
 
             ![Service1](Images/service1.png)
 
-      * Click the **Select an Existing Escalation Policy** and choose the **Escalation Policy** created in the previous step.
+      * Select the **Select an Existing Escalation Policy** and choose the **Escalation Policy** created in the previous step.
 
-      * Click **Next**.
+      * Select **Next**.
 
             ![Service2](Images/service2.png)
 

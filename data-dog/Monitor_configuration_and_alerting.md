@@ -28,15 +28,15 @@ Before getting started, you need a Datadog account linked to a host with the Dat
 
       ![Metrics_Host_Monitor](Images/Metrics_Host_Monitor.png)
 
-1. Set alert conditions - Select the option to automatically resolve the alerts after a specified period of time or it needs to be resolved by manual intervention of an user.
+1. Set alert conditions: Select the option to automatically resolve the alerts after a specified period of time or it needs to be resolved by manual intervention of an user.
 
-1. Notify your team - There is the option to notify the team responsible for the infrastructure monitoring via email or slack or teams or pager duty. The detailed steps on integrating Datadog with these alerting applications are explained in dedicated sections.
+1. Notify your team: There is the option to notify the team responsible for the infrastructure monitoring via email or slack or teams or pager duty. The detailed steps on integrating Datadog with these alerting applications are explained in dedicated sections.
 
 1. Datadog provides the flexibility of renotification of the same alert which can be configured to renotify in the alerting app multiple times after a fixed interval of time.
 
       ![Metrics_Host_Monitor](Images/Notify.png)
 
-1. Permissions - Different alerts need to be set a priority level depending on the impact they create on the performance or functioning of the applications. Priority for the custom alerts should be set in order to address those accordingly meeting the SLAs.
+1. Permissions: Different alerts need to be set a priority level depending on the impact they create on the performance or functioning of the applications. Priority for the custom alerts should be set in order to address those accordingly meeting the SLAs.
 
 1. Role based access control needs to be applied to the custom monitors and alerts created which dictates who can edit/delete my alert and who will it be notified to.
 

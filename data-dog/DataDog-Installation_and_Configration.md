@@ -12,7 +12,7 @@ In order to monitor the Chef Automate HA infrastructure, need to have a DataDog 
 
 Agents for monitoring use cases refer to software that runs on your host machines. It collects events and metrics from hosts and sends them to the centralized monitoring tool’s infrastructure, where we can analyze the monitoring and performance data.
 
-### Use-case-wise Requirements
+### Use case wise Requirements
 
 1. Automate HA with On-Prem and AWS deployment
 
@@ -83,7 +83,7 @@ This script requires:
 
 		Go to Datadog Portal (https://app.datadoghq.com/)
 
-		Go to: Organaization settings -> API Keys
+		Go to: Organization settings -> API Keys
 
 * Modify "tags" in the configuration file:
 
@@ -141,7 +141,7 @@ The Agent v6 configuration file uses YAML to better support complex configuratio
 
 Reference location for actual configurational values: [datadog.yaml](YML_Files/datadog.yaml)
 
-### Steps to create a Datadog User
+### Steps to create a Datadog user
 
 Datadog agent will read and collects the metrics from all the instances and managed services for monitoring and for that, it needs a user in the Postgres database. Given below are the steps to create the Datadog user in the database:
 
@@ -178,7 +178,7 @@ grant pg_monitor to datadog;
 
 * Exit out of the Automate Instance and back to the bastion host.
 
-### Additional steps required for Automate HA deployment with Managed Services
+### Additional steps required for Automate HA deployment with managed services
 
 Update hostname in `postgres.yaml`. Given below are the steps to Update hostname in `postgres.yaml`:
 

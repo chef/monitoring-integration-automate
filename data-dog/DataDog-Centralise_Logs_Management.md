@@ -9,11 +9,11 @@
 
 In case we want to send the logs as well to the data dog of all instances, this configuration needs to be added to ensure all logs are getting sent to the data dog server.
 
-* Type of configuration required for Automate HA setup, in order to ensure that all the components of Automate HA are sending the relevant logs metrics to data dog
+* Type of configuration required for Automate HA setup, in order to ensure that all the components of Automate HA are sending the relevant logs metrics to data dog.
 
 | Config file (Final DD agent location) | Details   |
 | :--- | :-- |
-|/etc/datadog-agent/conf.d/journald.d/conf.yaml|**Journalctl logs** In case we want to send the logs as well to data dog, this cionfiguration needs to be added to esnure all journal ctl logs are getting sent to data dog. Reference location for actual values:  [journald.yaml](YML_Files/journald.yaml)|
+|/etc/datadog-agent/conf.d/journald.d/conf.yaml|**Journalctl logs** In case we want to send the logs as well to data dog, this configuration needs to be added to ensure all journal ctl logs are getting sent to data dog. Reference location for actual values:  [journald.yaml](YML_Files/journald.yaml)|
 |/etc/datadog-agent/conf.d/journald.d/syslog.yaml|**System logs** Enable this config for system level logs. Reference location for actual values: [syslog.yaml](YML_Files/syslog.yaml)|
 |/etc/datadog-agent/conf.d/systemd.d/conf.yaml|**Systemd logs** Enable this config for systemd logs. Reference location for actual values: [systemd.yaml](YML_Files/systemd.yaml)|
 
@@ -64,4 +64,4 @@ Another example: To get logs for chef server service -  "automate-cs-nginx" incl
 
 ![Automate-cs-nginx-log](Images/automate-cs-nginx.png)
 
-{{< note >}} You can include multiple service patterns in above yaml file. {{< /note >}}
+**Note:** You can include multiple service patterns in above yaml file.

@@ -46,13 +46,13 @@ Connect to Amazon Web Services (AWS) to:
 
     ![datadog-customize-cloudformation-setup](Images/datadog-customize-cloudformation-setup.png)
 
-    {{< note >}} The *DatadogAppKey* parameter enables the CloudFormation stack to make API calls to Datadog to add and edit the Datadog configuration for this AWS account. The key is automatically generated and tied to your Datadog account. {{< /note >}}
+    **Note:** The *DatadogAppKey* parameter enables the CloudFormation stack to make API calls to Datadog to add and edit the Datadog configuration for this AWS account. The key is automatically generated and tied to your Datadog account.
 
     ![aws-cloudformation-template](Images/aws-cloudformation-quick-create-stack-1.png)
 
 1. Check the required boxes from AWS and click *Create stack*. This launches the creation process for the Datadog stack along with three nested stacks. This could take several minutes. Ensure that the stack is successfully created before proceeding.
 
-1. After the stack is created, go back to the AWS integration tile in Datadog and click *Ready!*
+1. After the stack is created, go back to the AWS integration tile in Datadog and select *Ready!*
 
 1. Select the AWS account and select the relevant AWS resources whose metrics we want at data dog
 

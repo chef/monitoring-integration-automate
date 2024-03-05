@@ -54,7 +54,7 @@ To get started, create a CloudWatch dashboard. You can create multiple dashboard
 
 Refer [here](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create_dashboard.html) for more details.
 
-{{< note >}} Refer to [Logs and metrics supported by Amazon CloudWatch Application Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/appinsights-logs-and-metrics.html) for list of metrics can be configured. {{< /note >}}
+**Note:** Refer to [Logs and metrics supported by Amazon CloudWatch Application Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/appinsights-logs-and-metrics.html) for list of metrics can be configured.
 
 ### Automatic Amazon CloudWatch Dashboards
 
