@@ -21,6 +21,14 @@ You can forward all the notifications and alerts for Chef Automate in Datadog to
 
     ![Create Connector](Images/Creating-Connectors.png)
 
+**Note:** In newer version of Microsoft Teams, the option of connectors menu is moved to below location. Kindly follow the same if you have similar version of Microsoft Teams:
+
+    - Go to "manage channel" > Find "Connectors" option.
+    - Click on "Edit" button from Connector section.
+See below screenshot for reference.
+![MS Teams Manage Channel](Images/DataDog-Teams-ManageChannel.png)
+![MS Teams Connector Edit Menu](Images/DataDog-Teams-ConnectorMenu.png)
+
 * Search for Datadog, click add and then click Configure
 
     ![Configure Datadog](Images/Configure-Datadog-Teams.png)
@@ -29,7 +37,7 @@ You can forward all the notifications and alerts for Chef Automate in Datadog to
 
     ![Configure the Webhook URL](Images/Datadog-webhook-url.png)
 
-## Step 2: Setting up Datadog account in Microsoft Teams
+## Step2: Setting up Datadog account in Microsoft Teams
 
 * On Microsoft Teams, click on **Apps** in the vertical toolbar
 
