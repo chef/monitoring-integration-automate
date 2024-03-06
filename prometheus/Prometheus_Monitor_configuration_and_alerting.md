@@ -6,7 +6,9 @@
 Metrics are enabled to alert the team members and present the performance on the dashboards. Refer to the [reference metrics list](./Prometheus_Reference_Metrics_List.md) for details on collected metrics.
 
 ### Configure System Level Monitoring
+
 In Prometheus, the following exporters are enabled to collect required system level metrics for the Chef Automate HA
+
 * Node Exporter
 
 The Node exporter provides system level metrics e.g. CPU, disk, memory etc. Refer to the [node exporter documentation](https://github.com/prometheus/node_exporter) to learn full capabilities.
@@ -17,77 +19,86 @@ Refer to the [node exporter service configuration file](./exporter_service_files
 
 This section explains the process to monitor Automate HA application services.
 
-* Install the blackbox exporter on the following servers.
-  - All Chef Automate Frontend Servers
-  - All Chef Infra Frontend Servers
-  - Any other Server to Monitoring Load Balancers
+1. Install the blackbox exporter on the following servers.
 
-* Refer to [blackbox exporter service](./exporter_service_files/blackbox_exporter.service) and [black box configuration](./exporter_configs/blackbox_exporter.yml) files.
+    * All Chef Automate Frontend Servers
+    * All Chef Infra Frontend Servers
+    * Any other Server to Monitoring Load Balancers
 
-* Configure prometheus.yml file on prometheus server to scape metrics for various chef services. Refer to [prometheus.yml](./prometheus.yml) for the following job configurations
-  - chef-server-url - Monitors elastic load balancer for chef infra frontend servers
-  - chef-automate-url -  Monitors elastic load balancer for chef automate frontend servers
-  - chef-server-services.* - Monitors all services running on each chef infra frontend servers
-  - automate-services.* - Monitors all services running on each chef automate frontend servers
+1. Refer to [Blackbox Exporter Service](./exporter_service_files/blackbox_exporter.service) and [black box configuration](./exporter_configs/blackbox_exporter.yml) files.
+
+1. Configure prometheus.yml file on prometheus server to scape metrics for various chef services. Refer to [prometheus.yml](./prometheus.yml) for the following job configurations.
+
+    * **chef-server-url:** Monitors elastic load balancer for chef infra frontend servers.
+
+    * **chef-automate-url:**  Monitors elastic load balancer for chef automate frontend servers.
+
+    * **chef-server-services.*:** Monitors all services running on each chef infra frontend servers.
+
+    * **automate-services.*:** Monitors all services running on each chef automate frontend servers.
 
 ### Configure Postgres Metrics
-  The postgres exporter is installed on each node running postgres. Refer to [postgres exporter documentation](https://github.com/prometheus-community/postgres_exporter) to learn more about capabilities. Refer to the [postgres exporter services](./exporter_service_files/postgres_exporter.service) and [postgres exporter config](./exporter_configs/postgres_exporter.env) files
+
+The postgres exporter is installed on each node running postgres. Refer to [postgres exporter documentation](https://github.com/prometheus-community/postgres_exporter) to learn more about capabilities. Refer to the [postgres exporter services](./exporter_service_files/postgres_exporter.service) and [postgres exporter config](./exporter_configs/postgres_exporter.env) files
 
 ## Installing AlertManager
+
 The following steps will provide guidance to configure Prometheus AlertManager.
 
-* Change the current working path to the home directly
-```
-cd ~
-```
-* Refer to the [AlertManager Download Page](https://prometheus.io/download/#alertmanager) for more updated version of alert manager.
+1. Change the current working path to the home directly
 
-* Execute the following command to download and install the alert manager
+    ```sh
+    cd ~
+    ```
 
-```
-curl -LO  https://github.com/prometheus/alertmanager/releases/download/v0.25.0/alertmanager-0.25.0.linux-amd64.tar.gz
-tar -xvf alertmanager-0.25.0.linux-amd64.tar.gz
-mv alertmanager-0.25.0.linux-amd64/alertmanager /usr/local/bin
-```
+1. Refer to the [AlertManager Download Page](https://prometheus.io/download/#alertmanager) for more updated version of alert manager.
+
+1. Execute the following command to download and install the alert manager
+
+    ```sh
+    curl -LO  https://github.com/prometheus/alertmanager/releases/download/v0.25.0/alertmanager-0.25.0.linux-amd64.tar.gz
+    tar -xvf alertmanager-0.25.0.linux-amd64.tar.gz
+    mv alertmanager-0.25.0.linux-amd64/alertmanager /usr/local/bin
+    ```
 
 ## Configuring AlertManager
 
 ### Prerequisites
-* The following steps provides the guidance to prepare various receivers for the alert manager to send alerts and alertmanager configurations. 
 
+* The following steps provides the guidance to prepare various receivers for the alert manager to send alerts and alert manager configurations.
 
 ### Configure Alert Manager
 
-* Perform the following steps to configure alert manager
+1. Perform the following steps to configure alert manager
 
-```
-mkdir /etc/alertmanager/
-vi /etc/alertmanager/alertmanager.yml
-```
+    ```sh
+    mkdir /etc/alertmanager/
+    vi /etc/alertmanager/alertmanager.yml
+    ```
 
-* Based on Alert integration to Slack, MS teams, pager duty add the following sections under receiver section.
+1. Based on Alert integration to Slack, MS teams, pager duty add the following sections under receiver section.
 
-```
-route:
-  # A default receiver
-  receiver: slack
-```
+    route:
+        # A default receiver
+        receiver: slack
 
-* Refer to the [prometheus alert manager configuration documentation](https://prometheus.io/docs/alerting/latest/configuration/) for detailed options. 
+1. Refer to the [prometheus alert manager configuration documentation](https://prometheus.io/docs/alerting/latest/configuration/) for detailed options.
 
-Refer to the following integration sections provides guidance to integrate with alertmanager 
+Refer to the following integration sections provides guidance to integrate with alertmanager:
 
 1. [Slack Integration](./prometheus_slack_Integration_and_Notification.md)
+
 1. [PagerDuty Integration ](./prometheus_PagerDuty_Integration_and_Notification.md)
+
 1. [MS Teams Integration](./prometheus_msteams_Integration_and_Notification.md)
 
 * Create alert manager service
 
-```
+```sh
 vi /etc/systemd/system/alertmanager.service
 ```
 
-```
+```sh
 [Unit]
 Description=AlertManager Server Service
 Wants=network-online.target
@@ -105,7 +116,8 @@ WantedBy=multi-user.target
 ```
 
 * Run the following commands to start and enable the service.
-```
+
+```sh
 systemctl daemon-reload
 systemctl start alertmanager
 systemctl status alertmanager
@@ -114,57 +126,56 @@ systemctl enable alertmanager
 
 ## Configuring AlertManager with Prometheus
 
-* Add the following configuration in Prometheus
+1. Add the following configuration in Prometheus
 
-```
-vi /etc/prometheus/prometheus.yml
-```
+    ```sh
+    vi /etc/prometheus/prometheus.yml
+    ```
 
-```
-alerting:
-  alertmanagers:
-    - static_configs:
-        - targets:
-            - localhost:9093
-rule_files:
-  - "system_rules.yml"
-```
+    ```sh
+    alerting:
+        alertmanagers:
+            - static_configs:
+            - targets:
+                - localhost:9093
+            rule_files:
+                - "system_rules.yml"
+    ```
 
-* Creates all the system specific rules in the following file
+1. Creates all the system specific rules in the following file
 
-```
-vi /etc/prometheus/system_rules.yml
-```
+    ```sh
+    vi /etc/prometheus/system_rules.yml
+    ```
 
-```
-groups:
- - name: node-exporter
-   rules:
-   - alert: InstanceDown
-     expr: up == 0
-     for: 1m
-```
+    ```sh
+    groups:
+        - name: node-exporter
+        rules:
+            - alert: InstanceDown
+                  expr: up == 0
+            for: 1m
+    ```
 
-Execute the following command to validate configurations.
+    Execute the following command to validate configurations.
 
-```
-promtool check config /etc/prometheus/prometheus.yml
-```
+    ```sh
+    promtool check config /etc/prometheus/prometheus.yml
+    ```
 
-Output
-```
-Checking /etc/prometheus/prometheus.yml
-  SUCCESS: 1 rule files found
- SUCCESS: /etc/prometheus/prometheus.yml is valid prometheus config file syntax
+    Output:
 
-Checking /etc/prometheus/system_rules.yml
-  SUCCESS: 1 rules found
-```
+    ```sh
+    Checking /etc/prometheus/prometheus.yml
+        SUCCESS: 1 rule files found
+        SUCCESS: /etc/prometheus/prometheus.yml is valid prometheus config file syntax
 
-```
-systemctl daemon-reload
-systemctl start prometheus
-systemctl status prometheus
-```
+    Checking /etc/prometheus/system_rules.yml
+        SUCCESS: 1 rules found
+    ```
 
-
+    ```sh
+    systemctl daemon-reload
+    systemctl start prometheus
+    systemctl status prometheus
+    ```
