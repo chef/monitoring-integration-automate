@@ -78,11 +78,9 @@ The following steps will provide guidance to configure Prometheus AlertManager.
 
 1. Based on Alert integration to Slack, MS teams, pager duty add the following sections under receiver section.
 
-    ```sh
     route:
         # A default receiver
         receiver: slack
-    ```
 
 1. Refer to the [prometheus alert manager configuration documentation](https://prometheus.io/docs/alerting/latest/configuration/) for detailed options.
 

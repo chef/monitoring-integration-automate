@@ -59,10 +59,7 @@ cd /hab/a2_deploy_workspace
 
 * Installation script for data dog:
 
-```sh
-https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
-his is the standard script provided by the data dog which is responsible for agent installation.
-```
+https://s3.amazonaws.com/dd-agent/scripts/install_script.sh is is the standard script provided by the data dog which is responsible for agent installation.
 
 This script requires:
 
@@ -108,11 +105,7 @@ https://app.datadoghq.com/infrastructure
 
 ### Configuration Types
 
-* Configuration steps can be found here as part of the standard data dog agent config repo:
-
-```sh
-datadog-agent/cmd/agent at main · DataDog/datadog-agent
-```
+* Configuration steps can be found here as part of the standard data dog agent config repo: `datadog-agent/cmd/agent at main · DataDog/datadog-agent`
 
 * Configuration YAML files need to be available before running the agent.
 
@@ -168,13 +161,11 @@ cd /hab/pkgs/core/postgresql13-client/13.5/20220120152435/bin
 
 The password for the root user is admin1234
 
-* Run the below commands on PSQL console to create user for datadog
+* Run the below commands on PSQL console to create user for datadog:
 
-```sh
-create user datadog with password 'datadog';
-grant SELECT ON pg_stat_database to datadog;
-grant pg_monitor to datadog;
-```
+	* Create user datadog with password 'datadog';
+	* Grant SELECT ON pg_stat_database to datadog;
+	* Grant pg_monitor to datadog;
 
 * Exit out of the Automate Instance and back to the bastion host.
 
