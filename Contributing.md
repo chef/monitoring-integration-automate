@@ -18,28 +18,10 @@ The Chef Automate HA equates to reliability, efficiency, and productivity, built
 This project is a documentation-only repository that provides guided steps on how to build and integrate Monitoring, Alerting, and Centralised logging tools with Chef Automate HA. Based on our analysis we have selected a few tools which is our recommendation.
 
 
-
-## I Have a Question
-
-> If you want to ask a question, we assume that you have read the available [Documentation of the repository](https://github.com/chef/monitoring-integration-automate/blob/Adding-Contributing.md/Whitepaper_AutomateHA_Monitoring_and_Alerting.md) and [Automate product] (https://docs.chef.io/automate/ha/).
-
-Before you ask a question, it is best to search for existing [Issues](/issues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
-
-If you still feel the need to ask a question and need clarification, we recommend the following:
-
-- Open an [Issue](/issues/new).
-- Provide as much context as you can about what you're running into.
-- Provide project and platform versions, depending on what seems relevant.
-
-We will then take care of the issue as soon as possible.
-
-
 ## I Want To Contribute
 
 > ### Legal Notice 
 > When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content, and that the content you contribute may be provided under the project license.
-
-
 
 ### Suggesting Enhancements
 
