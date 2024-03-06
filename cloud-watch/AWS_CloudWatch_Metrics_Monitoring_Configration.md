@@ -1,4 +1,4 @@
-# AutomateHA cluster configuration and Monitoring rules setup with AWS CloudWatch Metrics Monitor
+# Automate HA cluster configuration and Monitoring rules setup with AWS CloudWatch Metrics Monitor
 
 ## Description
 
@@ -24,12 +24,12 @@ Automate HA customer who has chosen the AWS deployment mechanism can opt for thi
 
 1. With AWS there are already existing default monitoring metrics available and guided steps to reach out is defined here [Basic monitoring and detailed monitoring Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch-metrics-basic-detailed.html). CloudWatch provides two categories of monitoring: *basic monitoring and detailed monitoring.*
 
-1. Basic monitoring is default active feature for the Amazon EC2 instances for AutomateHA Cluster to publishing a default set of metrics to CloudWatch with no charge to customers.
+1. Basic monitoring is default active feature for the Amazon EC2 instances for Automate HA Cluster to publishing a default set of metrics to CloudWatch with no charge to customers.
 1. Detailed monitoring provides more frequent metrics, published at one-minute intervals, instead of the five-minute intervals used in Amazon EC2 basic monitoring, you must choose to activate it.  [Enable or turn off detailed monitoring for your instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch-new.html)
 
 ### CloudWatch Metrics Monitoring
 
-Note: We are using basic monitoring Amazon CloudWatch which provide adequate amount of metrics for AutomateHA cluster monitoring. But depending on needs one can explore for more real-time detailed monitoring feature of Amazon CloudWatch.
+Note: We are using basic monitoring Amazon CloudWatch which provide adequate amount of metrics for Automate HA cluster monitoring. But depending on needs one can explore for more real-time detailed monitoring feature of Amazon CloudWatch.
 
 1. Login to Amazon CloudWatch Console.
 
@@ -45,15 +45,15 @@ Note: We are using basic monitoring Amazon CloudWatch which provide adequate amo
 
         ![CloudWatch_AutomaticDashboard](images/ClodWatch_Automatic_Dashboard.png)
 
-1. Select or filter the AutomateHA cluster instance or metrics want to check.
+1. Select or filter the Automate HA cluster instance or metrics want to check.
 
    ![CloudWatch_CPU_EC2_Metrics](images/CloudWatch_CPU_EC2_Metrics.png)
 
 We can further add many more filters and queries to gain the visualization or metrics as per business needs - [Use Amazon CloudWatch metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/working_with_metrics.html)
 
-### AutomateHA cluster Metrics monitoring setup
+### Automate HA cluster Metrics monitoring setup
 
-Use metrics explorer to monitor AutomateHA cluster resources by their tags and properties. Metrics explorer is a tag-based tool that enables you to filter, aggregate, and visualize your metrics by tags and resource properties, to enhance observability for your services.
+Use metrics explorer to monitor Automate HA cluster resources by their tags and properties. Metrics explorer is a tag-based tool that enables you to filter, aggregate, and visualize your metrics by tags and resource properties, to enhance observability for your services.
 
 1. Open the CloudWatch console.
 
@@ -96,7 +96,7 @@ To set the monitoring rules we use Amazon SNS allows applications to send time-c
 
 1. **Aggregate by and Graph option** Add the arithmetic logic on the duration on which this check should verify for the threshold.
 
-In nutshell below parameters are required to monitor the AutomateHA cluster.
+In nutshell below parameters are required to monitor the Automate HA cluster.
 
 1. **Service:** for which service monitors exist, like Postgres, OpenSearch, Application services, etc.
 
@@ -160,4 +160,4 @@ You can also add alarms to a dashboard. For more information, see [Add or remove
 
 * For [PagerDuty](/cloud-watch/AWS_CloudWatch_PagerDuty_Integration_Alerting.md)
 
-* For [AutomateHA Cluster Logging](/cloud-watch/AWS_CloudWatch_Logging_Configration.md)
+* For [Automate HA Cluster Logging](/cloud-watch/AWS_CloudWatch_Logging_Configration.md)

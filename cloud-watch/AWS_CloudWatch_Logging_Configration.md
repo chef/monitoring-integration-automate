@@ -1,4 +1,4 @@
-# AWS CloudWatch centerlize monitoring at AutomateHA cluster
+# AWS CloudWatch centralized monitoring at Automate HA cluster
 
 ## Description
 
@@ -17,7 +17,7 @@ Amazon CloudWatch is a monitoring service for AWS cloud resources and the applic
 
 ## Install and configure CloudWatch Logs agent on an existing Amazon EC2 instance
 
-1. Connect to your AutomateHA Bastion Host.
+1. Connect to your Automate HA Bastion Host.
 
 1. Navigate to respective instance.
 
@@ -52,7 +52,7 @@ Amazon CloudWatch is a monitoring service for AWS cloud resources and the applic
 
    ![CloudWatch_LogStream](images/CloudWatch_logstream.png)
 
-1. Open the respective instance log stream to see the centralized AutomateHA service logs.
+1. Open the respective instance log stream to see the centralized Automate HA service logs.
 
     ![ClodWatch_Logs](images/CloudWatch_Logs.png)
 

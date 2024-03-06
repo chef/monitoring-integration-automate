@@ -1,4 +1,4 @@
-# AutomateHA cluster metrics monitoring Dashboard create in Amazon CloudWatch
+# Automate HA cluster metrics monitoring Dashboard create in Amazon CloudWatch
 
 ## Description
 
@@ -18,7 +18,7 @@ As an Automate HA cluster user, It is needed to set up an AWS CloudWatch dashboa
 
 * Ref: [Using Amazon CloudWatch dashboards](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Dashboards.html)
 
-**AWS CloudWatch dashboard and widget collections are to be set up on AutomateHA cluster**
+**AWS CloudWatch dashboard and widget collections are to be set up on Automate HA cluster**
 
 * System metrics
 * Infrastructure health
@@ -64,4 +64,4 @@ AWS CloudWatch provide already available dashboard on the resources.
 
 ![CloudWatch_AutomaticDashboard_Sample](images/CloudWatch_AutomaticDashboard_Sample.png)
 
-We can use the above dashboard or create more incline to AutomateHA cluster as per need with above explained steps.
+We can use the above dashboard or create more incline to Automate HA cluster as per need with above explained steps.

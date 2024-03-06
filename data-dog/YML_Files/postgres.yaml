@@ -3,7 +3,7 @@ init_config:
 instances:
 
   - host: localhost
-  # change the "host" with actual URL for AWS managed postgres setup of AutomateHA
+  # change the "host" with actual URL for AWS managed postgres setup of Automate HA
 
     port: <To be filled>
     username: <To be filled>
