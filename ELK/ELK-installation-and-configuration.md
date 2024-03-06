@@ -20,19 +20,27 @@ The [Elastic site](https://elastic.co) should be referenced for details on the s
 
 1. Dependency: ELK needs Java as a dependency, install the same if not:
 
+      ```sh
       sudo apt-get install openjdk-8-jdk
+      ```
 
 1. Download and install the public signing key:
 
+      ```sh
       wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
+      ```
 
 1. Installing from the APT repository:
 
+      ```sh
       sudo apt-get install apt-transport-https
+      ```
 
 1. Save the repository definition to /etc/apt/sources.list.d/elastic-8.x.list:
 
+      ```sh
       echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list
+      ```
 
 ## ELK Installation
 
@@ -42,11 +50,15 @@ Please follow the below steps to install the elastic stack in the normal way.
 
 1. Install the Elasticsearch Debian package with:
 
+      ```sh
       sudo apt-get update && sudo apt-get install elastic search
+      ```
 
 1. Configure the elastic settings:
 
+      ```sh
       sudo nano /etc/elasticsearch/elasticsearch.yml
+      ```
 
       * Uncomment the Port and add the port number (for example - 9200)
       * uncomment and  the correct "network.host" IP
@@ -56,26 +68,30 @@ Please follow the below steps to install the elastic stack in the normal way.
 
 1. Start the elastic services:
 
+      ```sh
       sudo systemctl daemon-reload
       sudo systemctl start elasticsearch.service
       sudo systemctl enable elasticsearch.service
+      ```
 
 For other ways to install elasticsearch; pls follow reference at [Elasticsearch-installation](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html)
 
-### Kibana Installation and Configuration:
+### Kibana Installation and Configuration
 
 * To install Kibana run the following:
 
-      apt install kibana
-      sudo nano /etc/kibana/kibana.yml --> configure the kibana
-      sudo systemctl start kibana.service
-      sudo systemctl enable kibana.service
+```sh
+apt install kibana
+sudo nano /etc/kibana/kibana.yml --> configure the kibana
+sudo systemctl start kibana.service
+sudo systemctl enable kibana.service
+```
 
-      * Uncomment the Port and add the port number for kibana (for example - 5601)
-      * uncomment and add correct "server.host" for kibana
-      * uncomment and add correct "network.host" for elasticsearch
+* Uncomment the Port and add the port number for kibana (for example - 5601)
+* uncomment and add correct "server.host" for kibana
+* uncomment and add correct "network.host" for elasticsearch
 
-    ![Elastic-configure](images/Kibana-configure.png)
+![Elastic-configure](images/Kibana-configure.png)
 
 For other ways to install kibana; pls follow reference at [Kibana-installation](https://www.elastic.co/guide/en/kibana/current/install.html)
 
