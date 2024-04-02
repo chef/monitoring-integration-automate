@@ -1,10 +1,10 @@
 # Reference Metrics List
 
-The following section lists/documents the metrics collected by various exporters used for Chef Managed Automate HA implementation. The similar metrics may be collected from aws hosted deployments.
+The following section lists/documents the metrics collected by various exporters used for Chef Managed Automate HA implementation. Similar metrics may be collected from AWS-hosted deployments.
 
 ## Disclaimer
 
-The following metrics are recommended to monitor Chef Automate HA implementation.These metrics provides guidance to use and built monitoring rules and dashboard based on these metrics. However, the actual usage and adoption of metrics depends on each organizational infrastructure monitoring policies.
+The following metrics are recommended to monitor Chef Automate HA implementation. These metrics guide how to use and build monitoring rules and dashboards based on these metrics. However, the actual usage and adoption of metrics depend on each organizational infrastructure monitoring policy.
 
 ## System Metrics
 
@@ -30,8 +30,9 @@ The following metrics are recommended to monitor Chef Automate HA implementation
 ## Chef Automate Health Metrics
 
 1. Refer to the following exporters for the metric details.
-        - [Black-Box Exporter](https://github.com/prometheus/blackbox_exporter)
-        - [Nginx-Exporter](https://github.com/nginxinc/nginx-prometheus-exporter)
+
+    * [Black-Box Exporter](https://github.com/prometheus/blackbox_exporter)
+    * [Nginx-Exporter](https://github.com/nginxinc/nginx-prometheus-exporter)
 
 1. The following metrics are configured to generate alerts.
 
@@ -59,11 +60,11 @@ The following metrics are recommended to monitor Chef Automate HA implementation
     | ES Indexing latency Alert | opensearch_index_indexing_index_time_seconds > 500 |
     | Elasticsearch Search latency Alert | opensearch_index_search_query_time_seconds > 60 |
 
-## Postgres Metrics
+## PostgreSQL Metrics
 
 1. Refer to the following OpenSearch plugin for the metric details.
 
-    * [Postgres-Exporter](https://github.com/prometheus-community/postgres_exporter)
+    * [PostgreSQL Exporter](https://github.com/prometheus-community/postgres_exporter)
 
 * The following metrics are configured to generate alerts:
 

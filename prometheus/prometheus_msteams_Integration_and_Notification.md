@@ -1,34 +1,36 @@
 # MS Teams Integration and Notification
 
-The scope here is to connect MS Teams to Prometheus in order to:
+The scope here is to connect MS Teams to Prometheus to:
 
-1. Notify on-call responders based on alerts triggered from prometheus.
+1. Notify on-call responders based on alerts triggered from Prometheus.
+
 1. See incidents and escalations.
-1. Get daily reminders as to who is on-call.
+
+1. Get daily reminders as to who is On-call.
 
 ## Configure AlertManager for MS Teams
 
-Before performing the following steps, please ensure alertmanager is installed and configured to run as a service. Refer to the [Alert Manager installation guide](./Prometheus_Monitor_configuration_and_alerting.md)
+Before performing the following steps, please ensure Alertmanager is installed and configured to run as a service. Refer to the [Alertmanager installation guide](./Prometheus_Monitor_configuration_and_alerting.md)
 
 ## Prometheus and MS Teams Integration
 
-The following steps provides the guidance to prepare MS Teams receiver for the alert manager to send alerts. Refer to [prometheus-msteams documentation](https://github.com/prometheus-msteams/prometheus-msteams/releases) for more details.
+The following steps guide the preparation of an MS Teams receiver for the Alertmanager to send alerts. Refer to the [Prometheus MS Teams documentation](https://github.com/prometheus-msteams/prometheus-msteams/releases) for more details.
 
 ### Configure MS Teams
 
-1. Create Team.
+1. Create Teams.
 
-2. Create Team Channel.
+1. Create a Team Channel.
 
-    Create a channel in Ms-teams where you want to send alerts.
+    * Create a channel in Ms-teams where you want to send alerts.
 
-3. Create Incoming Webhook.
+1. Create Incoming Webhook.
 
-    * Click on connectors(found connectors in options of the channel), and then search for ‘incoming webhook’ connector.
+    * Select connectors(found in channel options), and then search for the ‘incoming webhook’ connector.
 
         ![Incoming Webhook Connector](./images/msteam-1.png)
 
-    * Create a webhook of this channel. Incoming webhook is used to send notification from external services to track the activities.
+    * Create a webhook for this channel. Incoming webhooks send notifications from external services to track the activities.
 
         ![Select Channel](./images/msteam-2.png)
 
@@ -36,21 +38,21 @@ The following steps provides the guidance to prepare MS Teams receiver for the a
 
     * Select Create.
 
-    * Copy the Webhook url and click done.
+    * Copy the Webhook URL and click done.
 
-    This webhook url will be used in the next step.
+This webhook URL will be used in the next step.
 
-#### Install and Configure Docker Omage
+#### Install and Configure Docker Image
 
 ```sh
 apt install docker.io
 ```
 
-1. The prometheus-msteams proxy container is configured on prometheus server with port number 2000. Please ensure firewall is opened for this port.
+1. The Prometheus-steams proxy container is configured on the Prometheus server with port number 2000. Please ensure the firewall is opened for this port.
 
-2. Updated TEAMS_INCOMING_WEBHOOK_URL with the url link generated above.
+2. Updated `TEAMS_INCOMING_WEBHOOK_URL` with the URL link generated above.
 
-3. Run the following command to start docker container.
+3. Run the following command to start the docker container.
 
 ```sh
 docker run -d -p 2000:2000 \
@@ -62,7 +64,7 @@ docker run -d -p 2000:2000 \
 
 ## Configure Alertmanager
 
-* Add the following configuration in alartmanager.yml file. Refer to the [alertmanager.yml](./alertmanager.yml) file for full config.
+* Add the following configuration in the `alartmanager.yml` file. Refer to the [alertmanager.yml](./alertmanager.yml) file for full configuration.
 
 ```sh
 vi /etc/alertmanager/alertmanager.yml
@@ -70,12 +72,11 @@ vi /etc/alertmanager/alertmanager.yml
 
 ```sh
 route:
-  routes:
+  Routes:
     - match:
         severity: L2
       receiver: prometheus-msteams
       group_by: ['...']
-
 receivers:
   - name: 'prometheus-msteams'
     webhook_configs: # https://prometheus.io/docs/alerting/configuration/#webhook_config
@@ -83,7 +84,7 @@ receivers:
       url: 'http://localhost:2000/alertmanager'
 ```
 
-Restart Alertmanager and Prometheus server
+Restart Alertmanager and Prometheus server by running the following command:
 
 ```sh
 systemctl restart alertmanager.service
@@ -92,6 +93,6 @@ systemctl restart prometheus.service
 
 ## MS Team Alert Example
 
-The below screenshot is an example of prometheus alerts in MSTeams.
+The screenshot below is an example of Prometheus alerts in MSTeams.
 
 ![Alert Example](./images/msteam-5.png)

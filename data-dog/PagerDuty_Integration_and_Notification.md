@@ -10,29 +10,29 @@ Connect PagerDuty to Datadog to:
 
 What you’ll need:
 
-1. Admin or Standard role permissions for your Datadog account (unless your organization has created custom role)
+1. Admin or Standard role permissions for your Datadog account (unless your organization has created a custom role).
 
-1. Admin role in PagerDuty Account
+1. Admin role in PagerDuty Account.
 
 ## Data Dog and PagerDuty Integration
 
-The connection between Data Dog and PagerDuty must be created first.
+The connection between Datadog and PagerDuty must be created first.
 
-1. In Data Dog select the **Integrations** Tab from the left-hand navigation.
+1. In Datadog, select the **Integrations** Tab from the left-hand navigation.
 
 1. In the search field, type in **PagerDuty** and select the **Install** button.
 
       ![Install](Images/install.png)
 
-1. Select the **Configuration** tab and then click **Alert with PagerDuty**.
+1. Select the **Configuration** tab and then select **Alert with PagerDuty**.
 
-1. On the PagerDuty authorization screen there are two options to integrate with Data Dog.
+1. On the PagerDuty authorization screen, there are two options for integrating with Datadog.
 
       * Enter your PagerDuty account using the **email address** and **password** and click **Authorize Integration**.
 
       or
 
-      * Use Single Sign On by providing your PagerDuty **Subdomain** and click **Sign In Using Your Identity Provider**.
+      * Use Single Sign On by providing your PagerDuty **Subdomain** and selecting **Sign In Using Your Identity Provider**.
 
       ![Integration](Images/authorize.png)
 
@@ -52,15 +52,15 @@ The connection between Data Dog and PagerDuty must be created first.
 
       * Select **Save**.
 
-            ![Team](Images/createteam.png)
+      ![Team](Images/createteam.png)
 
 1. Create Escalation Policy
 
-      * In PagerDuty, navigation to **People** and **Escalation Policies**.
+      * In PagerDuty, navigate to **People** and **Escalation Policies**.
 
       * Select **+ New Escalation Policy**.
 
-      * Provide a unique **Name** for the Escalation Policy and optional **Description**.
+      * Provide a unique **Name** for the Escalation Policy and an optional **Description**.
 
       * Select the **Team** that was created in the previous step.
 
@@ -70,7 +70,7 @@ The connection between Data Dog and PagerDuty must be created first.
 
       * Select **Save**.
 
-            ![Escalation](Images/createpolicy.png)
+      ![Escalation](Images/createpolicy.png)
 
 1. Create Service
 
@@ -82,43 +82,43 @@ The connection between Data Dog and PagerDuty must be created first.
 
       * Select **Next**.
 
-            ![Service1](Images/service1.png)
+      ![Service1](Images/service1.png)
 
       * Select the **Select an Existing Escalation Policy** and choose the **Escalation Policy** created in the previous step.
 
       * Select **Next**.
 
-            ![Service2](Images/service2.png)
+      ![Service2](Images/service2.png)
 
       * Choose the required **Reduce Noise** option
 
-      * Click **Next**.
+      * Select **Next**.
 
-            ![Service3](Images/service3.png)
+      ![Service3](Images/service3.png)
 
-      * Under Integration, select **Data Dog**.
+      * Under Integration, select **Datadog**.
 
-      * Click **Create Service**.
+      * Select **Create Service**.
 
-            ![Service4](Images/service4.png)
+      ![Service4](Images/service4.png)
 
-1. The Service will open up in the Integration tab
+1. The Service will open up in the Integration tab:
 
       * Copy the **Integration Key**.
 
-         ![Integration](Images/integrationkey.png)
+      ![Integration](Images/integrationkey.png)
 
-## Data Dog Configuration
+## Datadog Configuration
 
-1. In Data Dog select the **Integrations** Tab from the left-hand navigation
+1. In Datadog, select the **Integrations** Tab from the left-hand navigation:
 
       * Search for **PagerDuty** in the search field.
 
-      * Click on the **CONFIGURE** button.
+      * Select the **CONFIGURE** button.
 
-            ![Integration2](Images/ddintegration.png)
+      ![Integration2](Images/ddintegration.png)
 
-1. Select **Set Up Manually** button.
+1. Select the **Set Up Manually** button.
 
       ![Setup](Images/setup.png)
 
@@ -130,15 +130,14 @@ The connection between Data Dog and PagerDuty must be created first.
 
 ## Test Integration
 
-1. In Data Dog, navigate to **Monitors**.
+1. In Datadog, navigate to **Monitors**.
 
-1. Create a new or update an existing Monitor
+1. Create a new or update an existing Monitor.
 
-1. In the **Notify your team** section, enter the Service by using the following syntax.
+1. In the **Notify Your Team** section, enter the Service by using the following syntax.
 
       ```sh
       @pagerduty-< Service Name >
-
       Example: @pagerduty-Chef-Demo-Service
       ```
 
@@ -150,4 +149,4 @@ The connection between Data Dog and PagerDuty must be created first.
 
       ![Monitor2](Images/monitor2.png)
 
-1. The Alert will be sent to address configured in PagerDuty.
+1. The Alert will be sent to the address configured in PagerDuty.

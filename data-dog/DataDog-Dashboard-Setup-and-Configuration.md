@@ -1,8 +1,8 @@
 # Datadog Dashboards
 
-## What are Datadog dashboards used for
+## Usage of Datadog Dashboards
 
-* The dashboard allows us to analyze data from across our entire system in a single pane of glass. It enables our team to immediately benefit from dynamic views with no query language or coding required.
+* The dashboard allows us to analyze data from across our entire system in a single pane of glass. It enables our team to immediately benefit from dynamic views without requiring query language or coding.
 
 * Widgets are major building blocks of the dashboard
 
@@ -14,48 +14,50 @@
     * Summary widgets to display Synthetic Monitoring information
     * Decoration widgets to visually structures
 
-* For more information on widgets, see the [Widgets](https://docs.datadoghq.com/dashboards/widgets/) page.
+* See the [Widgets](https://docs.datadoghq.com/dashboards/widgets/) page for more widget information.
 
-## Considerations for creating Datadog Dashboards
+## Considerations for Creating Datadog Dashboards
 
 **Define your goals:**
 
-You need to have clarity what you want to show and monitor in your dashboard and your audience; for example, L1 and L2 operations team will require a different set of dashboards versus somebody at the management who wants overall summary on the infrastructure footprint
+You need to have clarity on what you want to show and monitor in your dashboard and your audience; for example, the L1 and L2 operations teams will require a different set of dashboards versus somebody at the management who wants an overall summary of the infrastructure footprint
 
 **Choose the right metrics:**
 
-Not all metrics are created equal, some are of more importance than others. Choose the metrics that are important to you, we have listed down all the important metrics that is critical to your Automate Infrastructure.
+Not all metrics are created equal; some are of more importance than others. Choose the metrics that are important to you; we have listed down all the essential metrics that are critical to your Automate Infrastructure.
 
-The link provides you an estimation of metrics we have used to monitor Automate HA for various deployment styles. You can use this guidance to build metrics and dashboards for other deployment styles
-
-[Reference Metrics](Reference_Metrics_List.md)
+The link estimates metrics we have used to monitor Automate HA for various deployment styles. You can use this guidance to build metrics and dashboards for other deployment styles. Refer to the [Reference Metrics](Reference_Metrics_List.md) page.
 
 **Use the right visualizations:**
 
-There are a variety of visualizations available in Datadog. Choose the visualizations that are best suited for the metrics you are tracking. For example, if you are tracking CPU usage, you might use a line chart. If you are tracking errors, you might use a heatmap.
+Datadog offers a variety of visualizations. Choose the visualizations best suited for the metrics you are tracking. For example, a line chart can be used to monitor CPU usage and a heat map can be used to track errors.
 
 **Add context:**
 
-Don't just show your metrics. Add context to your dashboard by adding labels, descriptions, and annotations. This will help you and your team understand what the metrics mean and why they are important.
+Don't just show your metrics. Add context to your dashboard by adding labels, descriptions, and annotations. This will help you and your team understand the meaning of metrics and why they are essential.
 
 **Ease of use:**
 
-Your dashboard should be easy to use. Make sure the layout is clear and the visualizations are easy to understand. You can also add filters and alerts to make it even easier to use your dashboard.
+Your dashboard should be easy to use. Ensure the layout is clear and the visualizations are easy to understand. You can also add filters and alerts to make it even easier to use your dashboard.
 
-## Types of Dashboards to consider
+## Types of Dashboards to Consider
 
-**Screenboards:** Screenboards are designed for adhoc analysis and troubleshooting. They allow you to create a custom layout of widgets and panels to visualize your data.
+**Screenboards:** Screenboards are designed for ad-hoc analysis and troubleshooting. They allow you to create a custom layout of widgets and panels to visualize your data.
 
-**Timeboards:** Timeboards are designed for monitoring and alerting. They show a historical view of your data over time, and can be used to set alerts and notifications. In our case, we are using Timeboards.
+**Timeboards:** Timeboards are designed for monitoring and alerting. They show a historical view of your data over time and can be used to set alerts and notifications. In our case, we are using Timeboards.
 
 ## Recommended Dashboards
 
-Its recommended you have the following dashboards for Automate:
+It is recommended you have the following dashboards for Automate:
 
 * Infrastructure Health
+
 * Component Health
+
 * OpenSearch Metrics
+
 * Postgresql Metrics
+
 * System Metrics
 
 For example, a System Metrics dashboard will look like this:
@@ -65,25 +67,37 @@ For example, a System Metrics dashboard will look like this:
 ## Steps to create a new dashboard
 
 * Login to https://app.datadoghq.com/ with your credentials.
-* On the left hand side, click on Dashboards --> New Dashboard. You will be directed to a new Dashboard screen.
-* Here, key in a name for Dashboard Name and select the "New Timeboard" and then click on "New Dashboard".
-* On the dashboard screen, first create template variables with which you want to tag your components. A basic example can be:
+
+* On the left-hand side, select Dashboards --> New Dashboard. You will be directed to a new Dashboard screen.
+
+* Here, key in a name for Dashboard Name, select "New Timeboard," then select "New Dashboard".
+
+* On the dashboard screen, first, create template variables with which you want to tag your components. A basic example can be:
 
 ![Creating templates](Images/Template_variables.png)
 
 Once done appending your changes, select **Save**.
 
-*  Add widgets, select "Timeseries" widget (or your desired widget) and then key in the following parameters in the widget:
+* Add widgets, select the "Timeseries" widget (or your desired widget), and then key in the following parameters in the widget:
 
     * Select your visualization --> Timeseries
+
     * Graph your data
+
         * Metrics --> key in your metrics name; from --> key in tag values you want to filter your view with; select from "avg by"/"max by"/"min by"/"sum by" --> select the relevant filter for your selection
+
         * Selection of environment, tags
+
         * Logic: Arithmetic to be applied
+
     * Set display preferences:
+
         * Show --> Global Time
+
         * Duration of time for data to be shown
+
     * Key in a title for your widget
+
     * Once done, select **Save**.
 
 ![Creating a Widget](Images/Creating_widget.png)
@@ -94,9 +108,7 @@ Once done appending your changes, select **Save**.
 
 **Chef Automate Status and Infra Server Status:**
 
-* network.http.can_connect; with conditions for Success: cutoff_min --> some_value and Failure: clamp_min --> some_value
-
-* e.g. Automate and Infra-server service level health can be seen like this:
+* network.http.can_connect; with conditions for Success: cutoff_min --> some_value and Failure: clamp_min --> some_value. For example, Automate and Infra-server service level health can be seen like this:
 
   ![Automate and server services health](Images/automate-server-services-health.png)
 
@@ -106,7 +118,7 @@ Once done appending your changes, select **Save**.
 
 **OpenSearch DB Service Status:** aws.es.cluster_statusgreen; with conditions for Success: cutoff_min --> 1 and Failure: clamp_min --> 0.5
 
-**Note:** Here, we are discussing metrics for deploying Managed Automate HA in AWS, please use this as a general guideline for other platforms and On-prem solutions as well
+**Note:** Here, we are discussing metrics for deploying Managed Automate HA in AWS; please use this as a general guideline for other platforms and On-prem solutions as well
 
 ![Infra Health Dashboard](Images/Infra_health_dashboard.png)
 
@@ -134,9 +146,11 @@ Once done appending your changes, select **Save**.
 
 Assumptions:
 
-* We have used a mix of TimeSeries, Query Value and Events in the Visualization selection which is self explanatory
+* We have used a mix of TimeSeries, Query Value, and Events in the Visualization selection, which is self-explanatory
+
 * Some of the widgets have multiple metrics for creating the desired visualization
-* **Pro-tip:** Clone the built-in AWS Postgresql dashboard and customize accordingly
+
+* **Pro-tip:** Clone the built-in AWS Postgresql dashboard and customize it accordingly
 
     * postgresql.percent_usage_connections
     * aws.rds.maximum_used_transaction_ids

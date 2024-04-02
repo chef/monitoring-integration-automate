@@ -6,60 +6,63 @@ Connect Slack to Prometheus to:
 
 What you’ll need:
 
-* Admin or Standard role permissions for your prometheus account (unless your organization has created custom role).
+* Admin or Standard role permissions for your Prometheus account (unless your organization has created a custom role).
 
-* Permissions to create new channel in Slack.
+* Permission to create a new channel in Slack.
 
 ## Prometheus and Slack Integration
 
 ### Prerequisites
 
-The following steps provides the guidance to prepare Slack receiver for the alert manager to send alerts.
+The following steps guide preparing Slack receivers for the alert manager to send alerts.
 
-1. Refer to this [guide](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/) for step-by-step guidance to configure Slack notification from the prometheus alertmanager.
+1. Refer to this [guide](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/) for step-by-step guidance to configure Slack notifications from the Prometheus Alertmanager.
 
 1. Slack Notification Configuration
 
-    * Create a slack channel. The following screenshots will provide guidance to create.
+    * Create a Slack channel. The following screenshots will guide you in creating.
 
-    * Select All Channels and click Create Channel
+    * Select **All Channels** and then select **Create Channel**.
+
         ![Create Channel](./images/Slack-1.png)
 
-    * Specify Channel Name
+    * Specify Channel Name.
+
         ![Channel Name](./images/Slack-2.png)
 
-    * Select Visibility
+    * Select Visibility.
+
         ![visibility](./images/Slack-3.png)
 
-1. Once Channel is created, create webhook using the following steps:
+1. Once Channel is created, create a webhook using the following steps:
 
-    * Click on Slack administration -> Manage Apps
+    * Select **Slack administration -> Manage Apps**.
 
         ![Admin](./images/Slack-5.png)
 
-    * Search for "Incoming Webhooks"
+    * Search for "Incoming Webhooks".
 
         ![Incoming Webhooks](./images/Slack-6.png)
 
-    * Add Incoming hooks to Slack
+    * Add Incoming hooks to Slack.
 
         ![Add to Slack](./images/Slack-7.png)
 
-    * Select Channel and click on "Add Incoming Webhook Integration"
+    * Select Channel and then select **Add Incoming Webhook Integration**.
 
         ![Select Channel](./images/Slack-8.png)
 
-    * Copy the Webhook api url.
+    * Copy the Webhook API URL.
 
-        ![Webhook url](./images/Slack-9.png)
+        ![Webhook URL](./images/Slack-9.png)
 
-1. The api_url will be used in alertmanager configuration.
+1. The API_url will be used in the Alertmanager configuration.
 
 ### Configure AlertManager for Slack
 
-Before performing the following steps, please ensure alertmanager is installed and configured to run as a service. Refer to the [Alertmanager Installation Guide](./Prometheus_Monitor_configuration_and_alerting.md)
+Before performing the following steps, please ensure the Alertmanager is installed and configured to run as a service. Refer to the [Alertmanager Installation Guide](./Prometheus_Monitor_configuration_and_alerting.md)
 
-Perform the following steps to configure alert manager to integration with Slack.
+Perform the following steps to configure the Alertmanager to integrate with Slack.
 
 1. Update the alertmanager.yml file.
 
@@ -71,20 +74,18 @@ Perform the following steps to configure alert manager to integration with Slack
 
 1. Update the name of the channel created above.
 
-Please note: The webhooks provided in the following configuration are tampered. The webhooks must be updated as per the environment.
+Please note: The webhooks provided in the following configuration are tampered with. They must be updated according to the environment.
 
-1. Title and Text are optional, we have added an example to to customize alert template.
+1. Title and Text are optional; we have added an example to customize the alert template.
 
 ```sh
 route:
   # A default receiver
   receiver: slack
-
   routes:
     - match:
         severity: L2
       receiver: slack
-
 receivers:
   - name: slack
     slack_configs:
@@ -106,16 +107,14 @@ receivers:
         text: >-
           {{ range .Alerts -}}
           *Alert:* {{ .Annotations.title }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
-
           *Description:* {{ .Annotations.description }}
-
           *Details:*
              {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
              {{ end }}
           {{ end }}
 ```
 
-Run the following command to restart alertmanager service
+Run the following command to restart the Alertmanager service
 
 ```sh
 systemctl daemon-reload
@@ -125,5 +124,6 @@ systemctl status alertmanager
 
 ### Alerts Example
 
-The following screenshot shows an example of an Prometheus alert in Slack
+The following screenshot shows an example of a Prometheus alert in Slack
+
 ![Alert](./images/Skack-10.png)

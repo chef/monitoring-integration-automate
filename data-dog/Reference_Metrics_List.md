@@ -1,6 +1,6 @@
 # Reference metrics that are used by Datadog
 
-**Note:** These are metrics, please take this as a guidance for other platforms and On-Prem solutions where you will be hosting Automate HA.
+**Note:** These are metrics, please take this as a guide for other platforms and On-Prem solutions where you will be hosting Automate HA.
 
 | **Component**        | **Metrics**                                                      |
 | -------------------- | ---------------------------------------------------------------- |
