@@ -14,7 +14,7 @@ What you’ll need:
 
 1. Admin role in PagerDuty Account.
 
-## Data Dog and PagerDuty Integration
+## Datadog and PagerDuty Integration
 
 The connection between Datadog and PagerDuty must be created first.
 

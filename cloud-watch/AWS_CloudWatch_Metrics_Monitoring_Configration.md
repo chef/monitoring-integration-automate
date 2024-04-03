@@ -105,7 +105,7 @@ In a nutshell, the parameters below are required to monitor the Automate HA clus
 
 1. **Evaluation duration:** Duration on which it will be evaluated.
 
-1. **Alert type:** Slack, Email, Outlook, Pager duty to be selected.
+1. **Alert type:** Slack, Email, Outlook, PagerDuty to be selected.
 
 ### Steps to configure Amazon CloudWatch Alarm using Amazon SNS
 

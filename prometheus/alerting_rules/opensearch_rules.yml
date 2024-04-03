@@ -49,7 +49,7 @@ groups:
      annotations:
        title: ' Insatnce {{ $labels.instance }} perfomning slow'
        description: '{{ $labels.instance }} of job {{ $labels.job }} has been performing slow for more than 15 minutes.'
- - name: OpensearchSearch latency Alert Page
+ - name: OpenSearch latency Alert Page
    rules:
    - alert: OSIndexinglatencyAlert-page
      expr: opensearch_index_search_query_time_seconds > 60

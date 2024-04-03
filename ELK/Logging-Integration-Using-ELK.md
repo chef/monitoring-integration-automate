@@ -1,4 +1,4 @@
-# ELK Stack (ElasticSearch, Logstash, and Kibana) Integration for Chef Automate HA
+# ELK Stack (Elasticsearch, Logstash, and Kibana) Integration for Chef Automate HA
 
 ## Deploy ELK Stack
 

@@ -1,5 +1,5 @@
 
-# Metrics and AlertManager Configuration
+# Metrics and Alertmanager Configuration
 
 ## Enabling and Configuring Metrics
 
@@ -41,9 +41,9 @@ This section explains the process of monitoring Automate HA application services
 
 The PostgreSQL exporter is installed on each node running PostgreSQL. Refer to [PostgreSQL exporter documentation](https://github.com/prometheus-community/postgres_exporter) to learn more about capabilities. Refer to the [PostgreSQL exporter services](./exporter_service_files/postgres_exporter.service) and [PostgreSQL exporter config](./exporter_configs/postgres_exporter.env) files
 
-## Installing AlertManager
+## Installing Alertmanager
 
-The following steps will guide you in configuring Prometheus AlertManager.
+The following steps will guide you in configuring Prometheus Alertmanager.
 
 1. Change the current working path to the home directly
 
@@ -51,7 +51,7 @@ The following steps will guide you in configuring Prometheus AlertManager.
     cd ~
     ```
 
-1. Refer to the [AlertManager Download Page](https://prometheus.io/download/#alertmanager) for the updated version of Alertmanager.
+1. Refer to the [Alertmanager Download Page](https://prometheus.io/download/#alertmanager) for the updated version of Alertmanager.
 
 1. Execute the following command to download and install the Alertmanager:
 
@@ -65,18 +65,18 @@ The following steps will guide you in configuring Prometheus AlertManager.
 
 ### Prerequisites
 
-* The following steps guide preparing various receivers for the alertmanager to send alerts and alertmanager configurations.
+* The following steps guide preparing various receivers for the Alertmanager to send alerts and Alertmanager configurations.
 
 ### Configuration
 
-1. Perform the following steps to configure the alertmanager
+1. Perform the following steps to configure the Alertmanager
 
     ```sh
     mkdir /etc/alertmanager/
     vi /etc/alertmanager/alertmanager.yml
     ```
 
-1. Based on Alert integration to Slack, MS Teams, and Pager duty, add the following sections under the receiver section.
+1. Based on Alert integration to Slack, MS Teams, and PagerDuty, add the following sections under the receiver section.
 
     ```sh
     Route:
@@ -102,7 +102,7 @@ vi /etc/systemd/system/alertmanager.service
 
 ```sh
 [Unit]
-Description=AlertManager Server Service
+Description=Alertmanager Server Service
 Wants=network-online.target
 After=network-online.target
 [Service]

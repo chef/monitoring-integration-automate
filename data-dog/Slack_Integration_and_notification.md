@@ -2,7 +2,7 @@
 
 ## Description
 
-As an Automate HA customer, I need to integrate Data Dog with a Slack tool to ensure I am notified over the set option in case of any higher severity issues.
+As an Automate HA customer, I need to integrate Datadog with a Slack tool to ensure I am notified over the set option in case of any higher severity issues.
 Connecting Slack to Datadog to help your team collaborate by:
 
 1. Sharing graphs in private or public Slack channels.

@@ -14,7 +14,7 @@ What you’ll need:
 
 ### Prerequisites
 
-The following steps guide preparing Slack receivers for the alert manager to send alerts.
+The following steps guide preparing Slack receivers for the Alertmanager to send alerts.
 
 1. Refer to this [guide](https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/) for step-by-step guidance to configure Slack notifications from the Prometheus Alertmanager.
 
@@ -58,7 +58,7 @@ The following steps guide preparing Slack receivers for the alert manager to sen
 
 1. The API_url will be used in the Alertmanager configuration.
 
-### Configure AlertManager for Slack
+### Configure Alertmanager for Slack
 
 Before performing the following steps, please ensure the Alertmanager is installed and configured to run as a service. Refer to the [Alertmanager Installation Guide](./Prometheus_Monitor_configuration_and_alerting.md)
 

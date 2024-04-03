@@ -2,7 +2,7 @@
 
 ## Description
 
-As an Automate HA customer, I need to set monitoring rules for the available metrics on the AWS Cloudwatch console. These metrics can be used to track and notify me about Automate HA infrastructure-related health.
+As an Automate HA customer, I need to set monitoring rules for the available metrics on the AWS CloudWatch console. These metrics can be used to track and notify me about Automate HA infrastructure-related health.
 
 ## Send centralized Automate HA instance logs to AWS CloudWatch
 

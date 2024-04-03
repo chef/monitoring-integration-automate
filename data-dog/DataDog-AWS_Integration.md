@@ -2,7 +2,8 @@
 
 ## Overview
 
-As an Automate HA customer, you need to integrate Data Dog with AWS to receive metrics from the AWS services. In the case of an Automate HA deployment with managed services and AWS S3 being used for backup, these services need to be integrated with Data Dog to ensure monitoring and alerting for them.
+As an Automate HA customer, you need to integrate Datadog with AWS to receive metrics from the AWS services. In the case of an Automate HA deployment with managed services and AWS S3 being used for backup, these services need to be integrated with Datadog to ensure monitoring and alerting for them.
+
 Connect to Amazon Web Services (AWS) to:
 
 * See automatic AWS status updates in your Events Explorer

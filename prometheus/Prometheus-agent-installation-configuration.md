@@ -395,7 +395,7 @@ chef-automate status
 Use the default admin password to connect and execute the following command at the PSQL prompt.
 
 ```sh
-create user prometheus with password 'Prometheus';
+create user Prometheus with password 'Prometheus';
 grant SELECT ON pg_stat_database to Prometheus;
 grant pg_monitor to prometheus;
 ```

@@ -6,7 +6,7 @@ As an Automate HA customer, I need to set monitoring rules for the available met
 
 A metric monitor provides alerts and notifications if a specific metric is above or below a certain threshold.
 
-## Data Dog Monitors
+## Datadog Monitors
 
 * Monitors are based on metrics collected by the Datadog agent. Create monitors that warn or alert based on the count of any metrics across hosts or tags.
 
@@ -32,7 +32,7 @@ Before getting started, you need a Datadog account linked to a host with the Dat
 
 1. **Set alert conditions:** Select the option to automatically resolve the alerts after a specified period or to require manual intervention by a user.
 
-1. **Notify your team:** You can notify the team responsible for the infrastructure monitoring via email, Slack, Teams, or pager duty. Devoted sections explain the detailed steps for integrating Datadog with these alerting applications.
+1. **Notify your team:** You can notify the team responsible for the infrastructure monitoring via email, Slack, Teams, or PagerDuty. Devoted sections explain the detailed steps for integrating Datadog with these alerting applications.
 
 1. Datadog provides the flexibility of notification of the same alert, which can be configured to renotify in the alerting app multiple times after a fixed interval of time.
 
