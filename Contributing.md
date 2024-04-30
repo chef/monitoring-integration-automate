@@ -15,7 +15,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 
 The Chef Automate HA equates to reliability, efficiency, and productivity, built on Redundancy and Failover. It aids in addressing significant issues like service failure and zone failure. Please refer to the public  [documentation](https://docs.chef.io/automate/ha/)  of Automate HA for more information.
 
-This project is a documentation-only repository that provides guided steps on how to build and integrate Monitoring, Alerting, and Centralised logging tools with Chef Automate HA. Based on our analysis we have selected a few tools which is our recommendation.
+This project is a documentation-only repository that provides guided steps on how to build and integrate Monitoring, Alerting, and Centralized logging tools with Chef Automate HA. Based on our analysis we have selected a few tools which is our recommendation.
 
 
 ## I Want To Contribute
@@ -32,8 +32,7 @@ This section guides you on how to suggest enhancement in this documentation. Fol
 - Make sure that you have tried the Automate HA product for your usage and are well aware of its use cases, support, and functionality.
 - Read the existing Monitoring, Alerting, and Logging [documentation](https://github.com/chef/monitoring-integration-automate/blob/Adding-Contributing.md/Whitepaper_AutomateHA_Monitoring_and_Alerting.md) of this repo carefully and find out if that documentation is already covered.
 - Perform a [search](/issues) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
-- Find out whether your idea fits with the scope and aims of the project. 
-
+- Find out whether your idea fits with the scope and aims of the project.
 
 #### How Do I Submit a Good Documentation Enhancement Suggestion?
 

@@ -1,125 +1,152 @@
 # PagerDuty Integration and Notification
+
 Connect PagerDuty to Datadog to:
 
-* Notify on-call responders based on alerts triggered from Datadog.
-* See incidents and escalations.
-* Get daily reminders as to who is on-call.
+1. Notify on-call responders based on alerts triggered from Datadog.
+
+1. See incidents and escalations.
+
+1. Get daily reminders as to who is on-call.
 
 What you’ll need:
 
- * Admin or Standard role permissions for your Datadog account (unless your organization has created custom role)
- * Admin role in PagerDuty Account
+1. Admin or Standard role permissions for your Datadog account (unless your organization has created a custom role).
 
-## Data Dog and PagerDuty Integration
+1. Admin role in PagerDuty Account.
 
-The connection between Data Dog and PagerDuty must be created first.
+## Datadog and PagerDuty Integration
 
-1. In Data Dog select the **Integrations** Tab from the left-hand navigation.
+The connection between Datadog and PagerDuty must be created first.
 
-2. In the search field, type in **PagerDuty** and select the **Install** button.
+1. In Datadog, select the **Integrations** Tab from the left-hand navigation.
 
-![Install](Images/install.png)
+1. In the search field, type in **PagerDuty** and select the **Install** button.
 
-3. Select the **Configuration** tab and then click **Alert with PagerDuty**.
+      ![Install](Images/install.png)
 
-4. On the PagerDuty authorization screen there are two options to integrate with Data Dog.
+1. Select the **Configuration** tab and then select **Alert with PagerDuty**.
 
-* Enter your PagerDuty account using the **email address** and **password** and click **Authorize Integration**.
+1. On the PagerDuty authorization screen, there are two options for integrating with Datadog.
 
+      * Enter your PagerDuty account using the **email address** and **password** and click **Authorize Integration**.
 
-   or
-* Use Single Sign On by providing your PagerDuty **Subdomain** and click **Sign In Using Your Identity Provider**.
+      or
 
-![Integration](Images/authorize.png)
+      * Use Single Sign On by providing your PagerDuty **Subdomain** and selecting **Sign In Using Your Identity Provider**.
 
-4. Once authenticated, you may choose to integrate with a **PagerDuty Service** or **Global Event Routing**.
+      ![Integration](Images/authorize.png)
 
-5. Click **Finish Integration**
+1. Once authenticated, you may choose to integrate with a **PagerDuty Service** or **Global Event Routing**.
+
+1. Select **Finish Integration**
 
 ## PagerDuty Configuration
 
 1. Create PagerDuty Team
 
--  In PagerDuty, navigate to **People** and **Teams**
-- Click **+ New Team**
-- Provide a unique **Name** for the Team and optional **Tags**.
-- click **Save**
+      * In PagerDuty, navigate to **People** and **Teams**.
 
-![Team](Images/createteam.png)
+      * Select **+ New Team**.
 
-2. Create Escalation Policy
-- In PagerDuty, navigation to **People** and **Escalation Policies**.
-- Click **+ New Escalation Policy**.
-- Provide a unique **Name** for the Escalation Policy and optional **Description**.
-- Select the **Team** that was created in the previous step.
-- Provide optional **Tags**.
-- Enter the required **Users* and/or **Schedules** to be notified.
-- Click **Save**.
+      * Provide a unique **Name** for the Team and optional **Tags**.
 
-![Escalation](Images/createpolicy.png)
+      * Select **Save**.
 
-3. Create Service
-- In PagerDuty, navigate to **Services**.
-- Click **+ new Service**
-- Provide a unique **Name** and optional **Description**
-- Click **Next**.
+      ![Team](Images/createteam.png)
 
-![Service1](Images/service1.png)
+1. Create Escalation Policy
 
-- Click the **Select an Existing Escalation Policy** and choose the **Escalation Policy** created in the previous step.
-- Click **Next**.
+      * In PagerDuty, navigate to **People** and **Escalation Policies**.
 
-![Service2](Images/service2.png)
+      * Select **+ New Escalation Policy**.
 
-- Choose the required **Reduce Noise** option
-- Click **Next**.
+      * Provide a unique **Name** for the Escalation Policy and an optional **Description**.
 
-![Service3](Images/service3.png)
+      * Select the **Team** that was created in the previous step.
 
-- Under Integration, select **Data Dog**.
-- Click **Create Service**.
+      * Provide optional **Tags**.
 
-![Service4](Images/service4.png)
+      * Enter the required **Users* and/or **Schedules** to be notified.
 
-4. The Service will open up in the Integration tab.
-- Copy the **Integration Key**.
+      * Select **Save**.
 
-![Integration](Images/integrationkey.png)
+      ![Escalation](Images/createpolicy.png)
 
+1. Create Service
 
-## Data Dog Configuration
+      * In PagerDuty, navigate to **Services**.
 
-1. In Data Dog select the **Integrations** Tab from the left-hand navigation.
-- Search for **PagerDuty** in the search field.
-- Click on the **CONFIGURE** button.
+      * Select **+ new Service**
 
-![Integration2](Images/ddintegration.png)
+      * Provide a unique **Name** and optional **Description**
 
-2. Click the **Set Up Manually** button
+      * Select **Next**.
 
-![Setup](Images/setup.png)
+      ![Service1](Images/service1.png)
 
-3. Enter the **Service Name** and the copied **Integration Key** obtained in the previous step.
+      * Select the **Select an Existing Escalation Policy** and choose the **Escalation Policy** created in the previous step.
 
-![Setup2](Images/servicename.png)
+      * Select **Next**.
 
-4. Click **Save**.
+      ![Service2](Images/service2.png)
+
+      * Choose the required **Reduce Noise** option
+
+      * Select **Next**.
+
+      ![Service3](Images/service3.png)
+
+      * Under Integration, select **Datadog**.
+
+      * Select **Create Service**.
+
+      ![Service4](Images/service4.png)
+
+1. The Service will open up in the Integration tab:
+
+      * Copy the **Integration Key**.
+
+      ![Integration](Images/integrationkey.png)
+
+## Datadog Configuration
+
+1. In Datadog, select the **Integrations** Tab from the left-hand navigation:
+
+      * Search for **PagerDuty** in the search field.
+
+      * Select the **CONFIGURE** button.
+
+      ![Integration2](Images/ddintegration.png)
+
+1. Select the **Set Up Manually** button.
+
+      ![Setup](Images/setup.png)
+
+1. Enter the **Service Name** and the copied **Integration Key** obtained in the previous step.
+
+      ![Setup2](Images/servicename.png)
+
+1. Select **Save**.
 
 ## Test Integration
 
-1. In Data Dog, navigate to **Monitors**.
-2. Create a new or update an existing Monitor
-3. In the **Notify your team** section, enter the Service by using the following syntax.
+1. In Datadog, navigate to **Monitors**.
 
-@pagerduty-< Service Name >
+1. Create a new or update an existing Monitor.
 
-Example: @pagerduty-Chef-Demo-Service
+1. In the **Notify Your Team** section, enter the Service by using the following syntax.
 
-![Monitor1](Images/monitor1.png)
+      ```sh
+      @pagerduty-< Service Name >
+      Example: @pagerduty-Chef-Demo-Service
+      ```
 
-4. Click **Test Notifications**.
-5. Click **Run Test**.
+      ![Monitor1](Images/monitor1.png)
 
-![Monitor2](Images/monitor2.png)
+1. Select **Test Notifications**.
 
-6. The Alert will be sent to address configured in PagerDuty.
+1. Select **Run Test**.
+
+      ![Monitor2](Images/monitor2.png)
+
+1. The Alert will be sent to the address configured in PagerDuty.
