@@ -57,7 +57,7 @@ apt install docker.io
 ```sh
 docker run -d -p 2000:2000 \
     --name="promteams" \
-    -e TEAMS_INCOMING_WEBHOOK_URL="https://progresssoftware.webhook.office.com/webhookb2/19e1c444-fa6a-4d9a-b339-c527940dbaac@db266a67-cbe0-4d26-ae1a-d0581fe03535/IncomingWebhook/43f87f7d1724404394e28b24c50deb51/890e3fec-12ba-4296-8e94-6018f68218961" \
+    -e TEAMS_INCOMING_WEBHOOK_URL="MS_TEAMS INCOMING WEBHOOK URL" \
     -e TEAMS_REQUEST_URI=alertmanager \
     quay.io/prometheusmsteams/prometheus-msteams
 ```
